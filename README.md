@@ -6,7 +6,7 @@ AniX is a centralized platform designed for anime enthusiasts. It allows users t
 
 ## Repository Link
 
-[AniX Repository on Fontys Git](https://git.fhict.nl/I499309/anix)
+[AniX Repository on Fontys GIT](https://git.fhict.nl/I499309/anix)
 
 ## Features
 
@@ -38,7 +38,7 @@ AniX is a centralized platform designed for anime enthusiasts. It allows users t
     - CRUD Operations for Anime
     - Review Management Section
 
-## Prerequisites ( SUBJECT TO CHANGE )
+## Prerequisites (WIP)
 
 - .NET Core SDK
 - MSSQL Database
