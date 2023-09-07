@@ -4,9 +4,12 @@
 
 AniX is a centralized platform designed for anime enthusiasts. It allows users to explore trailers, read detailed descriptions, and share reviews about various anime series. The platform aims to provide a comprehensive experience for anime fans, offering curated content and a community-driven review system.
 
+![Main Page Prototype](https://git.fhict.nl/I499309/anix/-/raw/main/Documentation/Screenshots/main-page.png)
+
 ## Repository Link
 
 [AniX Repository on Fontys GIT](https://git.fhict.nl/I499309/anix)
+[Figma Main Page Prototype](https://www.figma.com/proto/8dWwVGXPIbtTFzVyaEI6DY/Untitled?type=design&node-id=6-13&t=0UU47rMbw2KYSWoF-1&scaling=min-zoom&page-id=0%3A1&starting-point-node-id=6%3A13&mode=design)
 
 ## Features
 
