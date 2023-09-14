@@ -11,6 +11,7 @@ AniX is a centralized platform designed for anime enthusiasts. It allows users t
 [Figma Main Page Prototype](https://www.figma.com/proto/8dWwVGXPIbtTFzVyaEI6DY/Untitled?type=design&node-id=6-13&t=0UU47rMbw2KYSWoF-1&scaling=min-zoom&page-id=0%3A1&starting-point-node-id=6%3A13&mode=design)
 
 ![Main Page Prototype](https://git.fhict.nl/I499309/anix/-/raw/main/Documentation/Screenshots/main-page.png)
+![Anime Page Prototype](https://git.fhict.nl/I499309/anix/-/raw/main/Documentation/Screenshots/anime-page.png)
 
 ## Features
 
