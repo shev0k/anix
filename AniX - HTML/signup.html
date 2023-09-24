@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Meta Data -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>AniX</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="assets/media/favicon.png">
+    <link rel="stylesheet" href="assets/css/vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/vendor/font-awesome.css">
+    <link rel="stylesheet" href="assets/css/vendor/slick.css">
+    <link rel="stylesheet" href="assets/css/vendor/slick-theme.css">
+    <link rel="stylesheet" href="assets/css/vendor/sal.css">
+    <!-- Site Stylesheet -->
+    <link rel="stylesheet" href="assets/css/app.css">
+
+</head>
+
+<body class="sticky-header">
+    <!-- Preloader
+    <div id="preloader">
+        <img src="./assets/media/Anime-loop-preloader-white.gif" alt="preloader" class="mb-5">
+    </div> -->
+    <!-- Back To Top Start -->
+    <a href="#main-wrapper" id="backto-top" class="back-to-top">
+        <i class="fas fa-angle-double-up"></i>
+    </a>
+    <!-- Back To Top End -->
+
+    <!-- Main Wrapper Start -->
+        <div class="main-wrapper" id="main-wrapper">
+            <!--=====================================-->
+            <!--=        Header Area Start       	=-->
+            <!--=====================================-->
+            <header class="header style-1">
+                <div class="container">
+                    <!-- Start Mainmenu Nav -->
+                    <nav class="navbar navbar-expand-lg">
+                        <a class="navbar-brand" href="./home.html"><img src="assets/media/logo.png" alt=""></a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+                            <i class="fas fa-bars"></i>
+                        </button>
+                        <div class="collapse navbar-collapse" id="mynavbar">
+                            <form action="./list-view.html">
+                                <div class="input-group header-search-box">
+                                    <button class="input-group-text anime-btn" type="submit"><i
+                                            class="fal fa-search"></i></button>
+                                    <input class="form-control" name="query" type="text" placeholder="Search anime..">
+                                </div>
+                            </form>
+                            <ul class="navbar-nav me-3 mainmenu right-nav ms-auto">
+                                <li class="menu-item-has-children">
+                                    <a href="./home.html">Home</a>
+                                </li>
+                                <li class="menu-item-has-children">
+                                    <a href="./list-view.html">Trending</a>
+                                </li>
+                                <li class="menu-item-has-children">
+                                    <a href="./home.html">Updates</a>
+                                </li>
+                                <li class="menu-item-has-children">
+                                    <a href="#Pages"  class="dropdown-toggle" id="pages" data-bs-toggle="dropdown"
+                                    data-bs-auto-close="outside" aria-expanded="false">Pages</a>
+                                    <ul class="dropdown-menu" aria-labelledby="pages">
+                                        <li>
+                                            <a href="./home.html">Home</a>
+                                        </li>
+                                        <li>
+                                            <a href="./streaming-season.html">Trailer</a>
+                                        </li>
+                                        <li>
+                                            <a href="./list-view.html">List View</a>
+                                        </li>
+                                        <li>
+                                            <a href="./grid-view.html">Grid View</a>
+                                        </li>
+                                        <li>
+                                            <a href="./privacy.html"> Privacy Policy</a>
+                                        </li>
+                                        <li>
+                                            <a href="./comments.html"> Terms of Use </a>
+                                        </li>
+                                        <li>
+                                            <a href="./profile.html">Profile</a>
+                                        </li>
+                                        <li>
+                                            <a href="./edit-profile.html"> Edit Profile</a>
+                                        </li>
+                                        <li>
+                                            <a href="./playlist.html">Playlist</a>
+                                        </li>
+                                        <li>
+                                            <a href="./login.html">Log In</a>
+                                        </li>
+                                        <li>
+                                            <a href="./signup.html">Sign Up</a>
+                                        </li>
+                                        <li>
+                                            <a href="./reset-password.html">Reset Password</a>
+                                        </li>
+                                        <li>
+                                            <a href="./404.html">404</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <!--
+                            <div class="d-flex ms-auto right-nav">
+                                <a href="./signup.html" class="anime-btn btn-dark">SIGN UP</a>
+                            </div>
+                            -->
+                        </div>
+                    </nav>
+                </div>
+            </header>
+        <!--=====================================-->
+        <!--=        login Area Start          =-->
+        <!--=====================================-->
+        <div class="login">
+            <video autoplay loop muted class="bg-video">
+              <source src="assets/media/login/login.mp4" type="video/mp4">
+            </video>
+        <section class="login signup text-center">
+            <div class="container">
+                <div class="login-block">
+                    <div class="login-content">
+                        <img src="assets/media/icon/user.png" alt="" class="user-icon">
+                        <h3>Sign up</h3>
+                        <form action="signup.html">
+                            <div class="form-group">
+                                <input class="form-control" type="email" name="email" required placeholder="email address">
+                            </div>
+                            <div class="form-group password-type-field mb-0">
+                                <input class="form-control" type="password" id="password-field" name="password" required placeholder="enter password">
+                                <span class="text-end toggle-password" toggle="#password-field"> <i class="fal fa-eye field-icon toggle-password"></i></span>
+                            </div>
+                            <div class="form-group password-type-field mb-0">
+                                <input class="form-control" type="password" id="confirm-password" name="password" required placeholder="confirm password">
+                                <span class="text-end toggle-password" toggle="#confirm-password"> <i class="fal fa-eye field-icon toggle-password"></i></span>
+                            </div>
+                            <p class="policy">By continuing, you agree to AniX <a style="font-size: 15px; font-weight: bold;" href="./comments.html">Terms of Use</a> and <a style="font-size: 15px; font-weight: bold;" href="./privacy.html">Privacy Policy</a>.</p>
+                            <button type="submit" class="anime-btn btn-dark border-change">
+                                SIGN UP
+                            </button>
+                        </form>
+                        <p class="guide">Already have an account? <a href="./login.html">Log in</a></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        </div>
+        <!--=====================================-->
+        <!--=           Footer Area Start       =-->
+        <!--=====================================-->
+        <footer class="footer">
+            <div class="footer-bottom bg-color-black">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6 col-12">
+                            <div class="footer-copyright">
+                                <span class="copyright-text">Copyright © <a href="./home.html">AniX</a>. All Rights Reserved</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-12">
+                            <div class="footer-bottom-link text-end">
+                                <span style="color: #DF0051;"> ▶</span><a href="./privacy.html" class="ps-2">About</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-main style-1">
+                <div class="container">
+                    <div class="row justify-content-between align-items-center">
+                        <div class="col-lg-5 col-sm-12 col-12">
+                            <div class="footer-widget">
+                                <a href="./home.html">
+                                    <img alt="" src="assets/media/logo_.png">
+                                </a>
+                                <p class="mb-5">Disclaimer: This site does not store any files on its server. All contents are provided by non-affiliated third parties.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+        </footer>
+
+    </div>
+    <!-- Jquery Js -->
+    <script src="assets/js/vendor/jquery-3.6.0.min.js"></script>
+    <script src="assets/js/vendor/bootstrap.min.js"></script>
+    <script src="assets/js/vendor/imagesloaded.pkgd.min.js"></script>
+    <script src="assets/js/vendor/slick.min.js"></script>
+    <script src="assets/js/vendor/jquery.countdown.min.js"></script>
+    <script src="assets/js/vendor/jquery-appear.js"></script>
+    <script src="assets/js/vendor/sal.js"></script>
+
+    <!-- Site Scripts -->
+    <script src="assets/js/app.js"></script>
+</body>
+
+</html>

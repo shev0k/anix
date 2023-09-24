@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Meta Data -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>AniX</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="assets/media/favicon.png">
+    <link rel="stylesheet" href="assets/css/vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/vendor/font-awesome.css">
+    <link rel="stylesheet" href="assets/css/vendor/slick.css">
+    <link rel="stylesheet" href="assets/css/vendor/slick-theme.css">
+    <link rel="stylesheet" href="assets/css/vendor/sal.css">
+    <!-- Site Stylesheet -->
+    <link rel="stylesheet" href="assets/css/app.css">
+
+</head>
+
+<body class="sticky-header">
+    <!-- Preloader
+    <div id="preloader">
+        <img src="./assets/media/Anime-loop-preloader-white.gif" alt="preloader" class="mb-5">
+    </div> -->
+    <!-- Back To Top Start -->
+    <a href="#main-wrapper" id="backto-top" class="back-to-top">
+        <i class="fas fa-angle-double-up"></i>
+    </a>
+    <!-- Back To Top End -->
+
+    <!-- Main Wrapper Start -->
+    <div class="main-wrapper" id="main-wrapper">
+        <!--=====================================-->
+        <!--=        Header Area Start       	=-->
+        <!--=====================================-->
+        <header class="header style-1">
+            <div class="container">
+                <!-- Start Mainmenu Nav -->
+                <nav class="navbar navbar-expand-lg">
+                    <a class="navbar-brand" href="./home.html"><img src="assets/media/logo.png" alt=""></a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <div class="collapse navbar-collapse" id="mynavbar">
+                        <form action="./list-view.html">
+                            <div class="input-group header-search-box">
+                                <button class="input-group-text anime-btn" type="submit"><i
+                                        class="fal fa-search"></i></button>
+                                <input class="form-control" name="query" type="text" placeholder="Search anime..">
+                            </div>
+                        </form>
+                        <ul class="navbar-nav me-3 mainmenu">
+                            <li class="menu-item-has-children">
+                                <a href="#Genres"  class="dropdown-toggle" id="genres" data-bs-toggle="dropdown"
+                                data-bs-auto-close="outside" aria-expanded="false">Genres</a>
+                                <ul class="dropdown-menu genre-dropdown " aria-labelledby="genres">
+                                    <li>
+                                        <a href="./list-view.html">Action</a>
+                                    </li>
+                                    <li>
+                                        <a href="./list-view.html">Adventure</a>
+                                    </li>
+                                    <li>
+                                        <a href="./list-view.html">Avant Grade</a>
+                                    </li>
+                                    <li>
+                                        <a href="./list-view.html">Boys Love</a>
+                                    </li>
+                                    <li> 
+                                        <a href="./list-view.html">Comedy</a>
+                                    </li>
+                                    <li>
+                                        <a href="./list-view.html">Demons</a>
+                                    </li>
+                                    <li>
+                                        <a href="./list-view.html">Drama</a>
+                                    </li>
+                                    <li>
+                                        <a href="./list-view.html">Ecchi</a>
+                                    </li>
+                                    <li>
+                                        <a href="./list-view.html">Fantasy</a>
+                                    </li>
+                                    <li>
+                                        <a href="./list-view.html">Girls Love</a>
+                                    </li>
+                                    <li>
+                                        <a href="./list-view.html">Gourmet</a>
+                                    </li>
+                                    <li>
+                                        <a href="./list-view.html">Harem</a>
+                                    </li>
+                                    <li>
+                                        <a href="./list-view.html">Horror</a>
+                                    </li>
+                                    <li>
+                                        <a href="./list-view.html">Isekai</a>
+                                    </li>
+                                    <li>
+                                        <a href="./list-view.html">Iyashikei</a>
+                                    </li>
+                                    <li>
+                                        <a href="./list-view.html">Josei</a>
+                                    </li>
+                                    <li>
+                                        <a href="./list-view.html">Kids</a>
+                                    </li>
+                                    <li>
+                                        <a href="./list-view.html">Magic</a>
+                                    </li>
+                                    <li>
+                                        <a href="./list-view.html">Mahou Shoujo</a>
+                                    </li>
+                                    <li>
+                                        <a href="./list-view.html">Martial Arts</a>
+                                    </li>
+                                    <li>
+                                        <a href="./list-view.html">Mecha</a>
+                                    </li>
+                                    <li>
+                                        <a href="./list-view.html">Military</a>
+                                    </li>
+                                    <li>
+                                        <a href="./list-view.html">Music</a>
+                                    </li>
+                                    <li>
+                                        <a href="./list-view.html">Mystery</a>
+                                    </li>
+                                    <li>
+                                        <a href="./list-view.html">Parody</a>
+                                    </li>
+                                    <li>
+                                        <a href="./list-view.html">Psychological</a>
+                                    </li>
+                                    <li>
+                                        <a href="./list-view.html">Reverse Harem</a>
+                                    </li>
+                                    <li>
+                                        <a href="./list-view.html">Romance</a>
+                                    </li>
+                                    <li>
+                                        <a href="./list-view.html">School</a>
+                                    </li>
+                                    <li>
+                                        <a href="./list-view.html">Sci-Fi</a>
+                                    </li>
+                                    <li>
+                                        <a href="./list-view.html">Seinen</a>
+                                    </li>
+                                    <li>
+                                        <a href="./list-view.html">Shoujo</a>
+                                    </li>
+                                    <li>
+                                        <a href="./list-view.html">Shounen</a>
+                                    </li>
+                                    <li>
+                                        <a href="./list-view.html">Slice of Life</a>
+                                    </li>
+                                    <li>
+                                        <a href="./list-view.html">Space</a>
+                                    </li>
+                                    <li>
+                                        <a href="./list-view.html">Sports</a>
+                                    </li>
+                                    <li>
+                                        <a href="./list-view.html">Super Power</a>
+                                    </li>
+                                    <li>
+                                        <a href="./list-view.html">Supernatural</a>
+                                    </li>
+                                    <li>
+                                        <a href="./list-view.html">Suspense</a>
+                                    </li>
+                                    <li>
+                                        <a href="./list-view.html">Thriller</a>
+                                    </li>
+                                    <li>
+                                        <a href="./list-view.html">Vampire</a>
+                                    </li>  
+                                </ul>
+                            </li>
+                            <li class="menu-item-has-children">
+                                <a href="#Types"  class="dropdown-toggle" id="types" data-bs-toggle="dropdown"
+                                data-bs-auto-close="outside" aria-expanded="false">Types</a>
+                                <ul class="dropdown-menu" aria-labelledby="types">
+                                    <li>
+                                        <a href="./list-view.html">Movie</a>
+                                    </li>
+                                    <li>
+                                        <a href="./list-view.html">TV</a>
+                                    </li>
+                                    <li>
+                                        <a href="./list-view.html">OVA</a>
+                                    </li>
+                                    <li>
+                                        <a href="./list-view.html">ONA</a>
+                                    </li>
+                                    <li> 
+                                        <a href="./list-view.html">SPECIAL</a>
+                                    </li>
+                                    <li>
+                                        <a href="./list-view.html">MUSIC</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="menu-item-has-children">
+                                <a href="./list-view.html">Random</a>
+                            </li>
+                            <li class="menu-item-has-children">
+                                <a href="#Pages"  class="dropdown-toggle" id="pages" data-bs-toggle="dropdown"
+                                data-bs-auto-close="outside" aria-expanded="false">Pages</a>
+                                <ul class="dropdown-menu" aria-labelledby="pages">
+                                    <li>
+                                        <a href="./home.html">Home</a>
+                                    </li>
+                                    <li>
+                                        <a href="./streaming-season.html">Trailer</a>
+                                    </li>
+                                    <li>
+                                        <a href="./list-view.html">List View</a>
+                                    </li>
+                                    <li>
+                                        <a href="./grid-view.html">Grid View</a>
+                                    </li>
+                                    <li>
+                                        <a href="./privacy.html"> Privacy Policy</a>
+                                    </li>
+                                    <li>
+                                        <a href="./comments.html"> Terms of Use </a>
+                                    </li>
+                                    <li>
+                                        <a href="./profile.html">Profile</a>
+                                    </li>
+                                    <li>
+                                        <a href="./edit-profile.html"> Edit Profile</a>
+                                    </li>
+                                    <li>
+                                        <a href="./playlist.html">Playlist</a>
+                                    </li>
+                                    <li>
+                                        <a href="./login.html">Log In</a>
+                                    </li>
+                                    <li>
+                                        <a href="./signup.html">Sign Up</a>
+                                    </li>
+                                    <li>
+                                        <a href="./reset-password.html">Reset Password</a>
+                                    </li>
+                                    <li>
+                                        <a href="./404.html">404</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <div class="d-flex ms-auto right-nav">
+                            <a href="./login.html" class="anime-btn btn-dark">LOG IN</a>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </header>
+         <!--=====================================-->
+        <!--=      Breadcrumb Area Start        =-->
+        <!--=====================================-->
+        <section class="breadcrumb sec-mar">
+            <div class="container">
+                <div class="breadcrumb-content">
+                    <ul>
+                        <li><a href="home.html">Home</a></li>
+                        <li><a href="grid-view.html">List</a></li>
+                        <li><a class="active">Trailer</a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <!--=====================================-->
+        <!--=         video Area Start          =-->
+        <!--=====================================-->
+        <section class="video sec-mar">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="img-box">
+                            <img class="detail-image" src="./assets/media/video/video-img.png" alt="">
+                            <div class="overlay">
+                                <a href="#" class="play-btn"><i class="fas fa-play"></i></a>
+                            </div>
+                        </div>
+                        <div class="video-box">
+                            <div class="video-container">
+                                <iframe src="https://www.youtube.com/embed/MQstKIUCecw?" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                    </div>
+                <div class="video-content bg-color-black">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-4 col-sm-12">
+                            <p>You're watching <b>My Hero Academia</b>. <br> What do you think about this anime?</p>
+                        </div>
+                        <div class="col-lg-6 col-md-8 col-sm-12">
+                            <div class="rating-container">
+                                <div class="rating-container__items">
+                                  <input type="radio" name="stars" id="st5">
+                                  <label for="st5">
+                                    <div class="rating-star-stroke">
+                                      <div class="rating-star-fill"></div>
+                                    </div>
+                                    <div class="rating-label-description" data-content="Excellent"></div>
+                                  </label>
+                                  <input type="radio" name="stars" id="st4">
+                                  <label for="st4">
+                                    <div class="rating-star-stroke">
+                                      <div class="rating-star-fill"></div>
+                                    </div>
+                                    <div class="rating-label-description" data-content="Good"></div>
+                                  </label>
+                                  <input type="radio" name="stars" id="st3">
+                                  <label for="st3">
+                                    <div class="rating-star-stroke">
+                                      <div class="rating-star-fill"></div>
+                                    </div>
+                                    <div class="rating-label-description" data-content="OK"></div>
+                                  </label>
+                                  <input type="radio" name="stars" id="st2">
+                                  <label for="st2">
+                                    <div class="rating-star-stroke">
+                                      <div class="rating-star-fill"></div>
+                                    </div>
+                                    <div class="rating-label-description" data-content="Bad"></div>
+                                  </label>
+                                  <input type="radio" name="stars" id="st1">
+                                  <label for="st1">
+                                    <div class="rating-star-stroke">
+                                      <div class="rating-star-fill"></div>
+                                    </div>
+                                    <div class="rating-label-description" data-content="Terrible"></div>
+                                  </label>
+                                </div>
+                              </div>
+                        </div>
+                        <div class="col-lg-3 offset-lg-0">
+                            <div class="align-middle actions">
+                                <a href="" class="anime-btn btn-dark border-change mb-2">RATE NOW</a>
+                                <p class="text">RATING: 7.8 <b>/10</b></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-9 col-12">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-4 col-sm-6 col-12">
+                                <div class="trailer-box">
+                                    <img src="./assets/media/video/trailer-img.png" alt="" class="image">
+                                </div>
+                                <div class="modal fade" id="videoModal" tabindex="-1" role="dialog" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-body">
+                                                <iframe style="border: 0;width: 100%;height: 350px;"
+                                                    src="https://www.youtube.com/embed/6R6q2fAp2n4"
+                                                    title="Suzume no Tojimari - Official Trailer 2 | English Sub"
+                                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                                    allowfullscreen></iframe>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-8 col-sm-6 col-12">
+                                <div class="trailer-content">
+                                    <h2>My Hero Academia</h2>
+                                    <p class="light-text">Season 06</p>
+                                    <div class="dropdown">
+                                        <button type="button" class="dropdown-toggle" data-bs-toggle="dropdown">
+                                            <svg width="32" height="22" viewBox="0 0 32 22" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <rect x="0.145264" y="0.00012207" width="21.4395" height="2.68125"
+                                                    rx="1.34062" fill="#999999" />
+                                                <rect x="0.145264" y="7.41272" width="21.4395" height="2.68125"
+                                                    rx="1.34062" fill="#999999" />
+                                                <rect x="0.145264" y="14.8258" width="16.4914" height="2.68125"
+                                                    rx="1.34062" fill="#999999" />
+                                                <path
+                                                    d="M19.8784 16.0712C19.8784 15.4163 20.4093 14.8854 21.0642 14.8854H30.2463C30.9011 14.8854 31.432 15.4163 31.432 16.0712C31.432 16.7261 30.9011 17.257 30.2463 17.257H21.0642C20.4093 17.257 19.8784 16.7261 19.8784 16.0712Z"
+                                                    fill="#999999" />
+                                                <path
+                                                    d="M25.6552 22.0001C25.0171 22.0001 24.4999 21.4828 24.4999 20.8447V11.2977C24.4999 10.6596 25.0171 10.1423 25.6552 10.1423C26.2933 10.1423 26.8106 10.6596 26.8106 11.2977V20.8447C26.8106 21.4828 26.2933 22.0001 25.6552 22.0001Z"
+                                                    fill="#999999" />
+                                            </svg>
+                                        </button>
+                                        <ul class="dropdown-menu bg-color-black pt-3 pb-3 ps-3 pe-3">
+                                            <li>
+                                                <a href="" class="none"><i class="fa fa-check"></i> Watch Later </a>
+                                            </li>
+                                            <li>
+                                                <a href=""><i class="fas fa-plus"></i> Add to Playlist </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <h3>Plot Summary</h3>
+                                    <p>The appearance of "quirks," newly discovered super powers, has been steadily increasing over the years, with 80 percent of humanity possessing various abilities from manipulation of elements to shapeshifting. This leaves the remainder of the world completely powerless, and Izuku Midoriya is one such individual.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 col-sm-6 col-12">
+                                <div class="rating-content">
+                                    <h4>RATE THE SHOW</h4>
+                                    <p>YOUR RATING: <b>??/10</b></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 col-12">
+                        <div class="trailer-content">
+                            <h3>DETAILS</h3>
+                            <p><span>Type:</span> <b>TV</b></p>
+                            <p><span>Country:</span> <b>Japan</b></p>
+                            <p><span>Genre:</span> <b>Action, School, Shounen</b></p>
+                            <p><span>Date aired:</span> <b>Jan 15, 2023</b></p>
+                            <p><span>Status:</span> <b>Completed</b></p>
+                            <p><span>Scores:</span> <b>7.88 by 4,405 reviews</b></p>
+                            <p><span>Premiered:</span> <b>Spring 2016</b></p>
+                            <p><span>Episodes:</span> <b>24</b></p>
+                            <p><span>Studio:</span> <b>Bones</b></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--=====================================-->
+        <!--=         Comment Area Start        =-->
+        <!--=====================================-->
+        <section class="comment sec-mar">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-md-12 col-sm-12">
+                        <div class="comment-block">
+                            <div class="heading style-1 m-0">
+                                <h2>COMMENTS</h2>
+                            </div>
+                            <p>We hope you have a good time browsing the comment section! <br>
+                                Please read our <a href="./comments.html">Comment Policy</a> before commenting.
+                            </p>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-1 col-2">
+                                <a href="./profile.html"><img src="./assets/media/comment/comment-img.png" alt=""></a>
+                            </div>
+                            <div class="col-lg-11 col-10">
+                                <form action="streaming-season.html">
+                                    <div class="input-group form-group footer-email-box">
+                                        <input class="form-control" type="text" name="post"
+                                            placeholder="Join the discussion">
+                                        <button class="input-group-text post-btn" type="submit">Post</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="site-comment">
+                            <div class="row">
+                                <div class="col-lg-1 col-2">
+                                    <a href="./profile.html"><img src="./assets/media/comment/comment-img-2.png"
+                                            alt=""></a>
+                                </div>
+                                <div class="col-lg-11 col-10">
+                                    <h5><a href="./profile.html">@username</a><b>5 minutes ago</b></h5>
+                                    <p>Deku's character development is amazing. Can't wait to see how far he'll go!
+                                    </p>
+                                    <a href="" class="comment-btn"><i class="fa fa-thumbs-up"></i></a>
+                                    <a href="" class="comment-btn"><i class="fa fa-thumbs-down"></i></a>
+                                    <button class=" accordion-button comment-btn" data-bs-toggle="collapse"
+                                        data-bs-target="#reply1" aria-expanded="true">Reply</button>
+                                    <div id="reply1" class="accordion-collapse collapse "
+                                        data-bs-parent="#accordionExample">
+                                        <div class="card card-body">
+                                            <div class="d-flex pt-3">
+                                                <a href="./profile.html"><img
+                                                        src="./assets/media/comment/comment-img-sm-2.png" alt=""></a>
+                                                <input type="text" placeholder="Add a reply">
+                                            </div>
+                                            <div class="text-end">
+                                                <button class="comment-btn">Cancel</button>
+                                                <button class="comment-btn active">Reply</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-1 col-2">
+                                    <a href="./profile.html"><img src="./assets/media/comment/comment-img-3.png"
+                                            alt=""></a>
+                                </div>
+
+                                <div class="col-lg-11 col-10">
+                                    <h5><a href="./profile.html">@username</a> <b>5 minutes ago</b></h5>
+                                    <p>The fight scenes are so well-animated. Bakugo vs. Deku was epic!
+                                    </p>
+                                    <a href="" class="comment-btn"><i class="fa fa-thumbs-up"></i></a>
+                                    <a href="" class="comment-btn"><i class="fa fa-thumbs-down"></i></a>
+                                    <button class=" accordion-button comment-btn" data-bs-toggle="collapse"
+                                        data-bs-target="#reply2" aria-expanded="true">Reply</button>
+                                    <div id="reply2" class="accordion-collapse collapse show"
+                                        data-bs-parent="#accordionExample">
+                                        <div class="card card-body">
+                                            <div class="d-flex pt-3">
+                                                <a href="./profile.html"><img
+                                                        src="./assets/media/comment/comment-img-sm-1.png" alt=""></a>
+                                                <input type="text" placeholder="Add a reply">
+                                            </div>
+                                            <div class="text-end">
+                                                <button class="comment-btn">Cancel</button>
+                                                <button class="comment-btn active">Reply</button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <a href="#" class="accordion-button comment-btn active" data-bs-toggle="collapse"
+                                data-bs-target="#reply" aria-expanded="true" aria-controls="reply"><i
+                                    class="fa fa-chevron-down"></i> 4 Replies</a>
+                            <div id="reply" class="accordion-collapse collapse "
+                                data-bs-parent="#accordionExample">
+                                <div class="card card-body">
+                                    <div class="row pt-3">
+                                        <div class="col-lg-11 offset-lg-1 offset-2 col-10 pb-4">
+                                            <div class="d-inline-flex align-items-start">
+
+                                                <a href="./profile.html"><img
+                                                        src="./assets/media/comment/comment-img-sm-1.png" alt=""></a>
+                                                <div class="replies">
+                                                    <h5><a href="./profile.html">@username</a> <b>5 minutes ago</b></h5>
+                                                    <p>Todoroki is my favorite character. His backstory really adds depth to him.</p>
+                                                    <a href="" class="comment-btn"><i class="fa fa-thumbs-up"></i></a>
+                                                    <a href="" class="comment-btn"><i class="fa fa-thumbs-down"></i></a>
+                                                    <button class=" accordion-button comment-btn"
+                                                        data-bs-toggle="collapse" data-bs-target="#reply30"
+                                                        aria-expanded="true">Reply</button>
+                                                    <div id="reply30" class="accordion-collapse collapse"
+                                                        data-bs-parent="#accordionExample">
+                                                        <div class="card card-body">
+                                                            <div class="d-flex pt-3">
+                                                                <img src="./assets/media/comment/comment-img-sm-2.png"
+                                                                    alt="">
+                                                                <input type="text" placeholder="Add a reply">
+                                                            </div>
+                                                            <div class="text-end">
+                                                                <button class="comment-btn">Cancel</button>
+                                                                <button class="comment-btn active">Reply</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-11 offset-lg-1 offset-2 col-10 pb-4">
+                                            <div class="d-inline-flex align-items-start">
+                                                <a href="./profile.html"><img
+                                                        src="./assets/media/comment/comment-img-sm-3.png" alt=""></a>
+                                                <div class="replies">
+                                                    <h5><a href="./profile.html">@username</a> <b>5 minutes ago</b></h5>
+                                                    <p>The League of Villains keeps getting more interesting. Shigaraki is a complex villain."</p>
+                                                    <a href="" class="comment-btn"><i class="fa fa-thumbs-up"></i></a>
+                                                    <a href="" class="comment-btn"><i class="fa fa-thumbs-down"></i></a>
+                                                    <button class=" accordion-button comment-btn"
+                                                        data-bs-toggle="collapse" data-bs-target="#reply60"
+                                                        aria-expanded="true">Reply</button>
+                                                    <div id="reply60" class="accordion-collapse collapse"
+                                                        data-bs-parent="#accordionExample">
+                                                        <div class="card card-body">
+                                                            <div class="d-flex pt-3">
+                                                                <img src="./assets/media/comment/comment-img-sm-1.png"
+                                                                    alt="">
+                                                                <input type="text" placeholder="Add a reply">
+                                                            </div>
+                                                            <div class="text-end">
+                                                                <button class="comment-btn">Cancel</button>
+                                                                <button class="comment-btn active">Reply</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-11 offset-lg-1 offset-2 col-10 pb-4">
+                                            <div class="d-inline-flex align-items-start">
+                                                <a href="./profile.html"><img
+                                                        src="./assets/media/comment/comment-img-sm-4.png" alt=""></a>
+                                                <div class="replies">
+                                                    <h5><a href="./profile.html">@username</a> <b>5 minutes ago</b></h5>
+                                                    <p>I love the concept of Quirks. It's a fresh take on the superhero genre.</p>
+                                                    <a href="" class="comment-btn"><i class="fa fa-thumbs-up"></i></a>
+                                                    <a href="" class="comment-btn"><i class="fa fa-thumbs-down"></i></a>
+                                                    <button class=" accordion-button comment-btn"
+                                                        data-bs-toggle="collapse" data-bs-target="#reply7"
+                                                        aria-expanded="true">Reply</button>
+                                                    <div id="reply7" class="accordion-collapse collapse"
+                                                        data-bs-parent="#accordionExample">
+                                                        <div class="card card-body">
+                                                            <div class="d-flex pt-3">
+                                                                <img src="./assets/media/comment/comment-img-sm-3.png"
+                                                                    alt="">
+                                                                <input type="text" placeholder="Add a reply">
+                                                            </div>
+                                                            <div class="text-end">
+                                                                <button class="comment-btn">Cancel</button>
+                                                                <button class="comment-btn active">Reply</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-11 offset-lg-1 offset-2 col-10 pb-4">
+
+                                            <div id="more" class="accordion-collapse collapse "
+                                                data-bs-parent="#accordionExample">
+                                                <div class="card card-body">
+                                                    <div class="d-inline-flex align-items-start">
+                                                        <a href="./profile.html"><img
+                                                                src="./assets/media/comment/comment-img-sm-2.png"
+                                                                alt=""></a>
+                                                        <div class="replies">
+                                                            <h5><a href="./profile.html">@username</a> <b>5 minutes
+                                                                    ago</b></h5>
+                                                            <p>The UA Sports Festival arc was so entertaining. The competition was fierce!</p>
+                                                            <button class="comment-btn"><i
+                                                                    class="fa fa-thumbs-up"></i></button>
+                                                            <button class="comment-btn"><i
+                                                                    class="fa fa-thumbs-down"></i></button>
+                                                            <button class=" accordion-button comment-btn"
+                                                                data-bs-toggle="collapse" data-bs-target="#reply9"
+                                                                aria-expanded="true">Reply</button>
+                                                            <div id="reply9" class="accordion-collapse collapse "
+                                                                data-bs-parent="#accordionExample">
+                                                                <div class="card card-body">
+                                                                    <div class="d-flex pt-3">
+                                                                        <img src="./assets/media/comment/comment-img-sm-1.png"
+                                                                            alt="">
+                                                                        <input type="text" placeholder="Add a reply">
+                                                                    </div>
+                                                                    <div class="text-end">
+                                                                        <button class="comment-btn">Cancel</button>
+                                                                        <button
+                                                                            class="comment-btn active">Reply</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <a href="#" class="accordion-button comment-btn active"
+                                                data-bs-toggle="collapse" data-bs-target="#more" aria-expanded="true"
+                                                aria-controls="more"><i class="fa fa-chevron-down"></i> Show More
+                                                Replies</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-1 col-2">
+                                    <a href="./profile.html"><img src="./assets/media/comment/comment-img-4.png"
+                                            alt=""></a>
+                                </div>
+                                <div class="col-lg-11 col-10">
+                                    <h5><a href="./profile.html">@username</a> <b>5 minutes ago</b></h5>
+                                    <p>All Might's 'Plus Ultra' moment gave me chills. What a hero!
+                                    </p>
+                                    <a href="" class="comment-btn"><i class="fa fa-thumbs-up"></i></a>
+                                    <a href="" class="comment-btn"><i class="fa fa-thumbs-down"></i></a>
+                                    <button class=" accordion-button comment-btn" data-bs-toggle="collapse"
+                                        data-bs-target="#reply3" aria-expanded="true">Reply</button>
+                                    <div id="reply3" class="accordion-collapse collapse "
+                                        data-bs-parent="#accordionExample">
+                                        <div class="card card-body">
+                                            <div class="d-flex pt-3">
+                                                <a href="./profile.html"><img
+                                                        src="./assets/media/comment/comment-img-sm-1.png" alt=""></a>
+                                                <input type="text" placeholder="Add a reply">
+                                            </div>
+                                            <div class="text-end">
+                                                <button class="comment-btn">Cancel</button>
+                                                <button class="comment-btn active">Reply</button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <a href="#" class="accordion-button comment-btn active" data-bs-toggle="collapse"
+                                data-bs-target="#reply20" aria-expanded="true"><i class="fa fa-chevron-down"></i> 4
+                                Replies</a>
+                            <div id="reply20" class="accordion-collapse collapse " data-bs-parent="#accordionExample">
+                                <div class="card card-body">
+                                    <div class="row pt-3">
+                                        <div class="col-lg-11 offset-lg-1 offset-2 col-10 pb-4">
+                                            <div class="d-inline-flex align-items-start">
+                                                <a href="./profile.html"><img
+                                                        src="./assets/media/comment/comment-img-sm-3.png" alt=""></a>
+                                                <div class="replies">
+                                                    <h5><a href="./profile.html">@username</a> <b>5 minutes ago</b></h5>
+                                                    <p>MHA does a great job balancing action and emotional storytelling.</p>
+                                                    <a href="" class="comment-btn"><i class="fa fa-thumbs-up"></i></a>
+                                                    <a href="" class="comment-btn"><i class="fa fa-thumbs-down"></i></a>
+                                                    <button class=" accordion-button comment-btn"
+                                                        data-bs-toggle="collapse" data-bs-target="#reply4"
+                                                        aria-expanded="true" aria-controls="reply">Reply</button>
+                                                    <div id="reply4" class="accordion-collapse collapse  "
+                                                        data-bs-parent="#accordionExample">
+                                                        <div class="card card-body">
+                                                            <div class="d-flex pt-3">
+                                                                <img src="./assets/media/comment/comment-img-sm-2.png"
+                                                                    alt="">
+                                                                <input type="text" placeholder="Add a reply">
+                                                            </div>
+                                                            <div class="text-end">
+                                                                <button class="comment-btn">Cancel</button>
+                                                                <button class="comment-btn active">Reply</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-11 offset-lg-1 offset-2 col-10 pb-4">
+                                            <div class="d-inline-flex align-items-start">
+                                                <a href="./profile.html"><img
+                                                        src="./assets/media/comment/comment-img-sm-1.png" alt=""></a>
+                                                <div class="replies">
+                                                    <h5><a href="./profile.html">@username</a> <b>5 minutes ago</b></h5>
+                                                    <p>The music and soundtracks are on point. They really elevate the scenes.</p>
+                                                    <a href="" class="comment-btn"><i class="fa fa-thumbs-up"></i></a>
+                                                    <a href="" class="comment-btn"><i class="fa fa-thumbs-down"></i></a>
+                                                    <button class=" accordion-button comment-btn"
+                                                        data-bs-toggle="collapse" data-bs-target="#reply5"
+                                                        aria-expanded="true" aria-controls="reply">Reply</button>
+                                                    <div id="reply5" class="accordion-collapse collapse  "
+                                                        data-bs-parent="#accordionExample">
+                                                        <div class="card card-body">
+                                                            <div class="d-flex pt-3">
+                                                                <img src="./assets/media/comment/comment-img-sm-1.png"
+                                                                    alt="">
+                                                                <input type="text" placeholder="Add a reply">
+                                                            </div>
+                                                            <div class="text-end">
+                                                                <button class="comment-btn">Cancel</button>
+                                                                <button class="comment-btn active">Reply</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-11 offset-lg-1 offset-2 col-10 pb-4">
+                                            <div class="d-inline-flex align-items-start">
+                                                <a href="./profile.html"><img
+                                                        src="./assets/media/comment/comment-img-sm-3.png" alt=""></a>
+                                                <div class="replies">
+                                                    <h5><a href="./profile.html">@username</a> <b>5 minutes ago</b></h5>
+                                                    <p>Can't wait for the next season. The cliffhangers always leave me wanting more!</p>
+                                                    <a href="" class="comment-btn"><i class="fa fa-thumbs-up"></i></a>
+                                                    <a href="" class="comment-btn"><i class="fa fa-thumbs-down"></i></a>
+                                                    <button class=" accordion-button comment-btn"
+                                                        data-bs-toggle="collapse" data-bs-target="#reply6"
+                                                        aria-expanded="true" aria-controls="reply">Reply</button>
+                                                    <div id="reply6" class="accordion-collapse collapse  "
+                                                        data-bs-parent="#accordionExample">
+                                                        <div class="card card-body">
+                                                            <div class="d-flex pt-3">
+                                                                <img src="./assets/media/comment/comment-img-sm-2.png"
+                                                                    alt="">
+                                                                <input type="text" placeholder="Add a reply">
+                                                            </div>
+                                                            <div class="text-end">
+                                                                <button class="comment-btn">Cancel</button>
+                                                                <button class="comment-btn active">Reply</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <a href="#" class="comment-btn">Load More Comments</a>
+                            </div>
+                            <hr>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-8 offset-lg-0 offset-md-3 offset-sm-2 mt-lg-0 mt-3">
+                        <h3 class="small-title">SIMILAR</h3>
+                        <div class="anime-box bg-color-black">
+                            <a href="streaming-season.html">
+                                <div class="row m-0">
+                                    <div class="p-0 col-2">
+                                        <img src="assets/media/anime-sm-img/anime-img-7.png" alt="">
+                                    </div>
+                                    <div class="p-0 col-9">
+                                        <div class="anime-blog">
+                                            <p>86</p>
+                                            <p class="text-box">★ 8.32</p>
+                                            <p class="text-box">PG 13</p>
+                                        </div>
+                                    </div>
+                                    <div class="p-0 col-1 show-type">
+                                        <span class="show-type">TV</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="anime-box bg-color-black">
+                            <a href="streaming-season.html">
+                                <div class="row m-0">
+                                    <div class="p-0 col-2">
+                                        <img src="assets/media/anime-sm-img/anime-img-8.png" alt="">
+                                    </div>
+                                    <div class="p-0 col-9">
+                                        <div class="anime-blog">
+                                            <p>Re-Zero</p>
+                                            <p class="text-box">★ 8.49</p>
+                                            <p class="text-box">PG 18</p>
+                                            <p class="text-box active">18+</p>
+                                        </div>
+                                    </div>
+                                    <div class="p-0 col-1 show-type">
+                                        <span class="show-type">TV</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="anime-box bg-color-black">
+                            <a href="streaming-season.html">
+                                <div class="row m-0">
+                                    <div class="p-0 col-2">
+                                        <img src="assets/media/anime-sm-img/anime-img-9.png" alt="">
+                                    </div>
+                                    <div class="p-0 col-9">
+                                        <div class="anime-blog">
+                                            <p>Tokyo Ghoul</p>
+                                            <p class="text-box">★ 7.90</p>
+                                            <p class="text-box">PG 13</p>
+                                        </div>
+                                    </div>
+                                    <div class="p-0 col-1 show-type">
+                                        <span class="show-type">TV</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="anime-box bg-color-black">
+                            <a href="streaming-season.html">
+                                <div class="row m-0">
+                                    <div class="p-0 col-2">
+                                        <img src="assets/media/anime-sm-img/anime-img-10.png" alt="">
+                                    </div>
+                                    <div class="p-0 col-9">
+                                        <div class="anime-blog">
+                                            <p>Sword Art Online</p>
+                                            <p class="text-box">★ 8.50</p>
+                                            <p class="text-box">PG 13</p>
+                                        </div>
+                                    </div>
+                                    <div class="p-0 col-1 show-type">
+                                        <span class="show-type">TV</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="anime-box bg-color-black">
+                            <a href="streaming-season.html">
+                                <div class="row m-0">
+                                    <div class="p-0 col-2">
+                                        <img src="assets/media/anime-sm-img/anime-img-11.png" alt="">
+                                    </div>
+                                    <div class="p-0 col-9">
+                                        <div class="anime-blog">
+                                            <p>Sword Art Online: Alicization</p>
+                                            <p class="text-box">★ 8.12</p>
+                                            <p class="text-box">PG 13</p>
+                                        </div>
+                                    </div>
+                                    <div class="p-0 col-1 show-type">
+                                        <span class="show-type">TV</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="anime-box bg-color-black">
+                            <a href="streaming-season.html">
+                                <div class="row m-0">
+                                    <div class="p-0 col-2">
+                                        <img src="assets/media/anime-sm-img/anime-img-12.png" alt="">
+                                    </div>
+                                    <div class="p-0 col-9">
+                                        <div class="anime-blog">
+                                            <p>One Piece</p>
+                                            <p class="text-box">★ 8.70</p>
+                                            <p class="text-box">PG 13</p>
+                                        </div>
+                                    </div>
+                                    <div class="p-0 col-1 show-type">
+                                        <span class="show-type">TV</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+       <!--=====================================-->
+        <!--=           Footer Area Start       =-->
+        <!--=====================================-->
+        <footer class="footer">
+            <div class="footer-bottom bg-color-black">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6 col-12">
+                            <div class="footer-copyright">
+                                <span class="copyright-text">Copyright © <a href="./home.html">AniX</a>. All Rights Reserved</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-12">
+                            <div class="footer-bottom-link text-end">
+                                <span style="color: #DF0051;"> ▶</span><a href="./privacy.html" class="ps-2">About</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-main style-1">
+                <div class="container">
+                    <div class="row justify-content-between align-items-center">
+                        <div class="col-lg-5 col-sm-12 col-12">
+                            <div class="footer-widget">
+                                <a href="./home.html">
+                                    <img alt="" src="assets/media/logo_.png">
+                                </a>
+                                <p class="mb-5">Disclaimer: This site does not store any files on its server. All contents are provided by non-affiliated third parties.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+    <!-- Jquery Js -->
+    <script src="assets/js/vendor/jquery-3.6.0.min.js"></script>
+    <script src="assets/js/vendor/bootstrap.min.js"></script>
+    <script src="assets/js/vendor/imagesloaded.pkgd.min.js"></script>
+    <script src="assets/js/vendor/slick.min.js"></script>
+    <script src="assets/js/vendor/jquery.countdown.min.js"></script>
+    <script src="assets/js/vendor/jquery-appear.js"></script>
+    <script src="assets/js/vendor/sal.js"></script>
+
+    <!-- Site Scripts -->
+    <script src="assets/js/app.js"></script>
+</body>
+
+</html>
