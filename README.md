@@ -30,7 +30,7 @@ AniX is a centralized platform designed for anime enthusiasts. It allows users t
 - The UML diagram serves as the foundational architecture for the AniX project. It outlines the classes, methods, and relationships that will be implemented in both the AniXLib class library and the WinForms Application.
 - The diagram will be updated as the project evolves to reflect any changes or additions to the architecture.
 
-![AniX UML Diagram](https://git.fhict.nl/I499309/anix/-/raw/main/Documentation/AniX%20-%20UML.png)
+![AniX UML Diagram](https://git.fhict.nl/I499309/anix/-/blob/main/Documentation/AniX%20-%20UML.svg)
 
 ## Sitemap
 
@@ -55,8 +55,15 @@ AniX is a centralized platform designed for anime enthusiasts. It allows users t
     - CRUD Operations for Anime
     - Review Management Section
 
-## Prerequisites (WIP)
+## Prerequisites
 
-- .NET Core SDK
-- MSSQL Database
-- Node.js (for frontend development)
+- **.NET Core SDK**: Required for building and running the .NET Core backend.
+- **MSSQL Database**: The application uses Microsoft SQL Server for data persistence.
+- **Node.js**: Required for frontend development.
+- **Dependency Injection**: Used for better modularity and testability. Integrated into .NET Core.
+- **Interface-based Programming**: Utilized for more maintainable and extensible code.
+- **SOLID Principles**: The codebase adheres to SOLID principles for better maintainability and readability.
+
+## Additional Software
+
+- **PlantUML**: Optional, used for generating UML diagrams for the project.
