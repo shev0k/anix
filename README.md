@@ -30,8 +30,8 @@ AniX is a centralized platform designed for anime enthusiasts. It allows users t
 - The UML diagram serves as the foundational architecture for the AniX project. It outlines the classes, methods, and relationships that will be implemented in both the AniXLib class library and the WinForms Application.
 - The diagram will be updated as the project evolves to reflect any changes or additions to the architecture.
 
-[AniX UML Diagram](https://svgshare.com/i/yCx.svg)  **ZOOM OUT TO 25%**
-
+[AniX UML Diagram](https://svgshare.com/i/yCx.svg)
+**ZOOM OUT TO 25%**
 ## Sitemap
 
 1. **Main page**
