@@ -73,7 +73,6 @@ namespace AniX_APP.Forms_Dashboard
             btnUser.Padding = new Padding(5, 0, 0, 0);
             btnUser.Size = new Size(108, 53);
             btnUser.TabIndex = 14;
-            btnUser.Text = "  Admin";
             btnUser.TextAlign = ContentAlignment.MiddleLeft;
             btnUser.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnUser.UseVisualStyleBackColor = true;

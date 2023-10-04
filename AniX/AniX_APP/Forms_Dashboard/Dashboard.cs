@@ -8,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Anix_Shared.DomainModels;
+using AniX_BusinessLogic.Controllers;
 
 namespace AniX_APP.Forms_Dashboard
 {
@@ -218,14 +220,19 @@ namespace AniX_APP.Forms_Dashboard
 
         #endregion
 
-        public Dashboard()
+        private User _loggedInUser;
+        private UserController _userController;
+
+        public Dashboard(User loggedInUser, UserController userController)
         {
             InitializeComponent();
             SetButtonStyles();
             SetButtonImages();
             hideSubMenu();
-            openChildForm(new Users());
+            openChildForm(new Users(loggedInUser));
             SetActiveButton(btnManagement);
+            _loggedInUser = loggedInUser;
+            _userController = userController;
         }
 
         private void btnManagement_Click(object sender, EventArgs e)
@@ -236,52 +243,57 @@ namespace AniX_APP.Forms_Dashboard
 
         private void btnLogOut_Click(object sender, EventArgs e)
         {
-            Main windowOpen = new Main();
-            this.Hide();
-            windowOpen.ShowDialog();
-            this.Close();
+            HandleLogout();
         }
 
         private void btnUsers_Click(object sender, EventArgs e)
         {
-            openChildForm(new Users());
+            openChildForm(new Users(_loggedInUser));
             SetActiveButton((Button)sender);
         }
 
         private void btnAnime_Click(object sender, EventArgs e)
         {
-            openChildForm(new Anime());
+            openChildForm(new Anime(_loggedInUser));
             SetActiveButton((Button)sender);
         }
 
         private void btnReviews_Click(object sender, EventArgs e)
         {
-            openChildForm(new Reviews());
+            openChildForm(new Reviews(_loggedInUser));
             SetActiveButton((Button)sender);
         }
 
         private void btnAdmins_Click(object sender, EventArgs e)
         {
-            openChildForm(new Admin());
+            openChildForm(new Admin(_loggedInUser));
             SetActiveButton((Button)sender);
         }
 
         private void btnAuditLogs_Click(object sender, EventArgs e)
         {
-            openChildForm(new AuditLogs());
+            openChildForm(new AuditLogs(_loggedInUser));
             SetActiveButton((Button)sender);
         }
 
         private void btnErrorLogs_Click(object sender, EventArgs e)
         {
-            openChildForm(new ErrorLogs());
+            openChildForm(new ErrorLogs(_loggedInUser));
             SetActiveButton((Button)sender);
         }
 
         private void btnSettings_Click(object sender, EventArgs e)
         {
-            openChildForm(new Settings());
+            openChildForm(new Settings(_loggedInUser));
             SetActiveButton((Button)sender);
+        }
+
+        private void HandleLogout()
+        {
+            Main windowOpen = new Main(_userController);
+            this.Hide();
+            windowOpen.ShowDialog();
+            this.Close();
         }
     }
 }

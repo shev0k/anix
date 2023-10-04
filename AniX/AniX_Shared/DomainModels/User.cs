@@ -1,20 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Anix_Shared.DomainModels
+﻿namespace Anix_Shared.DomainModels
 {
     public class User
     {
         public int Id { get; set; }
         public string Username { get; set; }
-        public string Password { get; private set; }
-        public string Salt { get; private set; }
+        private string _password;
+        private string _salt;
         public string Email { get; set; }
         public DateTime RegistrationDate { get; set; }
         public bool Banned { get; set; }
         public bool IsAdmin { get; set; }
+
+        public void UpdatePassword(string newPassword, string newSalt)
+        {
+            _password = newPassword;
+            _salt = newSalt;
+        }
+
+        public (string Password, string Salt) RetrieveCredentials()
+        {
+            return (_password, _salt);
+        }
     }
 }

@@ -7,14 +7,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Anix_Shared.DomainModels;
 
 namespace AniX_APP.Forms_Dashboard
 {
     public partial class Reviews : Form
     {
-        public Reviews()
+        private User _loggedInUser;
+        public Reviews(User loggedInUser)
         {
             InitializeComponent();
+            _loggedInUser = loggedInUser;
+            btnUser.Text = $" {_loggedInUser.Username}";
         }
     }
 }

@@ -1,20 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.Extensions.Configuration;
+using System;
 using System.Data.SqlClient;
 
 namespace AniX_DAL
 {
-    public abstract class BaseDAL
+    public abstract class BaseDAL : IDisposable
     {
         protected SqlConnection connection;
 
-        public BaseDAL()
+        public BaseDAL(IConfiguration configuration)
         {
-            string connectionString = "Server=mssqlstud.fhict.local;Database=dbi499309_anixdb;User Id=dbi499309_anixdb;Password=rewindtime;";
+            string connectionString = configuration.GetConnectionString("DefaultConnection");
+
             connection = new SqlConnection(connectionString);
+        }
+
+        public void Dispose()
+        {
+            if (connection != null)
+            {
+                connection.Dispose();
+                connection = null;
+            }
         }
     }
 }
