@@ -247,5 +247,41 @@ namespace AniX_APP.Forms_Dashboard
             openChildForm(new Users());
             SetActiveButton((Button)sender);
         }
+
+        private void btnAnime_Click(object sender, EventArgs e)
+        {
+            openChildForm(new Anime());
+            SetActiveButton((Button)sender);
+        }
+
+        private void btnReviews_Click(object sender, EventArgs e)
+        {
+            openChildForm(new Reviews());
+            SetActiveButton((Button)sender);
+        }
+
+        private void btnAdmins_Click(object sender, EventArgs e)
+        {
+            openChildForm(new Admin());
+            SetActiveButton((Button)sender);
+        }
+
+        private void btnAuditLogs_Click(object sender, EventArgs e)
+        {
+            openChildForm(new AuditLogs());
+            SetActiveButton((Button)sender);
+        }
+
+        private void btnErrorLogs_Click(object sender, EventArgs e)
+        {
+            openChildForm(new ErrorLogs());
+            SetActiveButton((Button)sender);
+        }
+
+        private void btnSettings_Click(object sender, EventArgs e)
+        {
+            openChildForm(new Settings());
+            SetActiveButton((Button)sender);
+        }
     }
 }

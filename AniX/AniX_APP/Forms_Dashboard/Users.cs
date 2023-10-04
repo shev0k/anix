@@ -16,5 +16,10 @@ namespace AniX_APP.Forms_Dashboard
         {
             InitializeComponent();
         }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

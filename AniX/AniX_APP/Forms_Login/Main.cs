@@ -1,7 +1,11 @@
-
 using AniX_APP.CustomElements;
 using AniX_APP.Forms;
 using AniX_APP.Forms_Dashboard;
+using AniX_BusinessLogic;
+using AniX_DAL;
+using Anix_Shared.DomainModels;
+using System;
+using System.Windows.Forms;
 
 namespace AniX_APP
 {
@@ -228,17 +232,43 @@ namespace AniX_APP
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(tbxUsername.Texts) || string.IsNullOrEmpty(tbxPassword.Texts))
+            try
             {
-                RJMessageBox.Show("Input correct credentials!", "", MessageBoxButtons.OK);
-            }
-            else
-            {
+                if (string.IsNullOrEmpty(tbxUsername.Texts) || string.IsNullOrEmpty(tbxPassword.Texts))
+                {
+                    RJMessageBox.Show("Input correct credentials!", "", MessageBoxButtons.OK);
+                    return;
+                }
+
+                AuthenticationService authService = new AuthenticationService();
+                User authenticatedUser = authService.AuthenticateUser(tbxUsername.Texts, tbxPassword.Texts);
+
+                if (authenticatedUser == null)
+                {
+                    RJMessageBox.Show("Failed to authenticate. Please check your username and password.", "", MessageBoxButtons.OK);
+                    return;
+                }
+                if (authenticatedUser.Banned)
+                {
+                    RJMessageBox.Show("Your account has been banned. Contact the administrator for more details.", "", MessageBoxButtons.OK);
+                    return;
+                }
+                if (!authenticatedUser.IsAdmin)
+                {
+                    RJMessageBox.Show("You are not authorized to access this application.", "", MessageBoxButtons.OK);
+                    return;
+                }
+
                 Dashboard windowOpen = new Dashboard();
-                RJMessageBox.Show($"Welcome back, < Admin >", "", MessageBoxButtons.OK);
+                RJMessageBox.Show($"Welcome back, < {authenticatedUser.Username} >", "", MessageBoxButtons.OK);
                 this.Hide();
                 windowOpen.ShowDialog();
                 this.Close();
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandlingService.HandleException(ex);
+                RJMessageBox.Show("An error occurred. Please try again later.", "", MessageBoxButtons.OK);
             }
         }
     }

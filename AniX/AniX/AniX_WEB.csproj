@@ -7,8 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AniXLib\AniX_ClassLib.csproj" />
-    <ProjectReference Include="..\AniX_DAL\AniX_DAL.csproj" />
+    <ProjectReference Include="..\AniX_BusinessLogic\AniX_BusinessLogic.csproj" />
+    <ProjectReference Include="..\AniX_Controllers\AniX_Controllers.csproj" />
+    <ProjectReference Include="..\AniX_Shared\AniX_Shared.csproj" />
+    <ProjectReference Include="..\AniX_Utility\AniX_Utility.csproj" />
   </ItemGroup>
 
 </Project>

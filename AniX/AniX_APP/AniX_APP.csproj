@@ -2,15 +2,21 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net7.0-windows</TargetFramework>
+    <TargetFramework>net7.0-windows10.0.22621.0</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AniXLib\AniX_ClassLib.csproj" />
-    <ProjectReference Include="..\AniX_DAL\AniX_DAL.csproj" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AniX_BusinessLogic\AniX_BusinessLogic.csproj" />
+    <ProjectReference Include="..\AniX_Controllers\AniX_Controllers.csproj" />
+    <ProjectReference Include="..\AniX_Shared\AniX_Shared.csproj" />
+    <ProjectReference Include="..\AniX_Utility\AniX_Utility.csproj" />
   </ItemGroup>
 
   <ItemGroup>

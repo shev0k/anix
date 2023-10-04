@@ -31,7 +31,7 @@ namespace AniX_APP.Forms_Dashboard
         private void InitializeComponent()
         {
             panelTop = new Panel();
-            btnClose = new Button();
+            btnUser = new Button();
             panelBackground = new RoundPanel();
             panelFix = new Panel();
             btnDetails = new RoundButton();
@@ -54,31 +54,31 @@ namespace AniX_APP.Forms_Dashboard
             // panelTop
             // 
             panelTop.BackColor = Color.FromArgb(11, 7, 17);
-            panelTop.Controls.Add(btnClose);
+            panelTop.Controls.Add(btnUser);
             panelTop.Dock = DockStyle.Top;
             panelTop.Location = new Point(0, 0);
             panelTop.Name = "panelTop";
             panelTop.Size = new Size(1041, 53);
             panelTop.TabIndex = 1;
             // 
-            // btnClose
+            // btnUser
             // 
-            btnClose.FlatAppearance.BorderSize = 0;
-            btnClose.FlatAppearance.MouseDownBackColor = Color.FromArgb(23, 21, 32);
-            btnClose.FlatAppearance.MouseOverBackColor = Color.FromArgb(24, 22, 34);
-            btnClose.FlatStyle = FlatStyle.Flat;
-            btnClose.ForeColor = Color.Silver;
-            btnClose.Image = Properties.Resources.attendance;
-            btnClose.ImageAlign = ContentAlignment.MiddleLeft;
-            btnClose.Location = new Point(933, 0);
-            btnClose.Name = "btnClose";
-            btnClose.Padding = new Padding(5, 0, 0, 0);
-            btnClose.Size = new Size(108, 53);
-            btnClose.TabIndex = 14;
-            btnClose.Text = "  Admin";
-            btnClose.TextAlign = ContentAlignment.MiddleLeft;
-            btnClose.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btnClose.UseVisualStyleBackColor = true;
+            btnUser.FlatAppearance.BorderSize = 0;
+            btnUser.FlatAppearance.MouseDownBackColor = Color.FromArgb(23, 21, 32);
+            btnUser.FlatAppearance.MouseOverBackColor = Color.FromArgb(24, 22, 34);
+            btnUser.FlatStyle = FlatStyle.Flat;
+            btnUser.ForeColor = Color.Silver;
+            btnUser.Image = Properties.Resources.attendance;
+            btnUser.ImageAlign = ContentAlignment.MiddleLeft;
+            btnUser.Location = new Point(933, 0);
+            btnUser.Name = "btnUser";
+            btnUser.Padding = new Padding(5, 0, 0, 0);
+            btnUser.Size = new Size(108, 53);
+            btnUser.TabIndex = 14;
+            btnUser.Text = "  Admin";
+            btnUser.TextAlign = ContentAlignment.MiddleLeft;
+            btnUser.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnUser.UseVisualStyleBackColor = true;
             // 
             // panelBackground
             // 
@@ -221,6 +221,7 @@ namespace AniX_APP.Forms_Dashboard
             btnAdd.Text = "Add";
             btnAdd.TextColor = Color.FromArgb(11, 7, 17);
             btnAdd.UseVisualStyleBackColor = false;
+            btnAdd.Click += btnAdd_Click;
             // 
             // tbxUser
             // 
@@ -304,7 +305,7 @@ namespace AniX_APP.Forms_Dashboard
         #endregion
 
         private Panel panelTop;
-        private Button btnClose;
+        private Button btnUser;
         private RoundPanel panelBackground;
         private Panel panelFix;
         private DataGridView dgvUsers;

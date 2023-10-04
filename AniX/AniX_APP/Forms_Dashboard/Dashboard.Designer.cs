@@ -92,6 +92,7 @@ namespace AniX_APP.Forms_Dashboard
             btnSettings.TextAlign = ContentAlignment.MiddleLeft;
             btnSettings.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnSettings.UseVisualStyleBackColor = true;
+            btnSettings.Click += btnSettings_Click;
             // 
             // btnErrorLogs
             // 
@@ -112,6 +113,7 @@ namespace AniX_APP.Forms_Dashboard
             btnErrorLogs.TextAlign = ContentAlignment.MiddleLeft;
             btnErrorLogs.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnErrorLogs.UseVisualStyleBackColor = true;
+            btnErrorLogs.Click += btnErrorLogs_Click;
             // 
             // btnAuditLogs
             // 
@@ -132,6 +134,7 @@ namespace AniX_APP.Forms_Dashboard
             btnAuditLogs.TextAlign = ContentAlignment.MiddleLeft;
             btnAuditLogs.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnAuditLogs.UseVisualStyleBackColor = true;
+            btnAuditLogs.Click += btnAuditLogs_Click;
             // 
             // btnLogOut
             // 
@@ -184,6 +187,7 @@ namespace AniX_APP.Forms_Dashboard
             btnAdmins.TextAlign = ContentAlignment.MiddleLeft;
             btnAdmins.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnAdmins.UseVisualStyleBackColor = true;
+            btnAdmins.Click += btnAdmins_Click;
             // 
             // btnReviews
             // 
@@ -202,6 +206,7 @@ namespace AniX_APP.Forms_Dashboard
             btnReviews.TextAlign = ContentAlignment.MiddleLeft;
             btnReviews.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnReviews.UseVisualStyleBackColor = true;
+            btnReviews.Click += btnReviews_Click;
             // 
             // btnAnime
             // 
@@ -220,6 +225,7 @@ namespace AniX_APP.Forms_Dashboard
             btnAnime.TextAlign = ContentAlignment.MiddleLeft;
             btnAnime.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnAnime.UseVisualStyleBackColor = true;
+            btnAnime.Click += btnAnime_Click;
             // 
             // btnUsers
             // 
