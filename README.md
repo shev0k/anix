@@ -31,6 +31,7 @@ AniX is a centralized platform designed for anime enthusiasts. It allows users t
 - The diagram will be updated as the project evolves to reflect any changes or additions to the architecture.
 
 [AniX UML Diagram](https://svgshare.com/i/yCx.svg)
+
 **ZOOM OUT TO 25%**
 ## Sitemap
 
