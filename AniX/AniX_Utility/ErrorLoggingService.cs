@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Reflection;
 
 namespace AniX_Utility
 {
@@ -13,6 +14,20 @@ namespace AniX_Utility
 
     public static class ErrorLoggingService
     {
+        private static string GetSolutionDirectory()
+        {
+            string assemblyLocation = Assembly.GetExecutingAssembly().Location;
+
+            DirectoryInfo directoryInfo = new DirectoryInfo(Path.GetDirectoryName(assemblyLocation));
+
+            while (directoryInfo.Name != "AniX")
+            {
+                directoryInfo = directoryInfo.Parent;
+            }
+
+            return directoryInfo.FullName;
+        }
+
         public static void LogError(Exception e, LogSeverity severity = LogSeverity.Error)
         {
             LogMessage(
@@ -30,8 +45,9 @@ namespace AniX_Utility
 
         private static void LogMessage(string message, LogSeverity severity)
         {
-            string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            string filePath = Path.Combine(desktopPath, "ErrorLog.txt");
+            string solutionDirectory = GetSolutionDirectory();
+
+            string filePath = Path.Combine(solutionDirectory, "ErrorLog.txt");
 
             try
             {
@@ -51,8 +67,8 @@ namespace AniX_Utility
 
         public static void FallbackLogging(Exception e, LogSeverity severity)
         {
-            string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            string filePath = Path.Combine(desktopPath, "FallbackErrorLog.txt");
+            string solutionDirectory = GetSolutionDirectory();
+            string filePath = Path.Combine(solutionDirectory, "FallbackErrorLog.txt");
 
             try
             {
@@ -68,7 +84,7 @@ namespace AniX_Utility
             }
             catch
             {
-                // oopsie
+                // oopsie, this is a critical failure
             }
         }
     }

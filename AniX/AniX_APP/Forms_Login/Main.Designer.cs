@@ -82,6 +82,7 @@
             btnExit.Padding = new Padding(5, 0, 0, 0);
             btnExit.Size = new Size(225, 40);
             btnExit.TabIndex = 15;
+            btnExit.TabStop = false;
             btnExit.Text = "  Exit";
             btnExit.TextAlign = ContentAlignment.MiddleLeft;
             btnExit.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -111,6 +112,7 @@
             btnOverview.Padding = new Padding(35, 0, 0, 0);
             btnOverview.Size = new Size(225, 45);
             btnOverview.TabIndex = 3;
+            btnOverview.TabStop = false;
             btnOverview.Text = "Overview";
             btnOverview.TextAlign = ContentAlignment.MiddleLeft;
             btnOverview.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -132,6 +134,7 @@
             btnInformation.Padding = new Padding(5, 0, 0, 0);
             btnInformation.Size = new Size(225, 45);
             btnInformation.TabIndex = 13;
+            btnInformation.TabStop = false;
             btnInformation.Text = "  Information";
             btnInformation.TextAlign = ContentAlignment.MiddleLeft;
             btnInformation.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -275,6 +278,7 @@
             btnForget.Name = "btnForget";
             btnForget.Size = new Size(150, 40);
             btnForget.TabIndex = 4;
+            btnForget.TabStop = false;
             btnForget.Text = "FORGET";
             btnForget.TextColor = Color.FromArgb(231, 34, 83);
             btnForget.UseVisualStyleBackColor = false;
@@ -295,6 +299,7 @@
             btnLogin.Name = "btnLogin";
             btnLogin.Size = new Size(150, 40);
             btnLogin.TabIndex = 3;
+            btnLogin.TabStop = false;
             btnLogin.Text = "ENTER";
             btnLogin.TextColor = Color.FromArgb(11, 7, 17);
             btnLogin.UseVisualStyleBackColor = false;

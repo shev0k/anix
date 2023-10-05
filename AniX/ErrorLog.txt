@@ -1,0 +1,20 @@
+Timestamp: 05/10/2023 02:12:29
+Severity: Error
+Exception Type: AniX_BusinessLogic.Controllers.UserController+ValidationException
+Message: Username: at least 4 characters | Password: at least 4 characters
+Stack Trace:    at AniX_BusinessLogic.Controllers.UserController.Login(String username, String password) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 33
+---------------------------------------------------
+Timestamp: 05/10/2023 02:12:32
+Severity: Info
+Custom Message: Timestamp: 05/10/2023 02:12:32, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 05/10/2023 02:12:47
+Severity: Info
+Custom Message: Timestamp: 05/10/2023 02:12:47, Username: shevoK, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 05/10/2023 02:20:16
+Severity: Error
+Exception Type: AniX_BusinessLogic.Controllers.UserController+ValidationException
+Message: Username and password cannot be empty.
+Stack Trace:    at AniX_BusinessLogic.Controllers.UserController.Login(String username, String password) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 33
+---------------------------------------------------
