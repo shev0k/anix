@@ -1,20 +1,22 @@
 ﻿using AniX_Utility;
 using System;
+using System.Threading.Tasks;
 
 namespace AniX_BusinessLogic
 {
     public class AuditService
     {
-        public void LogLoginAttempt(string username, bool isSuccess, string additionalInfo = "")
+        public async Task LogLoginAttemptAsync(string username, bool isSuccess, string additionalInfo = "")
         {
             try
             {
                 string logMessage = $"Timestamp: {DateTime.Now}, Username: {username}, Success: {isSuccess}, Additional Info: {additionalInfo}";
-                ErrorLoggingService.LogCustomMessage(logMessage);
+                await ErrorLoggingService.LogCustomMessageAsync(logMessage); 
             }
             catch (Exception e)
             {
-                ExceptionHandlingService.HandleException(e);
+                await ExceptionHandlingService.HandleExceptionAsync(e);  
+                throw;
             }
         }
     }

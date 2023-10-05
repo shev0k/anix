@@ -24,7 +24,7 @@ namespace AniX_BusinessLogic.Controllers
             _auditService = auditService;
         }
 
-        public User Login(string username, string password)
+        public async Task<User> LoginAsync(string username, string password)
         {
             try
             {
@@ -33,8 +33,8 @@ namespace AniX_BusinessLogic.Controllers
                     throw new ValidationException(validationMessage);
                 }
 
-                var user = _authenticationService.AuthenticateUser(username, password);
-                _auditService.LogLoginAttempt(username, user != null);
+                var user = await _authenticationService.AuthenticateUserAsync(username, password);
+                await _auditService.LogLoginAttemptAsync(username, user != null);
 
                 if (user == null)
                 {
@@ -55,10 +55,11 @@ namespace AniX_BusinessLogic.Controllers
             }
             catch (Exception e)
             {
-                ExceptionHandlingService.HandleException(e);
+                await ExceptionHandlingService.HandleExceptionAsync(e);
                 throw;
             }
         }
+    
 
         public class ValidationException : Exception
         {

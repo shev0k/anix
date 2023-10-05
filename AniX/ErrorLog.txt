@@ -18,3 +18,7 @@ Exception Type: AniX_BusinessLogic.Controllers.UserController+ValidationExceptio
 Message: Username and password cannot be empty.
 Stack Trace:    at AniX_BusinessLogic.Controllers.UserController.Login(String username, String password) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 33
 ---------------------------------------------------
+Timestamp: 05/10/2023 21:47:31
+Severity: Info
+Custom Message: Timestamp: 05/10/2023 21:47:31, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------

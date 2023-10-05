@@ -31,6 +31,8 @@ namespace AniX_APP.Forms_Utility
         private void InitializeComponent()
         {
             panelButtons = new Panel();
+            lbTrailer = new Label();
+            tbxTrailer = new RoundTextBox();
             genreList = new CheckedListBox();
             cbxType = new CustomElements.CustomComboBox();
             lbType = new Label();
@@ -55,14 +57,20 @@ namespace AniX_APP.Forms_Utility
             lbStatus = new Label();
             lbName = new Label();
             tbxName = new RoundTextBox();
-            lbTrailer = new Label();
-            tbxTrailer = new RoundTextBox();
+            lbBanner = new Label();
+            tbxBannerImage = new RoundTextBox();
+            lbThumbnail = new Label();
+            tbxThumbnailImage = new RoundTextBox();
             panelButtons.SuspendLayout();
             SuspendLayout();
             // 
             // panelButtons
             // 
             panelButtons.BackColor = Color.FromArgb(11, 7, 17);
+            panelButtons.Controls.Add(lbThumbnail);
+            panelButtons.Controls.Add(tbxThumbnailImage);
+            panelButtons.Controls.Add(lbBanner);
+            panelButtons.Controls.Add(tbxBannerImage);
             panelButtons.Controls.Add(lbTrailer);
             panelButtons.Controls.Add(tbxTrailer);
             panelButtons.Controls.Add(genreList);
@@ -93,8 +101,41 @@ namespace AniX_APP.Forms_Utility
             panelButtons.Location = new Point(3, 3);
             panelButtons.Margin = new Padding(4, 3, 4, 3);
             panelButtons.Name = "panelButtons";
-            panelButtons.Size = new Size(1107, 504);
+            panelButtons.Size = new Size(1107, 547);
             panelButtons.TabIndex = 5;
+            // 
+            // lbTrailer
+            // 
+            lbTrailer.AutoSize = true;
+            lbTrailer.Font = new Font("Cascadia Code", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lbTrailer.ForeColor = Color.FromArgb(231, 34, 83);
+            lbTrailer.Location = new Point(423, 185);
+            lbTrailer.Name = "lbTrailer";
+            lbTrailer.Size = new Size(82, 21);
+            lbTrailer.TabIndex = 37;
+            lbTrailer.Text = "Trailer:";
+            // 
+            // tbxTrailer
+            // 
+            tbxTrailer.BackColor = Color.FromArgb(11, 7, 17);
+            tbxTrailer.BorderColor = Color.FromArgb(231, 34, 83);
+            tbxTrailer.BorderFocusColor = Color.FromArgb(231, 34, 83);
+            tbxTrailer.BorderRadius = 0;
+            tbxTrailer.BorderSize = 2;
+            tbxTrailer.Font = new Font("Cascadia Code", 10F, FontStyle.Bold, GraphicsUnit.Point);
+            tbxTrailer.ForeColor = Color.FromArgb(231, 34, 83);
+            tbxTrailer.Location = new Point(532, 183);
+            tbxTrailer.Margin = new Padding(4);
+            tbxTrailer.Multiline = false;
+            tbxTrailer.Name = "tbxTrailer";
+            tbxTrailer.Padding = new Padding(10, 7, 10, 7);
+            tbxTrailer.PasswordChar = false;
+            tbxTrailer.PlaceholderColor = Color.FromArgb(231, 34, 83);
+            tbxTrailer.PlaceholderText = "< trailer link >";
+            tbxTrailer.Size = new Size(247, 33);
+            tbxTrailer.TabIndex = 36;
+            tbxTrailer.Texts = "";
+            tbxTrailer.UnderlinedStyle = false;
             // 
             // genreList
             // 
@@ -105,11 +146,11 @@ namespace AniX_APP.Forms_Utility
             genreList.ForeColor = Color.FromArgb(231, 34, 83);
             genreList.FormattingEnabled = true;
             genreList.Items.AddRange(new object[] { "Action", "Adventure", "Avant Grade", "Boys Love", "Comedy", "Demons", "Drama", "Ecchi", "Fantasy", "Girls Love", "Gourmet", "Harem", "Horror", "Isekai", "Iyashikei", "Josei", "Kids", "Magic", "Mahou Shoujo", "Martial Arts", "Mecha", "Military", "Music", "Mystery", "Parody", "Psychological", "Reverse Harem", "Romance", "School", "Sci-Fi", "Seinen", "Shoujo", "Shounen", "Slice Of Life", "Space", "Sports", "Super Power", "Supernatural", "Suspense", "Thriller", "Vampire" });
-            genreList.Location = new Point(815, 50);
+            genreList.Location = new Point(814, 50);
             genreList.MultiColumn = true;
             genreList.Name = "genreList";
             genreList.RightToLeft = RightToLeft.No;
-            genreList.Size = new Size(291, 352);
+            genreList.Size = new Size(291, 416);
             genreList.TabIndex = 35;
             // 
             // cbxType
@@ -123,7 +164,7 @@ namespace AniX_APP.Forms_Utility
             cbxType.IconColor = Color.FromArgb(231, 34, 83);
             cbxType.ListBackColor = Color.FromArgb(11, 7, 17);
             cbxType.ListTextColor = Color.FromArgb(231, 34, 83);
-            cbxType.Location = new Point(532, 50);
+            cbxType.Location = new Point(147, 270);
             cbxType.MinimumSize = new Size(200, 30);
             cbxType.Name = "cbxType";
             cbxType.Padding = new Padding(2);
@@ -136,7 +177,7 @@ namespace AniX_APP.Forms_Utility
             lbType.AutoSize = true;
             lbType.Font = new Font("Cascadia Code", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lbType.ForeColor = Color.FromArgb(231, 34, 83);
-            lbType.Location = new Point(423, 56);
+            lbType.Location = new Point(38, 273);
             lbType.Name = "lbType";
             lbType.Size = new Size(55, 21);
             lbType.TabIndex = 33;
@@ -180,7 +221,7 @@ namespace AniX_APP.Forms_Utility
             lbSummary.AutoSize = true;
             lbSummary.Font = new Font("Cascadia Code", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lbSummary.ForeColor = Color.FromArgb(231, 34, 83);
-            lbSummary.Location = new Point(38, 270);
+            lbSummary.Location = new Point(38, 317);
             lbSummary.Name = "lbSummary";
             lbSummary.Size = new Size(82, 21);
             lbSummary.TabIndex = 30;
@@ -195,14 +236,14 @@ namespace AniX_APP.Forms_Utility
             tbxSummary.BorderSize = 2;
             tbxSummary.Font = new Font("Cascadia Code", 10F, FontStyle.Bold, GraphicsUnit.Point);
             tbxSummary.ForeColor = Color.FromArgb(11, 7, 17);
-            tbxSummary.Location = new Point(144, 270);
+            tbxSummary.Location = new Point(144, 317);
             tbxSummary.Margin = new Padding(4);
             tbxSummary.Multiline = true;
             tbxSummary.Name = "tbxSummary";
             tbxSummary.Padding = new Padding(10, 7, 10, 7);
             tbxSummary.PasswordChar = false;
             tbxSummary.PlaceholderColor = Color.FromArgb(11, 7, 17);
-            tbxSummary.PlaceholderText = "";
+            tbxSummary.PlaceholderText = "< summary >";
             tbxSummary.Size = new Size(635, 149);
             tbxSummary.TabIndex = 29;
             tbxSummary.Texts = "";
@@ -248,7 +289,7 @@ namespace AniX_APP.Forms_Utility
             cbxAired.CustomFormat = "MMM dd, yyy";
             cbxAired.Font = new Font("Cascadia Code", 9F, FontStyle.Bold, GraphicsUnit.Point);
             cbxAired.Format = DateTimePickerFormat.Custom;
-            cbxAired.Location = new Point(532, 182);
+            cbxAired.Location = new Point(532, 138);
             cbxAired.MaxDate = new DateTime(2024, 12, 31, 0, 0, 0, 0);
             cbxAired.MinDate = new DateTime(1970, 1, 1, 0, 0, 0, 0);
             cbxAired.MinimumSize = new Size(0, 35);
@@ -264,7 +305,7 @@ namespace AniX_APP.Forms_Utility
             lbAired.AutoSize = true;
             lbAired.Font = new Font("Cascadia Code", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lbAired.ForeColor = Color.FromArgb(231, 34, 83);
-            lbAired.Location = new Point(423, 190);
+            lbAired.Location = new Point(423, 146);
             lbAired.Name = "lbAired";
             lbAired.Size = new Size(64, 21);
             lbAired.TabIndex = 25;
@@ -281,7 +322,7 @@ namespace AniX_APP.Forms_Utility
             cbxStatus.IconColor = Color.FromArgb(231, 34, 83);
             cbxStatus.ListBackColor = Color.FromArgb(11, 7, 17);
             cbxStatus.ListTextColor = Color.FromArgb(231, 34, 83);
-            cbxStatus.Location = new Point(532, 94);
+            cbxStatus.Location = new Point(532, 50);
             cbxStatus.MinimumSize = new Size(200, 30);
             cbxStatus.Name = "cbxStatus";
             cbxStatus.Padding = new Padding(2);
@@ -294,7 +335,7 @@ namespace AniX_APP.Forms_Utility
             lbStudio.AutoSize = true;
             lbStudio.Font = new Font("Cascadia Code", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lbStudio.ForeColor = Color.FromArgb(231, 34, 83);
-            lbStudio.Location = new Point(38, 229);
+            lbStudio.Location = new Point(38, 231);
             lbStudio.Name = "lbStudio";
             lbStudio.Size = new Size(73, 21);
             lbStudio.TabIndex = 21;
@@ -309,7 +350,7 @@ namespace AniX_APP.Forms_Utility
             tbxStudio.BorderSize = 2;
             tbxStudio.Font = new Font("Cascadia Code", 10F, FontStyle.Bold, GraphicsUnit.Point);
             tbxStudio.ForeColor = Color.FromArgb(11, 7, 17);
-            tbxStudio.Location = new Point(144, 223);
+            tbxStudio.Location = new Point(144, 225);
             tbxStudio.Margin = new Padding(4);
             tbxStudio.Multiline = false;
             tbxStudio.Name = "tbxStudio";
@@ -366,7 +407,7 @@ namespace AniX_APP.Forms_Utility
             cbxPremiered.IconColor = Color.FromArgb(231, 34, 83);
             cbxPremiered.ListBackColor = Color.FromArgb(11, 7, 17);
             cbxPremiered.ListTextColor = Color.FromArgb(231, 34, 83);
-            cbxPremiered.Location = new Point(532, 138);
+            cbxPremiered.Location = new Point(532, 94);
             cbxPremiered.MinimumSize = new Size(200, 30);
             cbxPremiered.Name = "cbxPremiered";
             cbxPremiered.Padding = new Padding(2);
@@ -379,7 +420,7 @@ namespace AniX_APP.Forms_Utility
             lbPremiered.AutoSize = true;
             lbPremiered.Font = new Font("Cascadia Code", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lbPremiered.ForeColor = Color.FromArgb(231, 34, 83);
-            lbPremiered.Location = new Point(423, 144);
+            lbPremiered.Location = new Point(423, 100);
             lbPremiered.Name = "lbPremiered";
             lbPremiered.Size = new Size(100, 21);
             lbPremiered.TabIndex = 16;
@@ -424,9 +465,9 @@ namespace AniX_APP.Forms_Utility
             btnSave.FlatStyle = FlatStyle.Flat;
             btnSave.Font = new Font("Cascadia Code", 12F, FontStyle.Bold, GraphicsUnit.Point);
             btnSave.ForeColor = Color.FromArgb(11, 7, 17);
-            btnSave.Location = new Point(38, 439);
+            btnSave.Location = new Point(38, 484);
             btnSave.Name = "btnSave";
-            btnSave.Size = new Size(1033, 43);
+            btnSave.Size = new Size(1032, 43);
             btnSave.TabIndex = 12;
             btnSave.Text = "Save";
             btnSave.TextColor = Color.FromArgb(11, 7, 17);
@@ -437,7 +478,7 @@ namespace AniX_APP.Forms_Utility
             lbStatus.AutoSize = true;
             lbStatus.Font = new Font("Cascadia Code", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lbStatus.ForeColor = Color.FromArgb(231, 34, 83);
-            lbStatus.Location = new Point(423, 100);
+            lbStatus.Location = new Point(423, 56);
             lbStatus.Name = "lbStatus";
             lbStatus.Size = new Size(73, 21);
             lbStatus.TabIndex = 9;
@@ -476,45 +517,78 @@ namespace AniX_APP.Forms_Utility
             tbxName.Texts = "";
             tbxName.UnderlinedStyle = false;
             // 
-            // lbTrailer
+            // lbBanner
             // 
-            lbTrailer.AutoSize = true;
-            lbTrailer.Font = new Font("Cascadia Code", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lbTrailer.ForeColor = Color.FromArgb(231, 34, 83);
-            lbTrailer.Location = new Point(423, 229);
-            lbTrailer.Name = "lbTrailer";
-            lbTrailer.Size = new Size(82, 21);
-            lbTrailer.TabIndex = 37;
-            lbTrailer.Text = "Trailer:";
+            lbBanner.AutoSize = true;
+            lbBanner.Font = new Font("Cascadia Code", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lbBanner.ForeColor = Color.FromArgb(231, 34, 83);
+            lbBanner.Location = new Point(423, 229);
+            lbBanner.Name = "lbBanner";
+            lbBanner.Size = new Size(73, 21);
+            lbBanner.TabIndex = 39;
+            lbBanner.Text = "Banner:";
             // 
-            // tbxTrailer
+            // tbxBannerImage
             // 
-            tbxTrailer.BackColor = Color.FromArgb(11, 7, 17);
-            tbxTrailer.BorderColor = Color.FromArgb(231, 34, 83);
-            tbxTrailer.BorderFocusColor = Color.FromArgb(231, 34, 83);
-            tbxTrailer.BorderRadius = 0;
-            tbxTrailer.BorderSize = 2;
-            tbxTrailer.Font = new Font("Cascadia Code", 10F, FontStyle.Bold, GraphicsUnit.Point);
-            tbxTrailer.ForeColor = Color.FromArgb(231, 34, 83);
-            tbxTrailer.Location = new Point(532, 227);
-            tbxTrailer.Margin = new Padding(4);
-            tbxTrailer.Multiline = false;
-            tbxTrailer.Name = "tbxTrailer";
-            tbxTrailer.Padding = new Padding(10, 7, 10, 7);
-            tbxTrailer.PasswordChar = false;
-            tbxTrailer.PlaceholderColor = Color.FromArgb(231, 34, 83);
-            tbxTrailer.PlaceholderText = "< trailer link >";
-            tbxTrailer.Size = new Size(247, 33);
-            tbxTrailer.TabIndex = 36;
-            tbxTrailer.Texts = "";
-            tbxTrailer.UnderlinedStyle = false;
+            tbxBannerImage.BackColor = Color.FromArgb(11, 7, 17);
+            tbxBannerImage.BorderColor = Color.FromArgb(231, 34, 83);
+            tbxBannerImage.BorderFocusColor = Color.FromArgb(231, 34, 83);
+            tbxBannerImage.BorderRadius = 0;
+            tbxBannerImage.BorderSize = 2;
+            tbxBannerImage.Font = new Font("Cascadia Code", 10F, FontStyle.Bold, GraphicsUnit.Point);
+            tbxBannerImage.ForeColor = Color.FromArgb(231, 34, 83);
+            tbxBannerImage.Location = new Point(532, 227);
+            tbxBannerImage.Margin = new Padding(4);
+            tbxBannerImage.Multiline = false;
+            tbxBannerImage.Name = "tbxBannerImage";
+            tbxBannerImage.Padding = new Padding(10, 7, 10, 7);
+            tbxBannerImage.PasswordChar = false;
+            tbxBannerImage.PlaceholderColor = Color.FromArgb(231, 34, 83);
+            tbxBannerImage.PlaceholderText = "< banner link >";
+            tbxBannerImage.Size = new Size(247, 33);
+            tbxBannerImage.TabIndex = 38;
+            tbxBannerImage.Texts = "";
+            tbxBannerImage.UnderlinedStyle = false;
+            // 
+            // lbThumbnail
+            // 
+            lbThumbnail.AutoSize = true;
+            lbThumbnail.Font = new Font("Cascadia Code", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lbThumbnail.ForeColor = Color.FromArgb(231, 34, 83);
+            lbThumbnail.Location = new Point(423, 272);
+            lbThumbnail.Name = "lbThumbnail";
+            lbThumbnail.Size = new Size(100, 21);
+            lbThumbnail.TabIndex = 41;
+            lbThumbnail.Text = "Thumbnail:";
+            // 
+            // tbxThumbnailImage
+            // 
+            tbxThumbnailImage.BackColor = Color.FromArgb(11, 7, 17);
+            tbxThumbnailImage.BorderColor = Color.FromArgb(231, 34, 83);
+            tbxThumbnailImage.BorderFocusColor = Color.FromArgb(231, 34, 83);
+            tbxThumbnailImage.BorderRadius = 0;
+            tbxThumbnailImage.BorderSize = 2;
+            tbxThumbnailImage.Font = new Font("Cascadia Code", 10F, FontStyle.Bold, GraphicsUnit.Point);
+            tbxThumbnailImage.ForeColor = Color.FromArgb(231, 34, 83);
+            tbxThumbnailImage.Location = new Point(532, 270);
+            tbxThumbnailImage.Margin = new Padding(4);
+            tbxThumbnailImage.Multiline = false;
+            tbxThumbnailImage.Name = "tbxThumbnailImage";
+            tbxThumbnailImage.Padding = new Padding(10, 7, 10, 7);
+            tbxThumbnailImage.PasswordChar = false;
+            tbxThumbnailImage.PlaceholderColor = Color.FromArgb(231, 34, 83);
+            tbxThumbnailImage.PlaceholderText = "< thumbnail link >";
+            tbxThumbnailImage.Size = new Size(247, 33);
+            tbxThumbnailImage.TabIndex = 40;
+            tbxThumbnailImage.Texts = "";
+            tbxThumbnailImage.UnderlinedStyle = false;
             // 
             // Anime_Add_Edit
             // 
             AutoScaleDimensions = new SizeF(8F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(231, 34, 83);
-            ClientSize = new Size(1113, 510);
+            ClientSize = new Size(1113, 553);
             Controls.Add(panelButtons);
             Font = new Font("Cascadia Code", 10F, FontStyle.Bold, GraphicsUnit.Point);
             ForeColor = Color.Black;
@@ -558,5 +632,9 @@ namespace AniX_APP.Forms_Utility
         private Label lbType;
         private Label lbTrailer;
         private RoundTextBox tbxTrailer;
+        private Label lbBanner;
+        private RoundTextBox tbxBannerImage;
+        private Label lbThumbnail;
+        private RoundTextBox tbxThumbnailImage;
     }
 }

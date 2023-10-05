@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Reflection;
+using System.Threading.Tasks;
 
 namespace AniX_Utility
 {
@@ -28,9 +29,9 @@ namespace AniX_Utility
             return directoryInfo.FullName;
         }
 
-        public static void LogError(Exception e, LogSeverity severity = LogSeverity.Error)
+        public static async Task LogErrorAsync(Exception e, LogSeverity severity = LogSeverity.Error)
         {
-            LogMessage(
+            await LogMessageAsync(
                 $"Exception Type: {e.GetType().FullName}\n" +
                 $"Message: {e.Message}\n" +
                 $"Stack Trace: {e.StackTrace}",
@@ -38,34 +39,33 @@ namespace AniX_Utility
             );
         }
 
-        public static void LogCustomMessage(string customMessage, LogSeverity severity = LogSeverity.Info)
+        public static async Task LogCustomMessageAsync(string customMessage, LogSeverity severity = LogSeverity.Info)
         {
-            LogMessage($"Custom Message: {customMessage}", severity);
+            await LogMessageAsync($"Custom Message: {customMessage}", severity);
         }
 
-        private static void LogMessage(string message, LogSeverity severity)
+        private static async Task LogMessageAsync(string message, LogSeverity severity)
         {
             string solutionDirectory = GetSolutionDirectory();
-
             string filePath = Path.Combine(solutionDirectory, "ErrorLog.txt");
 
             try
             {
                 using (StreamWriter writer = new StreamWriter(filePath, true))
                 {
-                    writer.WriteLine($"Timestamp: {DateTime.Now}");
-                    writer.WriteLine($"Severity: {severity}");
-                    writer.WriteLine(message);
-                    writer.WriteLine("---------------------------------------------------");
+                    await writer.WriteLineAsync($"Timestamp: {DateTime.Now}");
+                    await writer.WriteLineAsync($"Severity: {severity}");
+                    await writer.WriteLineAsync(message);
+                    await writer.WriteLineAsync("---------------------------------------------------");
                 }
             }
             catch
             {
-                FallbackLogging(new Exception("Failed to log message"), LogSeverity.Critical);
+                await FallbackLoggingAsync(new Exception("Failed to log message"), LogSeverity.Critical);
             }
         }
 
-        public static void FallbackLogging(Exception e, LogSeverity severity)
+        public static async Task FallbackLoggingAsync(Exception e, LogSeverity severity)
         {
             string solutionDirectory = GetSolutionDirectory();
             string filePath = Path.Combine(solutionDirectory, "FallbackErrorLog.txt");
@@ -74,18 +74,23 @@ namespace AniX_Utility
             {
                 using (StreamWriter writer = new StreamWriter(filePath, true))
                 {
-                    writer.WriteLine($"Timestamp: {DateTime.Now}");
-                    writer.WriteLine($"Severity: {severity}");
-                    writer.WriteLine($"Exception Type: {e.GetType().FullName}");
-                    writer.WriteLine($"Message: {e.Message}");
-                    writer.WriteLine($"Stack Trace: {e.StackTrace}");
-                    writer.WriteLine("---------------------------------------------------");
+                    await writer.WriteLineAsync($"Timestamp: {DateTime.Now}");
+                    await writer.WriteLineAsync($"Severity: {severity}");
+                    await writer.WriteLineAsync($"Exception Type: {e.GetType().FullName}");
+                    await writer.WriteLineAsync($"Message: {e.Message}");
+                    await writer.WriteLineAsync($"Stack Trace: {e.StackTrace}");
+                    await writer.WriteLineAsync("---------------------------------------------------");
                 }
             }
             catch
             {
-                // oopsie, this is a critical failure
+                //opa
             }
+        }
+
+        public static async Task AuditLogAsync(string action, string details, LogSeverity severity = LogSeverity.Info)
+        {
+            await LogMessageAsync($"Action: {action}\nDetails: {details}", severity);
         }
     }
 }

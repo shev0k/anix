@@ -235,11 +235,11 @@ namespace AniX_APP
             Application.Exit();
         }
 
-        private void btnLogin_Click(object sender, EventArgs e)
+        private async void btnLogin_Click(object sender, EventArgs e)
         {
             try
             {
-                User authenticatedUser = _userController.Login(tbxUsername.Texts, tbxPassword.Texts);
+                User authenticatedUser = await _userController.LoginAsync(tbxUsername.Texts, tbxPassword.Texts);
                 NavigateToDashboard(authenticatedUser);
             }
             catch (ValidationException ex)
@@ -260,10 +260,11 @@ namespace AniX_APP
             }
             catch (Exception ex)
             {
-                ExceptionHandlingService.HandleException(ex);
+                await ExceptionHandlingService.HandleExceptionAsync(ex);
                 RJMessageBox.Show("An unknown error occurred. Please try again later.", "", MessageBoxButtons.OK);
             }
         }
+
 
         private void NavigateToDashboard(User authenticatedUser)
         {

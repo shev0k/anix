@@ -3,6 +3,7 @@ using Anix_Shared.DomainModels;
 using AniX_Shared.Interfaces;
 using AniX_Utility;
 using System;
+using System.Threading.Tasks;
 
 namespace AniX_BusinessLogic
 {
@@ -15,15 +16,15 @@ namespace AniX_BusinessLogic
             _userDal = userDal;
         }
 
-        public User AuthenticateUser(string username, string password)
+        public async Task<User> AuthenticateUserAsync(string username, string password)
         {
             try
             {
-                return _userDal.AuthenticateUser(username, password);
+                return await _userDal.AuthenticateUserAsync(username, password);
             }
             catch (Exception e)
             {
-                ExceptionHandlingService.HandleException(e);
+                await ExceptionHandlingService.HandleExceptionAsync(e);
                 return null;
             }
         }

@@ -1,12 +1,15 @@
-﻿namespace AniX_Utility
+﻿using System;
+using System.Threading.Tasks;
+
+namespace AniX_Utility
 {
     public static class ExceptionHandlingService
     {
-        public static bool HandleException(Exception e)
+        public static async Task<bool> HandleExceptionAsync(Exception e)
         {
             try
             {
-                ErrorLoggingService.LogError(e, LogSeverity.Error);
+                await ErrorLoggingService.LogErrorAsync(e, LogSeverity.Error);
                 return true; // logs error
             }
             catch
@@ -14,12 +17,12 @@
                 // alternative logging
                 try
                 {
-                    ErrorLoggingService.FallbackLogging(e, LogSeverity.Critical);
-                    return true; // oopa add the log
+                    await ErrorLoggingService.FallbackLoggingAsync(e, LogSeverity.Critical);
+                    return true; // oops, added the log
                 }
                 catch
                 {
-                    return false; // big oopsie no log for you
+                    return false; // big oops, no log for you
                 }
             }
         }

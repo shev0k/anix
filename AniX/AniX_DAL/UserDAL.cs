@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Data.SqlClient;
+using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
 using AniX_Shared.DomainModels;
 using AniX_Shared.Interfaces;
 using AniX_Utility;
 using Anix_Shared.DomainModels;
-
 
 namespace AniX_DAL
 {
@@ -15,58 +15,46 @@ namespace AniX_DAL
         {
         }
 
-        public User AuthenticateUser(string username, string rawPassword)
+        public async Task<User> AuthenticateUserAsync(string username, string rawPassword)
         {
             User user = null;
             try
             {
-                connection.Open();
+                await connection.OpenAsync();
                 SqlCommand command = PrepareAuthenticateUserCommand(username);
-                SqlDataReader reader = command.ExecuteReader();
+                SqlDataReader reader = await command.ExecuteReaderAsync();
 
-                if (reader.Read())
+                if (await reader.ReadAsync())
                 {
                     user = MapReaderToUser(reader);
                     (string storedPassword, string storedSalt) = user.RetrieveCredentials();
 
                     string hashedPassword = HashPassword.GenerateHashedPassword(rawPassword, storedSalt);
-                    Console.WriteLine($"Stored Password: {storedPassword}, Stored Salt: {storedSalt}");
-                    Console.WriteLine($"Computed Hashed Password: {hashedPassword}");
 
                     if (hashedPassword == storedPassword)
                     {
                         return user;
                     }
-                    else
-                    {
-                        // Debugging line
-                        Console.WriteLine("Hashed password did not match stored password.");
-                    }
-                }
-                else
-                {
-                    // Debugging line
-                    Console.WriteLine("No user found with the provided username.");
                 }
             }
             catch (Exception ex)
             {
-                ExceptionHandlingService.HandleException(ex);
+                await ExceptionHandlingService.HandleExceptionAsync(ex);
                 throw;
             }
             finally
             {
-                connection.Close();
+                await connection.CloseAsync();
             }
 
             return null;
         }
 
-        public bool Create(User user)
+        public async Task<bool> CreateAsync(User user)
         {
             try
             {
-                connection.Open();
+                await connection.OpenAsync();
                 string query = "INSERT INTO [User] (Username, Password, Salt, Email, RegistrationDate, Banned, IsAdmin) VALUES (@username, @password, @salt, @email, @registrationDate, @banned, @isAdmin)";
                 SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@username", user.Username);
@@ -77,24 +65,24 @@ namespace AniX_DAL
                 command.Parameters.AddWithValue("@registrationDate", user.RegistrationDate);
                 command.Parameters.AddWithValue("@banned", user.Banned);
                 command.Parameters.AddWithValue("@isAdmin", user.IsAdmin);
-                return command.ExecuteNonQuery() > 0;
+                return (await command.ExecuteNonQueryAsync()) > 0;
             }
             catch (Exception ex)
             {
-                ExceptionHandlingService.HandleException(ex);
+                await ExceptionHandlingService.HandleExceptionAsync(ex);
                 throw;
             }
             finally
             {
-                connection.Close();
+                await connection.CloseAsync();
             }
         }
 
-        public bool Update(User user)
+        public async Task<bool> UpdateAsync(User user)
         {
             try
             {
-                connection.Open();
+                await connection.OpenAsync();
                 string query = "UPDATE [User] SET Username = @username, Password = @password, Salt = @salt, Email = @email, Banned = @banned, IsAdmin = @isAdmin WHERE Id = @id";
                 SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@id", user.Id);
@@ -105,98 +93,98 @@ namespace AniX_DAL
                 command.Parameters.AddWithValue("@email", user.Email);
                 command.Parameters.AddWithValue("@banned", user.Banned);
                 command.Parameters.AddWithValue("@isAdmin", user.IsAdmin);
-                return command.ExecuteNonQuery() > 0;
+                return (await command.ExecuteNonQueryAsync()) > 0;
             }
             catch (Exception ex)
             {
-                ExceptionHandlingService.HandleException(ex);
+                await ExceptionHandlingService.HandleExceptionAsync(ex);
                 throw;
             }
             finally
             {
-                connection.Close();
+                await connection.CloseAsync();
             }
         }
 
 
-        public bool Delete(int id)
+        public async Task<bool> DeleteAsync(int id)
         {
             try
             {
-                connection.Open();
+                await connection.OpenAsync();
                 string query = "DELETE FROM [User] WHERE Id = @id";
                 SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@id", id);
-                return command.ExecuteNonQuery() > 0;
+                return (await command.ExecuteNonQueryAsync()) > 0;
             }
             catch (Exception ex)
             {
-                ExceptionHandlingService.HandleException(ex);
+                await ExceptionHandlingService.HandleExceptionAsync(ex);
                 throw;
             }
             finally
             {
-                connection.Close();
+                await connection.CloseAsync();
             }
         }
 
-        public User GetUserFromId(int id)
+        public async Task<User> GetUserFromIdAsync(int id)
         {
-            return GetUserById(id);
+            return await GetUserByIdAsync(id);
         }
 
-        public User GetUserFromUsername(string username)
+        public async Task<User> GetUserFromUsernameAsync(string username)
         {
             User user = null;
             try
             {
-                connection.Open();
+                await connection.OpenAsync();
                 string query = "SELECT * FROM [User] WHERE Username = @username";
                 SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@username", username);
 
-                SqlDataReader reader = command.ExecuteReader();
+                SqlDataReader reader = await command.ExecuteReaderAsync();
 
-                if (reader.Read())
+                if (await reader.ReadAsync())
                 {
                     user = MapReaderToUser(reader);
                 }
             }
             catch (Exception ex)
             {
-                ExceptionHandlingService.HandleException(ex);
+                await ExceptionHandlingService.HandleExceptionAsync(ex);
             }
             finally
             {
-                connection.Close();
+                await connection.CloseAsync();
             }
             return user;
         }
 
-        private User GetUserById(int id)
+        private async Task<User> GetUserByIdAsync(int id)
         {
             User user = null;
             try
             {
-                connection.Open();
+                await connection.OpenAsync();
                 string query = "SELECT * FROM [User] WHERE Id = @id";
                 SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@id", id);
-                SqlDataReader reader = command.ExecuteReader();
+                SqlDataReader reader = await command.ExecuteReaderAsync();
 
-                if (reader.Read())
+                if (await reader.ReadAsync())
                 {
                     user = MapReaderToUser(reader);
                 }
             }
             catch (Exception ex)
             {
-                ExceptionHandlingService.HandleException(ex);
+                await ExceptionHandlingService.HandleExceptionAsync(ex);
                 throw;
             }
             finally
             {
-                connection.Close();
+                await connection.CloseAsync();
             }
 
             return user;
