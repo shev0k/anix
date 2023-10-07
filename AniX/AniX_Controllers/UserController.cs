@@ -5,21 +5,30 @@ using AniX_Shared.Interfaces;
 using AniX_Utility;
 using System.ComponentModel.DataAnnotations;
 using System.Security.Authentication;
+using System.Threading.Tasks;
+using System.Collections.Generic;
 
-namespace AniX_BusinessLogic.Controllers
+namespace AniX_Controllers
 {
     public class UserController
     {
         private readonly IAuthenticationService _authenticationService;
+        private readonly IUserManagement _userManagement;
         private readonly UserValidationService _userValidationService;
         private readonly AuditService _auditService;
 
+        private int startIndex = 0;
+        private const int batchSize = 20;
+        private static SemaphoreSlim semaphore = new SemaphoreSlim(1, 1);
+
         public UserController(
             IAuthenticationService authenticationService,
+            IUserManagement userManagement,
             UserValidationService userValidationService,
             AuditService auditService)
         {
             _authenticationService = authenticationService;
+            _userManagement = userManagement;
             _userValidationService = userValidationService;
             _auditService = auditService;
         }
@@ -59,7 +68,104 @@ namespace AniX_BusinessLogic.Controllers
                 throw;
             }
         }
-    
+
+        public async Task<List<User>> GetUsersInBatchAsync(int startIndex, int batchSize)
+        {
+            try
+            {
+                return await _userManagement.GetUsersInBatchAsync(startIndex, batchSize);
+            }
+            catch (Exception e)
+            {
+                await ExceptionHandlingService.HandleExceptionAsync(e);
+                throw;
+            }
+        }
+
+        //public async Task<List<User>> SearchUsersAsync(string searchText)
+        //{
+        //    return await _userManagement.SearchUsersAsync(searchText);
+        //}
+
+        //public async Task<List<User>> FetchUsersAsync(string searchTerm)
+        //{
+        //    try
+        //    {
+        //        if (string.IsNullOrEmpty(searchTerm))
+        //        {
+        //            return await GetUsersInBatchAsync(startIndex, batchSize);
+        //        }
+        //        else
+        //        {
+        //            return await SearchUsersAsync(searchTerm);
+        //        }
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        await ExceptionHandlingService.HandleExceptionAsync(e);
+        //        throw;
+        //    }
+        //}
+
+        //public async Task<List<User>> FetchFilteredUsersAsync(string filter)
+        //{
+        //    try
+        //    {
+        //        return await _userManagement.FetchFilteredUsersAsync(filter);
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        await ExceptionHandlingService.HandleExceptionAsync(e);
+        //        throw;
+        //    }
+        //}
+
+        public async Task<List<User>> FetchFilteredAndSearchedUsersAsync(string filter, string searchTerm)
+        {
+            await semaphore.WaitAsync();
+            try
+            {
+                return await _userManagement.FetchFilteredAndSearchedUsersAsync(filter, searchTerm);
+            }
+            catch (Exception e)
+            {
+                await ExceptionHandlingService.HandleExceptionAsync(e);
+                throw;
+            }
+            finally
+            {
+                semaphore.Release();
+            }
+        }
+
+        public async Task<bool> DeleteUserAsync(int userId)
+        {
+            try
+            {
+                return await _userManagement.DeleteAsync(userId);
+            }
+            catch (Exception e)
+            {
+                await ExceptionHandlingService.HandleExceptionAsync(e);
+                return false;
+            }
+        }
+
+        public async Task<bool> DoesUsernameExistAsync(string username)
+        {
+            return await _userManagement.DoesUsernameExistAsync(username);
+        }
+
+        public async Task<bool> DoesEmailExistAsync(string email)
+        {
+            return await _userManagement.DoesEmailExistAsync(email);
+        }
+
+
+        //public void ResetStartIndex()
+        //{
+        //    startIndex = 0;
+        //}
 
         public class ValidationException : Exception
         {

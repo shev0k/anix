@@ -190,6 +190,182 @@ namespace AniX_DAL
             return user;
         }
 
+        public async Task<List<User>> GetUsersInBatchAsync(int startIndex, int batchSize)
+        {
+            List<User> users = new List<User>();
+
+            try
+            {
+                await connection.OpenAsync();
+
+                string query = $"SELECT * FROM [User] ORDER BY Id OFFSET {startIndex} ROWS FETCH NEXT {batchSize} ROWS ONLY";
+                SqlCommand command = new SqlCommand(query, connection);
+
+                SqlDataReader reader = await command.ExecuteReaderAsync();
+
+                while (await reader.ReadAsync())
+                {
+                    users.Add(MapReaderToUser(reader));
+                }
+            }
+            catch (Exception ex)
+            {
+                await ExceptionHandlingService.HandleExceptionAsync(ex);
+                throw;
+            }
+            finally
+            {
+                await connection.CloseAsync();
+            }
+
+            return users;
+        }
+
+        //public async Task<List<User>> SearchUsersAsync(string searchText)
+        //{
+        //    List<User> users = new List<User>();
+
+        //    try
+        //    {
+        //        await connection.OpenAsync();
+
+        //        string query = "SELECT * FROM [dbo].[User] WHERE " +
+        //                       "Username LIKE @searchText OR Email LIKE @searchText";
+                
+        //        SqlCommand command = new SqlCommand(query, connection);
+
+        //        command.Parameters.AddWithValue("@searchText", string.IsNullOrEmpty(searchText) ? DBNull.Value : (object)$"%{searchText}%");
+
+        //        SqlDataReader reader = await command.ExecuteReaderAsync();
+
+        //        while (await reader.ReadAsync())
+        //        {
+        //            User user = MapReaderToUser(reader);
+
+        //            users.Add(user);
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        await ExceptionHandlingService.HandleExceptionAsync(ex);
+        //        throw;
+        //    }
+        //    finally
+        //    {
+        //        await connection.CloseAsync();
+        //    }
+
+        //    return users;
+        //}
+
+        //public async Task<List<User>> FetchFilteredUsersAsync(string filter)
+        //{
+        //    List<User> users = new List<User>();
+        //    string query = "SELECT * FROM [dbo].[User] WHERE 1=1";
+
+        //    if (filter == "Admin")
+        //        query += " AND IsAdmin = 1";
+        //    else if (filter == "User")
+        //        query += " AND IsAdmin = 0";
+        //    else if (filter == "Banned")
+        //        query += " AND Banned = 1";
+        //    else if (filter == "Not Banned")
+        //        query += " AND Banned = 0";
+
+        //    try
+        //    {
+        //        await connection.OpenAsync();
+        //        using (SqlCommand command = new SqlCommand(query, connection))
+        //        {
+        //            SqlDataReader reader = await command.ExecuteReaderAsync();
+        //            while (await reader.ReadAsync())
+        //            {
+        //                users.Add(MapReaderToUser(reader));
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        await ExceptionHandlingService.HandleExceptionAsync(ex);
+        //        throw;
+        //    }
+        //    finally
+        //    {
+        //        await connection.CloseAsync();
+        //    }
+
+        //    return users;
+        //}
+
+        public async Task<List<User>> FetchFilteredAndSearchedUsersAsync(string filter, string searchTerm)
+        {
+            List<User> users = new List<User>();
+            string query = "SELECT * FROM [dbo].[User] WHERE 1=1";
+
+            if (!string.IsNullOrEmpty(filter))
+            {
+                if (filter == "Admin")
+                    query += " AND IsAdmin = 1";
+                else if (filter == "User")
+                    query += " AND IsAdmin = 0";
+                else if (filter == "Banned")
+                    query += " AND Banned = 1";
+                else if (filter == "Not Banned")
+                    query += " AND Banned = 0";
+            }
+
+            if (!string.IsNullOrEmpty(searchTerm))
+            {
+                query += $" AND (Username LIKE '%{searchTerm}%' OR Email LIKE '%{searchTerm}%')";
+            }
+
+            try
+            {
+                await connection.OpenAsync();
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    SqlDataReader reader = await command.ExecuteReaderAsync();
+                    while (await reader.ReadAsync())
+                    {
+                        users.Add(MapReaderToUser(reader));
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                await ExceptionHandlingService.HandleExceptionAsync(ex);
+                throw;
+            }
+            finally
+            {
+                await connection.CloseAsync();
+            }
+
+            return users;
+        }
+
+        public async Task<bool> DoesUsernameExistAsync(string username)
+        {
+            await connection.OpenAsync();
+            string query = "SELECT COUNT(1) FROM [User] WHERE Username = @username";
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@username", username);
+            int count = Convert.ToInt32(await command.ExecuteScalarAsync());
+            await connection.CloseAsync();
+            return count > 0;
+        }
+
+        public async Task<bool> DoesEmailExistAsync(string email)
+        {
+            await connection.OpenAsync();
+            string query = "SELECT COUNT(1) FROM [User] WHERE Email = @email";
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@email", email);
+            int count = Convert.ToInt32(await command.ExecuteScalarAsync());
+            await connection.CloseAsync();
+            return count > 0;
+        }
+
         private SqlCommand PrepareAuthenticateUserCommand(string username)
         {
             string query = "SELECT * FROM [User] WHERE Username = @username";

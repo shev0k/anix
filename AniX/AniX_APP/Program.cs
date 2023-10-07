@@ -1,11 +1,13 @@
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Windows.Forms;
+using AniX_APP.CustomElements;
 using AniX_BusinessLogic;
 using AniX_DAL;
 using AniX_Shared.Interfaces;
 using Microsoft.Extensions.Configuration;
-using AniX_BusinessLogic.Controllers;
+using AniX_Controllers;
+using AniX_FormsLogic;
 
 namespace AniX_APP
 {
@@ -22,6 +24,9 @@ namespace AniX_APP
 
             var serviceProvider = new ServiceCollection()
                 .AddSingleton<IConfiguration>(configuration)
+                .AddSingleton<ApplicationModel>(sp => new ApplicationModel(null,
+                    sp.GetRequiredService<UserController>(),
+                    sp.GetRequiredService<UserDAL>()))
                 .AddTransient<UserDAL>()
                 .AddTransient<IUserManagement, UserDAL>()
                 .AddTransient<IAuthenticationService, AuthenticationService>()

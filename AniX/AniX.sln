@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34024.191
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AniX_WEB", "AniX\AniX_WEB.csproj", "{E63C4545-364F-46D0-9767-6C885C289807}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AniX_APP", "AniX_APP\AniX_APP.csproj", "{76486224-8B85-4B4E-8E69-250FEE96131D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AniX_WEB", "AniX\AniX_WEB.csproj", "{E63C4545-364F-46D0-9767-6C885C289807}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AniX_DAL", "AniX_DAL\AniX_DAL.csproj", "{DF62E743-4C95-42E8-8682-A0AF28395A9C}"
 EndProject
@@ -19,7 +19,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AniX_Utility", "AniX_Utilit
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AniX_Controllers", "AniX_Controllers\AniX_Controllers.csproj", "{05354696-D59E-403A-B7EE-BE9028304EB9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AniX_UnitTest", "AniX_UnitTest\AniX_UnitTest.csproj", "{6BE6470E-5F40-48C3-8BAE-39A0BCCB46DA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AniX_UnitTest", "AniX_UnitTest\AniX_UnitTest.csproj", "{6BE6470E-5F40-48C3-8BAE-39A0BCCB46DA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AniX_FormsLogic", "AniX_FormsLogic\AniX_FormsLogic.csproj", "{533B6EC5-467A-433D-BF45-FEEEBBF9AEE3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +65,10 @@ Global
 		{6BE6470E-5F40-48C3-8BAE-39A0BCCB46DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6BE6470E-5F40-48C3-8BAE-39A0BCCB46DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6BE6470E-5F40-48C3-8BAE-39A0BCCB46DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{533B6EC5-467A-433D-BF45-FEEEBBF9AEE3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{533B6EC5-467A-433D-BF45-FEEEBBF9AEE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{533B6EC5-467A-433D-BF45-FEEEBBF9AEE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{533B6EC5-467A-433D-BF45-FEEEBBF9AEE3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

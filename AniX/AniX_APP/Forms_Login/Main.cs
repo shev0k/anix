@@ -7,8 +7,9 @@ using AniX_Utility;
 using Anix_Shared.DomainModels;
 using System;
 using System.Windows.Forms;
-using AniX_BusinessLogic.Controllers;
-using static AniX_BusinessLogic.Controllers.UserController;
+using AniX_Controllers;
+using AniX_FormsLogic;
+using static AniX_Controllers.UserController;
 
 namespace AniX_APP
 {
@@ -210,14 +211,13 @@ namespace AniX_APP
             btnLogin.Focus();
         }
         #endregion
-        private UserController _userController;
-        public Main(UserController userController)
+        private ApplicationModel _appModel;
+        public Main(ApplicationModel appModel)
         {
             InitializeComponent();
             SetButtonStyles();
             SetButtonImages();
-            _userController = userController;
-
+            _appModel = appModel;
         }
 
         private void btnInformation_Click(object sender, EventArgs e)
@@ -239,8 +239,9 @@ namespace AniX_APP
         {
             try
             {
-                User authenticatedUser = await _userController.LoginAsync(tbxUsername.Texts, tbxPassword.Texts);
-                NavigateToDashboard(authenticatedUser);
+                User authenticatedUser = await _appModel.UserController.LoginAsync(tbxUsername.Texts, tbxPassword.Texts);
+                _appModel.LoggedInUser = authenticatedUser;
+                NavigateToDashboard();
             }
             catch (ValidationException ex)
             {
@@ -266,10 +267,10 @@ namespace AniX_APP
         }
 
 
-        private void NavigateToDashboard(User authenticatedUser)
+        private void NavigateToDashboard()
         {
-            Dashboard windowOpen = new Dashboard(authenticatedUser, _userController);
-            RJMessageBox.Show($"Welcome back, < {authenticatedUser.Username} >", "", MessageBoxButtons.OK);
+            Dashboard windowOpen = new Dashboard(_appModel);
+            RJMessageBox.Show($"Welcome back, < {_appModel.LoggedInUser.Username} >", "", MessageBoxButtons.OK);
             this.Hide();
             windowOpen.ShowDialog();
             this.Close();

@@ -33,13 +33,13 @@ namespace AniX_APP.Forms_Utility
         private void InitializeComponent()
         {
             panelButtons = new Panel();
+            cboxIsBanned = new CustomElements.CustomCheckBox();
+            cboxIsAdmin = new CustomElements.CustomCheckBox();
             label3 = new Label();
-            rbtnIsBanned = new CustomElements.CustomRadioButton();
             lbFormTitle = new Label();
             btnClose = new Button();
             btnSave = new CustomElements.RoundButton();
             lbIsAdmin = new Label();
-            rbtnIsAdmin = new CustomElements.CustomRadioButton();
             lbPassword = new Label();
             tbxPassword = new RoundTextBox();
             lbEmail = new Label();
@@ -54,13 +54,13 @@ namespace AniX_APP.Forms_Utility
             // panelButtons
             // 
             panelButtons.BackColor = Color.FromArgb(11, 7, 17);
+            panelButtons.Controls.Add(cboxIsBanned);
+            panelButtons.Controls.Add(cboxIsAdmin);
             panelButtons.Controls.Add(label3);
-            panelButtons.Controls.Add(rbtnIsBanned);
             panelButtons.Controls.Add(lbFormTitle);
             panelButtons.Controls.Add(btnClose);
             panelButtons.Controls.Add(btnSave);
             panelButtons.Controls.Add(lbIsAdmin);
-            panelButtons.Controls.Add(rbtnIsAdmin);
             panelButtons.Controls.Add(lbPassword);
             panelButtons.Controls.Add(tbxPassword);
             panelButtons.Controls.Add(lbEmail);
@@ -72,31 +72,54 @@ namespace AniX_APP.Forms_Utility
             panelButtons.Name = "panelButtons";
             panelButtons.Size = new Size(439, 274);
             panelButtons.TabIndex = 4;
+            panelButtons.MouseDown += panelTitleBar_MouseDown;
+            // 
+            // cboxIsBanned
+            // 
+            cboxIsBanned.AutoSize = true;
+            cboxIsBanned.Font = new Font("Cascadia Code", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            cboxIsBanned.Location = new Point(349, 177);
+            cboxIsBanned.MinimumSize = new Size(45, 22);
+            cboxIsBanned.Name = "cboxIsBanned";
+            cboxIsBanned.OffBackColor = Color.FromArgb(231, 34, 83);
+            cboxIsBanned.OffToggleColor = Color.FromArgb(231, 34, 83);
+            cboxIsBanned.OnBackColor = Color.FromArgb(231, 34, 83);
+            cboxIsBanned.OnToggleColor = Color.FromArgb(11, 7, 17);
+            cboxIsBanned.Size = new Size(45, 22);
+            cboxIsBanned.SolidStyle = false;
+            cboxIsBanned.TabIndex = 18;
+            cboxIsBanned.UseVisualStyleBackColor = true;
+            cboxIsBanned.CheckedChanged += cboxIsBanned_CheckedChanged;
+            // 
+            // cboxIsAdmin
+            // 
+            cboxIsAdmin.AutoSize = true;
+            cboxIsAdmin.BackColor = Color.FromArgb(231, 34, 83);
+            cboxIsAdmin.Font = new Font("Cascadia Code", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            cboxIsAdmin.ForeColor = Color.FromArgb(231, 34, 83);
+            cboxIsAdmin.Location = new Point(144, 176);
+            cboxIsAdmin.MinimumSize = new Size(45, 22);
+            cboxIsAdmin.Name = "cboxIsAdmin";
+            cboxIsAdmin.OffBackColor = Color.FromArgb(231, 34, 83);
+            cboxIsAdmin.OffToggleColor = Color.FromArgb(231, 34, 83);
+            cboxIsAdmin.OnBackColor = Color.FromArgb(231, 34, 83);
+            cboxIsAdmin.OnToggleColor = Color.FromArgb(11, 7, 17);
+            cboxIsAdmin.Size = new Size(45, 22);
+            cboxIsAdmin.SolidStyle = false;
+            cboxIsAdmin.TabIndex = 17;
+            cboxIsAdmin.UseVisualStyleBackColor = false;
+            cboxIsAdmin.CheckedChanged += cboxIsAdmin_CheckedChanged;
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Cascadia Code", 12F, FontStyle.Regular, GraphicsUnit.Point);
             label3.ForeColor = Color.FromArgb(231, 34, 83);
-            label3.Location = new Point(186, 177);
+            label3.Location = new Point(235, 177);
             label3.Name = "label3";
             label3.Size = new Size(73, 21);
             label3.TabIndex = 16;
             label3.Text = "Banned:";
-            // 
-            // rbtnIsBanned
-            // 
-            rbtnIsBanned.AutoSize = true;
-            rbtnIsBanned.CheckedColor = Color.FromArgb(231, 34, 83);
-            rbtnIsBanned.Location = new Point(294, 177);
-            rbtnIsBanned.MinimumSize = new Size(0, 21);
-            rbtnIsBanned.Name = "rbtnIsBanned";
-            rbtnIsBanned.Padding = new Padding(10, 0, 0, 0);
-            rbtnIsBanned.Size = new Size(24, 21);
-            rbtnIsBanned.TabIndex = 15;
-            rbtnIsBanned.TabStop = true;
-            rbtnIsBanned.UnCheckedColor = Color.FromArgb(231, 34, 83);
-            rbtnIsBanned.UseVisualStyleBackColor = true;
             // 
             // lbFormTitle
             // 
@@ -124,6 +147,7 @@ namespace AniX_APP.Forms_Utility
             btnClose.TabIndex = 13;
             btnClose.Text = "X";
             btnClose.UseVisualStyleBackColor = false;
+            btnClose.Click += btnClose_Click;
             // 
             // btnSave
             // 
@@ -156,20 +180,6 @@ namespace AniX_APP.Forms_Utility
             lbIsAdmin.Size = new Size(64, 21);
             lbIsAdmin.TabIndex = 11;
             lbIsAdmin.Text = "Admin:";
-            // 
-            // rbtnIsAdmin
-            // 
-            rbtnIsAdmin.AutoSize = true;
-            rbtnIsAdmin.CheckedColor = Color.FromArgb(231, 34, 83);
-            rbtnIsAdmin.Location = new Point(146, 177);
-            rbtnIsAdmin.MinimumSize = new Size(0, 21);
-            rbtnIsAdmin.Name = "rbtnIsAdmin";
-            rbtnIsAdmin.Padding = new Padding(10, 0, 0, 0);
-            rbtnIsAdmin.Size = new Size(24, 21);
-            rbtnIsAdmin.TabIndex = 10;
-            rbtnIsAdmin.TabStop = true;
-            rbtnIsAdmin.UnCheckedColor = Color.FromArgb(231, 34, 83);
-            rbtnIsAdmin.UseVisualStyleBackColor = true;
             // 
             // lbPassword
             // 
@@ -312,7 +322,6 @@ namespace AniX_APP.Forms_Utility
         private Button btnClose;
         private CustomElements.RoundButton btnSave;
         private Label lbIsAdmin;
-        private CustomElements.CustomRadioButton rbtnIsAdmin;
         private Label lbPassword;
         private RoundTextBox tbxPassword;
         private Label lbEmail;
@@ -321,6 +330,7 @@ namespace AniX_APP.Forms_Utility
         private RoundTextBox tbxUsername;
         private Panel panelBody;
         private Label label3;
-        private CustomElements.CustomRadioButton rbtnIsBanned;
+        private CustomElements.CustomCheckBox cboxIsAdmin;
+        private CustomElements.CustomCheckBox cboxIsBanned;
     }
 }

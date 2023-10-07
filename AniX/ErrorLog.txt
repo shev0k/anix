@@ -22,3 +22,2123 @@ Timestamp: 05/10/2023 21:47:31
 Severity: Info
 Custom Message: Timestamp: 05/10/2023 21:47:31, Username: admin, Success: True, Additional Info: 
 ---------------------------------------------------
+Timestamp: 05/10/2023 22:07:49
+Severity: Info
+Custom Message: Timestamp: 05/10/2023 22:07:49, Username: user, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 05/10/2023 22:07:49
+Severity: Error
+Exception Type: AniX_BusinessLogic.Controllers.UserController+AuthorizationException
+Message: You are not authorized to access this application.
+Stack Trace:    at AniX_BusinessLogic.Controllers.UserController.LoginAsync(String username, String password) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 51
+---------------------------------------------------
+Timestamp: 05/10/2023 22:08:48
+Severity: Info
+Custom Message: Timestamp: 05/10/2023 22:08:48, Username: shevok, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 05/10/2023 22:09:05
+Severity: Info
+Custom Message: Timestamp: 05/10/2023 22:09:05, Username: shevok, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 05/10/2023 22:09:21
+Severity: Info
+Custom Message: Timestamp: 05/10/2023 22:09:21, Username: shevok, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 00:13:26
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 00:13:26, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 00:14:13
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 00:14:13, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 00:14:36
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 00:14:36, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 00:16:14
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 00:16:14, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 00:44:21
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 00:44:21, Username: shevoK, Success: False, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 00:44:21
+Severity: Error
+Exception Type: AniX_BusinessLogic.Controllers.UserController+AuthenticationException
+Message: Failed to authenticate.
+Stack Trace:    at AniX_BusinessLogic.Controllers.UserController.LoginAsync(String username, String password) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 44
+---------------------------------------------------
+Timestamp: 06/10/2023 00:44:35
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 00:44:35, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 00:44:46
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 00:44:46, Username: shevok, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 00:45:25
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 00:45:25, Username: user, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 00:45:25
+Severity: Error
+Exception Type: AniX_BusinessLogic.Controllers.UserController+AuthorizationException
+Message: You are not authorized to access this application.
+Stack Trace:    at AniX_BusinessLogic.Controllers.UserController.LoginAsync(String username, String password) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 54
+---------------------------------------------------
+Timestamp: 06/10/2023 00:45:30
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 00:45:30, Username: shhevok, Success: False, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 00:45:30
+Severity: Error
+Exception Type: AniX_BusinessLogic.Controllers.UserController+AuthenticationException
+Message: Failed to authenticate.
+Stack Trace:    at AniX_BusinessLogic.Controllers.UserController.LoginAsync(String username, String password) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 44
+---------------------------------------------------
+Timestamp: 06/10/2023 00:45:34
+Severity: Error
+Exception Type: AniX_BusinessLogic.Controllers.UserController+ValidationException
+Message: Username: at least 4 characters | Password: at least 4 characters
+Stack Trace:    at AniX_BusinessLogic.Controllers.UserController.LoginAsync(String username, String password) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 36
+---------------------------------------------------
+Timestamp: 06/10/2023 00:45:36
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 00:45:36, Username: shhevok, Success: False, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 00:45:36
+Severity: Error
+Exception Type: AniX_BusinessLogic.Controllers.UserController+AuthenticationException
+Message: Failed to authenticate.
+Stack Trace:    at AniX_BusinessLogic.Controllers.UserController.LoginAsync(String username, String password) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 44
+---------------------------------------------------
+Timestamp: 06/10/2023 00:48:33
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 00:48:33, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 01:05:30
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 01:05:30, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 01:05:32
+Severity: Error
+Exception Type: System.Data.SqlClient.SqlException
+Message: Invalid column name 'Role'.
+Invalid column name 'Status'.
+Stack Trace:    at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader()
+   at System.Data.SqlClient.SqlCommand.InternalEndExecuteReader(IAsyncResult asyncResult, String endMethod)
+   at System.Data.SqlClient.SqlCommand.EndExecuteReaderInternal(IAsyncResult asyncResult)
+   at System.Data.SqlClient.SqlCommand.EndExecuteReader(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at AniX_DAL.UserDAL.SearchUsersAsync(String username, String email, String role, String status) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 252
+---------------------------------------------------
+Timestamp: 06/10/2023 01:05:34
+Severity: Error
+Exception Type: System.Data.SqlClient.SqlException
+Message: Invalid column name 'Role'.
+Invalid column name 'Status'.
+Stack Trace:    at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader()
+   at System.Data.SqlClient.SqlCommand.InternalEndExecuteReader(IAsyncResult asyncResult, String endMethod)
+   at System.Data.SqlClient.SqlCommand.EndExecuteReaderInternal(IAsyncResult asyncResult)
+   at System.Data.SqlClient.SqlCommand.EndExecuteReader(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at AniX_DAL.UserDAL.SearchUsersAsync(String username, String email, String role, String status) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 252
+---------------------------------------------------
+Timestamp: 06/10/2023 01:06:24
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 01:06:24, Username: admin, Success: False, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 01:06:25
+Severity: Error
+Exception Type: AniX_BusinessLogic.Controllers.UserController+AuthenticationException
+Message: Failed to authenticate.
+Stack Trace:    at AniX_BusinessLogic.Controllers.UserController.LoginAsync(String username, String password) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 46
+---------------------------------------------------
+Timestamp: 06/10/2023 01:06:27
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 01:06:27, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 01:06:29
+Severity: Error
+Exception Type: System.Data.SqlClient.SqlException
+Message: Invalid column name 'Role'.
+Invalid column name 'Status'.
+Stack Trace:    at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader()
+   at System.Data.SqlClient.SqlCommand.InternalEndExecuteReader(IAsyncResult asyncResult, String endMethod)
+   at System.Data.SqlClient.SqlCommand.EndExecuteReaderInternal(IAsyncResult asyncResult)
+   at System.Data.SqlClient.SqlCommand.EndExecuteReader(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at AniX_DAL.UserDAL.SearchUsersAsync(String username, String email, String role, String status) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 252
+---------------------------------------------------
+Timestamp: 06/10/2023 01:22:29
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 01:22:29, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 01:22:31
+Severity: Error
+Exception Type: System.Data.SqlClient.SqlException
+Message: Conversion failed when converting the nvarchar value '%a%' to data type bit.
+Stack Trace:    at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryHasMoreRows(Boolean& moreRows)
+   at System.Data.SqlClient.SqlDataReader.TryReadInternal(Boolean setTimeout, Boolean& more)
+   at System.Data.SqlClient.SqlDataReader.<>c__DisplayClass190_0.<ReadAsync>b__1(Task t)
+   at System.Data.SqlClient.SqlDataReader.InvokeRetryable[T](Func`2 moreFunc, TaskCompletionSource`1 source, IDisposable objectToDispose)
+--- End of stack trace from previous location ---
+   at AniX_DAL.UserDAL.SearchUsersAsync(String username, String email, String role, String status) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 247
+---------------------------------------------------
+Timestamp: 06/10/2023 01:25:41
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 01:25:41, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 01:25:43
+Severity: Error
+Exception Type: System.Data.SqlClient.SqlException
+Message: Incorrect syntax near 'AND'.
+Stack Trace:    at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader()
+   at System.Data.SqlClient.SqlCommand.InternalEndExecuteReader(IAsyncResult asyncResult, String endMethod)
+   at System.Data.SqlClient.SqlCommand.EndExecuteReaderInternal(IAsyncResult asyncResult)
+   at System.Data.SqlClient.SqlCommand.EndExecuteReader(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at AniX_DAL.UserDAL.SearchUsersAsync(String username, String email) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 242
+---------------------------------------------------
+Timestamp: 06/10/2023 01:25:50
+Severity: Error
+Exception Type: System.Data.SqlClient.SqlException
+Message: Incorrect syntax near 'AND'.
+Stack Trace:    at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader()
+   at System.Data.SqlClient.SqlCommand.InternalEndExecuteReader(IAsyncResult asyncResult, String endMethod)
+   at System.Data.SqlClient.SqlCommand.EndExecuteReaderInternal(IAsyncResult asyncResult)
+   at System.Data.SqlClient.SqlCommand.EndExecuteReader(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at AniX_DAL.UserDAL.SearchUsersAsync(String username, String email) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 242
+---------------------------------------------------
+Timestamp: 06/10/2023 01:26:29
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 01:26:29, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 01:27:58
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 01:27:58, Username: shevok, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 01:28:30
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: The connection was not closed. The connection's current state is open.
+Stack Trace:    at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.OpenAsync(CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at AniX_DAL.UserDAL.SearchUsersAsync(String username, String email) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 230
+---------------------------------------------------
+Timestamp: 06/10/2023 01:28:30
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: Invalid attempt to call ReadAsync when reader is closed.
+Stack Trace:    at System.Data.Common.ADP.ExceptionWithStackTrace(Exception e)
+--- End of stack trace from previous location ---
+   at AniX_DAL.UserDAL.SearchUsersAsync(String username, String email) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 244
+---------------------------------------------------
+Timestamp: 06/10/2023 01:29:25
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 01:29:25, Username: admin, Success: False, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 01:29:25
+Severity: Error
+Exception Type: AniX_BusinessLogic.Controllers.UserController+AuthenticationException
+Message: Failed to authenticate.
+Stack Trace:    at AniX_BusinessLogic.Controllers.UserController.LoginAsync(String username, String password) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 46
+---------------------------------------------------
+Timestamp: 06/10/2023 01:29:29
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 01:29:29, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 03:02:51
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: The connection was not closed. The connection's current state is connecting.
+Stack Trace:    at System.Data.ProviderBase.DbConnectionClosedConnecting.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.OpenAsync(CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at AniX_DAL.UserDAL.AuthenticateUserAsync(String username, String rawPassword) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 23
+---------------------------------------------------
+Timestamp: 06/10/2023 03:02:51
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: The connection was not closed. The connection's current state is connecting.
+Stack Trace:    at System.Data.ProviderBase.DbConnectionClosedConnecting.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.OpenAsync(CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at AniX_DAL.UserDAL.AuthenticateUserAsync(String username, String rawPassword) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 23
+   at AniX_DAL.UserDAL.AuthenticateUserAsync(String username, String rawPassword) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 43
+   at AniX_DAL.UserDAL.AuthenticateUserAsync(String username, String rawPassword) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 48
+   at AniX_BusinessLogic.AuthenticationService.AuthenticateUserAsync(String username, String password) in C:\Users\shevoK\source\repos\anix\AniX\AniX_BusinessLogic\AuthenticationService.cs:line 23
+---------------------------------------------------
+Timestamp: 06/10/2023 03:02:51
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 03:02:51, Username: admin, Success: False, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 03:02:51
+Severity: Error
+Exception Type: AniX_BusinessLogic.Controllers.UserController+AuthenticationException
+Message: Failed to authenticate.
+Stack Trace:    at AniX_BusinessLogic.Controllers.UserController.LoginAsync(String username, String password) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 46
+---------------------------------------------------
+Timestamp: 06/10/2023 03:02:51
+Severity: Error
+Exception Type: System.Threading.Tasks.TaskCanceledException
+Message: A task was canceled.
+Stack Trace:    at AniX_DAL.UserDAL.AuthenticateUserAsync(String username, String rawPassword) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 23
+---------------------------------------------------
+Timestamp: 06/10/2023 03:02:51
+Severity: Error
+Exception Type: System.Threading.Tasks.TaskCanceledException
+Message: A task was canceled.
+Stack Trace:    at AniX_DAL.UserDAL.AuthenticateUserAsync(String username, String rawPassword) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 23
+   at AniX_DAL.UserDAL.AuthenticateUserAsync(String username, String rawPassword) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 43
+   at AniX_DAL.UserDAL.AuthenticateUserAsync(String username, String rawPassword) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 48
+   at AniX_BusinessLogic.AuthenticationService.AuthenticateUserAsync(String username, String password) in C:\Users\shevoK\source\repos\anix\AniX\AniX_BusinessLogic\AuthenticationService.cs:line 23
+---------------------------------------------------
+Timestamp: 06/10/2023 03:02:51
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 03:02:51, Username: admin, Success: False, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 03:02:51
+Severity: Error
+Exception Type: AniX_BusinessLogic.Controllers.UserController+AuthenticationException
+Message: Failed to authenticate.
+Stack Trace:    at AniX_BusinessLogic.Controllers.UserController.LoginAsync(String username, String password) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 46
+---------------------------------------------------
+Timestamp: 06/10/2023 03:03:03
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 03:03:03, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 03:04:25
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 03:04:25, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 03:05:51
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 03:05:51, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 03:11:37
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 03:11:37, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 03:15:10
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 03:15:10, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 03:27:18
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 03:27:18, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 03:32:26
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 03:32:26, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 03:33:09
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 03:33:09, Username: shevok, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 03:43:35
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 03:43:35, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 03:44:37
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 03:44:37, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 03:51:36
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 03:51:36, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 03:51:37
+Severity: Error
+Exception Type: System.NullReferenceException
+Message: Object reference not set to an instance of an object.
+Stack Trace:    at AniX_APP.Forms_Dashboard.Users.tbxUser__TextChanged(Object sender, EventArgs e) in C:\Users\shevoK\source\repos\anix\AniX\AniX_APP\Forms_Dashboard\Users.cs:line 58
+---------------------------------------------------
+Timestamp: 06/10/2023 03:51:39
+Severity: Error
+Exception Type: System.NullReferenceException
+Message: Object reference not set to an instance of an object.
+Stack Trace:    at AniX_APP.Forms_Dashboard.Users.tbxUser__TextChanged(Object sender, EventArgs e) in C:\Users\shevoK\source\repos\anix\AniX\AniX_APP\Forms_Dashboard\Users.cs:line 58
+---------------------------------------------------
+Timestamp: 06/10/2023 03:51:40
+Severity: Error
+Exception Type: System.NullReferenceException
+Message: Object reference not set to an instance of an object.
+Stack Trace:    at AniX_APP.Forms_Dashboard.Users.tbxUser__TextChanged(Object sender, EventArgs e) in C:\Users\shevoK\source\repos\anix\AniX\AniX_APP\Forms_Dashboard\Users.cs:line 58
+---------------------------------------------------
+Timestamp: 06/10/2023 03:52:01
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 03:52:01, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 03:52:30
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 03:52:30, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 03:52:31
+Severity: Error
+Exception Type: System.NullReferenceException
+Message: Object reference not set to an instance of an object.
+Stack Trace:    at AniX_APP.Forms_Dashboard.Users.tbxUser__TextChanged(Object sender, EventArgs e) in C:\Users\shevoK\source\repos\anix\AniX\AniX_APP\Forms_Dashboard\Users.cs:line 58
+---------------------------------------------------
+Timestamp: 06/10/2023 03:54:05
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 03:54:05, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 03:55:21
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 03:55:21, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 03:55:49
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 03:55:49, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 03:55:50
+Severity: Error
+Exception Type: System.NullReferenceException
+Message: Object reference not set to an instance of an object.
+Stack Trace:    at AniX_APP.Forms_Dashboard.Users.tbxUser__TextChanged(Object sender, EventArgs e) in C:\Users\shevoK\source\repos\anix\AniX\AniX_APP\Forms_Dashboard\Users.cs:line 58
+---------------------------------------------------
+Timestamp: 06/10/2023 03:56:01
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 03:56:01, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 03:59:39
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 03:59:39, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 04:01:25
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 04:01:25, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 04:01:45
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: The connection was not closed. The connection's current state is open.
+Stack Trace:    at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.OpenAsync(CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 324
+---------------------------------------------------
+Timestamp: 06/10/2023 04:01:45
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: The connection was not closed. The connection's current state is open.
+Stack Trace:    at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.OpenAsync(CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 324
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 337
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 342
+   at AniX_BusinessLogic.Controllers.UserController.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 126
+---------------------------------------------------
+Timestamp: 06/10/2023 04:01:45
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: The connection was not closed. The connection's current state is open.
+Stack Trace:    at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.OpenAsync(CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 324
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 337
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 342
+   at AniX_BusinessLogic.Controllers.UserController.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 126
+   at AniX_BusinessLogic.Controllers.UserController.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 131
+   at AniX_APP.Forms_Dashboard.Users.UpdateUserListAsync() in C:\Users\shevoK\source\repos\anix\AniX\AniX_APP\Forms_Dashboard\Users.cs:line 59
+---------------------------------------------------
+Timestamp: 06/10/2023 04:01:45
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: Invalid attempt to call ReadAsync when reader is closed.
+Stack Trace:    at System.Data.Common.ADP.ExceptionWithStackTrace(Exception e)
+--- End of stack trace from previous location ---
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 328
+---------------------------------------------------
+Timestamp: 06/10/2023 04:01:45
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: Invalid attempt to call ReadAsync when reader is closed.
+Stack Trace:    at System.Data.Common.ADP.ExceptionWithStackTrace(Exception e)
+--- End of stack trace from previous location ---
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 328
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 337
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 342
+   at AniX_BusinessLogic.Controllers.UserController.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 126
+---------------------------------------------------
+Timestamp: 06/10/2023 04:01:45
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: Invalid attempt to call ReadAsync when reader is closed.
+Stack Trace:    at System.Data.Common.ADP.ExceptionWithStackTrace(Exception e)
+--- End of stack trace from previous location ---
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 328
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 337
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 342
+   at AniX_BusinessLogic.Controllers.UserController.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 126
+   at AniX_BusinessLogic.Controllers.UserController.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 131
+   at AniX_APP.Forms_Dashboard.Users.UpdateUserListAsync() in C:\Users\shevoK\source\repos\anix\AniX\AniX_APP\Forms_Dashboard\Users.cs:line 59
+---------------------------------------------------
+Timestamp: 06/10/2023 04:01:56
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 04:01:56, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 04:02:01
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: The connection was not closed. The connection's current state is open.
+Stack Trace:    at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.OpenAsync(CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 324
+---------------------------------------------------
+Timestamp: 06/10/2023 04:02:01
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: The connection was not closed. The connection's current state is open.
+Stack Trace:    at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.OpenAsync(CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 324
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 337
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 342
+   at AniX_BusinessLogic.Controllers.UserController.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 126
+---------------------------------------------------
+Timestamp: 06/10/2023 04:02:01
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: The connection was not closed. The connection's current state is open.
+Stack Trace:    at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.OpenAsync(CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 324
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 337
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 342
+   at AniX_BusinessLogic.Controllers.UserController.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 126
+   at AniX_BusinessLogic.Controllers.UserController.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 131
+   at AniX_APP.Forms_Dashboard.Users.UpdateUserListAsync() in C:\Users\shevoK\source\repos\anix\AniX\AniX_APP\Forms_Dashboard\Users.cs:line 59
+---------------------------------------------------
+Timestamp: 06/10/2023 04:02:01
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: Invalid attempt to call ReadAsync when reader is closed.
+Stack Trace:    at System.Data.Common.ADP.ExceptionWithStackTrace(Exception e)
+--- End of stack trace from previous location ---
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 328
+---------------------------------------------------
+Timestamp: 06/10/2023 04:02:01
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: Invalid attempt to call ReadAsync when reader is closed.
+Stack Trace:    at System.Data.Common.ADP.ExceptionWithStackTrace(Exception e)
+--- End of stack trace from previous location ---
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 328
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 337
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 342
+   at AniX_BusinessLogic.Controllers.UserController.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 126
+---------------------------------------------------
+Timestamp: 06/10/2023 04:02:01
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: Invalid attempt to call ReadAsync when reader is closed.
+Stack Trace:    at System.Data.Common.ADP.ExceptionWithStackTrace(Exception e)
+--- End of stack trace from previous location ---
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 328
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 337
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 342
+   at AniX_BusinessLogic.Controllers.UserController.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 126
+   at AniX_BusinessLogic.Controllers.UserController.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 131
+   at AniX_APP.Forms_Dashboard.Users.UpdateUserListAsync() in C:\Users\shevoK\source\repos\anix\AniX\AniX_APP\Forms_Dashboard\Users.cs:line 59
+---------------------------------------------------
+Timestamp: 06/10/2023 04:02:24
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 04:02:24, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 04:02:34
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: The connection was not closed. The connection's current state is open.
+Stack Trace:    at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.OpenAsync(CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 324
+---------------------------------------------------
+Timestamp: 06/10/2023 04:02:34
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: The connection was not closed. The connection's current state is open.
+Stack Trace:    at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.OpenAsync(CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 324
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 337
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 342
+   at AniX_BusinessLogic.Controllers.UserController.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 126
+---------------------------------------------------
+Timestamp: 06/10/2023 04:02:34
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: The connection was not closed. The connection's current state is open.
+Stack Trace:    at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.OpenAsync(CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 324
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 337
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 342
+   at AniX_BusinessLogic.Controllers.UserController.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 126
+   at AniX_BusinessLogic.Controllers.UserController.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 131
+   at AniX_APP.Forms_Dashboard.Users.UpdateUserListAsync() in C:\Users\shevoK\source\repos\anix\AniX\AniX_APP\Forms_Dashboard\Users.cs:line 59
+---------------------------------------------------
+Timestamp: 06/10/2023 04:02:34
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: Invalid attempt to call ReadAsync when reader is closed.
+Stack Trace:    at System.Data.Common.ADP.ExceptionWithStackTrace(Exception e)
+--- End of stack trace from previous location ---
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 328
+---------------------------------------------------
+Timestamp: 06/10/2023 04:02:35
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: Invalid attempt to call ReadAsync when reader is closed.
+Stack Trace:    at System.Data.Common.ADP.ExceptionWithStackTrace(Exception e)
+--- End of stack trace from previous location ---
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 328
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 337
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 342
+   at AniX_BusinessLogic.Controllers.UserController.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 126
+---------------------------------------------------
+Timestamp: 06/10/2023 04:02:35
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: Invalid attempt to call ReadAsync when reader is closed.
+Stack Trace:    at System.Data.Common.ADP.ExceptionWithStackTrace(Exception e)
+--- End of stack trace from previous location ---
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 328
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 337
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 342
+   at AniX_BusinessLogic.Controllers.UserController.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 126
+   at AniX_BusinessLogic.Controllers.UserController.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 131
+   at AniX_APP.Forms_Dashboard.Users.UpdateUserListAsync() in C:\Users\shevoK\source\repos\anix\AniX\AniX_APP\Forms_Dashboard\Users.cs:line 59
+---------------------------------------------------
+Timestamp: 06/10/2023 04:04:13
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 04:04:13, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 04:04:25
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: The connection was not closed. The connection's current state is open.
+Stack Trace:    at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.OpenAsync(CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 324
+---------------------------------------------------
+Timestamp: 06/10/2023 04:04:25
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: The connection was not closed. The connection's current state is open.
+Stack Trace:    at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.OpenAsync(CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 324
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 337
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 342
+   at AniX_BusinessLogic.Controllers.UserController.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 126
+---------------------------------------------------
+Timestamp: 06/10/2023 04:04:25
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: The connection was not closed. The connection's current state is open.
+Stack Trace:    at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.OpenAsync(CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 324
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 337
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 342
+   at AniX_BusinessLogic.Controllers.UserController.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 126
+   at AniX_BusinessLogic.Controllers.UserController.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 131
+   at AniX_APP.Forms_Dashboard.Users.UpdateUserListAsync() in C:\Users\shevoK\source\repos\anix\AniX\AniX_APP\Forms_Dashboard\Users.cs:line 59
+---------------------------------------------------
+Timestamp: 06/10/2023 04:04:25
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: Invalid attempt to call ReadAsync when reader is closed.
+Stack Trace:    at System.Data.Common.ADP.ExceptionWithStackTrace(Exception e)
+--- End of stack trace from previous location ---
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 328
+---------------------------------------------------
+Timestamp: 06/10/2023 04:04:25
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: Invalid attempt to call ReadAsync when reader is closed.
+Stack Trace:    at System.Data.Common.ADP.ExceptionWithStackTrace(Exception e)
+--- End of stack trace from previous location ---
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 328
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 337
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 342
+   at AniX_BusinessLogic.Controllers.UserController.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 126
+---------------------------------------------------
+Timestamp: 06/10/2023 04:04:25
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: Invalid attempt to call ReadAsync when reader is closed.
+Stack Trace:    at System.Data.Common.ADP.ExceptionWithStackTrace(Exception e)
+--- End of stack trace from previous location ---
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 328
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 337
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 342
+   at AniX_BusinessLogic.Controllers.UserController.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 126
+   at AniX_BusinessLogic.Controllers.UserController.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 131
+   at AniX_APP.Forms_Dashboard.Users.UpdateUserListAsync() in C:\Users\shevoK\source\repos\anix\AniX\AniX_APP\Forms_Dashboard\Users.cs:line 59
+---------------------------------------------------
+Timestamp: 06/10/2023 04:04:35
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: The connection was not closed. The connection's current state is open.
+Stack Trace:    at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.OpenAsync(CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 324
+---------------------------------------------------
+Timestamp: 06/10/2023 04:04:35
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: The connection was not closed. The connection's current state is open.
+Stack Trace:    at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.OpenAsync(CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 324
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 337
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 342
+   at AniX_BusinessLogic.Controllers.UserController.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 126
+---------------------------------------------------
+Timestamp: 06/10/2023 04:04:35
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: The connection was not closed. The connection's current state is open.
+Stack Trace:    at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.OpenAsync(CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 324
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 337
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 342
+   at AniX_BusinessLogic.Controllers.UserController.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 126
+   at AniX_BusinessLogic.Controllers.UserController.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 131
+   at AniX_APP.Forms_Dashboard.Users.UpdateUserListAsync() in C:\Users\shevoK\source\repos\anix\AniX\AniX_APP\Forms_Dashboard\Users.cs:line 59
+---------------------------------------------------
+Timestamp: 06/10/2023 04:04:35
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: Invalid attempt to call ReadAsync when reader is closed.
+Stack Trace:    at System.Data.Common.ADP.ExceptionWithStackTrace(Exception e)
+--- End of stack trace from previous location ---
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 328
+---------------------------------------------------
+Timestamp: 06/10/2023 04:04:35
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: Invalid attempt to call ReadAsync when reader is closed.
+Stack Trace:    at System.Data.Common.ADP.ExceptionWithStackTrace(Exception e)
+--- End of stack trace from previous location ---
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 328
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 337
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 342
+   at AniX_BusinessLogic.Controllers.UserController.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 126
+---------------------------------------------------
+Timestamp: 06/10/2023 04:04:35
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: Invalid attempt to call ReadAsync when reader is closed.
+Stack Trace:    at System.Data.Common.ADP.ExceptionWithStackTrace(Exception e)
+--- End of stack trace from previous location ---
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 328
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 337
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 342
+   at AniX_BusinessLogic.Controllers.UserController.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 126
+   at AniX_BusinessLogic.Controllers.UserController.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 131
+   at AniX_APP.Forms_Dashboard.Users.UpdateUserListAsync() in C:\Users\shevoK\source\repos\anix\AniX\AniX_APP\Forms_Dashboard\Users.cs:line 59
+---------------------------------------------------
+Timestamp: 06/10/2023 04:04:51
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: The connection was not closed. The connection's current state is open.
+Stack Trace:    at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.OpenAsync(CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 324
+---------------------------------------------------
+Timestamp: 06/10/2023 04:04:51
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: The connection was not closed. The connection's current state is open.
+Stack Trace:    at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.OpenAsync(CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 324
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 337
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 342
+   at AniX_BusinessLogic.Controllers.UserController.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 126
+---------------------------------------------------
+Timestamp: 06/10/2023 04:04:51
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: The connection was not closed. The connection's current state is open.
+Stack Trace:    at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.OpenAsync(CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 324
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 337
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 342
+   at AniX_BusinessLogic.Controllers.UserController.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 126
+   at AniX_BusinessLogic.Controllers.UserController.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 131
+   at AniX_APP.Forms_Dashboard.Users.UpdateUserListAsync() in C:\Users\shevoK\source\repos\anix\AniX\AniX_APP\Forms_Dashboard\Users.cs:line 59
+---------------------------------------------------
+Timestamp: 06/10/2023 04:04:51
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: Invalid attempt to call ReadAsync when reader is closed.
+Stack Trace:    at System.Data.Common.ADP.ExceptionWithStackTrace(Exception e)
+--- End of stack trace from previous location ---
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 328
+---------------------------------------------------
+Timestamp: 06/10/2023 04:04:51
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: Invalid attempt to call ReadAsync when reader is closed.
+Stack Trace:    at System.Data.Common.ADP.ExceptionWithStackTrace(Exception e)
+--- End of stack trace from previous location ---
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 328
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 337
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 342
+   at AniX_BusinessLogic.Controllers.UserController.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 126
+---------------------------------------------------
+Timestamp: 06/10/2023 04:04:51
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: Invalid attempt to call ReadAsync when reader is closed.
+Stack Trace:    at System.Data.Common.ADP.ExceptionWithStackTrace(Exception e)
+--- End of stack trace from previous location ---
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 328
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 337
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 342
+   at AniX_BusinessLogic.Controllers.UserController.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 126
+   at AniX_BusinessLogic.Controllers.UserController.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 131
+   at AniX_APP.Forms_Dashboard.Users.UpdateUserListAsync() in C:\Users\shevoK\source\repos\anix\AniX\AniX_APP\Forms_Dashboard\Users.cs:line 59
+---------------------------------------------------
+Timestamp: 06/10/2023 04:04:54
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: The connection was not closed. The connection's current state is open.
+Stack Trace:    at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.OpenAsync(CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 324
+---------------------------------------------------
+Timestamp: 06/10/2023 04:04:54
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: The connection was not closed. The connection's current state is open.
+Stack Trace:    at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.OpenAsync(CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 324
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 337
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 342
+   at AniX_BusinessLogic.Controllers.UserController.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 126
+---------------------------------------------------
+Timestamp: 06/10/2023 04:04:54
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: The connection was not closed. The connection's current state is open.
+Stack Trace:    at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.OpenAsync(CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 324
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 337
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 342
+   at AniX_BusinessLogic.Controllers.UserController.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 126
+   at AniX_BusinessLogic.Controllers.UserController.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 131
+   at AniX_APP.Forms_Dashboard.Users.UpdateUserListAsync() in C:\Users\shevoK\source\repos\anix\AniX\AniX_APP\Forms_Dashboard\Users.cs:line 59
+---------------------------------------------------
+Timestamp: 06/10/2023 04:04:54
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: Invalid attempt to call ReadAsync when reader is closed.
+Stack Trace:    at System.Data.Common.ADP.ExceptionWithStackTrace(Exception e)
+--- End of stack trace from previous location ---
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 328
+---------------------------------------------------
+Timestamp: 06/10/2023 04:04:54
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: Invalid attempt to call ReadAsync when reader is closed.
+Stack Trace:    at System.Data.Common.ADP.ExceptionWithStackTrace(Exception e)
+--- End of stack trace from previous location ---
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 328
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 337
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 342
+   at AniX_BusinessLogic.Controllers.UserController.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 126
+---------------------------------------------------
+Timestamp: 06/10/2023 04:04:54
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: Invalid attempt to call ReadAsync when reader is closed.
+Stack Trace:    at System.Data.Common.ADP.ExceptionWithStackTrace(Exception e)
+--- End of stack trace from previous location ---
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 328
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 337
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 342
+   at AniX_BusinessLogic.Controllers.UserController.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 126
+   at AniX_BusinessLogic.Controllers.UserController.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 131
+   at AniX_APP.Forms_Dashboard.Users.UpdateUserListAsync() in C:\Users\shevoK\source\repos\anix\AniX\AniX_APP\Forms_Dashboard\Users.cs:line 59
+---------------------------------------------------
+Timestamp: 06/10/2023 04:05:01
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 04:05:01, Username: admin, Success: False, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 04:05:01
+Severity: Error
+Exception Type: AniX_BusinessLogic.Controllers.UserController+AuthenticationException
+Message: Failed to authenticate.
+Stack Trace:    at AniX_BusinessLogic.Controllers.UserController.LoginAsync(String username, String password) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 49
+---------------------------------------------------
+Timestamp: 06/10/2023 04:05:03
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 04:05:03, Username: admin, Success: False, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 04:05:03
+Severity: Error
+Exception Type: AniX_BusinessLogic.Controllers.UserController+AuthenticationException
+Message: Failed to authenticate.
+Stack Trace:    at AniX_BusinessLogic.Controllers.UserController.LoginAsync(String username, String password) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 49
+---------------------------------------------------
+Timestamp: 06/10/2023 04:05:06
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 04:05:06, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 04:05:08
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: The connection was not closed. The connection's current state is open.
+Stack Trace:    at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.OpenAsync(CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 324
+---------------------------------------------------
+Timestamp: 06/10/2023 04:05:08
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: The connection was not closed. The connection's current state is open.
+Stack Trace:    at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.OpenAsync(CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 324
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 337
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 342
+   at AniX_BusinessLogic.Controllers.UserController.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 126
+---------------------------------------------------
+Timestamp: 06/10/2023 04:05:08
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: The connection was not closed. The connection's current state is open.
+Stack Trace:    at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.OpenAsync(CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 324
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 337
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 342
+   at AniX_BusinessLogic.Controllers.UserController.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 126
+   at AniX_BusinessLogic.Controllers.UserController.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 131
+   at AniX_APP.Forms_Dashboard.Users.UpdateUserListAsync() in C:\Users\shevoK\source\repos\anix\AniX\AniX_APP\Forms_Dashboard\Users.cs:line 59
+---------------------------------------------------
+Timestamp: 06/10/2023 04:05:08
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: Invalid attempt to call ReadAsync when reader is closed.
+Stack Trace:    at System.Data.Common.ADP.ExceptionWithStackTrace(Exception e)
+--- End of stack trace from previous location ---
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 328
+---------------------------------------------------
+Timestamp: 06/10/2023 04:05:08
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: Invalid attempt to call ReadAsync when reader is closed.
+Stack Trace:    at System.Data.Common.ADP.ExceptionWithStackTrace(Exception e)
+--- End of stack trace from previous location ---
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 328
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 337
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 342
+   at AniX_BusinessLogic.Controllers.UserController.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 126
+---------------------------------------------------
+Timestamp: 06/10/2023 04:05:08
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: Invalid attempt to call ReadAsync when reader is closed.
+Stack Trace:    at System.Data.Common.ADP.ExceptionWithStackTrace(Exception e)
+--- End of stack trace from previous location ---
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 328
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 337
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 342
+   at AniX_BusinessLogic.Controllers.UserController.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 126
+   at AniX_BusinessLogic.Controllers.UserController.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 131
+   at AniX_APP.Forms_Dashboard.Users.UpdateUserListAsync() in C:\Users\shevoK\source\repos\anix\AniX\AniX_APP\Forms_Dashboard\Users.cs:line 59
+---------------------------------------------------
+Timestamp: 06/10/2023 04:06:00
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 04:06:00, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 04:06:02
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: The connection was not closed. The connection's current state is open.
+Stack Trace:    at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.OpenAsync(CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 324
+---------------------------------------------------
+Timestamp: 06/10/2023 04:06:02
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: The connection was not closed. The connection's current state is open.
+Stack Trace:    at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.OpenAsync(CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 324
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 337
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 342
+   at AniX_BusinessLogic.Controllers.UserController.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 126
+---------------------------------------------------
+Timestamp: 06/10/2023 04:06:02
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: The connection was not closed. The connection's current state is open.
+Stack Trace:    at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.OpenAsync(CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 324
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 337
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 342
+   at AniX_BusinessLogic.Controllers.UserController.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 126
+   at AniX_BusinessLogic.Controllers.UserController.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 131
+   at AniX_APP.Forms_Dashboard.Users.UpdateUserListAsync() in C:\Users\shevoK\source\repos\anix\AniX\AniX_APP\Forms_Dashboard\Users.cs:line 59
+---------------------------------------------------
+Timestamp: 06/10/2023 04:06:02
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: Invalid attempt to call ReadAsync when reader is closed.
+Stack Trace:    at System.Data.Common.ADP.ExceptionWithStackTrace(Exception e)
+--- End of stack trace from previous location ---
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 328
+---------------------------------------------------
+Timestamp: 06/10/2023 04:06:02
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: Invalid attempt to call ReadAsync when reader is closed.
+Stack Trace:    at System.Data.Common.ADP.ExceptionWithStackTrace(Exception e)
+--- End of stack trace from previous location ---
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 328
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 337
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 342
+   at AniX_BusinessLogic.Controllers.UserController.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 126
+---------------------------------------------------
+Timestamp: 06/10/2023 04:06:02
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: Invalid attempt to call ReadAsync when reader is closed.
+Stack Trace:    at System.Data.Common.ADP.ExceptionWithStackTrace(Exception e)
+--- End of stack trace from previous location ---
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 328
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 337
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 342
+   at AniX_BusinessLogic.Controllers.UserController.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 126
+   at AniX_BusinessLogic.Controllers.UserController.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 131
+   at AniX_APP.Forms_Dashboard.Users.UpdateUserListAsync() in C:\Users\shevoK\source\repos\anix\AniX\AniX_APP\Forms_Dashboard\Users.cs:line 59
+---------------------------------------------------
+Timestamp: 06/10/2023 04:06:05
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: The connection was not closed. The connection's current state is open.
+Stack Trace:    at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.OpenAsync(CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 324
+---------------------------------------------------
+Timestamp: 06/10/2023 04:06:05
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: The connection was not closed. The connection's current state is open.
+Stack Trace:    at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.OpenAsync(CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 324
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 337
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 342
+   at AniX_BusinessLogic.Controllers.UserController.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 126
+---------------------------------------------------
+Timestamp: 06/10/2023 04:06:05
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: The connection was not closed. The connection's current state is open.
+Stack Trace:    at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.OpenAsync(CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 324
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 337
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 342
+   at AniX_BusinessLogic.Controllers.UserController.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 126
+   at AniX_BusinessLogic.Controllers.UserController.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 131
+   at AniX_APP.Forms_Dashboard.Users.UpdateUserListAsync() in C:\Users\shevoK\source\repos\anix\AniX\AniX_APP\Forms_Dashboard\Users.cs:line 59
+---------------------------------------------------
+Timestamp: 06/10/2023 04:06:05
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: Invalid operation. The connection is closed.
+Stack Trace:    at System.Data.SqlClient.SqlCommand.EndExecuteReader(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 327
+---------------------------------------------------
+Timestamp: 06/10/2023 04:06:05
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: Invalid operation. The connection is closed.
+Stack Trace:    at System.Data.SqlClient.SqlCommand.EndExecuteReader(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 327
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 337
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 342
+   at AniX_BusinessLogic.Controllers.UserController.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 126
+---------------------------------------------------
+Timestamp: 06/10/2023 04:06:05
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: Invalid operation. The connection is closed.
+Stack Trace:    at System.Data.SqlClient.SqlCommand.EndExecuteReader(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 327
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 337
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 342
+   at AniX_BusinessLogic.Controllers.UserController.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 126
+   at AniX_BusinessLogic.Controllers.UserController.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 131
+   at AniX_APP.Forms_Dashboard.Users.UpdateUserListAsync() in C:\Users\shevoK\source\repos\anix\AniX\AniX_APP\Forms_Dashboard\Users.cs:line 59
+---------------------------------------------------
+Timestamp: 06/10/2023 04:06:19
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 04:06:19, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 04:06:21
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: The connection was not closed. The connection's current state is open.
+Stack Trace:    at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.OpenAsync(CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 324
+---------------------------------------------------
+Timestamp: 06/10/2023 04:06:21
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: The connection was not closed. The connection's current state is open.
+Stack Trace:    at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.OpenAsync(CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 324
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 337
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 342
+   at AniX_BusinessLogic.Controllers.UserController.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 126
+---------------------------------------------------
+Timestamp: 06/10/2023 04:06:21
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: The connection was not closed. The connection's current state is open.
+Stack Trace:    at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.OpenAsync(CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 324
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 337
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 342
+   at AniX_BusinessLogic.Controllers.UserController.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 126
+   at AniX_BusinessLogic.Controllers.UserController.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 131
+   at AniX_APP.Forms_Dashboard.Users.tbxUser__TextChanged(Object sender, EventArgs e) in C:\Users\shevoK\source\repos\anix\AniX\AniX_APP\Forms_Dashboard\Users.cs:line 59
+---------------------------------------------------
+Timestamp: 06/10/2023 04:06:21
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: Invalid attempt to call ReadAsync when reader is closed.
+Stack Trace:    at System.Data.Common.ADP.ExceptionWithStackTrace(Exception e)
+--- End of stack trace from previous location ---
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 328
+---------------------------------------------------
+Timestamp: 06/10/2023 04:06:21
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: Invalid attempt to call ReadAsync when reader is closed.
+Stack Trace:    at System.Data.Common.ADP.ExceptionWithStackTrace(Exception e)
+--- End of stack trace from previous location ---
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 328
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 337
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 342
+   at AniX_BusinessLogic.Controllers.UserController.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 126
+---------------------------------------------------
+Timestamp: 06/10/2023 04:06:21
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: Invalid attempt to call ReadAsync when reader is closed.
+Stack Trace:    at System.Data.Common.ADP.ExceptionWithStackTrace(Exception e)
+--- End of stack trace from previous location ---
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 328
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 337
+   at AniX_DAL.UserDAL.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 342
+   at AniX_BusinessLogic.Controllers.UserController.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 126
+   at AniX_BusinessLogic.Controllers.UserController.FetchFilteredAndSearchedUsersAsync(String filter, String searchTerm) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 131
+   at AniX_APP.Forms_Dashboard.Users.tbxUser__TextChanged(Object sender, EventArgs e) in C:\Users\shevoK\source\repos\anix\AniX\AniX_APP\Forms_Dashboard\Users.cs:line 59
+---------------------------------------------------
+Timestamp: 06/10/2023 04:09:02
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 04:09:02, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 04:09:56
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 04:09:56, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 16:56:06
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: The connection was not closed. The connection's current state is connecting.
+Stack Trace:    at System.Data.ProviderBase.DbConnectionClosedConnecting.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.OpenAsync(CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at AniX_DAL.UserDAL.AuthenticateUserAsync(String username, String rawPassword) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 23
+---------------------------------------------------
+Timestamp: 06/10/2023 16:56:06
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: The connection was not closed. The connection's current state is connecting.
+Stack Trace:    at System.Data.ProviderBase.DbConnectionClosedConnecting.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.OpenAsync(CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at AniX_DAL.UserDAL.AuthenticateUserAsync(String username, String rawPassword) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 23
+   at AniX_DAL.UserDAL.AuthenticateUserAsync(String username, String rawPassword) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 43
+   at AniX_DAL.UserDAL.AuthenticateUserAsync(String username, String rawPassword) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 48
+   at AniX_BusinessLogic.AuthenticationService.AuthenticateUserAsync(String username, String password) in C:\Users\shevoK\source\repos\anix\AniX\AniX_BusinessLogic\AuthenticationService.cs:line 23
+---------------------------------------------------
+Timestamp: 06/10/2023 16:56:06
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 16:56:06, Username: admin, Success: False, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 16:56:06
+Severity: Error
+Exception Type: AniX_BusinessLogic.Controllers.UserController+AuthenticationException
+Message: Failed to authenticate.
+Stack Trace:    at AniX_BusinessLogic.Controllers.UserController.LoginAsync(String username, String password) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 50
+---------------------------------------------------
+Timestamp: 06/10/2023 16:56:06
+Severity: Error
+Exception Type: System.Threading.Tasks.TaskCanceledException
+Message: A task was canceled.
+Stack Trace:    at AniX_DAL.UserDAL.AuthenticateUserAsync(String username, String rawPassword) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 23
+---------------------------------------------------
+Timestamp: 06/10/2023 16:56:06
+Severity: Error
+Exception Type: System.Threading.Tasks.TaskCanceledException
+Message: A task was canceled.
+Stack Trace:    at AniX_DAL.UserDAL.AuthenticateUserAsync(String username, String rawPassword) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 23
+   at AniX_DAL.UserDAL.AuthenticateUserAsync(String username, String rawPassword) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 43
+   at AniX_DAL.UserDAL.AuthenticateUserAsync(String username, String rawPassword) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 48
+   at AniX_BusinessLogic.AuthenticationService.AuthenticateUserAsync(String username, String password) in C:\Users\shevoK\source\repos\anix\AniX\AniX_BusinessLogic\AuthenticationService.cs:line 23
+---------------------------------------------------
+Timestamp: 06/10/2023 16:56:06
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 16:56:06, Username: admin, Success: False, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 16:56:06
+Severity: Error
+Exception Type: AniX_BusinessLogic.Controllers.UserController+AuthenticationException
+Message: Failed to authenticate.
+Stack Trace:    at AniX_BusinessLogic.Controllers.UserController.LoginAsync(String username, String password) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 50
+---------------------------------------------------
+Timestamp: 06/10/2023 16:56:15
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 16:56:15, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 16:57:20
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 16:57:20, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 16:57:49
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 16:57:49, Username: admin, Success: False, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 16:57:50
+Severity: Error
+Exception Type: AniX_BusinessLogic.Controllers.UserController+AuthenticationException
+Message: Failed to authenticate.
+Stack Trace:    at AniX_BusinessLogic.Controllers.UserController.LoginAsync(String username, String password) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 50
+---------------------------------------------------
+Timestamp: 06/10/2023 16:57:52
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 16:57:52, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 16:58:31
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 16:58:31, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 17:00:48
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 17:00:48, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 17:02:04
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 17:02:04, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 17:18:06
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 17:18:06, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 17:36:11
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 17:36:11, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 17:38:40
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 17:38:40, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 17:40:10
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 17:40:10, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 17:40:41
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 17:40:41, Username: user, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 17:44:49
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 17:44:49, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 17:45:27
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 17:45:27, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 17:46:09
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 17:46:09, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 17:54:01
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 17:54:01, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 17:54:50
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 17:54:50, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 17:55:31
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 17:55:31, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 17:55:51
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 17:55:51, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 17:56:17
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 17:56:17, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 17:56:53
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 17:56:53, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 17:57:11
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 17:57:11, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 17:57:16
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 17:57:16, Username: user, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 17:57:16
+Severity: Error
+Exception Type: AniX_BusinessLogic.Controllers.UserController+AuthorizationException
+Message: You are not authorized to access this application.
+Stack Trace:    at AniX_BusinessLogic.Controllers.UserController.LoginAsync(String username, String password) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 60
+---------------------------------------------------
+Timestamp: 06/10/2023 17:57:21
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 17:57:21, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 18:00:30
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 18:00:30, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 18:01:09
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 18:01:09, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 18:01:40
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 18:01:40, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 18:02:09
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 18:02:09, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 18:03:23
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 18:03:23, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 18:03:39
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 18:03:39, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 18:04:18
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 18:04:18, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 18:04:43
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 18:04:43, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 18:08:32
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 18:08:32, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 18:10:49
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 18:10:49, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 18:11:22
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 18:11:22, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 18:13:49
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 18:13:49, Username: ADMIN, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 18:14:15
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 18:14:15, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 18:14:15
+Severity: Error
+Exception Type: AniX_BusinessLogic.Controllers.UserController+AccountBannedException
+Message: Your account has been banned.
+Stack Trace:    at AniX_BusinessLogic.Controllers.UserController.LoginAsync(String username, String password) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 55
+---------------------------------------------------
+Timestamp: 06/10/2023 18:14:20
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 18:14:20, Username: admin, Success: False, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 18:14:20
+Severity: Error
+Exception Type: AniX_BusinessLogic.Controllers.UserController+AuthenticationException
+Message: Failed to authenticate.
+Stack Trace:    at AniX_BusinessLogic.Controllers.UserController.LoginAsync(String username, String password) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 50
+---------------------------------------------------
+Timestamp: 06/10/2023 18:14:26
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 18:14:26, Username: shevok, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 18:14:43
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 18:14:43, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 18:14:43
+Severity: Error
+Exception Type: AniX_BusinessLogic.Controllers.UserController+AccountBannedException
+Message: Your account has been banned.
+Stack Trace:    at AniX_BusinessLogic.Controllers.UserController.LoginAsync(String username, String password) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 55
+---------------------------------------------------
+Timestamp: 06/10/2023 18:14:45
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 18:14:45, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 18:14:45
+Severity: Error
+Exception Type: AniX_BusinessLogic.Controllers.UserController+AccountBannedException
+Message: Your account has been banned.
+Stack Trace:    at AniX_BusinessLogic.Controllers.UserController.LoginAsync(String username, String password) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 55
+---------------------------------------------------
+Timestamp: 06/10/2023 18:14:51
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 18:14:51, Username: user, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 18:14:51
+Severity: Error
+Exception Type: AniX_BusinessLogic.Controllers.UserController+AuthorizationException
+Message: You are not authorized to access this application.
+Stack Trace:    at AniX_BusinessLogic.Controllers.UserController.LoginAsync(String username, String password) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 60
+---------------------------------------------------
+Timestamp: 06/10/2023 18:15:01
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 18:15:01, Username: shevok, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 18:17:19
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 18:17:19, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 18:17:19
+Severity: Error
+Exception Type: AniX_BusinessLogic.Controllers.UserController+AccountBannedException
+Message: Your account has been banned.
+Stack Trace:    at AniX_BusinessLogic.Controllers.UserController.LoginAsync(String username, String password) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 55
+---------------------------------------------------
+Timestamp: 06/10/2023 18:17:24
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 18:17:24, Username: shevok, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 18:18:04
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 18:18:04, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 18:20:18
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 18:20:18, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 18:21:03
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 18:21:03, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 18:22:34
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 18:22:34, Username: banned, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 18:22:34
+Severity: Error
+Exception Type: AniX_BusinessLogic.Controllers.UserController+AccountBannedException
+Message: Your account has been banned.
+Stack Trace:    at AniX_BusinessLogic.Controllers.UserController.LoginAsync(String username, String password) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 55
+---------------------------------------------------
+Timestamp: 06/10/2023 18:22:40
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 18:22:40, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 18:24:07
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 18:24:07, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 18:40:48
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 18:40:48, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 18:41:07
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 18:41:07, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 18:41:07
+Severity: Error
+Exception Type: AniX_BusinessLogic.Controllers.UserController+AuthorizationException
+Message: You are not authorized to access this application.
+Stack Trace:    at AniX_BusinessLogic.Controllers.UserController.LoginAsync(String username, String password) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 60
+---------------------------------------------------
+Timestamp: 06/10/2023 18:41:13
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 18:41:13, Username: shevok, Success: False, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 18:41:13
+Severity: Error
+Exception Type: AniX_BusinessLogic.Controllers.UserController+AuthenticationException
+Message: Failed to authenticate.
+Stack Trace:    at AniX_BusinessLogic.Controllers.UserController.LoginAsync(String username, String password) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 50
+---------------------------------------------------
+Timestamp: 06/10/2023 18:41:17
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 18:41:17, Username: shevok, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 18:41:26
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 18:41:26, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 18:41:26
+Severity: Error
+Exception Type: AniX_BusinessLogic.Controllers.UserController+AccountBannedException
+Message: Your account has been banned.
+Stack Trace:    at AniX_BusinessLogic.Controllers.UserController.LoginAsync(String username, String password) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 55
+---------------------------------------------------
+Timestamp: 06/10/2023 18:41:30
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 18:41:30, Username: shevok, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 18:53:13
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 18:53:13, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 18:53:52
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 18:53:52, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 18:56:06
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 18:56:06, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 18:56:37
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 18:56:37, Username: Admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 18:56:45
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 18:56:45, Username: Admin, Success: False, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 18:56:45
+Severity: Error
+Exception Type: AniX_BusinessLogic.Controllers.UserController+AuthenticationException
+Message: Failed to authenticate.
+Stack Trace:    at AniX_BusinessLogic.Controllers.UserController.LoginAsync(String username, String password) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 50
+---------------------------------------------------
+Timestamp: 06/10/2023 18:56:49
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 18:56:49, Username: Admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 18:57:12
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 18:57:12, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 18:58:30
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 18:58:30, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 18:58:32
+Severity: Error
+Exception Type: System.InvalidCastException
+Message: Unable to cast object of type '<>f__AnonymousType0`6[System.Int32,System.String,System.String,System.String,System.String,System.String]' to type 'Anix_Shared.DomainModels.User'.
+Stack Trace:    at AniX_APP.Forms_Dashboard.Users.dgvUsers_CellDoubleClick(Object sender, DataGridViewCellEventArgs e) in C:\Users\shevoK\source\repos\anix\AniX\AniX_APP\Forms_Dashboard\Users.cs:line 137
+---------------------------------------------------
+Timestamp: 06/10/2023 18:58:34
+Severity: Error
+Exception Type: System.InvalidCastException
+Message: Unable to cast object of type '<>f__AnonymousType0`6[System.Int32,System.String,System.String,System.String,System.String,System.String]' to type 'Anix_Shared.DomainModels.User'.
+Stack Trace:    at AniX_APP.Forms_Dashboard.Users.dgvUsers_CellDoubleClick(Object sender, DataGridViewCellEventArgs e) in C:\Users\shevoK\source\repos\anix\AniX\AniX_APP\Forms_Dashboard\Users.cs:line 137
+---------------------------------------------------
+Timestamp: 06/10/2023 18:58:37
+Severity: Error
+Exception Type: System.InvalidCastException
+Message: Unable to cast object of type '<>f__AnonymousType0`6[System.Int32,System.String,System.String,System.String,System.String,System.String]' to type 'Anix_Shared.DomainModels.User'.
+Stack Trace:    at AniX_APP.Forms_Dashboard.Users.dgvUsers_CellDoubleClick(Object sender, DataGridViewCellEventArgs e) in C:\Users\shevoK\source\repos\anix\AniX\AniX_APP\Forms_Dashboard\Users.cs:line 137
+---------------------------------------------------
+Timestamp: 06/10/2023 18:58:48
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 18:58:48, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 18:58:49
+Severity: Error
+Exception Type: System.InvalidCastException
+Message: Unable to cast object of type '<>f__AnonymousType0`6[System.Int32,System.String,System.String,System.String,System.String,System.String]' to type 'Anix_Shared.DomainModels.User'.
+Stack Trace:    at AniX_APP.Forms_Dashboard.Users.dgvUsers_CellDoubleClick(Object sender, DataGridViewCellEventArgs e) in C:\Users\shevoK\source\repos\anix\AniX\AniX_APP\Forms_Dashboard\Users.cs:line 134
+---------------------------------------------------
+Timestamp: 06/10/2023 18:58:51
+Severity: Error
+Exception Type: System.InvalidCastException
+Message: Unable to cast object of type '<>f__AnonymousType0`6[System.Int32,System.String,System.String,System.String,System.String,System.String]' to type 'Anix_Shared.DomainModels.User'.
+Stack Trace:    at AniX_APP.Forms_Dashboard.Users.btnDetails_Click(Object sender, EventArgs e) in C:\Users\shevoK\source\repos\anix\AniX\AniX_APP\Forms_Dashboard\Users.cs:line 112
+---------------------------------------------------
+Timestamp: 06/10/2023 19:00:22
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 19:00:22, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 19:00:24
+Severity: Error
+Exception Type: System.InvalidCastException
+Message: Unable to cast object of type '<>f__AnonymousType0`6[System.Int32,System.String,System.String,System.String,System.String,System.String]' to type 'Anix_Shared.DomainModels.User'.
+Stack Trace:    at AniX_APP.Forms_Dashboard.Users.dgvUsers_CellDoubleClick(Object sender, DataGridViewCellEventArgs e) in C:\Users\shevoK\source\repos\anix\AniX\AniX_APP\Forms_Dashboard\Users.cs:line 142
+---------------------------------------------------
+Timestamp: 06/10/2023 19:00:25
+Severity: Error
+Exception Type: System.InvalidCastException
+Message: Unable to cast object of type '<>f__AnonymousType0`6[System.Int32,System.String,System.String,System.String,System.String,System.String]' to type 'Anix_Shared.DomainModels.User'.
+Stack Trace:    at AniX_APP.Forms_Dashboard.Users.dgvUsers_CellDoubleClick(Object sender, DataGridViewCellEventArgs e) in C:\Users\shevoK\source\repos\anix\AniX\AniX_APP\Forms_Dashboard\Users.cs:line 142
+---------------------------------------------------
+Timestamp: 06/10/2023 19:00:25
+Severity: Error
+Exception Type: System.InvalidCastException
+Message: Unable to cast object of type '<>f__AnonymousType0`6[System.Int32,System.String,System.String,System.String,System.String,System.String]' to type 'Anix_Shared.DomainModels.User'.
+Stack Trace:    at AniX_APP.Forms_Dashboard.Users.dgvUsers_CellDoubleClick(Object sender, DataGridViewCellEventArgs e) in C:\Users\shevoK\source\repos\anix\AniX\AniX_APP\Forms_Dashboard\Users.cs:line 142
+---------------------------------------------------
+Timestamp: 06/10/2023 19:00:27
+Severity: Error
+Exception Type: System.InvalidCastException
+Message: Unable to cast object of type '<>f__AnonymousType0`6[System.Int32,System.String,System.String,System.String,System.String,System.String]' to type 'Anix_Shared.DomainModels.User'.
+Stack Trace:    at AniX_APP.Forms_Dashboard.Users.dgvUsers_CellDoubleClick(Object sender, DataGridViewCellEventArgs e) in C:\Users\shevoK\source\repos\anix\AniX\AniX_APP\Forms_Dashboard\Users.cs:line 142
+---------------------------------------------------
+Timestamp: 06/10/2023 19:02:42
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 19:02:42, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 19:02:44
+Severity: Error
+Exception Type: System.InvalidCastException
+Message: Unable to cast object of type '<>f__AnonymousType0`6[System.Int32,System.String,System.String,System.String,System.String,System.String]' to type 'Anix_Shared.DomainModels.User'.
+Stack Trace:    at AniX_APP.Forms_Dashboard.Users.dgvUsers_CellDoubleClick(Object sender, DataGridViewCellEventArgs e) in C:\Users\shevoK\source\repos\anix\AniX\AniX_APP\Forms_Dashboard\Users.cs:line 141
+---------------------------------------------------
+Timestamp: 06/10/2023 19:02:46
+Severity: Error
+Exception Type: System.InvalidCastException
+Message: Unable to cast object of type '<>f__AnonymousType0`6[System.Int32,System.String,System.String,System.String,System.String,System.String]' to type 'Anix_Shared.DomainModels.User'.
+Stack Trace:    at AniX_APP.Forms_Dashboard.Users.btnDetails_Click(Object sender, EventArgs e) in C:\Users\shevoK\source\repos\anix\AniX\AniX_APP\Forms_Dashboard\Users.cs:line 119
+---------------------------------------------------
+Timestamp: 06/10/2023 21:42:56
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 21:42:56, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 21:43:48
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 21:43:48, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 21:44:55
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 21:44:55, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 21:44:56
+Severity: Error
+Exception Type: System.InvalidCastException
+Message: Unable to cast object of type '<>f__AnonymousType0`6[System.Int32,System.String,System.String,System.String,System.String,System.String]' to type 'Anix_Shared.DomainModels.User'.
+Stack Trace:    at AniX_APP.Forms_Dashboard.Users.dgvUsers_CellDoubleClick(Object sender, DataGridViewCellEventArgs e) in C:\Users\shevoK\source\repos\anix\AniX\AniX_APP\Forms_Dashboard\Users.cs:line 157
+---------------------------------------------------
+Timestamp: 06/10/2023 21:46:08
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 21:46:08, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 21:46:15
+Severity: Error
+Exception Type: System.InvalidCastException
+Message: Unable to cast object of type '<>f__AnonymousType0`6[System.Int32,System.String,System.String,System.String,System.String,System.String]' to type 'Anix_Shared.DomainModels.User'.
+Stack Trace:    at AniX_APP.Forms_Dashboard.Users.dgvUsers_CellDoubleClick(Object sender, DataGridViewCellEventArgs e) in C:\Users\shevoK\source\repos\anix\AniX\AniX_APP\Forms_Dashboard\Users.cs:line 140
+---------------------------------------------------
+Timestamp: 06/10/2023 21:46:17
+Severity: Error
+Exception Type: System.InvalidCastException
+Message: Unable to cast object of type '<>f__AnonymousType0`6[System.Int32,System.String,System.String,System.String,System.String,System.String]' to type 'Anix_Shared.DomainModels.User'.
+Stack Trace:    at AniX_APP.Forms_Dashboard.Users.dgvUsers_CellDoubleClick(Object sender, DataGridViewCellEventArgs e) in C:\Users\shevoK\source\repos\anix\AniX\AniX_APP\Forms_Dashboard\Users.cs:line 140
+---------------------------------------------------
+Timestamp: 06/10/2023 21:48:34
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 21:48:34, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 21:50:40
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 21:50:40, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 21:53:54
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 21:53:54, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 21:56:09
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 21:56:09, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 21:57:15
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 21:57:15, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 21:58:06
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 21:58:06, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 22:15:38
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 22:15:38, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 22:19:09
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 22:19:09, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 22:19:59
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 22:19:59, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 22:20:50
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 22:20:50, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 22:22:25
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 22:22:25, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 22:24:02
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 22:24:02, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 22:39:54
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 22:39:54, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 22:41:49
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 22:41:49, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 22:43:58
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 22:43:58, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 22:48:42
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 22:48:42, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 22:49:36
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 22:49:36, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 22:51:24
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 22:51:24, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 22:51:52
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 22:51:52, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 22:52:17
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 22:52:17, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 22:52:42
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 22:52:42, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 22:53:04
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 22:53:04, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 22:53:19
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 22:53:19, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 06/10/2023 22:55:06
+Severity: Info
+Custom Message: Timestamp: 06/10/2023 22:55:06, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 07/10/2023 16:32:19
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: The connection was not closed. The connection's current state is connecting.
+Stack Trace:    at System.Data.ProviderBase.DbConnectionClosedConnecting.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.OpenAsync(CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at AniX_DAL.UserDAL.AuthenticateUserAsync(String username, String rawPassword) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 23
+---------------------------------------------------
+Timestamp: 07/10/2023 16:32:19
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: The connection was not closed. The connection's current state is connecting.
+Stack Trace:    at System.Data.ProviderBase.DbConnectionClosedConnecting.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.OpenAsync(CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at AniX_DAL.UserDAL.AuthenticateUserAsync(String username, String rawPassword) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 23
+   at AniX_DAL.UserDAL.AuthenticateUserAsync(String username, String rawPassword) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 43
+   at AniX_DAL.UserDAL.AuthenticateUserAsync(String username, String rawPassword) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 48
+   at AniX_BusinessLogic.AuthenticationService.AuthenticateUserAsync(String username, String password) in C:\Users\shevoK\source\repos\anix\AniX\AniX_BusinessLogic\AuthenticationService.cs:line 23
+---------------------------------------------------
+Timestamp: 07/10/2023 16:32:19
+Severity: Info
+Custom Message: Timestamp: 07/10/2023 16:32:19, Username: admin, Success: False, Additional Info: 
+---------------------------------------------------
+Timestamp: 07/10/2023 16:32:19
+Severity: Error
+Exception Type: AniX_BusinessLogic.Controllers.UserController+AuthenticationException
+Message: Failed to authenticate.
+Stack Trace:    at AniX_BusinessLogic.Controllers.UserController.LoginAsync(String username, String password) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 50
+---------------------------------------------------
+Timestamp: 07/10/2023 16:32:19
+Severity: Error
+Exception Type: System.Threading.Tasks.TaskCanceledException
+Message: A task was canceled.
+Stack Trace:    at AniX_DAL.UserDAL.AuthenticateUserAsync(String username, String rawPassword) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 23
+---------------------------------------------------
+Timestamp: 07/10/2023 16:32:19
+Severity: Error
+Exception Type: System.Threading.Tasks.TaskCanceledException
+Message: A task was canceled.
+Stack Trace:    at AniX_DAL.UserDAL.AuthenticateUserAsync(String username, String rawPassword) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 23
+   at AniX_DAL.UserDAL.AuthenticateUserAsync(String username, String rawPassword) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 43
+   at AniX_DAL.UserDAL.AuthenticateUserAsync(String username, String rawPassword) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 48
+   at AniX_BusinessLogic.AuthenticationService.AuthenticateUserAsync(String username, String password) in C:\Users\shevoK\source\repos\anix\AniX\AniX_BusinessLogic\AuthenticationService.cs:line 23
+---------------------------------------------------
+Timestamp: 07/10/2023 16:32:19
+Severity: Info
+Custom Message: Timestamp: 07/10/2023 16:32:19, Username: admin, Success: False, Additional Info: 
+---------------------------------------------------
+Timestamp: 07/10/2023 16:32:19
+Severity: Error
+Exception Type: AniX_BusinessLogic.Controllers.UserController+AuthenticationException
+Message: Failed to authenticate.
+Stack Trace:    at AniX_BusinessLogic.Controllers.UserController.LoginAsync(String username, String password) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 50
+---------------------------------------------------
+Timestamp: 07/10/2023 16:32:37
+Severity: Info
+Custom Message: Timestamp: 07/10/2023 16:32:37, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 07/10/2023 16:33:14
+Severity: Error
+Exception Type: System.Data.SqlClient.SqlException
+Message: Violation of UNIQUE KEY constraint 'UQ__User__A9D10534832C66A3'. Cannot insert duplicate key in object 'dbo.User'. The duplicate key value is (testing@gmail.com).
+The statement has been terminated.
+Stack Trace:    at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader()
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQueryInternal(IAsyncResult asyncResult)
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQuery(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at AniX_DAL.UserDAL.CreateAsync(User user) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 68
+---------------------------------------------------
+Timestamp: 07/10/2023 16:33:14
+Severity: Error
+Exception Type: System.Data.SqlClient.SqlException
+Message: Violation of UNIQUE KEY constraint 'UQ__User__A9D10534832C66A3'. Cannot insert duplicate key in object 'dbo.User'. The duplicate key value is (testing@gmail.com).
+The statement has been terminated.
+Stack Trace:    at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader()
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQueryInternal(IAsyncResult asyncResult)
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQuery(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at AniX_DAL.UserDAL.CreateAsync(User user) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 68
+   at AniX_DAL.UserDAL.CreateAsync(User user) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 73
+   at AniX_DAL.UserDAL.CreateAsync(User user) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 78
+   at AniX_APP.Forms_Utility.User_Add_Edit.AddNewUserAsync(User user) in C:\Users\shevoK\source\repos\anix\AniX\AniX_APP\Forms_Utility\User_Add_Edit.cs:line 118
+   at AniX_APP.Forms_Utility.User_Add_Edit.btnSave_Click(Object sender, EventArgs e) in C:\Users\shevoK\source\repos\anix\AniX\AniX_APP\Forms_Utility\User_Add_Edit.cs:line 82
+---------------------------------------------------
+Timestamp: 07/10/2023 16:33:29
+Severity: Error
+Exception Type: System.Data.SqlClient.SqlException
+Message: Violation of UNIQUE KEY constraint 'UQ__User__536C85E41878F237'. Cannot insert duplicate key in object 'dbo.User'. The duplicate key value is (testing).
+The statement has been terminated.
+Stack Trace:    at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader()
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQueryInternal(IAsyncResult asyncResult)
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQuery(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at AniX_DAL.UserDAL.CreateAsync(User user) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 68
+---------------------------------------------------
+Timestamp: 07/10/2023 16:33:29
+Severity: Error
+Exception Type: System.Data.SqlClient.SqlException
+Message: Violation of UNIQUE KEY constraint 'UQ__User__536C85E41878F237'. Cannot insert duplicate key in object 'dbo.User'. The duplicate key value is (testing).
+The statement has been terminated.
+Stack Trace:    at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader()
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQueryInternal(IAsyncResult asyncResult)
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQuery(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at AniX_DAL.UserDAL.CreateAsync(User user) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 68
+   at AniX_DAL.UserDAL.CreateAsync(User user) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 73
+   at AniX_DAL.UserDAL.CreateAsync(User user) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 78
+   at AniX_APP.Forms_Utility.User_Add_Edit.AddNewUserAsync(User user) in C:\Users\shevoK\source\repos\anix\AniX\AniX_APP\Forms_Utility\User_Add_Edit.cs:line 118
+   at AniX_APP.Forms_Utility.User_Add_Edit.btnSave_Click(Object sender, EventArgs e) in C:\Users\shevoK\source\repos\anix\AniX\AniX_APP\Forms_Utility\User_Add_Edit.cs:line 82
+---------------------------------------------------
+Timestamp: 07/10/2023 16:34:14
+Severity: Info
+Custom Message: Timestamp: 07/10/2023 16:34:14, Username: testing2, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 07/10/2023 16:34:14
+Severity: Error
+Exception Type: AniX_BusinessLogic.Controllers.UserController+AccountBannedException
+Message: Your account has been banned.
+Stack Trace:    at AniX_BusinessLogic.Controllers.UserController.LoginAsync(String username, String password) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 55
+---------------------------------------------------
+Timestamp: 07/10/2023 16:34:20
+Severity: Info
+Custom Message: Timestamp: 07/10/2023 16:34:20, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 07/10/2023 16:44:08
+Severity: Info
+Custom Message: Timestamp: 07/10/2023 16:44:08, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 07/10/2023 17:23:37
+Severity: Info
+Custom Message: Timestamp: 07/10/2023 17:23:37, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 07/10/2023 17:36:45
+Severity: Info
+Custom Message: Timestamp: 07/10/2023 17:36:45, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 07/10/2023 17:51:51
+Severity: Info
+Custom Message: Timestamp: 07/10/2023 17:51:51, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 07/10/2023 18:06:10
+Severity: Info
+Custom Message: Timestamp: 07/10/2023 18:06:10, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 07/10/2023 18:11:50
+Severity: Info
+Custom Message: Timestamp: 07/10/2023 18:11:50, Username: admin, Success: False, Additional Info: 
+---------------------------------------------------
+Timestamp: 07/10/2023 18:11:50
+Severity: Error
+Exception Type: AniX_Controllers.UserController+AuthenticationException
+Message: Failed to authenticate.
+Stack Trace:    at AniX_Controllers.UserController.LoginAsync(String username, String password) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 50
+---------------------------------------------------
+Timestamp: 07/10/2023 18:11:53
+Severity: Info
+Custom Message: Timestamp: 07/10/2023 18:11:53, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 07/10/2023 18:16:26
+Severity: Info
+Custom Message: Timestamp: 07/10/2023 18:16:26, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 07/10/2023 18:17:02
+Severity: Info
+Custom Message: Timestamp: 07/10/2023 18:17:02, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 07/10/2023 18:22:00
+Severity: Info
+Custom Message: Timestamp: 07/10/2023 18:22:00, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 07/10/2023 18:22:28
+Severity: Info
+Custom Message: Timestamp: 07/10/2023 18:22:28, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 07/10/2023 18:23:11
+Severity: Info
+Custom Message: Timestamp: 07/10/2023 18:23:11, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 07/10/2023 18:25:56
+Severity: Info
+Custom Message: Timestamp: 07/10/2023 18:25:56, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 07/10/2023 18:27:07
+Severity: Error
+Exception Type: System.Data.SqlClient.SqlException
+Message: Violation of UNIQUE KEY constraint 'UQ__User__A9D10534832C66A3'. Cannot insert duplicate key in object 'dbo.User'. The duplicate key value is (2@@).
+The statement has been terminated.
+Stack Trace:    at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader()
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQueryInternal(IAsyncResult asyncResult)
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQuery(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at AniX_DAL.UserDAL.UpdateAsync(User user) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 96
+---------------------------------------------------
+Timestamp: 07/10/2023 18:27:07
+Severity: Error
+Exception Type: System.Data.SqlClient.SqlException
+Message: Violation of UNIQUE KEY constraint 'UQ__User__A9D10534832C66A3'. Cannot insert duplicate key in object 'dbo.User'. The duplicate key value is (2@@).
+The statement has been terminated.
+Stack Trace:    at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader()
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQueryInternal(IAsyncResult asyncResult)
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQuery(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at AniX_DAL.UserDAL.UpdateAsync(User user) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 96
+   at AniX_DAL.UserDAL.UpdateAsync(User user) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 101
+   at AniX_DAL.UserDAL.UpdateAsync(User user) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 106
+   at AniX_FormsLogic.UserAddEditFormLogic.UpdateExistingUserAsync(User user, String newPassword) in C:\Users\shevoK\source\repos\anix\AniX\AniX_FormsLogic\UserAddEditFormLogic.cs:line 41
+   at AniX_APP.Forms_Utility.User_Add_Edit.btnSave_Click(Object sender, EventArgs e) in C:\Users\shevoK\source\repos\anix\AniX\AniX_APP\Forms_Utility\User_Add_Edit.cs:line 75
+---------------------------------------------------
+Timestamp: 07/10/2023 18:55:17
+Severity: Info
+Custom Message: Timestamp: 07/10/2023 18:55:17, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------

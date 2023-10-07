@@ -9,7 +9,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Anix_Shared.DomainModels;
-using AniX_BusinessLogic.Controllers;
+using AniX_Controllers;
+using AniX_APP.CustomElements;
+using AniX_FormsLogic;
 
 namespace AniX_APP.Forms_Dashboard
 {
@@ -220,19 +222,16 @@ namespace AniX_APP.Forms_Dashboard
 
         #endregion
 
-        private User _loggedInUser;
-        private UserController _userController;
-
-        public Dashboard(User loggedInUser, UserController userController)
+        private ApplicationModel _dashboardModel;
+        public Dashboard(ApplicationModel dashboardModel)
         {
             InitializeComponent();
             SetButtonStyles();
             SetButtonImages();
             hideSubMenu();
-            openChildForm(new Users(loggedInUser));
+            openChildForm(new Users(dashboardModel));
             SetActiveButton(btnManagement);
-            _loggedInUser = loggedInUser;
-            _userController = userController;
+            _dashboardModel = dashboardModel; 
         }
 
         private void btnManagement_Click(object sender, EventArgs e)
@@ -248,49 +247,51 @@ namespace AniX_APP.Forms_Dashboard
 
         private void btnUsers_Click(object sender, EventArgs e)
         {
-            openChildForm(new Users(_loggedInUser));
+            openChildForm(new Users(_dashboardModel));
             SetActiveButton((Button)sender);
         }
 
         private void btnAnime_Click(object sender, EventArgs e)
         {
-            openChildForm(new Anime(_loggedInUser));
+            openChildForm(new Anime(_dashboardModel.LoggedInUser));
             SetActiveButton((Button)sender);
         }
 
         private void btnReviews_Click(object sender, EventArgs e)
         {
-            openChildForm(new Reviews(_loggedInUser));
+            openChildForm(new Reviews(_dashboardModel.LoggedInUser));
             SetActiveButton((Button)sender);
         }
 
         private void btnAdmins_Click(object sender, EventArgs e)
         {
-            openChildForm(new Admin(_loggedInUser));
+            openChildForm(new Admin(_dashboardModel.LoggedInUser));
             SetActiveButton((Button)sender);
         }
 
         private void btnAuditLogs_Click(object sender, EventArgs e)
         {
-            openChildForm(new AuditLogs(_loggedInUser));
+            openChildForm(new AuditLogs(_dashboardModel.LoggedInUser));
             SetActiveButton((Button)sender);
         }
 
         private void btnErrorLogs_Click(object sender, EventArgs e)
         {
-            openChildForm(new ErrorLogs(_loggedInUser));
+            openChildForm(new ErrorLogs(_dashboardModel.LoggedInUser));
             SetActiveButton((Button)sender);
         }
 
         private void btnSettings_Click(object sender, EventArgs e)
         {
-            openChildForm(new Settings(_loggedInUser));
+            openChildForm(new Settings(_dashboardModel.LoggedInUser));
             SetActiveButton((Button)sender);
         }
 
         private void HandleLogout()
         {
-            Main windowOpen = new Main(_userController);
+            _dashboardModel.LoggedInUser = null;
+            Main windowOpen = new Main(_dashboardModel);
+
             this.Hide();
             windowOpen.ShowDialog();
             this.Close();

@@ -131,6 +131,7 @@ namespace AniX_APP.Forms_Dashboard
             btnDetails.Text = "View Details";
             btnDetails.TextColor = Color.FromArgb(231, 34, 83);
             btnDetails.UseVisualStyleBackColor = false;
+            btnDetails.Click += btnDetails_Click;
             // 
             // cmbFilter
             // 
@@ -141,6 +142,7 @@ namespace AniX_APP.Forms_Dashboard
             cmbFilter.Font = new Font("Cascadia Code", 10F, FontStyle.Regular, GraphicsUnit.Point);
             cmbFilter.ForeColor = Color.FromArgb(231, 34, 83);
             cmbFilter.IconColor = Color.FromArgb(231, 34, 83);
+            cmbFilter.Items.AddRange(new object[] { "Admin", "User", "Banned", "Not Banned", "All Users" });
             cmbFilter.ListBackColor = Color.FromArgb(11, 7, 17);
             cmbFilter.ListTextColor = Color.FromArgb(231, 34, 83);
             cmbFilter.Location = new Point(647, 269);
@@ -149,7 +151,8 @@ namespace AniX_APP.Forms_Dashboard
             cmbFilter.Padding = new Padding(2);
             cmbFilter.Size = new Size(247, 33);
             cmbFilter.TabIndex = 10;
-            cmbFilter.Texts = "< filter >";
+            cmbFilter.Texts = "All Users";
+            cmbFilter.OnSelectedIndexChanged += cmbFilter_OnSelectedIndexChanged;
             // 
             // label1
             // 
@@ -181,6 +184,7 @@ namespace AniX_APP.Forms_Dashboard
             btnEdit.Text = "Edit";
             btnEdit.TextColor = Color.FromArgb(11, 7, 17);
             btnEdit.UseVisualStyleBackColor = false;
+            btnEdit.Click += btnEdit_Click;
             // 
             // btnRemove
             // 
@@ -201,6 +205,7 @@ namespace AniX_APP.Forms_Dashboard
             btnRemove.Text = "Remove";
             btnRemove.TextColor = Color.FromArgb(231, 34, 83);
             btnRemove.UseVisualStyleBackColor = false;
+            btnRemove.Click += btnRemove_Click;
             // 
             // btnAdd
             // 
@@ -244,6 +249,7 @@ namespace AniX_APP.Forms_Dashboard
             tbxUser.TabIndex = 2;
             tbxUser.Texts = "";
             tbxUser.UnderlinedStyle = false;
+            tbxUser._TextChanged += tbxUser__TextChanged;
             // 
             // lbUser
             // 
@@ -268,6 +274,8 @@ namespace AniX_APP.Forms_Dashboard
             // 
             dgvUsers.AllowUserToAddRows = false;
             dgvUsers.AllowUserToDeleteRows = false;
+            dgvUsers.AllowUserToResizeColumns = false;
+            dgvUsers.AllowUserToResizeRows = false;
             dgvUsers.BackgroundColor = Color.FromArgb(231, 34, 83);
             dgvUsers.BorderStyle = BorderStyle.None;
             dgvUsers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -277,8 +285,10 @@ namespace AniX_APP.Forms_Dashboard
             dgvUsers.ReadOnly = true;
             dgvUsers.RowHeadersWidth = 62;
             dgvUsers.RowTemplate.Height = 28;
+            dgvUsers.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvUsers.Size = new Size(565, 272);
             dgvUsers.TabIndex = 2;
+            dgvUsers.CellDoubleClick += dgvUsers_CellDoubleClick;
             // 
             // Users
             // 
@@ -293,6 +303,7 @@ namespace AniX_APP.Forms_Dashboard
             Name = "Users";
             ShowIcon = false;
             StartPosition = FormStartPosition.CenterScreen;
+            Load += Users_Load;
             panelTop.ResumeLayout(false);
             panelBackground.ResumeLayout(false);
             panelFix.ResumeLayout(false);

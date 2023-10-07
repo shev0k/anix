@@ -34,6 +34,7 @@ namespace AniX_APP.Forms_Utility
             lbFormTitle = new Label();
             btnClose = new Button();
             btnSave = new CustomElements.RoundButton();
+            lbIsActive = new Label();
             rbtnIsActive = new CustomElements.CustomRadioButton();
             lbPassword = new Label();
             tbxPassword = new RoundTextBox();
@@ -42,7 +43,6 @@ namespace AniX_APP.Forms_Utility
             lbUsername = new Label();
             tbxUsername = new RoundTextBox();
             panelBody = new Panel();
-            lbIsActive = new Label();
             panelButtons.SuspendLayout();
             panelBody.SuspendLayout();
             SuspendLayout();
@@ -114,6 +114,17 @@ namespace AniX_APP.Forms_Utility
             btnSave.TextColor = Color.FromArgb(11, 7, 17);
             btnSave.UseVisualStyleBackColor = false;
             // 
+            // lbIsActive
+            // 
+            lbIsActive.AutoSize = true;
+            lbIsActive.Font = new Font("Cascadia Code", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lbIsActive.ForeColor = Color.FromArgb(231, 34, 83);
+            lbIsActive.Location = new Point(38, 177);
+            lbIsActive.Name = "lbIsActive";
+            lbIsActive.Size = new Size(73, 21);
+            lbIsActive.TabIndex = 11;
+            lbIsActive.Text = "Active:";
+            // 
             // rbtnIsActive
             // 
             rbtnIsActive.AutoSize = true;
@@ -155,7 +166,7 @@ namespace AniX_APP.Forms_Utility
             tbxPassword.Padding = new Padding(10, 7, 10, 7);
             tbxPassword.PasswordChar = false;
             tbxPassword.PlaceholderColor = Color.FromArgb(11, 7, 17);
-            tbxPassword.PlaceholderText = "";
+            tbxPassword.PlaceholderText = "< password >";
             tbxPassword.Size = new Size(250, 33);
             tbxPassword.TabIndex = 8;
             tbxPassword.Texts = "";
@@ -188,7 +199,7 @@ namespace AniX_APP.Forms_Utility
             tbxEmail.Padding = new Padding(10, 7, 10, 7);
             tbxEmail.PasswordChar = false;
             tbxEmail.PlaceholderColor = Color.FromArgb(11, 7, 17);
-            tbxEmail.PlaceholderText = "";
+            tbxEmail.PlaceholderText = "< email >";
             tbxEmail.Size = new Size(250, 33);
             tbxEmail.TabIndex = 6;
             tbxEmail.Texts = "";
@@ -221,7 +232,7 @@ namespace AniX_APP.Forms_Utility
             tbxUsername.Padding = new Padding(10, 7, 10, 7);
             tbxUsername.PasswordChar = false;
             tbxUsername.PlaceholderColor = Color.FromArgb(11, 7, 17);
-            tbxUsername.PlaceholderText = "";
+            tbxUsername.PlaceholderText = "< username >";
             tbxUsername.Size = new Size(250, 33);
             tbxUsername.TabIndex = 4;
             tbxUsername.Texts = "";
@@ -239,17 +250,6 @@ namespace AniX_APP.Forms_Utility
             panelBody.Padding = new Padding(13, 14, 0, 0);
             panelBody.Size = new Size(445, 280);
             panelBody.TabIndex = 6;
-            // 
-            // lbIsActive
-            // 
-            lbIsActive.AutoSize = true;
-            lbIsActive.Font = new Font("Cascadia Code", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lbIsActive.ForeColor = Color.FromArgb(231, 34, 83);
-            lbIsActive.Location = new Point(38, 177);
-            lbIsActive.Name = "lbIsActive";
-            lbIsActive.Size = new Size(73, 21);
-            lbIsActive.TabIndex = 11;
-            lbIsActive.Text = "Active:";
             // 
             // Admin_Add_Edit
             // 
