@@ -2142,3 +2142,155 @@ Timestamp: 07/10/2023 18:55:17
 Severity: Info
 Custom Message: Timestamp: 07/10/2023 18:55:17, Username: admin, Success: True, Additional Info: 
 ---------------------------------------------------
+Timestamp: 09/10/2023 09:06:25
+Severity: Error
+Exception Type: System.Data.SqlClient.SqlException
+Message: A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)
+Stack Trace:    at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.WaitForPendingOpen()
+--- End of stack trace from previous location ---
+   at AniX_DAL.UserDAL.AuthenticateUserAsync(String username, String rawPassword) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 23
+---------------------------------------------------
+Timestamp: 09/10/2023 09:06:25
+Severity: Error
+Exception Type: System.Data.SqlClient.SqlException
+Message: A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)
+Stack Trace:    at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.WaitForPendingOpen()
+--- End of stack trace from previous location ---
+   at AniX_DAL.UserDAL.AuthenticateUserAsync(String username, String rawPassword) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 23
+   at AniX_DAL.UserDAL.AuthenticateUserAsync(String username, String rawPassword) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 43
+   at AniX_DAL.UserDAL.AuthenticateUserAsync(String username, String rawPassword) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 48
+   at AniX_BusinessLogic.AuthenticationService.AuthenticateUserAsync(String username, String password) in C:\Users\shevoK\source\repos\anix\AniX\AniX_BusinessLogic\AuthenticationService.cs:line 23
+---------------------------------------------------
+Timestamp: 09/10/2023 09:06:25
+Severity: Info
+Custom Message: Timestamp: 09/10/2023 09:06:25, Username: banned, Success: False, Additional Info: 
+---------------------------------------------------
+Timestamp: 09/10/2023 09:06:25
+Severity: Error
+Exception Type: AniX_Controllers.UserController+AuthenticationException
+Message: Failed to authenticate.
+Stack Trace:    at AniX_Controllers.UserController.LoginAsync(String username, String password) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 50
+---------------------------------------------------
+Timestamp: 09/10/2023 09:06:30
+Severity: Error
+Exception Type: System.Data.SqlClient.SqlException
+Message: A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)
+Stack Trace:    at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.OpenAsync(CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at AniX_DAL.UserDAL.AuthenticateUserAsync(String username, String rawPassword) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 23
+---------------------------------------------------
+Timestamp: 09/10/2023 09:06:30
+Severity: Error
+Exception Type: System.Data.SqlClient.SqlException
+Message: A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)
+Stack Trace:    at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.OpenAsync(CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at AniX_DAL.UserDAL.AuthenticateUserAsync(String username, String rawPassword) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 23
+   at AniX_DAL.UserDAL.AuthenticateUserAsync(String username, String rawPassword) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 43
+   at AniX_DAL.UserDAL.AuthenticateUserAsync(String username, String rawPassword) in C:\Users\shevoK\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 48
+   at AniX_BusinessLogic.AuthenticationService.AuthenticateUserAsync(String username, String password) in C:\Users\shevoK\source\repos\anix\AniX\AniX_BusinessLogic\AuthenticationService.cs:line 23
+---------------------------------------------------
+Timestamp: 09/10/2023 09:06:30
+Severity: Info
+Custom Message: Timestamp: 09/10/2023 09:06:30, Username: banned, Success: False, Additional Info: 
+---------------------------------------------------
+Timestamp: 09/10/2023 09:06:30
+Severity: Error
+Exception Type: AniX_Controllers.UserController+AuthenticationException
+Message: Failed to authenticate.
+Stack Trace:    at AniX_Controllers.UserController.LoginAsync(String username, String password) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 50
+---------------------------------------------------
+Timestamp: 09/10/2023 09:06:35
+Severity: Info
+Custom Message: Timestamp: 09/10/2023 09:06:35, Username: banned, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 09/10/2023 09:06:35
+Severity: Error
+Exception Type: AniX_Controllers.UserController+AccountBannedException
+Message: Your account has been banned.
+Stack Trace:    at AniX_Controllers.UserController.LoginAsync(String username, String password) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 55
+---------------------------------------------------
+Timestamp: 09/10/2023 09:06:37
+Severity: Info
+Custom Message: Timestamp: 09/10/2023 09:06:37, Username: banned, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 09/10/2023 09:06:37
+Severity: Error
+Exception Type: AniX_Controllers.UserController+AccountBannedException
+Message: Your account has been banned.
+Stack Trace:    at AniX_Controllers.UserController.LoginAsync(String username, String password) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 55
+---------------------------------------------------
+Timestamp: 09/10/2023 09:06:46
+Severity: Info
+Custom Message: Timestamp: 09/10/2023 09:06:46, Username: shevok, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 10/10/2023 13:01:47
+Severity: Info
+Custom Message: Timestamp: 10/10/2023 13:01:47, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 10/10/2023 13:02:01
+Severity: Info
+Custom Message: Timestamp: 10/10/2023 13:02:01, Username: banned, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 10/10/2023 13:02:01
+Severity: Error
+Exception Type: AniX_Controllers.UserController+AccountBannedException
+Message: Your account has been banned.
+Stack Trace:    at AniX_Controllers.UserController.LoginAsync(String username, String password) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 55
+---------------------------------------------------
+Timestamp: 10/10/2023 13:02:06
+Severity: Info
+Custom Message: Timestamp: 10/10/2023 13:02:06, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 10/10/2023 15:10:02
+Severity: Info
+Custom Message: Timestamp: 10/10/2023 15:10:02, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 10/10/2023 20:20:38
+Severity: Info
+Custom Message: Timestamp: 10/10/2023 20:20:38, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 10/10/2023 20:21:14
+Severity: Info
+Custom Message: Timestamp: 10/10/2023 20:21:14, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 10/10/2023 20:30:56
+Severity: Info
+Custom Message: Timestamp: 10/10/2023 20:30:56, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 10/10/2023 20:34:29
+Severity: Info
+Custom Message: Timestamp: 10/10/2023 20:34:29, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 10/10/2023 22:25:09
+Severity: Info
+Custom Message: Timestamp: 10/10/2023 22:25:09, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 11/10/2023 00:03:50
+Severity: Info
+Custom Message: Timestamp: 11/10/2023 00:03:50, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
