@@ -2294,3 +2294,53 @@ Timestamp: 11/10/2023 00:03:50
 Severity: Info
 Custom Message: Timestamp: 11/10/2023 00:03:50, Username: admin, Success: True, Additional Info: 
 ---------------------------------------------------
+Timestamp: 12/10/2023 13:24:58
+Severity: Info
+Custom Message: Timestamp: 12/10/2023 13:24:58, Username: shevok, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 12/10/2023 13:57:22
+Severity: Info
+Custom Message: Timestamp: 12/10/2023 13:57:22, Username: banned, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 12/10/2023 13:57:22
+Severity: Error
+Exception Type: AniX_Controllers.UserController+AccountBannedException
+Message: Your account has been banned.
+Stack Trace:    at AniX_Controllers.UserController.LoginAsync(String username, String password) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 55
+---------------------------------------------------
+Timestamp: 12/10/2023 13:57:28
+Severity: Info
+Custom Message: Timestamp: 12/10/2023 13:57:28, Username: user, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 12/10/2023 13:57:28
+Severity: Error
+Exception Type: AniX_Controllers.UserController+AuthorizationException
+Message: You are not authorized to access this application.
+Stack Trace:    at AniX_Controllers.UserController.LoginAsync(String username, String password) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 60
+---------------------------------------------------
+Timestamp: 12/10/2023 13:57:38
+Severity: Info
+Custom Message: Timestamp: 12/10/2023 13:57:38, Username: shevok, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 12/10/2023 13:59:28
+Severity: Info
+Custom Message: Timestamp: 12/10/2023 13:59:28, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 22/10/2023 17:26:08
+Severity: Info
+Custom Message: Timestamp: 22/10/2023 17:26:08, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 30/10/2023 09:21:21
+Severity: Info
+Custom Message: Timestamp: 30/10/2023 09:21:21, Username: admin, Success: False, Additional Info: 
+---------------------------------------------------
+Timestamp: 30/10/2023 09:21:21
+Severity: Error
+Exception Type: AniX_Controllers.UserController+AuthenticationException
+Message: Failed to authenticate.
+Stack Trace:    at AniX_Controllers.UserController.LoginAsync(String username, String password) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 50
+---------------------------------------------------
+Timestamp: 30/10/2023 09:21:25
+Severity: Info
+Custom Message: Timestamp: 30/10/2023 09:21:25, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
