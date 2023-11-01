@@ -1,0 +1,55 @@
+﻿@page
+@model AniX_WEB.Pages.LoginModel
+@{
+    Layout = "_LoginLayout";
+}
+    <!--=====================================-->
+    <!--=        login Area Start          =-->
+    <!--=====================================-->
+    <div class="login">
+        <video autoplay loop muted class="bg-video">
+            <source src="assets/media/login/login.mp4" type="video/mp4">
+        </video>
+        <section class="login text-center">
+            <div class="container">
+                <div class="login-block">
+                    <div class="login-content">
+                        <img src="assets/media/icon/user.png" alt="" class="user-icon">
+                        <br><br>
+                        <button id="continue-email" class="hide-link"><img src="./assets/media/login/email-icon.png" alt=""> Continue with username</button>
+                        <div class="login-sec" style="display: none;">
+                            <form method="post">
+                                @if (TempData["Message"] != null)
+                                {
+                                    <div class="alert alert-info">
+                                        @TempData["Message"]
+                                    </div>
+                                }
+                                <div class="form-group">
+                                    <input class="form-control" type="text" name="Username" required placeholder="username">
+                                </div>
+                                <div class="form-group password-type-field mb-0">
+                                    <input class="form-control" type="password" id="password-field" name="Password" required placeholder="enter password">
+                                    <span class="text-end toggle-password" toggle="#password-field"> <i class="fal fa-eye field-icon toggle-password"></i></span>
+                                </div>
+                                <button type="submit" class="anime-btn btn-dark border-change">
+                                    Log In
+                                </button>
+                            </form>
+                            <p><a href="./reset-password.html">Forget Password</a></p>
+                        </div>
+
+                        <p class="policy">By continuing, you agree to AniX <a style="font-size: 15px; font-weight: bold;" href="./comments.html">Terms of Use</a> and <a style="font-size: 15px; font-weight: bold;" href="./privacy.html">Privacy Policy</a>.</p>
+                        <p class="guide">Create an account? <a href="/Register">Sign Up</a></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    @if (!String.IsNullOrEmpty(Model.Message))
+    {
+        <script>
+        var serverMessage = "@Model.Message";
+    </script>
+    }

@@ -72,8 +72,7 @@ namespace AniX_WEB.Pages
 
             string sessionId = Guid.NewGuid().ToString();
             _authenticationService.SetWebUserSession(user);
-            string profileImagePath = user.ProfileImagePath ?? "./assets/media/profile/profile.png";
-            _sessionService.SetSessionAndCookie(user.Id.ToString(), user.Username, sessionId, profileImagePath);
+            _sessionService.SetSessionAndCookie(user.Id.ToString(), user.Username, sessionId);
             return RedirectToPage("/Index");
         }
     }

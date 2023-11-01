@@ -2330,17 +2330,3 @@ Timestamp: 22/10/2023 17:26:08
 Severity: Info
 Custom Message: Timestamp: 22/10/2023 17:26:08, Username: admin, Success: True, Additional Info: 
 ---------------------------------------------------
-Timestamp: 30/10/2023 09:21:21
-Severity: Info
-Custom Message: Timestamp: 30/10/2023 09:21:21, Username: admin, Success: False, Additional Info: 
----------------------------------------------------
-Timestamp: 30/10/2023 09:21:21
-Severity: Error
-Exception Type: AniX_Controllers.UserController+AuthenticationException
-Message: Failed to authenticate.
-Stack Trace:    at AniX_Controllers.UserController.LoginAsync(String username, String password) in C:\Users\shevoK\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 50
----------------------------------------------------
-Timestamp: 30/10/2023 09:21:25
-Severity: Info
-Custom Message: Timestamp: 30/10/2023 09:21:25, Username: admin, Success: True, Additional Info: 
----------------------------------------------------

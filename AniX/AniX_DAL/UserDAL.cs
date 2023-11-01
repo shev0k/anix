@@ -106,27 +106,7 @@ namespace AniX_DAL
             }
         }
 
-        public async Task<bool> UpdateProfileImagePathAsync(int userId, string imagePath)
-        {
-            try
-            {
-                await connection.OpenAsync();
-                string query = "UPDATE [User] SET ProfileImagePath = @imagePath WHERE Id = @id";
-                SqlCommand command = new SqlCommand(query, connection);
-                command.Parameters.AddWithValue("@id", userId);
-                command.Parameters.AddWithValue("@imagePath", imagePath);
-                return (await command.ExecuteNonQueryAsync()) > 0;
-            }
-            catch (Exception ex)
-            {
-                await ExceptionHandlingService.HandleExceptionAsync(ex);
-                throw;
-            }
-            finally
-            {
-                await connection.CloseAsync();
-            }
-        }
+
         public async Task<bool> DeleteAsync(int id)
         {
             try
@@ -403,8 +383,7 @@ namespace AniX_DAL
                 Email = reader["Email"].ToString(),
                 RegistrationDate = Convert.ToDateTime(reader["RegistrationDate"]),
                 Banned = Convert.ToBoolean(reader["Banned"]),
-                IsAdmin = Convert.ToBoolean(reader["IsAdmin"]),
-                ProfileImagePath = reader["ProfileImagePath"].ToString()
+                IsAdmin = Convert.ToBoolean(reader["IsAdmin"])
             };
             user.UpdatePassword(reader["Password"].ToString(), reader["Salt"].ToString());
             return user;

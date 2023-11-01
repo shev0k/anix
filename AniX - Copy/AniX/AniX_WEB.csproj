@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AniX_BusinessLogic\AniX_BusinessLogic.csproj" />
+    <ProjectReference Include="..\AniX_Controllers\AniX_Controllers.csproj" />
+    <ProjectReference Include="..\AniX_Shared\AniX_Shared.csproj" />
+    <ProjectReference Include="..\AniX_Utility\AniX_Utility.csproj" />
+  </ItemGroup>
+
+</Project>
