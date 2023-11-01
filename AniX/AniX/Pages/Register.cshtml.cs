@@ -94,7 +94,8 @@ namespace AniX_WEB.Pages
 
                 if (registeredUser != null)
                 {
-                    _sessionService.SetSessionAndCookie(registeredUser.Id.ToString(), Username, sessionId);
+                    string profileImagePath = registeredUser.ProfileImagePath ?? "./assets/media/profile/profile.png";
+                    _sessionService.SetSessionAndCookie(registeredUser.Id.ToString(), Username, sessionId, profileImagePath);
                     return RedirectToPage("/Index");
                 }
                 else

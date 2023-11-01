@@ -7,6 +7,7 @@ namespace AniX_Shared.Interfaces
     {
         Task<bool> CreateAsync(User user);
         Task<bool> UpdateAsync(User user);
+        Task<bool> UpdateProfileImagePathAsync(int userId, string imagePath);
         Task<bool> DeleteAsync(int id);
         Task<User> GetUserFromUsernameAsync(string username);
         Task<User> GetUserFromIdAsync(int id);

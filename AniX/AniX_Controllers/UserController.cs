@@ -161,6 +161,59 @@ namespace AniX_Controllers
             return await _userManagement.DoesEmailExistAsync(email);
         }
 
+        public async Task<bool> UpdateProfileImagePathAsync(int userId, string imagePath)
+        {
+            try
+            {
+                if (!_userValidationService.ValidateImageExtension(imagePath, out string validationMessage))
+                {
+                    throw new ValidationException(validationMessage);
+                }
+
+                var result = await _userManagement.UpdateProfileImagePathAsync(userId, imagePath);
+
+                if (!result)
+                {
+                    throw new UpdateFailedException("Failed to update profile image.");
+                }
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                await ExceptionHandlingService.HandleExceptionAsync(e);
+                throw;
+            }
+        }
+
+        public class UpdateFailedException : Exception
+        {
+            public UpdateFailedException(string message) : base(message) { }
+        }
+
+        public async Task<string> GetProfileImagePathAsync(int userId)
+        {
+            try
+            {
+                var user = await _userManagement.GetUserFromIdAsync(userId);
+                if (user == null)
+                {
+                    throw new UserNotFoundException("User not found");
+                }
+
+                return user.ProfileImagePath;
+            }
+            catch (Exception e)
+            {
+                await ExceptionHandlingService.HandleExceptionAsync(e);
+                throw;
+            }
+        }
+
+        public class UserNotFoundException : Exception
+        {
+            public UserNotFoundException(string message) : base(message) { }
+        }
 
         //public void ResetStartIndex()
         //{

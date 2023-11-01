@@ -1,6 +1,7 @@
 ﻿using AniX_DAL;
 using Anix_Shared.DomainModels;
 using AniX_Shared.Interfaces;
+using Microsoft.AspNetCore.Hosting;
 using AniX_Utility;
 using System;
 using System.Threading.Tasks;
@@ -12,10 +13,13 @@ namespace AniX_BusinessLogic
         private readonly IUserManagement _userDal;
 
         public ISessionService SessionService { get; set; }
-        public AuthenticationService(IUserManagement userDal)
+        private readonly string _baseDir;
+        public AuthenticationService(IUserManagement userDal, string baseDir)
         {
             _userDal = userDal;
+            _baseDir = baseDir;
         }
+
 
         public async Task<User> AuthenticateUserAsync(string username, string password)
         {
@@ -30,11 +34,13 @@ namespace AniX_BusinessLogic
             }
         }
 
+
         public void SetWebUserSession(User user)
         {
             if (user != null && SessionService != null)
             {
-                SessionService.SetSessionAndCookie(user.Id.ToString(), user.Username, "some_session_id_here");
+                string profileImagePath = user.ProfileImagePath ?? "C:\\Users\\Administrator\\source\\repos\\anix\\AniX\\AniX\\wwwroot\\assets\\media\\profile\\profile.png";
+                SessionService.SetSessionAndCookie(user.Id.ToString(), user.Username, "some_session_id_here", profileImagePath);
             }
         }
 
