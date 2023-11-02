@@ -17,11 +17,9 @@ namespace AniX_BusinessLogic
         {
             if (context.Session.Keys.Contains("UserId"))
             {
-                var identity = new GenericIdentity("custom", "custom");
-
+                var identity = new GenericIdentity(context.Session.GetString("UserId"), "CustomAuthScheme");
                 context.User = new GenericPrincipal(identity, null);
             }
-
             await _next(context);
         }
     }

@@ -34,7 +34,8 @@ namespace AniX_BusinessLogic
         {
             if (user != null && SessionService != null)
             {
-                SessionService.SetSessionAndCookie(user.Id.ToString(), user.Username, "some_session_id_here");
+                string sessionId = Guid.NewGuid().ToString(); 
+                SessionService.SetSessionAndCookie(user.Id.ToString(), user.Username, sessionId);
             }
         }
 

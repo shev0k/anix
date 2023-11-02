@@ -17,7 +17,11 @@ namespace AniX_WEB.Pages
         public IActionResult OnGet()
         {
             _sessionService.SignOut();
+
+            Response.Cookies.Delete("SessionID");
+
             return RedirectToPage("/Index");
         }
     }
+
 }

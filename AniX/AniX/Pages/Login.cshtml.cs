@@ -1,10 +1,10 @@
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using AniX_Shared.Interfaces;
 using AniX_Shared.DomainModels;
 using System;
 using System.Threading.Tasks;
+using System.Security.Principal;
 using Anix_Shared.DomainModels;
 
 namespace AniX_WEB.Pages
@@ -13,6 +13,7 @@ namespace AniX_WEB.Pages
     {
         private readonly IAuthenticationService _authenticationService;
         private readonly ISessionService _sessionService;
+
         public LoginModel(IAuthenticationService authenticationService, ISessionService sessionService)
         {
             _authenticationService = authenticationService;
@@ -30,7 +31,7 @@ namespace AniX_WEB.Pages
 
         public void OnGet()
         {
-            Console.WriteLine("Session UserId: " + _sessionService.GetUserId()); // Assuming you have a GetUserId() method in your SessionService
+            Console.WriteLine("Session UserId: " + _sessionService.GetUserId());
             Console.WriteLine("IsAuthenticated: " + User.Identity.IsAuthenticated);
 
             if (_sessionService.IsAuthenticated())
@@ -46,33 +47,69 @@ namespace AniX_WEB.Pages
                 return RedirectToPage("/Index");
             }
 
-            if (!ModelState.IsValid)
+            if (!IsInputValid(out string validationMessage))
             {
-                Message = "Please fill in all fields.";
-                return Page();
-            }
-
-            if (string.IsNullOrEmpty(Username) || Username.Contains("--") ||
-                string.IsNullOrEmpty(Password) || Password.Contains("--"))
-            {
-                Message = "Invalid input.";
+                Message = validationMessage;
                 return Page();
             }
 
             User user = await _authenticationService.AuthenticateUserAsync(Username, Password);
 
-            if (user == null || user.Banned)
+            if (user == null)
             {
-                Message = "Authentication failed. Please check your details or contact support if your account is banned.";
-                // Log this attempt
+                Message = "Authentication failed. Please check your credentials.";
                 return Page();
             }
 
-            Console.WriteLine("User successfully logged in with ID: " + user.Id);
+            if (user.Banned)
+            {
+                Message = "Your account has been banned. Please contact support for assistance.";
+                return Page();
+            }
 
-            string sessionId = Guid.NewGuid().ToString();
+            Console.WriteLine($"User successfully logged in with ID: {user.Id}");
+
+            // Securely set the web user session
             _authenticationService.SetWebUserSession(user);
+
+            // Generate a secure session ID and set the session and cookie
+            string sessionId = Guid.NewGuid().ToString();
             _sessionService.SetSessionAndCookie(user.Id.ToString(), user.Username, sessionId);
+
+            // Update the User identity
+            var identity = new GenericIdentity(user.Id.ToString(), "CustomAuthScheme");
+            var principal = new GenericPrincipal(identity, null);
+            HttpContext.User = principal;
+
+            Console.WriteLine("Session UserId: " + _sessionService.GetUserId());
+            Console.WriteLine("IsAuthenticated: " + User.Identity.IsAuthenticated);
+            return RedirectToPage("/Index");
+        }
+
+        private bool IsInputValid(out string validationMessage)
+        {
+            if (!ModelState.IsValid)
+            {
+                validationMessage = "Please fill in all fields.";
+                return false;
+            }
+
+            const string invalidInputPattern = "--";
+            if (string.IsNullOrEmpty(Username) || Username.Contains(invalidInputPattern) ||
+                string.IsNullOrEmpty(Password) || Password.Contains(invalidInputPattern))
+            {
+                validationMessage = "Invalid input.";
+                return false;
+            }
+
+            validationMessage = string.Empty;
+            return true;
+        }
+
+        public IActionResult OnGetPostLogin()
+        {
+            Console.WriteLine("Session UserId: " + _sessionService.GetUserId());
+            Console.WriteLine("IsAuthenticated: " + User.Identity.IsAuthenticated);
             return RedirectToPage("/Index");
         }
     }
