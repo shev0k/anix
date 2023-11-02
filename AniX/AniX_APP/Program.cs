@@ -8,7 +8,6 @@ using AniX_Shared.Interfaces;
 using Microsoft.Extensions.Configuration;
 using AniX_Controllers;
 using AniX_FormsLogic;
-using Microsoft.EntityFrameworkCore;
 
 namespace AniX_APP
 {
@@ -25,7 +24,6 @@ namespace AniX_APP
 
             var serviceProvider = new ServiceCollection()
                 .AddSingleton<IConfiguration>(configuration)
-                .AddDbContext<AniXContext>(options => options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")))
                 .AddSingleton<ApplicationModel>(sp => new ApplicationModel(null,
                     sp.GetRequiredService<UserController>(),
                     sp.GetRequiredService<UserDAL>()))

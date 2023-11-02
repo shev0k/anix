@@ -5,30 +5,30 @@ using Microsoft.Extensions.Configuration;
 using AniX_Shared.DomainModels;
 using AniX_Shared.Interfaces;
 using AniX_Utility;
-using AniX_Shared.DomainModels;
-using Microsoft.EntityFrameworkCore;
 using Anix_Shared.DomainModels;
 
 namespace AniX_DAL
 {
-    public class UserDAL : IUserManagement
+    public class UserDAL : BaseDAL, IUserManagement
     {
-        private readonly AniXContext _context;
-
-        public UserDAL(AniXContext context)
+        public UserDAL(IConfiguration configuration) : base(configuration)
         {
-            _context = context;
         }
 
         public async Task<User> AuthenticateUserAsync(string username, string rawPassword)
         {
+            User user = null;
             try
             {
-                User user = await _context.User.FirstOrDefaultAsync(u => u.Username == username);
+                await connection.OpenAsync();
+                SqlCommand command = PrepareAuthenticateUserCommand(username);
+                SqlDataReader reader = await command.ExecuteReaderAsync();
 
-                if (user != null)
+                if (await reader.ReadAsync())
                 {
+                    user = MapReaderToUser(reader);
                     (string storedPassword, string storedSalt) = user.RetrieveCredentials();
+
                     string hashedPassword = HashPassword.GenerateHashedPassword(rawPassword, storedSalt);
 
                     if (hashedPassword == storedPassword)
@@ -42,6 +42,10 @@ namespace AniX_DAL
                 await ExceptionHandlingService.HandleExceptionAsync(ex);
                 throw;
             }
+            finally
+            {
+                await connection.CloseAsync();
+            }
 
             return null;
         }
@@ -50,13 +54,29 @@ namespace AniX_DAL
         {
             try
             {
-                _context.User.Add(user);
-                return await _context.SaveChangesAsync() > 0;
+                await connection.OpenAsync();
+                string query = "INSERT INTO [User] (Username, Password, Salt, Email, RegistrationDate, Banned, IsAdmin, ProfileImagePath) VALUES (@username, @password, @salt, @email, @registrationDate, @banned, @isAdmin, @profileImagePath)";
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@username", user.Username);
+                (string Password, string Salt) = user.RetrieveCredentials();
+                command.Parameters.AddWithValue("@password", Password);
+                command.Parameters.AddWithValue("@salt", Salt);
+                command.Parameters.AddWithValue("@email", user.Email);
+                command.Parameters.AddWithValue("@registrationDate", user.RegistrationDate);
+                command.Parameters.AddWithValue("@banned", user.Banned);
+                command.Parameters.AddWithValue("@isAdmin", user.IsAdmin);
+                string defaultProfileImagePath = "https://i499309.luna.fhict.nl/assets/media/profile/profile.png";
+                command.Parameters.AddWithValue("@profileImagePath", defaultProfileImagePath);
+                return (await command.ExecuteNonQueryAsync()) > 0;
             }
             catch (Exception ex)
             {
                 await ExceptionHandlingService.HandleExceptionAsync(ex);
                 throw;
+            }
+            finally
+            {
+                await connection.CloseAsync();
             }
         }
 
@@ -64,51 +84,51 @@ namespace AniX_DAL
         {
             try
             {
-                var existingUser = await _context.User.SingleOrDefaultAsync(u => u.Id == user.Id);
-
-                if (existingUser != null)
-                {
-                    existingUser.Username = user.Username;
-                    (string Password, string Salt) = user.RetrieveCredentials();
-                    existingUser.UpdatePassword(Password, Salt);
-                    existingUser.Email = user.Email;
-                    existingUser.Banned = user.Banned;
-                    existingUser.IsAdmin = user.IsAdmin;
-
-                    return (await _context.SaveChangesAsync()) > 0;
-                }
-                return false;
+                await connection.OpenAsync();
+                string query = "UPDATE [User] SET Username = @username, Password = @password, Salt = @salt, Email = @email, Banned = @banned, IsAdmin = @isAdmin WHERE Id = @id";
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@id", user.Id);
+                command.Parameters.AddWithValue("@username", user.Username);
+                (string Password, string Salt) = user.RetrieveCredentials();
+                command.Parameters.AddWithValue("@password", Password);
+                command.Parameters.AddWithValue("@salt", Salt);
+                command.Parameters.AddWithValue("@email", user.Email);
+                command.Parameters.AddWithValue("@banned", user.Banned);
+                command.Parameters.AddWithValue("@isAdmin", user.IsAdmin);
+                return (await command.ExecuteNonQueryAsync()) > 0;
             }
             catch (Exception ex)
             {
                 await ExceptionHandlingService.HandleExceptionAsync(ex);
                 throw;
             }
+            finally
+            {
+                await connection.CloseAsync();
+            }
         }
-
 
 
         public async Task<bool> DeleteAsync(int id)
         {
             try
             {
-                var userToDelete = await _context.User.SingleOrDefaultAsync(u => u.Id == id);
-
-                if (userToDelete != null)
-                {
-                    _context.User.Remove(userToDelete);
-
-                    return (await _context.SaveChangesAsync()) > 0;
-                }
-                return false;
+                await connection.OpenAsync();
+                string query = "DELETE FROM [User] WHERE Id = @id";
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@id", id);
+                return (await command.ExecuteNonQueryAsync()) > 0;
             }
             catch (Exception ex)
             {
                 await ExceptionHandlingService.HandleExceptionAsync(ex);
                 throw;
             }
+            finally
+            {
+                await connection.CloseAsync();
+            }
         }
-
 
         public async Task<User> GetUserFromIdAsync(int id)
         {
@@ -117,117 +137,183 @@ namespace AniX_DAL
 
         public async Task<User> GetUserFromUsernameAsync(string username)
         {
+            User user = null;
             try
             {
-                var user = await _context.User.SingleOrDefaultAsync(u => u.Username == username);
-                return user;
+                await connection.OpenAsync();
+                string query = "SELECT * FROM [User] WHERE Username = @username";
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@username", username);
+
+                SqlDataReader reader = await command.ExecuteReaderAsync();
+
+                if (await reader.ReadAsync())
+                {
+                    user = MapReaderToUser(reader);
+                }
             }
             catch (Exception ex)
             {
                 await ExceptionHandlingService.HandleExceptionAsync(ex);
-                throw;
             }
+            finally
+            {
+                await connection.CloseAsync();
+            }
+            return user;
         }
 
-
-        public async Task<User> GetUserByIdAsync(int id)
+        private async Task<User> GetUserByIdAsync(int id)
         {
+            User user = null;
             try
             {
-                var user = await _context.User.FindAsync(id);
-                return user;
+                await connection.OpenAsync();
+                string query = "SELECT * FROM [User] WHERE Id = @id";
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@id", id);
+                SqlDataReader reader = await command.ExecuteReaderAsync();
+
+                if (await reader.ReadAsync())
+                {
+                    user = MapReaderToUser(reader);
+                }
             }
             catch (Exception ex)
             {
                 await ExceptionHandlingService.HandleExceptionAsync(ex);
                 throw;
             }
+            finally
+            {
+                await connection.CloseAsync();
+            }
+
+            return user;
         }
 
         public async Task<List<User>> GetUsersInBatchAsync(int startIndex, int batchSize)
         {
+            List<User> users = new List<User>();
+
             try
             {
-                var users = await _context.User
-                    .OrderBy(u => u.Id)
-                    .Skip(startIndex)
-                    .Take(batchSize)
-                    .ToListAsync();
-                return users;
+                await connection.OpenAsync();
+
+                string query = $"SELECT * FROM [User] ORDER BY Id OFFSET {startIndex} ROWS FETCH NEXT {batchSize} ROWS ONLY";
+                SqlCommand command = new SqlCommand(query, connection);
+
+                SqlDataReader reader = await command.ExecuteReaderAsync();
+
+                while (await reader.ReadAsync())
+                {
+                    users.Add(MapReaderToUser(reader));
+                }
             }
             catch (Exception ex)
             {
                 await ExceptionHandlingService.HandleExceptionAsync(ex);
                 throw;
             }
-        }
+            finally
+            {
+                await connection.CloseAsync();
+            }
 
+            return users;
+        }
 
         public async Task<List<User>> FetchFilteredAndSearchedUsersAsync(string filter, string searchTerm)
         {
+            List<User> users = new List<User>();
+            string query = "SELECT * FROM [dbo].[User] WHERE 1=1";
+
+            if (!string.IsNullOrEmpty(filter))
+            {
+                if (filter == "Admin")
+                    query += " AND IsAdmin = 1";
+                else if (filter == "User")
+                    query += " AND IsAdmin = 0";
+                else if (filter == "Banned")
+                    query += " AND Banned = 1";
+                else if (filter == "Not Banned")
+                    query += " AND Banned = 0";
+            }
+
+            if (!string.IsNullOrEmpty(searchTerm))
+            {
+                query += $" AND (Username LIKE '%{searchTerm}%' OR Email LIKE '%{searchTerm}%')";
+            }
+
             try
             {
-                IQueryable<User> query = _context.User;
-
-                if (!string.IsNullOrEmpty(filter))
+                await connection.OpenAsync();
+                using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    switch (filter)
+                    SqlDataReader reader = await command.ExecuteReaderAsync();
+                    while (await reader.ReadAsync())
                     {
-                        case "Admin":
-                            query = query.Where(u => u.IsAdmin);
-                            break;
-                        case "User":
-                            query = query.Where(u => !u.IsAdmin);
-                            break;
-                        case "Banned":
-                            query = query.Where(u => u.Banned);
-                            break;
-                        case "Not Banned":
-                            query = query.Where(u => !u.Banned);
-                            break;
+                        users.Add(MapReaderToUser(reader));
                     }
                 }
-
-                if (!string.IsNullOrEmpty(searchTerm))
-                {
-                    query = query.Where(u => u.Username.Contains(searchTerm) || u.Email.Contains(searchTerm));
-                }
-
-                return await query.ToListAsync();
             }
             catch (Exception ex)
             {
                 await ExceptionHandlingService.HandleExceptionAsync(ex);
                 throw;
             }
-        }
+            finally
+            {
+                await connection.CloseAsync();
+            }
 
+            return users;
+        }
 
         public async Task<bool> DoesUsernameExistAsync(string username)
         {
-            try
-            {
-                return await _context.User.AnyAsync(u => u.Username == username);
-            }
-            catch (Exception ex)
-            {
-                await ExceptionHandlingService.HandleExceptionAsync(ex);
-                throw;
-            }
+            await connection.OpenAsync();
+            string query = "SELECT COUNT(1) FROM [User] WHERE Username = @username";
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@username", username);
+            int count = Convert.ToInt32(await command.ExecuteScalarAsync());
+            await connection.CloseAsync();
+            return count > 0;
         }
-
 
         public async Task<bool> DoesEmailExistAsync(string email)
         {
-            try
+            await connection.OpenAsync();
+            string query = "SELECT COUNT(1) FROM [User] WHERE Email = @email";
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@email", email);
+            int count = Convert.ToInt32(await command.ExecuteScalarAsync());
+            await connection.CloseAsync();
+            return count > 0;
+        }
+
+        private SqlCommand PrepareAuthenticateUserCommand(string username)
+        {
+            string query = "SELECT * FROM [User] WHERE Username = @username";
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@username", username);
+            return command;
+        }
+
+        private User MapReaderToUser(SqlDataReader reader)
+        {
+            User user = new User
             {
-                return await _context.User.AnyAsync(u => u.Email == email);
-            }
-            catch (Exception ex)
-            {
-                await ExceptionHandlingService.HandleExceptionAsync(ex);
-                throw;
-            }
+                Id = Convert.ToInt32(reader["Id"]),
+                Username = reader["Username"].ToString(),
+                Email = reader["Email"].ToString(),
+                RegistrationDate = Convert.ToDateTime(reader["RegistrationDate"]),
+                Banned = Convert.ToBoolean(reader["Banned"]),
+                IsAdmin = Convert.ToBoolean(reader["IsAdmin"]),
+                ProfileImagePath = reader["ProfileImagePath"].ToString()
+            };
+            user.UpdatePassword(reader["Password"].ToString(), reader["Salt"].ToString());
+            return user;
         }
     }
 }
