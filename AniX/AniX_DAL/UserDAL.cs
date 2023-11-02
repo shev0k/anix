@@ -55,7 +55,7 @@ namespace AniX_DAL
             try
             {
                 await connection.OpenAsync();
-                string query = "INSERT INTO [User] (Username, Password, Salt, Email, RegistrationDate, Banned, IsAdmin) VALUES (@username, @password, @salt, @email, @registrationDate, @banned, @isAdmin)";
+                string query = "INSERT INTO [User] (Username, Password, Salt, Email, RegistrationDate, Banned, IsAdmin, ProfileImagePath) VALUES (@username, @password, @salt, @email, @registrationDate, @banned, @isAdmin, @profileImagePath)";
                 SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@username", user.Username);
                 (string Password, string Salt) = user.RetrieveCredentials();
@@ -65,6 +65,8 @@ namespace AniX_DAL
                 command.Parameters.AddWithValue("@registrationDate", user.RegistrationDate);
                 command.Parameters.AddWithValue("@banned", user.Banned);
                 command.Parameters.AddWithValue("@isAdmin", user.IsAdmin);
+                string defaultProfileImagePath = "https://i499309.luna.fhict.nl/assets/media/profile/profile.png";
+                command.Parameters.AddWithValue("@profileImagePath", defaultProfileImagePath);
                 return (await command.ExecuteNonQueryAsync()) > 0;
             }
             catch (Exception ex)
@@ -221,82 +223,6 @@ namespace AniX_DAL
             return users;
         }
 
-        //public async Task<List<User>> SearchUsersAsync(string searchText)
-        //{
-        //    List<User> users = new List<User>();
-
-        //    try
-        //    {
-        //        await connection.OpenAsync();
-
-        //        string query = "SELECT * FROM [dbo].[User] WHERE " +
-        //                       "Username LIKE @searchText OR Email LIKE @searchText";
-                
-        //        SqlCommand command = new SqlCommand(query, connection);
-
-        //        command.Parameters.AddWithValue("@searchText", string.IsNullOrEmpty(searchText) ? DBNull.Value : (object)$"%{searchText}%");
-
-        //        SqlDataReader reader = await command.ExecuteReaderAsync();
-
-        //        while (await reader.ReadAsync())
-        //        {
-        //            User user = MapReaderToUser(reader);
-
-        //            users.Add(user);
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        await ExceptionHandlingService.HandleExceptionAsync(ex);
-        //        throw;
-        //    }
-        //    finally
-        //    {
-        //        await connection.CloseAsync();
-        //    }
-
-        //    return users;
-        //}
-
-        //public async Task<List<User>> FetchFilteredUsersAsync(string filter)
-        //{
-        //    List<User> users = new List<User>();
-        //    string query = "SELECT * FROM [dbo].[User] WHERE 1=1";
-
-        //    if (filter == "Admin")
-        //        query += " AND IsAdmin = 1";
-        //    else if (filter == "User")
-        //        query += " AND IsAdmin = 0";
-        //    else if (filter == "Banned")
-        //        query += " AND Banned = 1";
-        //    else if (filter == "Not Banned")
-        //        query += " AND Banned = 0";
-
-        //    try
-        //    {
-        //        await connection.OpenAsync();
-        //        using (SqlCommand command = new SqlCommand(query, connection))
-        //        {
-        //            SqlDataReader reader = await command.ExecuteReaderAsync();
-        //            while (await reader.ReadAsync())
-        //            {
-        //                users.Add(MapReaderToUser(reader));
-        //            }
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        await ExceptionHandlingService.HandleExceptionAsync(ex);
-        //        throw;
-        //    }
-        //    finally
-        //    {
-        //        await connection.CloseAsync();
-        //    }
-
-        //    return users;
-        //}
-
         public async Task<List<User>> FetchFilteredAndSearchedUsersAsync(string filter, string searchTerm)
         {
             List<User> users = new List<User>();
@@ -383,7 +309,8 @@ namespace AniX_DAL
                 Email = reader["Email"].ToString(),
                 RegistrationDate = Convert.ToDateTime(reader["RegistrationDate"]),
                 Banned = Convert.ToBoolean(reader["Banned"]),
-                IsAdmin = Convert.ToBoolean(reader["IsAdmin"])
+                IsAdmin = Convert.ToBoolean(reader["IsAdmin"]),
+                ProfileImagePath = reader["ProfileImagePath"].ToString()
             };
             user.UpdatePassword(reader["Password"].ToString(), reader["Salt"].ToString());
             return user;

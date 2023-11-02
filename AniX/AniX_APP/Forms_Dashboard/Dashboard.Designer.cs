@@ -37,7 +37,6 @@ namespace AniX_APP.Forms_Dashboard
             btnAuditLogs = new Button();
             btnLogOut = new Button();
             panelInformation = new Panel();
-            btnAdmins = new Button();
             btnReviews = new Button();
             btnAnime = new Button();
             btnUsers = new Button();
@@ -83,7 +82,7 @@ namespace AniX_APP.Forms_Dashboard
             btnSettings.ForeColor = Color.Silver;
             btnSettings.Image = Properties.Resources.settings;
             btnSettings.ImageAlign = ContentAlignment.MiddleLeft;
-            btnSettings.Location = new Point(0, 408);
+            btnSettings.Location = new Point(0, 363);
             btnSettings.Name = "btnSettings";
             btnSettings.Padding = new Padding(5, 0, 0, 0);
             btnSettings.Size = new Size(225, 45);
@@ -104,7 +103,7 @@ namespace AniX_APP.Forms_Dashboard
             btnErrorLogs.ForeColor = Color.Silver;
             btnErrorLogs.Image = Properties.Resources.error;
             btnErrorLogs.ImageAlign = ContentAlignment.MiddleLeft;
-            btnErrorLogs.Location = new Point(0, 363);
+            btnErrorLogs.Location = new Point(0, 318);
             btnErrorLogs.Name = "btnErrorLogs";
             btnErrorLogs.Padding = new Padding(5, 0, 0, 0);
             btnErrorLogs.Size = new Size(225, 45);
@@ -125,7 +124,7 @@ namespace AniX_APP.Forms_Dashboard
             btnAuditLogs.ForeColor = Color.Silver;
             btnAuditLogs.Image = Properties.Resources.audit;
             btnAuditLogs.ImageAlign = ContentAlignment.MiddleLeft;
-            btnAuditLogs.Location = new Point(0, 318);
+            btnAuditLogs.Location = new Point(0, 273);
             btnAuditLogs.Name = "btnAuditLogs";
             btnAuditLogs.Padding = new Padding(5, 0, 0, 0);
             btnAuditLogs.Size = new Size(225, 45);
@@ -160,34 +159,14 @@ namespace AniX_APP.Forms_Dashboard
             // panelInformation
             // 
             panelInformation.BackColor = Color.FromArgb(35, 32, 39);
-            panelInformation.Controls.Add(btnAdmins);
             panelInformation.Controls.Add(btnReviews);
             panelInformation.Controls.Add(btnAnime);
             panelInformation.Controls.Add(btnUsers);
             panelInformation.Dock = DockStyle.Top;
             panelInformation.Location = new Point(0, 137);
             panelInformation.Name = "panelInformation";
-            panelInformation.Size = new Size(225, 181);
+            panelInformation.Size = new Size(225, 136);
             panelInformation.TabIndex = 14;
-            // 
-            // btnAdmins
-            // 
-            btnAdmins.Dock = DockStyle.Top;
-            btnAdmins.FlatAppearance.BorderSize = 0;
-            btnAdmins.FlatAppearance.MouseDownBackColor = Color.FromArgb(42, 38, 46);
-            btnAdmins.FlatAppearance.MouseOverBackColor = Color.FromArgb(42, 38, 46);
-            btnAdmins.FlatStyle = FlatStyle.Flat;
-            btnAdmins.ForeColor = Color.Silver;
-            btnAdmins.Location = new Point(0, 135);
-            btnAdmins.Name = "btnAdmins";
-            btnAdmins.Padding = new Padding(35, 0, 0, 0);
-            btnAdmins.Size = new Size(225, 45);
-            btnAdmins.TabIndex = 7;
-            btnAdmins.Text = "Admins";
-            btnAdmins.TextAlign = ContentAlignment.MiddleLeft;
-            btnAdmins.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btnAdmins.UseVisualStyleBackColor = true;
-            btnAdmins.Click += btnAdmins_Click;
             // 
             // btnReviews
             // 
@@ -359,7 +338,6 @@ namespace AniX_APP.Forms_Dashboard
         private Button btnErrorLogs;
         private Button btnAuditLogs;
         private Panel panelInformation;
-        private Button btnAdmins;
         private Button btnReviews;
         private Button btnAnime;
         private Button btnUsers;

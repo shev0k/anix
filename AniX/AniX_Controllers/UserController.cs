@@ -17,7 +17,6 @@ namespace AniX_Controllers
         private readonly UserValidationService _userValidationService;
         private readonly AuditService _auditService;
 
-        private int startIndex = 0;
         private const int batchSize = 20;
         private static SemaphoreSlim semaphore = new SemaphoreSlim(1, 1);
 
@@ -82,44 +81,6 @@ namespace AniX_Controllers
             }
         }
 
-        //public async Task<List<User>> SearchUsersAsync(string searchText)
-        //{
-        //    return await _userManagement.SearchUsersAsync(searchText);
-        //}
-
-        //public async Task<List<User>> FetchUsersAsync(string searchTerm)
-        //{
-        //    try
-        //    {
-        //        if (string.IsNullOrEmpty(searchTerm))
-        //        {
-        //            return await GetUsersInBatchAsync(startIndex, batchSize);
-        //        }
-        //        else
-        //        {
-        //            return await SearchUsersAsync(searchTerm);
-        //        }
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        await ExceptionHandlingService.HandleExceptionAsync(e);
-        //        throw;
-        //    }
-        //}
-
-        //public async Task<List<User>> FetchFilteredUsersAsync(string filter)
-        //{
-        //    try
-        //    {
-        //        return await _userManagement.FetchFilteredUsersAsync(filter);
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        await ExceptionHandlingService.HandleExceptionAsync(e);
-        //        throw;
-        //    }
-        //}
-
         public async Task<List<User>> FetchFilteredAndSearchedUsersAsync(string filter, string searchTerm)
         {
             await semaphore.WaitAsync();
@@ -160,12 +121,6 @@ namespace AniX_Controllers
         {
             return await _userManagement.DoesEmailExistAsync(email);
         }
-
-
-        //public void ResetStartIndex()
-        //{
-        //    startIndex = 0;
-        //}
 
         public class ValidationException : Exception
         {

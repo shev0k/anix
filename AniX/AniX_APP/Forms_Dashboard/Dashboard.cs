@@ -35,7 +35,6 @@ namespace AniX_APP.Forms_Dashboard
             SetButtonStyle(btnUsers);
             SetButtonStyle(btnAnime);
             SetButtonStyle(btnReviews);
-            SetButtonStyle(btnAdmins);
             SetButtonStyle(btnAuditLogs);
             SetButtonStyle(btnErrorLogs);
             SetButtonStyle(btnSettings);
@@ -231,7 +230,7 @@ namespace AniX_APP.Forms_Dashboard
             hideSubMenu();
             openChildForm(new Users(dashboardModel));
             SetActiveButton(btnManagement);
-            _dashboardModel = dashboardModel; 
+            _dashboardModel = dashboardModel;
         }
 
         private void btnManagement_Click(object sender, EventArgs e)
@@ -260,12 +259,6 @@ namespace AniX_APP.Forms_Dashboard
         private void btnReviews_Click(object sender, EventArgs e)
         {
             openChildForm(new Reviews(_dashboardModel.LoggedInUser));
-            SetActiveButton((Button)sender);
-        }
-
-        private void btnAdmins_Click(object sender, EventArgs e)
-        {
-            openChildForm(new Admin(_dashboardModel.LoggedInUser));
             SetActiveButton((Button)sender);
         }
 
