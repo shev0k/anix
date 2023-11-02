@@ -7,6 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.24" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.24" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.24" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\AniX_BusinessLogic\AniX_BusinessLogic.csproj" />
     <ProjectReference Include="..\AniX_Controllers\AniX_Controllers.csproj" />
     <ProjectReference Include="..\AniX_Shared\AniX_Shared.csproj" />

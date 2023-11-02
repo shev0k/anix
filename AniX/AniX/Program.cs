@@ -6,6 +6,7 @@ using AniX_BusinessLogic;
 using AniX_Shared.Interfaces;
 using AniX_DAL;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,6 +19,8 @@ builder.Services.AddSession();
 builder.Services.AddSingleton<IConfiguration>(builder.Configuration);
 builder.Services.AddTransient<IUserManagement, UserDAL>();
 builder.Services.AddTransient<IAuthenticationService, AuthenticationService>();
+builder.Services.AddDbContext<AniXContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 // Register IHttpContextAccessor and ISessionService
 builder.Services.AddHttpContextAccessor();
