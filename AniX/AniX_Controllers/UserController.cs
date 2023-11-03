@@ -14,22 +14,27 @@ namespace AniX_Controllers
     {
         private readonly IAuthenticationService _authenticationService;
         private readonly IUserManagement _userManagement;
+        private readonly IExceptionHandlingService _exceptionHandlingService;
+        private readonly IErrorLoggingService _errorLoggingService;
         private readonly UserValidationService _userValidationService;
         private readonly AuditService _auditService;
-
-        private const int batchSize = 20;
         private static SemaphoreSlim semaphore = new SemaphoreSlim(1, 1);
+        private const int batchSize = 20;
 
         public UserController(
             IAuthenticationService authenticationService,
             IUserManagement userManagement,
             UserValidationService userValidationService,
-            AuditService auditService)
+            AuditService auditService,
+            IExceptionHandlingService exceptionHandlingService,
+            IErrorLoggingService errorLoggingService)
         {
             _authenticationService = authenticationService;
             _userManagement = userManagement;
             _userValidationService = userValidationService;
             _auditService = auditService;
+            _exceptionHandlingService = exceptionHandlingService;
+            _errorLoggingService = errorLoggingService;
         }
 
         public async Task<User> LoginAsync(string username, string password)
@@ -64,7 +69,11 @@ namespace AniX_Controllers
             }
             catch (Exception e)
             {
-                await ExceptionHandlingService.HandleExceptionAsync(e);
+                bool handled = await _exceptionHandlingService.HandleExceptionAsync(e);
+                if (!handled)
+                {
+                    await _errorLoggingService.LogErrorAsync(e, LogSeverity.Critical);
+                }
                 throw;
             }
         }
@@ -78,7 +87,11 @@ namespace AniX_Controllers
             }
             catch (Exception e)
             {
-                await ExceptionHandlingService.HandleExceptionAsync(e);
+                bool handled = await _exceptionHandlingService.HandleExceptionAsync(e);
+                if (!handled)
+                {
+                    await _errorLoggingService.LogErrorAsync(e, LogSeverity.Critical);
+                }
                 throw;
             }
         }
@@ -92,7 +105,11 @@ namespace AniX_Controllers
             }
             catch (Exception e)
             {
-                await ExceptionHandlingService.HandleExceptionAsync(e);
+                bool handled = await _exceptionHandlingService.HandleExceptionAsync(e);
+                if (!handled)
+                {
+                    await _errorLoggingService.LogErrorAsync(e, LogSeverity.Critical);
+                }
                 throw;
             }
             finally
@@ -101,18 +118,28 @@ namespace AniX_Controllers
             }
         }
 
-        public async Task<bool> DeleteUserAsync(int userId)
+        public async Task<OperationResult> DeleteUserAsync(int userId)
         {
             try
             {
-                return await _userManagement.DeleteAsync(userId);
+                OperationResult result = await _userManagement.DeleteAsync(userId);
+                return result;
             }
             catch (Exception e)
             {
-                await ExceptionHandlingService.HandleExceptionAsync(e);
-                return false;
+                bool handled = await _exceptionHandlingService.HandleExceptionAsync(e);
+                if (!handled)
+                {
+                    await _errorLoggingService.LogErrorAsync(e, LogSeverity.Critical);
+                }
+                return new OperationResult
+                {
+                    Success = false,
+                    Message = "An exception occurred while attempting to delete the user."
+                };
             }
         }
+
 
         public async Task<bool> DoesUsernameExistAsync(string username)
         {

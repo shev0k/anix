@@ -1,0 +1,12 @@
+Timestamp: 03/11/2023 10:02:16
+Severity: Error
+Exception Type: System.ArgumentException
+Message: Unsupported content type: image/gif (Parameter 'contentType')
+Stack Trace: 
+---------------------------------------------------
+Timestamp: 03/11/2023 10:03:01
+Severity: Error
+Exception Type: System.ArgumentException
+Message: Unsupported content type: image/gif (Parameter 'contentType')
+Stack Trace: 
+---------------------------------------------------

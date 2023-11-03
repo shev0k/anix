@@ -6,6 +6,7 @@ using Microsoft.Extensions.Hosting;
 using AniX_BusinessLogic;
 using AniX_Shared.Interfaces;
 using AniX_DAL;
+using AniX_Utility;
 using Microsoft.AspNetCore.Http;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -22,8 +23,20 @@ builder.Services.AddSession(options =>
 });
 
 builder.Services.AddSingleton<IConfiguration>(builder.Configuration);
-builder.Services.AddTransient<IAzureBlobService, AzureBlobService>();
-builder.Services.AddTransient<IUserManagement, UserDAL>();
+builder.Services.AddSingleton<IErrorLoggingService, ErrorLoggingService>();
+builder.Services.AddSingleton<IExceptionHandlingService, ExceptionHandlingService>();
+builder.Services.AddTransient<IAzureBlobService, AzureBlobService>(sp =>
+{
+    var configuration = sp.GetRequiredService<IConfiguration>();
+    var errorLoggingService = sp.GetRequiredService<IErrorLoggingService>();
+    return new AzureBlobService(configuration, errorLoggingService);
+});
+builder.Services.AddTransient<IUserManagement, UserDAL>(sp => new UserDAL(
+    sp.GetRequiredService<IAzureBlobService>(),
+    sp.GetRequiredService<IConfiguration>(),
+    sp.GetRequiredService<IExceptionHandlingService>(),
+    sp.GetRequiredService<IErrorLoggingService>()
+));
 builder.Services.AddTransient<IAuthenticationService, AuthenticationService>();
 
 // Register IHttpContextAccessor and ISessionService

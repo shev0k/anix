@@ -212,12 +212,19 @@ namespace AniX_APP
         }
         #endregion
         private ApplicationModel _appModel;
-        public Main(ApplicationModel appModel)
+        private readonly IExceptionHandlingService _exceptionHandlingService;
+        private readonly IErrorLoggingService _errorLoggingService;
+        public Main(
+            ApplicationModel appModel,
+            IExceptionHandlingService exceptionHandlingService,
+            IErrorLoggingService errorLoggingService)
         {
             InitializeComponent();
             SetButtonStyles();
             SetButtonImages();
             _appModel = appModel;
+            _exceptionHandlingService = exceptionHandlingService;
+            _errorLoggingService = errorLoggingService;
         }
 
         private void btnInformation_Click(object sender, EventArgs e)
@@ -261,19 +268,27 @@ namespace AniX_APP
             }
             catch (Exception ex)
             {
-                await ExceptionHandlingService.HandleExceptionAsync(ex);
-                RJMessageBox.Show("An unknown error occurred. Please try again later.", "", MessageBoxButtons.OK);
+                bool handled = await _exceptionHandlingService.HandleExceptionAsync(ex);
+                if (!handled)
+                {
+                    RJMessageBox.Show("An unknown error occurred. Please try again later.", "", MessageBoxButtons.OK);
+                }
             }
         }
 
 
         private void NavigateToDashboard()
         {
-            Dashboard windowOpen = new Dashboard(_appModel);
+            Dashboard windowOpen = new Dashboard(
+                _appModel,
+                _exceptionHandlingService,
+                _errorLoggingService
+            );
             RJMessageBox.Show($"Welcome back, < {_appModel.LoggedInUser.Username} >", "", MessageBoxButtons.OK);
             this.Hide();
             windowOpen.ShowDialog();
             this.Close();
         }
+
     }
 }

@@ -249,28 +249,31 @@
                                 </ul>
                             </li>
                         </ul>
-                        <div class="d-flex ms-auto navbar-nav me-3 mainmenu">
-                            @if (SessionService.IsAuthenticated())
-                            {
-                                <li class="menu-item-has-children">
-                                    @* <img src="path/to/user/picture" alt="User Picture"> *@
-                                    <a class="username" href="#logindrop" class="dropdown-toggle" id="logindrop" data-bs-toggle="dropdown"
-                                       data-bs-auto-close="outside" aria-expanded="false">@SessionService.GetUsername()</a>
-                                    <ul class="dropdown-menu login-dropdown" aria-labelledby="logindrop">
-                                        <li>
-                                            <a href="./Profile">Account Details</a>
-                                        </li>
-                                        <li>
-                                            <a href="./Logout">Log Out</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                            }
-                            else
-                            {
-                                <a href="Login" class="anime-btn btn-dark">LOG IN</a>
-                            }
-                        </div>
+                    <div class="d-flex ms-auto navbar-nav me-3 mainmenu">
+                        @if (SessionService.IsAuthenticated())
+                        {
+                            <li class="nav-item dropdown menu-item-has-children">
+                                <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <img src="@SessionService.GetProfileImagePath()" alt="User Picture" class="user-profile-image">
+                                    <span class="username-mobile">@SessionService.GetUsername()</span>
+                                </a>
+                                <ul class="dropdown-menu login-dropdown" aria-labelledby="profileDropdown">
+                                    <li>
+                                        <a class="dropdown-item" href="./Profile">Account Details</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="./Logout">Log Out</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        }
+                        else
+                        {
+                                <a href="Login" style="margin-right: -18px;" class="anime-btn btn-dark">LOG IN</a>
+                        }
+                    </div>
+
+
                     </div>
                 </nav>
             </div>
@@ -313,6 +316,7 @@
             </div>
         </footer>
     </div>
+
 
     <!-- Jquery Js -->
     <script src="assets/js/vendor/jquery-3.6.0.min.js"></script>

@@ -21,12 +21,17 @@ namespace AniX_APP.Forms_Dashboard
     {
         private ApplicationModel _appModel;
         private UsersFormLogic _usersFormLogic;
+        private readonly IExceptionHandlingService _exceptionHandlingService;
+        private readonly IErrorLoggingService _errorLoggingService;
 
-        public Users(ApplicationModel appModel)
+
+        public Users(ApplicationModel appModel, IExceptionHandlingService exceptionHandlingService, IErrorLoggingService errorLoggingService)
         {
             InitializeComponent();
             _appModel = appModel;
             _usersFormLogic = new UsersFormLogic(_appModel);
+            _exceptionHandlingService = exceptionHandlingService;
+            _errorLoggingService = errorLoggingService;
             btnUser.Text = $" {_appModel.LoggedInUser.Username}";
             InitializeDataGridViewStyles();
         }
@@ -81,7 +86,12 @@ namespace AniX_APP.Forms_Dashboard
 
         private async void btnAdd_Click(object sender, EventArgs e)
         {
-            User_Add_Edit form = new User_Add_Edit(User_Add_Edit.FormMode.Add, _appModel);
+            User_Add_Edit form = new User_Add_Edit(
+                User_Add_Edit.FormMode.Add,
+                _appModel,
+                _exceptionHandlingService,
+                _errorLoggingService
+            );
             form.FormClosed += async (s, args) => await RefreshUsersAsync();
             form.ShowDialog();
         }
@@ -94,7 +104,11 @@ namespace AniX_APP.Forms_Dashboard
                 if (selectedUser != null)
                 {
                     _appModel.UserToEdit = selectedUser;
-                    User_Add_Edit form = new User_Add_Edit(User_Add_Edit.FormMode.Edit, _appModel);
+                    User_Add_Edit form = new User_Add_Edit(
+                        User_Add_Edit.FormMode.Edit,
+                        _appModel,
+                        _exceptionHandlingService,
+                        _errorLoggingService);
                     form.FormClosed += async (s, args) => await RefreshUsersAsync();
                     form.ShowDialog();
                 }
@@ -119,15 +133,15 @@ namespace AniX_APP.Forms_Dashboard
                     DialogResult dialogResult = RJMessageBox.Show($"Are you sure you want to delete {selectedUser.Username}?", "Confirmation", MessageBoxButtons.YesNo);
                     if (dialogResult == DialogResult.Yes)
                     {
-                        bool result = await _usersFormLogic.DeleteUserAsync(selectedUser.Id);
-                        if (result)
+                        OperationResult operationResult = await _usersFormLogic.DeleteUserAsync(selectedUser.Id);
+                        if (operationResult.Success)
                         {
-                            RJMessageBox.Show("User deleted successfully.", "Success", MessageBoxButtons.OK);
+                            RJMessageBox.Show(operationResult.Message, "Success", MessageBoxButtons.OK);
                             await RefreshUsersAsync();
                         }
                         else
                         {
-                            RJMessageBox.Show("Failed to delete the user.", "Error", MessageBoxButtons.OK);
+                            RJMessageBox.Show(operationResult.Message, "Error", MessageBoxButtons.OK);
                         }
                     }
                 }
@@ -138,10 +152,15 @@ namespace AniX_APP.Forms_Dashboard
             }
             catch (Exception ex)
             {
-                await ExceptionHandlingService.HandleExceptionAsync(ex);
+                bool handled = await _exceptionHandlingService.HandleExceptionAsync(ex);
+                if (!handled)
+                {
+                    await _errorLoggingService.LogErrorAsync(ex, LogSeverity.Critical);
+                }
                 RJMessageBox.Show("An error occurred while deleting the user.", "Error", MessageBoxButtons.OK);
             }
         }
+
 
         private async void btnDetails_Click(object sender, EventArgs e)
         {
@@ -160,8 +179,12 @@ namespace AniX_APP.Forms_Dashboard
             }
             catch (Exception ex)
             {
-                await ExceptionHandlingService.HandleExceptionAsync(ex);
-                RJMessageBox.Show($"Something went wrong.", "", MessageBoxButtons.OK);
+                bool handled = await _exceptionHandlingService.HandleExceptionAsync(ex);
+                if (!handled)
+                {
+                    await _errorLoggingService.LogErrorAsync(ex, LogSeverity.Critical);
+                }
+                RJMessageBox.Show("An error occurred while performing the action.", "Error", MessageBoxButtons.OK);
             }
         }
 
@@ -177,8 +200,12 @@ namespace AniX_APP.Forms_Dashboard
             }
             catch (Exception ex)
             {
-                await ExceptionHandlingService.HandleExceptionAsync(ex);
-                RJMessageBox.Show($"Something went wrong.", "", MessageBoxButtons.OK);
+                bool handled = await _exceptionHandlingService.HandleExceptionAsync(ex);
+                if (!handled)
+                {
+                    await _errorLoggingService.LogErrorAsync(ex, LogSeverity.Critical);
+                }
+                RJMessageBox.Show("An error occurred while performing the action.", "Error", MessageBoxButtons.OK);
             }
         }
 

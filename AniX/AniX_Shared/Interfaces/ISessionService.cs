@@ -6,7 +6,8 @@ namespace AniX_Shared.Interfaces{
         void SetSessionAndCookie(string userId, string username, string sessionId, string profileImagePath);
         string GetUserId();
         string GetUsername();
-        void SetUserName(string userName);
+        void SetUsername(string userName);
+        void SetProfileImagePath(string imagePath);
         string GetProfileImagePath();
         bool IsAuthenticated();
         void SignOut();

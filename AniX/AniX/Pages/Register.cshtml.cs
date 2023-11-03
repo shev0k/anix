@@ -1,5 +1,7 @@
+using AniX_BusinessLogic;
 using Anix_Shared.DomainModels;
 using AniX_Shared.Interfaces;
+using AniX_Utility;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -9,11 +11,12 @@ namespace AniX_WEB.Pages
     {
         private readonly IAuthenticationService _authenticationService;
         private readonly ISessionService _sessionService;
-
+        private readonly UserValidationService _userValidationService;
         public RegisterModel(IAuthenticationService authenticationService, ISessionService sessionService)
         {
             _authenticationService = authenticationService;
             _sessionService = sessionService;
+            _userValidationService = new UserValidationService(minUsernameLength: 4, minPasswordLength: 4, passwordRegexPattern: @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,64}$");
         }
 
         [BindProperty]
@@ -52,41 +55,28 @@ namespace AniX_WEB.Pages
                 return Page();
             }
 
-            // Validate username and email
-            if (await _authenticationService.DoesUsernameExistAsync(Username))
-            {
-                Message = "Username already exists. Please choose another.";
-                return Page();
-            }
-
-            if (await _authenticationService.DoesEmailExistAsync(Email))
-            {
-                Message = "Email already exists. Please use another.";
-                return Page();
-            }
-
             if (Password != ConfirmPassword)
             {
                 Message = "Passwords do not match.";
                 return Page();
             }
 
-            ////Custom validations for later
-            //if (!IsValidEmail(Email))
-            //    {
-            //        Message = "Invalid email format.";
-            //        return Page();
-            //    }
+            string validationMessage;
+            if (!_userValidationService.ValidateCredentials(Username, Password, out validationMessage))
+            {
+                Message = validationMessage;
+                return Page();
+            }
 
-            //if (!IsValidPassword(Password))
+            //if (!_userValidationService.ValidatePasswordComplexity(Password))
             //{
             //    Message = "Password must contain at least one upper case, one lower case, and one number.";
             //    return Page();
             //}
 
-            bool registrationSuccess = await _authenticationService.RegisterUserAsync(Username, Email, Password);
+            OperationResult registrationResult = await _authenticationService.RegisterUserAsync(Username, Email, Password);
 
-            if (registrationSuccess)
+            if (registrationResult.Success)
             {
                 string sessionId = Guid.NewGuid().ToString();
 
@@ -105,10 +95,23 @@ namespace AniX_WEB.Pages
             }
             else
             {
-                Message = "Registration failed. Please try again.";
+
+                if (await _authenticationService.DoesUsernameExistAsync(Username))
+                {
+                    Message = "Username already exists. Please choose another.";
+                }
+                else if (await _authenticationService.DoesEmailExistAsync(Email))
+                {
+                    Message = "Email already exists. Please use another.";
+                }
+                else
+                {
+                    Message = "Registration failed. Please try again later.";
+                }
                 return Page();
             }
         }
+
         //private bool IsValidEmail(string email)
         //{
         //    // for later

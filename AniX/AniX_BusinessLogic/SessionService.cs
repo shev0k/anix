@@ -49,18 +49,25 @@ namespace AniX_BusinessLogic
             return _httpContextAccessor.HttpContext.Session.GetString("ProfileImagePath");
         }
 
-        public void SetUserName(string userName)
+        public void SetUsername(string username)
         {
-            _httpContextAccessor.HttpContext.Session.SetString("UserName", userName);
+            _httpContextAccessor.HttpContext.Session.SetString("Username", username);
+        }
+
+        public void SetProfileImagePath(string imagePath)
+        {
+            _httpContextAccessor.HttpContext.Session.SetString("ProfileImagePath", imagePath);
         }
 
         public bool IsAuthenticated()
         {
-            return !string.IsNullOrEmpty(_httpContextAccessor.HttpContext.Session.GetString("UserId"));
+            return !string.IsNullOrEmpty(GetUserId());
         }
+
         public void SignOut()
         {
             _httpContextAccessor.HttpContext.Session.Clear();
+            _httpContextAccessor.HttpContext.Response.Cookies.Delete("SessionID");
         }
     }
 }

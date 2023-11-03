@@ -1,11 +1,10 @@
-﻿@page
+﻿    @page
 @model AniX_WEB.Pages.ProfileEditModel
 @{
     Layout = "_LayoutProfile";
 }
-<!--=====================================-->
-<!--=      Breadcrumb Area Start        =-->
-<!--=====================================-->
+
+<!-- Breadcrumb Area Start -->
 <section class="breadcrumb">
     <div class="container">
         <div class="breadcrumb-content">
@@ -16,59 +15,64 @@
         </div>
     </div>
 </section>
-<!--=====================================-->
-<!--=      Profile Area Start        =-->
-<!--=====================================-->
+<!-- Breadcrumb Area End -->
+<!-- Profile Area Start -->
 <section class="profile sec-mar">
     <div class="container">
         <div class="row">
             <div class="col-lg-9 col-sm-12 col-12">
-                <div class="row pb-5">
-                    <div class="col-lg-4 col-sm-12 col-12">
-                        <div class="img-box">
-                            @if (Model.Input.ProfileImagePath != null)
-                            {
-                                <img src="@Model.Input.ProfileImagePath" alt="Profile Image">
-                            }
-                            else
-                            {
-                                <img src="./assets/media/profile/edit-profile.png" alt="Default Profile Image">
-                            }
-                            <!-- Profile Image Upload -->
-                            <form method="post" enctype="multipart/form-data">
-                                <input asp-for="Input.ProfileImage" type="file" />
-                                <span asp-validation-for="Input.ProfileImage" class="text-danger"></span>
-                                <button type="submit" class="btn btn-primary">Upload</button>
-                            </form>
+                <!-- Begin form here -->
+                <form method="post" enctype="multipart/form-data">
+                    <div class="row pb-5">
+                        <div class="col-lg-4 col-sm-12 col-12">
+                            <div class="img-box">
+                                @if (Model.Input.ProfileImagePath != null)
+                                {
+                                    <img src="@Model.Input.ProfileImagePath" 
+                                         alt="Profile Image" 
+                                         draggable="false" 
+                                         onerror="this.onerror=null;this.src='./assets/media/profile/edit-profile.png';">
+                                }
+                                else
+                                {
+                                    <img src="./assets/media/profile/edit-profile.png" alt="Default Profile Image" draggable="false" >
+                                }
+                                <div class="overlay" style="display: block;">
+                                    <a href="#" class="edit-icon" onclick="triggerUpload()">
+                                        <i class="far fa-edit"></i> Change Profile Image
+                                    </a>
+                                </div>
+                                <!-- Image input field inside form -->
+                                <input id="file-input" name="ProfileImage" type="file" accept=".jpg,.jpeg,.png,.gif" class="d-none">
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-lg-8 col-sm-12 col-12">
-                        <!-- Profile Edit Form -->
-                        <form method="post">
-                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="col-lg-8 col-sm-12 col-12">
+                            <!-- Continue with the rest of the form fields -->
                             <div class="form-group">
-                                <label asp-for="Input.Username">New Username</label>
-                                <input asp-for="Input.Username" class="form-control" placeholder="Username">
-                                <span asp-validation-for="Input.Username" class="text-danger"></span>
+                                <label for="Username">New Username</label>
+                                <input name="Username" class="form-control" placeholder="Username" value="@Model.Input.Username">
                             </div>
+                            <!-- Email field -->
                             <div class="form-group">
-                                <label asp-for="Input.Email">New Email</label>
-                                <input asp-for="Input.Email" class="form-control" placeholder="Email">
-                                <span asp-validation-for="Input.Email" class="text-danger"></span>
+                                <label for="Email">New Email</label>
+                                <input type="email" name="Email" class="form-control" placeholder="Email" value="@Model.Input.Email">
                             </div>
+                            <!-- Password field -->
                             <div class="form-group">
-                                <label asp-for="Input.Password">New Password</label>
-                                <input asp-for="Input.Password" class="form-control" placeholder="Password">
-                                <span asp-validation-for="Input.Password" class="text-danger"></span>
+                                <label for="Password">New Password</label>
+                                <input name="Password" type="password" class="form-control" placeholder="Password">
                             </div>
+                            <!-- Save Changes button -->
                             <button type="submit" class="anime-btn btn-dark border-change">
                                 Save Changes
                             </button>
-                        </form>
+                        </div>
                     </div>
-                </div>
+                    <!-- End form here -->
+                </form>
             </div>
             <div class="col-lg-3 offset-lg-0 col-sm-8 offset-sm-2 col-12">
+                <!-- Profile links -->
                 <div style="margin-top: 38px;" class="profile-link bg-color-black">
                     <h5>Playlists</h5>
                     <a href="./playlist.html">Watch Later</a>
@@ -78,3 +82,55 @@
         </div>
     </div>
 </section>
+<!-- Profile Area End -->
+@section Scripts {
+    <script>
+        // Server message initialization
+        var serverMessage = "";
+        var messageType = "info";
+
+        @if (TempData["Message"] != null)
+        {
+            <text>
+                serverMessage = "@Html.Raw(TempData["Message"])";
+            messageType = "error";
+            </text>
+        }
+    </script>
+    <script>
+        // Function to trigger file upload input
+        function triggerUpload() {
+            document.getElementById('file-input').click();
+        }
+
+        // Event listener for form submission
+        document.querySelector('form').addEventListener('submit', function (event) {
+            // Optional: Check if the file input has a file selected
+            var fileInput = document.getElementById('file-input');
+            if (fileInput.files.length === 0) {
+                // If no file is selected, prevent form from submitting
+                alert('Please select a profile image to upload.');
+                event.preventDefault(); // Prevent form from submitting without a file
+            } else {
+                // If a file is selected, continue with the form submission
+                // The form will automatically include the file in the POST request
+            }
+        });
+
+        // Event listener for file input change
+        document.getElementById('file-input').addEventListener('change', function (event) {
+            if (event.target.files && event.target.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    // Set the src of the img tag to the read file to preview the image
+                    document.querySelector('.img-box img').setAttribute('src', e.target.result);
+                };
+
+                // Read the image file as a data URL.
+                reader.readAsDataURL(event.target.files[0]);
+            }
+        });
+    </script>
+}
+}

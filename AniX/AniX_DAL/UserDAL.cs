@@ -14,10 +14,19 @@ namespace AniX_DAL
     public class UserDAL : BaseDAL, IUserManagement
     {
         private readonly IAzureBlobService _blobService;
+        private readonly IExceptionHandlingService _exceptionHandlingService;
+        private readonly IErrorLoggingService _errorLoggingService;
 
-        public UserDAL(IAzureBlobService blobService, IConfiguration configuration) : base(configuration)
+        public UserDAL(
+            IAzureBlobService blobService,
+            IConfiguration configuration,
+            IExceptionHandlingService exceptionHandlingService,
+            IErrorLoggingService errorLoggingService
+        ) : base(configuration)
         {
             _blobService = blobService;
+            _exceptionHandlingService = exceptionHandlingService;
+            _errorLoggingService = errorLoggingService;
         }
 
         public async Task<User> AuthenticateUserAsync(string username, string rawPassword)
@@ -32,11 +41,7 @@ namespace AniX_DAL
                 if (await reader.ReadAsync())
                 {
                     user = MapReaderToUser(reader);
-                    (string storedPassword, string storedSalt) = user.RetrieveCredentials();
-
-                    string hashedPassword = HashPassword.GenerateHashedPassword(rawPassword, storedSalt);
-
-                    if (hashedPassword == storedPassword)
+                    if (ValidateUserPassword(user, rawPassword))
                     {
                         return user;
                     }
@@ -44,7 +49,11 @@ namespace AniX_DAL
             }
             catch (Exception ex)
             {
-                await ExceptionHandlingService.HandleExceptionAsync(ex);
+                bool handled = await _exceptionHandlingService.HandleExceptionAsync(ex);
+                if (!handled)
+                {
+                    await _errorLoggingService.LogErrorAsync(ex, LogSeverity.Critical);
+                }
                 throw;
             }
             finally
@@ -55,8 +64,9 @@ namespace AniX_DAL
             return null;
         }
 
-        public async Task<bool> CreateAsync(User user, Stream profileImageStream = null, string contentType = null)
+        public async Task<OperationResult> CreateAsync(User user, Stream profileImageStream = null, string contentType = null)
         {
+            OperationResult result = new OperationResult();
             SqlTransaction transaction = null;
             try
             {
@@ -85,7 +95,14 @@ namespace AniX_DAL
 
                 if (profileImageStream != null && contentType != null)
                 {
-                    profileImagePath = await _blobService.UploadImageAsync(profileImageStream, user.Id.ToString(), contentType);
+                    try
+                    {
+                        profileImagePath = await _blobService.UploadImageAsync(profileImageStream, user.Id.ToString(), contentType);
+                    }
+                    catch
+                    {
+                        throw new Exception("Failed to upload the image.");
+                    }
                 }
 
                 string updateQuery = "UPDATE [User] SET ProfileImagePath = @profileImagePath WHERE Id = @id";
@@ -96,25 +113,29 @@ namespace AniX_DAL
                 await updateCommand.ExecuteNonQueryAsync();
 
                 transaction.Commit();
-                return true;
+
+                result.Success = true;
+                result.Message = "User created successfully.";
+                return result;
             }
             catch (Exception ex)
             {
-                if (transaction != null)
+                transaction?.Rollback();
+                result.Success = false;
+                result.Message = ex.Message;
+
+                bool handled = await _exceptionHandlingService.HandleExceptionAsync(ex);
+                if (!handled)
                 {
-                    transaction.Rollback();
+                    await _errorLoggingService.LogErrorAsync(ex, LogSeverity.Critical);
                 }
-                await ExceptionHandlingService.HandleExceptionAsync(ex);
-                return false;
             }
             finally
             {
-                if (transaction != null)
-                {
-                    transaction.Dispose();
-                }
+                transaction?.Dispose();
                 await connection.CloseAsync();
             }
+            return result;
         }
 
         public async Task<bool> UpdateAsync(User user, bool updateProfileImage = true)
@@ -124,7 +145,6 @@ namespace AniX_DAL
                 await connection.OpenAsync();
                 Console.WriteLine("Connection opened.");
 
-                // Start constructing the SQL update command
                 var queryBuilder = new StringBuilder(@"
             UPDATE [User] SET 
                 Username = @username, 
@@ -134,22 +154,18 @@ namespace AniX_DAL
                 Banned = @banned, 
                 IsAdmin = @isAdmin");
 
-                // Conditionally add the ProfileImagePath to the update command
                 if (updateProfileImage)
                 {
                     queryBuilder.Append(", ProfileImagePath = @profileImagePath");
                 }
 
-                // Finish the SQL command
                 queryBuilder.Append(" WHERE Id = @id");
                 string query = queryBuilder.ToString();
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    // Use the RetrieveCredentials method to get the password and salt
                     (string password, string salt) = user.RetrieveCredentials();
 
-                    // Add parameters with explicit types
                     command.Parameters.Add(new SqlParameter("@id", SqlDbType.Int)).Value = user.Id;
                     command.Parameters.Add(new SqlParameter("@username", SqlDbType.NVarChar)).Value = user.Username;
                     command.Parameters.Add(new SqlParameter("@password", SqlDbType.NVarChar)).Value = password;
@@ -158,23 +174,19 @@ namespace AniX_DAL
                     command.Parameters.Add(new SqlParameter("@banned", SqlDbType.Bit)).Value = user.Banned;
                     command.Parameters.Add(new SqlParameter("@isAdmin", SqlDbType.Bit)).Value = user.IsAdmin;
 
-                    // Conditionally add the profile image path parameter
                     if (updateProfileImage)
                     {
                         command.Parameters.Add(new SqlParameter("@profileImagePath", SqlDbType.NVarChar)).Value = (object)user.ProfileImagePath ?? DBNull.Value;
                     }
 
-                    // Log the final state of parameters
                     foreach (SqlParameter param in command.Parameters)
                     {
                         Console.WriteLine($"{param.ParameterName}: {param.Value}");
                     }
 
-                    // Execute the command
                     int rowsAffected = await command.ExecuteNonQueryAsync();
                     Console.WriteLine($"Update command executed, affected rows: {rowsAffected}");
 
-                    // Check if at least one row was affected
                     return rowsAffected > 0;
                 }
             }
@@ -182,9 +194,16 @@ namespace AniX_DAL
             {
                 Console.WriteLine("Exception occurred:");
                 Console.WriteLine(ex.ToString());
-                await ExceptionHandlingService.HandleExceptionAsync(ex);
+
+                bool handled = await _exceptionHandlingService.HandleExceptionAsync(ex);
+                if (!handled)
+                {
+                    await _errorLoggingService.LogErrorAsync(ex, LogSeverity.Critical);
+                }
+
                 throw;
             }
+
             finally
             {
                 await connection.CloseAsync();
@@ -193,30 +212,41 @@ namespace AniX_DAL
         }
 
 
-
-
-
-
-        public async Task<bool> DeleteAsync(int id)
+        public async Task<OperationResult> DeleteAsync(int id)
         {
+            OperationResult result = new OperationResult();
             try
             {
                 await connection.OpenAsync();
                 string query = "DELETE FROM [User] WHERE Id = @id";
                 SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@id", id);
-                return (await command.ExecuteNonQueryAsync()) > 0;
+
+                int rowsAffected = await command.ExecuteNonQueryAsync();
+
+                result.Success = rowsAffected > 0;
+                result.Message = result.Success ? "User deleted successfully." : "User not found or could not be deleted.";
+            }
+            catch (SqlException ex) when (ex.Number == 547)
+            {
+                result.Success = false;
+                result.Message = "User cannot be deleted because it is referenced by other entities.";
+                await _errorLoggingService.LogErrorAsync(ex, LogSeverity.Warning);
             }
             catch (Exception ex)
             {
-                await ExceptionHandlingService.HandleExceptionAsync(ex);
-                throw;
+                result.Success = false;
+                result.Message = "An error occurred while deleting the user.";
+                await _errorLoggingService.LogErrorAsync(ex, LogSeverity.Critical);
             }
             finally
             {
                 await connection.CloseAsync();
             }
+            return result;
         }
+
+
 
         public async Task<User> GetUserFromIdAsync(int id)
         {
@@ -242,7 +272,13 @@ namespace AniX_DAL
             }
             catch (Exception ex)
             {
-                await ExceptionHandlingService.HandleExceptionAsync(ex);
+                bool handled = await _exceptionHandlingService.HandleExceptionAsync(ex);
+                if (!handled)
+                {
+                    await _errorLoggingService.LogErrorAsync(ex, LogSeverity.Critical);
+                }
+
+                throw;
             }
             finally
             {
@@ -269,7 +305,12 @@ namespace AniX_DAL
             }
             catch (Exception ex)
             {
-                await ExceptionHandlingService.HandleExceptionAsync(ex);
+                bool handled = await _exceptionHandlingService.HandleExceptionAsync(ex);
+                if (!handled)
+                {
+                    await _errorLoggingService.LogErrorAsync(ex, LogSeverity.Critical);
+                }
+
                 throw;
             }
             finally
@@ -300,7 +341,12 @@ namespace AniX_DAL
             }
             catch (Exception ex)
             {
-                await ExceptionHandlingService.HandleExceptionAsync(ex);
+                bool handled = await _exceptionHandlingService.HandleExceptionAsync(ex);
+                if (!handled)
+                {
+                    await _errorLoggingService.LogErrorAsync(ex, LogSeverity.Critical);
+                }
+
                 throw;
             }
             finally
@@ -314,30 +360,37 @@ namespace AniX_DAL
         public async Task<List<User>> FetchFilteredAndSearchedUsersAsync(string filter, string searchTerm)
         {
             List<User> users = new List<User>();
-            string query = "SELECT * FROM [dbo].[User] WHERE 1=1";
+            var queryBuilder = new StringBuilder("SELECT * FROM [dbo].[User] WHERE 1 = 1");
 
-            if (!string.IsNullOrEmpty(filter))
+            var filters = new Dictionary<string, string>
             {
-                if (filter == "Admin")
-                    query += " AND IsAdmin = 1";
-                else if (filter == "User")
-                    query += " AND IsAdmin = 0";
-                else if (filter == "Banned")
-                    query += " AND Banned = 1";
-                else if (filter == "Not Banned")
-                    query += " AND Banned = 0";
+                { "Admin", "IsAdmin = 1" },
+                { "User", "IsAdmin = 0" },
+                { "Banned", "Banned = 1" },
+                { "Not Banned", "Banned = 0" }
+            };
+
+            if (!string.IsNullOrEmpty(filter) && filters.ContainsKey(filter))
+            {
+                queryBuilder.Append($" AND {filters[filter]}");
             }
 
             if (!string.IsNullOrEmpty(searchTerm))
             {
-                query += $" AND (Username LIKE '%{searchTerm}%' OR Email LIKE '%{searchTerm}%')";
+                queryBuilder.Append(" AND (Username LIKE @searchTerm OR Email LIKE @searchTerm)");
             }
 
             try
             {
                 await connection.OpenAsync();
-                using (SqlCommand command = new SqlCommand(query, connection))
+                using (SqlCommand command = new SqlCommand(queryBuilder.ToString(), connection))
                 {
+                    if (!string.IsNullOrEmpty(searchTerm))
+                    {
+                        var searchTermParam = $"%{searchTerm}%";
+                        command.Parameters.AddWithValue("@searchTerm", searchTermParam);
+                    }
+
                     SqlDataReader reader = await command.ExecuteReaderAsync();
                     while (await reader.ReadAsync())
                     {
@@ -347,7 +400,12 @@ namespace AniX_DAL
             }
             catch (Exception ex)
             {
-                await ExceptionHandlingService.HandleExceptionAsync(ex);
+                bool handled = await _exceptionHandlingService.HandleExceptionAsync(ex);
+                if (!handled)
+                {
+                    await _errorLoggingService.LogErrorAsync(ex, LogSeverity.Critical);
+                }
+
                 throw;
             }
             finally
@@ -357,6 +415,7 @@ namespace AniX_DAL
 
             return users;
         }
+
 
         public async Task<bool> DoesUsernameExistAsync(string username)
         {
@@ -402,6 +461,13 @@ namespace AniX_DAL
             };
             user.UpdatePassword(reader["Password"].ToString(), reader["Salt"].ToString());
             return user;
+        }
+
+        private bool ValidateUserPassword(User user, string rawPassword)
+        {
+            (string storedPassword, string storedSalt) = user.RetrieveCredentials();
+            string hashedPassword = HashPassword.GenerateHashedPassword(rawPassword, storedSalt);
+            return hashedPassword == storedPassword;
         }
     }
 }

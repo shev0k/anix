@@ -10,15 +10,22 @@ namespace AniX_BusinessLogic
     public class AuthenticationService : IAuthenticationService
     {
         private readonly IUserManagement _userDal;
-        private readonly IAzureBlobService _blobService; 
-
+        private readonly IAzureBlobService _blobService;
+        private readonly IExceptionHandlingService _exceptionHandlingService;
+        private readonly IErrorLoggingService _errorLoggingService;
 
         public ISessionService SessionService { get; set; }
 
-        public AuthenticationService(IUserManagement userDal, IAzureBlobService blobService)
+        public AuthenticationService(
+            IUserManagement userDal,
+            IAzureBlobService blobService,
+            IExceptionHandlingService exceptionHandlingService,
+            IErrorLoggingService errorLoggingService)
         {
             _userDal = userDal;
             _blobService = blobService;
+            _exceptionHandlingService = exceptionHandlingService;
+            _errorLoggingService = errorLoggingService;
         }
 
         public async Task<User> AuthenticateUserAsync(string username, string password)
@@ -29,7 +36,11 @@ namespace AniX_BusinessLogic
             }
             catch (Exception e)
             {
-                await ExceptionHandlingService.HandleExceptionAsync(e);
+                bool handled = await _exceptionHandlingService.HandleExceptionAsync(e);
+                if (!handled)
+                {
+                    await _errorLoggingService.LogErrorAsync(e, LogSeverity.Critical);
+                }
                 return null;
             }
         }
@@ -43,10 +54,29 @@ namespace AniX_BusinessLogic
             }
         }
 
-        public async Task<bool> RegisterUserAsync(string username, string email, string password, Stream profileImageStream = null, string contentType = null)
+        public async Task<OperationResult> RegisterUserAsync(string username, string email, string password, Stream profileImageStream = null, string contentType = null)
         {
+            OperationResult result = new OperationResult();
+
+            // Check if username or email already exists
+            if (await DoesUsernameExistAsync(username))
+            {
+                result.Success = false;
+                result.Message = "Username already exists.";
+                return result;
+            }
+            if (await DoesEmailExistAsync(email))
+            {
+                result.Success = false;
+                result.Message = "Email already exists.";
+                return result;
+            }
+
+            // Generate salt and hashed password
             string salt = HashPassword.GenerateSalt();
             string hashedPassword = HashPassword.GenerateHashedPassword(password, salt);
+
+            // Create new user object
             User newUser = new User
             {
                 Username = username,
@@ -57,14 +87,19 @@ namespace AniX_BusinessLogic
             };
             newUser.UpdatePassword(hashedPassword, salt);
 
-            bool isCreated = await _userDal.CreateAsync(newUser, profileImageStream, contentType);
-            if (!isCreated)
+            // Attempt to create the new user
+            OperationResult createResult = await _userDal.CreateAsync(newUser, profileImageStream, contentType);
+            if (!createResult.Success)
             {
-                return false;
+                return createResult; // Directly return the OperationResult from CreateAsync
             }
 
-            return true;
+            // If the user was successfully created
+            result.Success = true;
+            result.Message = "User registered successfully.";
+            return result;
         }
+
 
 
 

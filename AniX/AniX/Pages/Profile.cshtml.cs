@@ -12,14 +12,16 @@ namespace AniX_WEB.Pages
     {
         private readonly IUserManagement _userController;
         private readonly ISessionService _sessionService;
+        private readonly string _defaultImagePath;
 
         public User CurrentUser { get; set; }
-        public bool IsOwnProfile { get; set; } // To check if the user is viewing their own profile
+        public bool IsOwnProfile { get; set; }
 
-        public ProfileModel(IUserManagement userController, ISessionService sessionService)
+        public ProfileModel(IUserManagement userController, ISessionService sessionService, IConfiguration configuration)
         {
             _userController = userController;
             _sessionService = sessionService;
+            _defaultImagePath = configuration["ProfileDefaults:ImagePath"];
         }
 
         public async Task<IActionResult> OnGetAsync()
@@ -39,7 +41,7 @@ namespace AniX_WEB.Pages
 
             IsOwnProfile = User.FindFirstValue(ClaimTypes.NameIdentifier) == CurrentUser.Id.ToString();
 
-            CurrentUser.ProfileImagePath = CurrentUser.ProfileImagePath ?? "https://anix.blob.core.windows.net/anixprofile/66574.png";
+            CurrentUser.ProfileImagePath = CurrentUser.ProfileImagePath ?? _defaultImagePath;
 
             return Page();
         }

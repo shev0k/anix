@@ -1,13 +1,15 @@
 ﻿using Anix_Shared.DomainModels;
 using System.Threading.Tasks;
+using AniX_Utility;
+
 
 namespace AniX_Shared.Interfaces
 {
     public interface IUserManagement
     {
-        Task<bool> CreateAsync(User user, Stream profileImageStream = null, string contentType = null);
+        Task<OperationResult> CreateAsync(User user, Stream profileImageStream = null, string contentType = null);
         Task<bool> UpdateAsync(User user, bool updateProfileImage);
-        Task<bool> DeleteAsync(int id);
+        Task<OperationResult> DeleteAsync(int id);
         Task<User> GetUserFromUsernameAsync(string username);
         Task<User> GetUserFromIdAsync(int id);
         Task<User> AuthenticateUserAsync(string username, string rawPassword);

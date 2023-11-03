@@ -8,6 +8,7 @@ using System.IO;
 using System.Threading.Tasks;
 using AniX_Utility;
 using System;
+using System.Text.RegularExpressions;
 
 namespace AniX_WEB.Pages
 {
@@ -17,8 +18,16 @@ namespace AniX_WEB.Pages
         private readonly ISessionService _sessionService;
         private readonly IAzureBlobService _azureBlobService;
 
+        private const int MinUsernameLength = 4;
+        private const int MinPasswordLength = 4;
+        private const string PasswordRegexPattern = @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$";
+
+
         [BindProperty]
         public ProfileEditInputModel Input { get; set; }
+
+        [TempData]
+        public string Message { get; set; } 
 
         public ProfileEditModel(IUserManagement userManagement, ISessionService sessionService, IAzureBlobService azureBlobService)
         {
@@ -33,7 +42,7 @@ namespace AniX_WEB.Pages
             [Display(Name = "Email Address")]
             public string Email { get; set; }
 
-            [StringLength(100, MinimumLength = 3)]
+            [StringLength(20, MinimumLength = 4)]
             [Display(Name = "Username")]
             public string Username { get; set; }
 
@@ -91,9 +100,16 @@ namespace AniX_WEB.Pages
 
             if (!string.IsNullOrWhiteSpace(Input.Username) && Input.Username != user.Username)
             {
+                if (Input.Username.Length < MinUsernameLength)
+                {
+                    TempData["Message"] = $"Username must be at least {MinUsernameLength} characters long.";
+                    Input.ProfileImagePath = user.ProfileImagePath;
+                    return Page();
+                }
                 if (await _userManagement.DoesUsernameExistAsync(Input.Username))
                 {
-                    ModelState.AddModelError("", "Username already exists.");
+                    TempData["Message"] = "Username already exists.";
+                    Input.ProfileImagePath = user.ProfileImagePath;
                     return Page();
                 }
                 user.Username = Input.Username;
@@ -104,7 +120,8 @@ namespace AniX_WEB.Pages
             {
                 if (await _userManagement.DoesEmailExistAsync(Input.Email))
                 {
-                    ModelState.AddModelError("", "Email already exists.");
+                    TempData["Message"] = "Email already exists.";
+                    Input.ProfileImagePath = user.ProfileImagePath;
                     return Page();
                 }
                 user.Email = Input.Email;
@@ -113,6 +130,18 @@ namespace AniX_WEB.Pages
 
             if (!string.IsNullOrWhiteSpace(Input.Password))
             {
+                if (Input.Password.Length < MinPasswordLength)
+                {
+                    TempData["Message"] = $"Password must be at least {MinPasswordLength} characters long.";
+                    Input.ProfileImagePath = user.ProfileImagePath;
+                    return Page();
+                }
+                //if (!Regex.IsMatch(Input.Password, PasswordRegexPattern))
+                //{
+                //      TempData["Message"] = "Password must contain at least one uppercase letter, one lowercase letter, and one number.";
+                //      return Page();
+                //}
+                // Continue with the password update logic...
                 string newSalt = HashPassword.GenerateSalt();
                 string hashedPassword = HashPassword.GenerateHashedPassword(Input.Password, newSalt);
                 user.UpdatePassword(hashedPassword, newSalt);
@@ -121,6 +150,16 @@ namespace AniX_WEB.Pages
 
             if (Input.ProfileImage != null && Input.ProfileImage.Length > 0)
             {
+                var allowedExtensions = new[] { ".jpg", ".jpeg", ".png", ".gif" };
+                var extension = Path.GetExtension(Input.ProfileImage.FileName).ToLowerInvariant();
+
+                if (!allowedExtensions.Contains(extension))
+                {
+                    TempData["Message"] = "JPG, JPEG, PNG and GIF only!";
+                    Input.ProfileImagePath = user.ProfileImagePath;
+                    return Page();
+                }
+
                 using (var stream = Input.ProfileImage.OpenReadStream())
                 {
                     var newProfileImagePath = await _azureBlobService.UploadImageAsync(stream, user.Id.ToString(), Input.ProfileImage.ContentType);
@@ -138,17 +177,30 @@ namespace AniX_WEB.Pages
 
             if (updateUser)
             {
-                // Pass the updateProfileImage flag to the UpdateAsync method
                 var updateSuccess = await _userManagement.UpdateAsync(user, updateProfileImage);
                 if (!updateSuccess)
                 {
-                    ModelState.AddModelError("", "An error occurred while updating the profile.");
+                    TempData["ErrorMessage"] = "An error occurred while updating the profile.";
                     return Page();
+                }
+                else
+                {
+                    _sessionService.SetUsername(user.Username);
+                    _sessionService.SetProfileImagePath(user.ProfileImagePath);
+                    return RedirectToPage("/Profile");
                 }
             }
 
-            TempData["SuccessMessage"] = "Profile updated successfully.";
+
+            Input = new ProfileEditInputModel
+            {
+                Username = user.Username,
+                Email = user.Email,
+                ProfileImagePath = user.ProfileImagePath
+            };
+
             return RedirectToPage("/Profile");
         }
+
     }
 }

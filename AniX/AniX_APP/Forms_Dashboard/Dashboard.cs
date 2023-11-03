@@ -12,6 +12,7 @@ using Anix_Shared.DomainModels;
 using AniX_Controllers;
 using AniX_APP.CustomElements;
 using AniX_FormsLogic;
+using AniX_Utility;
 
 namespace AniX_APP.Forms_Dashboard
 {
@@ -222,13 +223,21 @@ namespace AniX_APP.Forms_Dashboard
         #endregion
 
         private ApplicationModel _dashboardModel;
-        public Dashboard(ApplicationModel dashboardModel)
+        private readonly IExceptionHandlingService _exceptionHandlingService;
+        private readonly IErrorLoggingService _errorLoggingService;
+
+        public Dashboard(
+            ApplicationModel dashboardModel,
+            IExceptionHandlingService exceptionHandlingService,
+            IErrorLoggingService errorLoggingService)
         {
             InitializeComponent();
             SetButtonStyles();
             SetButtonImages();
             hideSubMenu();
-            openChildForm(new Users(dashboardModel));
+            _exceptionHandlingService = exceptionHandlingService;
+            _errorLoggingService = errorLoggingService;
+            openChildForm(new Users(dashboardModel, exceptionHandlingService, errorLoggingService));
             SetActiveButton(btnManagement);
             _dashboardModel = dashboardModel;
         }
@@ -246,7 +255,7 @@ namespace AniX_APP.Forms_Dashboard
 
         private void btnUsers_Click(object sender, EventArgs e)
         {
-            openChildForm(new Users(_dashboardModel));
+            openChildForm(new Users(_dashboardModel, _exceptionHandlingService, _errorLoggingService));
             SetActiveButton((Button)sender);
         }
 
@@ -283,8 +292,10 @@ namespace AniX_APP.Forms_Dashboard
         private void HandleLogout()
         {
             _dashboardModel.LoggedInUser = null;
-            Main windowOpen = new Main(_dashboardModel);
-
+            Main windowOpen = new Main(
+                _dashboardModel,
+                _exceptionHandlingService,
+                _errorLoggingService);
             this.Hide();
             windowOpen.ShowDialog();
             this.Close();

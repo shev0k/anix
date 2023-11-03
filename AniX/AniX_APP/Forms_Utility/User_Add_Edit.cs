@@ -23,14 +23,21 @@ namespace AniX_APP.Forms_Utility
         private readonly FormMode _currentMode;
         private readonly ApplicationModel _appModel;
         private readonly UserAddEditFormLogic _userAddEditFormLogic;
+        private readonly IExceptionHandlingService _exceptionHandlingService;
+        private readonly IErrorLoggingService _errorLoggingService;
 
-
-        public User_Add_Edit(FormMode mode, ApplicationModel appModel)
+        public User_Add_Edit(
+            FormMode mode,
+            ApplicationModel appModel,
+            IExceptionHandlingService exceptionHandlingService,
+            IErrorLoggingService _errorLoggingService)
         {
             InitializeComponent();
             _currentMode = mode;
             _appModel = appModel;
             _userAddEditFormLogic = new UserAddEditFormLogic(_appModel);
+            _exceptionHandlingService = exceptionHandlingService;
+            _errorLoggingService = _errorLoggingService;
             this.FormBorderStyle = FormBorderStyle.None;
         }
 
@@ -52,43 +59,55 @@ namespace AniX_APP.Forms_Utility
 
         private async void btnSave_Click(object sender, EventArgs e)
         {
-            var (IsValid, Message) = await _userAddEditFormLogic.ValidateFormAsync(
+            var validationOutcome = await _userAddEditFormLogic.ValidateFormAsync(
                 tbxUsername.Texts,
                 tbxEmail.Texts,
                 tbxPassword.Texts,
                 _currentMode == FormMode.Edit
             );
 
-            if (IsValid)
+            if (validationOutcome.IsValid)
             {
                 try
                 {
                     User user = CreateUserFromForm();
+                    OperationResult operationResult;
 
                     if (_currentMode == FormMode.Add)
                     {
-                        bool created = await _userAddEditFormLogic.AddNewUserAsync(user, tbxPassword.Texts);
-                        RJMessageBox.Show(created ? "User created successfully." : "An error occurred while creating the user.");
+                        operationResult = await _userAddEditFormLogic.AddNewUserAsync(user, tbxPassword.Texts);
                     }
                     else
                     {
-                        bool updated = await _userAddEditFormLogic.UpdateExistingUserAsync(user, tbxPassword.Texts);
-                        RJMessageBox.Show(updated ? "User updated successfully." : "An error occurred while updating the user.");
+                        operationResult = await _userAddEditFormLogic.UpdateExistingUserAsync(user, tbxPassword.Texts);
                     }
-                    this.DialogResult = DialogResult.OK;
+
+                    RJMessageBox.Show(operationResult.Message);
+                    if (operationResult.Success)
+                    {
+                        this.DialogResult = DialogResult.OK;
+                    }
                 }
                 catch (Exception ex)
                 {
-                    await ExceptionHandlingService.HandleExceptionAsync(ex);
+                    bool handled = await _exceptionHandlingService.HandleExceptionAsync(ex);
+                    if (!handled)
+                    {
+                        await _errorLoggingService.LogErrorAsync(ex, LogSeverity.Critical);
+                    }
                     RJMessageBox.Show("An error occurred. Please try again.");
                 }
-                this.Close();
+                finally
+                {
+                    this.Close();
+                }
             }
             else
             {
-                RJMessageBox.Show(Message);
+                RJMessageBox.Show(validationOutcome.Message);
             }
         }
+
 
 
         private User CreateUserFromForm()

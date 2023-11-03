@@ -5,20 +5,11 @@ using System.Threading.Tasks;
 
 namespace AniX_Utility
 {
-    public enum LogSeverity
+    public class ErrorLoggingService : IErrorLoggingService
     {
-        Info,
-        Warning,
-        Error,
-        Critical
-    }
-
-    public static class ErrorLoggingService
-    {
-        private static string GetSolutionDirectory()
+        private string GetSolutionDirectory()
         {
             string assemblyLocation = Assembly.GetExecutingAssembly().Location;
-
             DirectoryInfo directoryInfo = new DirectoryInfo(Path.GetDirectoryName(assemblyLocation));
 
             while (directoryInfo.Name != "AniX")
@@ -29,7 +20,7 @@ namespace AniX_Utility
             return directoryInfo.FullName;
         }
 
-        public static async Task LogErrorAsync(Exception e, LogSeverity severity = LogSeverity.Error)
+        public async Task LogErrorAsync(Exception e, LogSeverity severity = LogSeverity.Error)
         {
             await LogMessageAsync(
                 $"Exception Type: {e.GetType().FullName}\n" +
@@ -39,12 +30,12 @@ namespace AniX_Utility
             );
         }
 
-        public static async Task LogCustomMessageAsync(string customMessage, LogSeverity severity = LogSeverity.Info)
+        public async Task LogCustomMessageAsync(string customMessage, LogSeverity severity = LogSeverity.Info)
         {
             await LogMessageAsync($"Custom Message: {customMessage}", severity);
         }
 
-        private static async Task LogMessageAsync(string message, LogSeverity severity)
+        private async Task LogMessageAsync(string message, LogSeverity severity)
         {
             string solutionDirectory = GetSolutionDirectory();
             string filePath = Path.Combine(solutionDirectory, "ErrorLog.txt");
@@ -65,7 +56,7 @@ namespace AniX_Utility
             }
         }
 
-        public static async Task FallbackLoggingAsync(Exception e, LogSeverity severity)
+        public async Task FallbackLoggingAsync(Exception e, LogSeverity severity)
         {
             string solutionDirectory = GetSolutionDirectory();
             string filePath = Path.Combine(solutionDirectory, "FallbackErrorLog.txt");
@@ -84,11 +75,11 @@ namespace AniX_Utility
             }
             catch
             {
-                //opa
+                // If this also fails, consider logging to a system event log or another fallback option.
             }
         }
 
-        public static async Task AuditLogAsync(string action, string details, LogSeverity severity = LogSeverity.Info)
+        public async Task AuditLogAsync(string action, string details, LogSeverity severity = LogSeverity.Info)
         {
             await LogMessageAsync($"Action: {action}\nDetails: {details}", severity);
         }

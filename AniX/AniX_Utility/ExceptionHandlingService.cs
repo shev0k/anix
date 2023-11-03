@@ -3,13 +3,20 @@ using System.Threading.Tasks;
 
 namespace AniX_Utility
 {
-    public static class ExceptionHandlingService
+    public class ExceptionHandlingService : IExceptionHandlingService
     {
-        public static async Task<bool> HandleExceptionAsync(Exception e)
+        private readonly IErrorLoggingService _errorLoggingService;
+
+        public ExceptionHandlingService(IErrorLoggingService errorLoggingService)
+        {
+            _errorLoggingService = errorLoggingService ?? throw new ArgumentNullException(nameof(errorLoggingService));
+        }
+
+        public async Task<bool> HandleExceptionAsync(Exception e)
         {
             try
             {
-                await ErrorLoggingService.LogErrorAsync(e, LogSeverity.Error);
+                await _errorLoggingService.LogErrorAsync(e, LogSeverity.Error);
                 return true; // logs error
             }
             catch
@@ -17,7 +24,7 @@ namespace AniX_Utility
                 // alternative logging
                 try
                 {
-                    await ErrorLoggingService.FallbackLoggingAsync(e, LogSeverity.Critical);
+                    await _errorLoggingService.FallbackLoggingAsync(e, LogSeverity.Critical);
                     return true; // oops, added the log
                 }
                 catch

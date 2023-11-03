@@ -1,13 +1,11 @@
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Windows.Forms;
-using AniX_APP.CustomElements;
 using AniX_BusinessLogic;
 using AniX_DAL;
 using AniX_Shared.Interfaces;
 using Microsoft.Extensions.Configuration;
 using AniX_Controllers;
 using AniX_FormsLogic;
+using AniX_Utility;
 
 namespace AniX_APP
 {
@@ -24,15 +22,24 @@ namespace AniX_APP
 
             var serviceProvider = new ServiceCollection()
                 .AddSingleton<IConfiguration>(configuration)
+                .AddSingleton<IErrorLoggingService, ErrorLoggingService>()
+                .AddSingleton<IExceptionHandlingService, ExceptionHandlingService>()
                 .AddSingleton<IAzureBlobService, AzureBlobService>(sp =>
                 {
-                    return new AzureBlobService(configuration);
+                    var errorLoggingService = sp.GetRequiredService<IErrorLoggingService>();
+                    return new AzureBlobService(configuration, errorLoggingService);
                 })
-                .AddTransient<UserDAL>(sp => new UserDAL(sp.GetRequiredService<IAzureBlobService>(), configuration))
+                .AddTransient<UserDAL>(sp => new UserDAL(
+                    sp.GetRequiredService<IAzureBlobService>(),
+                    configuration,
+                    sp.GetRequiredService<IExceptionHandlingService>(),
+                    sp.GetRequiredService<IErrorLoggingService>()))
                 .AddTransient<IUserManagement, UserDAL>()
                 .AddTransient<IAuthenticationService, AuthenticationService>()
                 .AddTransient<UserValidationService>()
-                .AddTransient<AuditService>()
+                .AddTransient<AuditService>(sp => new AuditService(
+                    sp.GetRequiredService<IErrorLoggingService>(),
+                    sp.GetRequiredService<IExceptionHandlingService>()))
                 .AddTransient<UserController>()
                 .AddSingleton<ApplicationModel>(sp => new ApplicationModel(
                     null,
@@ -41,8 +48,6 @@ namespace AniX_APP
                 .AddTransient<Main>()
                 .BuildServiceProvider();
 
-            // To customize application configuration such as set high DPI settings or default font,
-            // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
 
             using (var scope = serviceProvider.CreateScope())

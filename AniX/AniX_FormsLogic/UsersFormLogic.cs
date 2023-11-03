@@ -6,6 +6,7 @@ using AniX_FormsLogic;
 using AniX_BusinessLogic;
 using AniX_Controllers;
 using Anix_Shared.DomainModels;
+using AniX_Utility;
 
 namespace AniX_FormsLogic
 {
@@ -29,7 +30,7 @@ namespace AniX_FormsLogic
             return await _appModel.UserController.FetchFilteredAndSearchedUsersAsync(selectedFilter, searchTerm);
         }
 
-        public async Task<bool> DeleteUserAsync(int userId)
+        public async Task<OperationResult> DeleteUserAsync(int userId)
         {
             return await _appModel.UserController.DeleteUserAsync(userId);
         }

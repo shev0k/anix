@@ -13,18 +13,22 @@ namespace AniX_FormsLogic
             _appModel = appModel;
         }
 
-        public async Task<bool> AddNewUserAsync(User user, string password)
+        public async Task<OperationResult> AddNewUserAsync(User user, string password)
         {
+            OperationResult result = new OperationResult();
             string salt = HashPassword.GenerateSalt();
             string hashedPassword = HashPassword.GenerateHashedPassword(password, salt);
             user.UpdatePassword(hashedPassword, salt);
             user.RegistrationDate = DateTime.Now;
 
-            return await _appModel.UserDal.CreateAsync(user);
+            result = await _appModel.UserDal.CreateAsync(user);
+
+            return result;
         }
 
-        public async Task<bool> UpdateExistingUserAsync(User user, string newPassword)
+        public async Task<OperationResult> UpdateExistingUserAsync(User user, string newPassword)
         {
+            OperationResult operationResult = new OperationResult();
             user.Id = _appModel.UserToEdit.Id;
             if (!string.IsNullOrEmpty(newPassword))
             {
@@ -38,8 +42,28 @@ namespace AniX_FormsLogic
                 user.UpdatePassword(existingPassword, existingSalt);
             }
 
-            return await _appModel.UserDal.UpdateAsync(user, updateProfileImage: false);
+            try
+            {
+                bool updateResult = await _appModel.UserDal.UpdateAsync(user, updateProfileImage: false);
+                if (updateResult)
+                {
+                    operationResult.Success = true;
+                    operationResult.Message = "User updated successfully.";
+                }
+                else
+                {
+                    operationResult.Success = false;
+                    operationResult.Message = "User could not be updated.";
+                }
+            }
+            catch (Exception ex)
+            {
+                operationResult.Success = false;
+                operationResult.Message = "An error occurred while updating the user.";
+            }
+            return operationResult;
         }
+
 
         public async Task<(bool IsValid, string Message)> ValidateFormAsync(string username, string email, string password, bool isEditMode)
         {
