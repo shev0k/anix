@@ -5,8 +5,8 @@ namespace AniX_Shared.Interfaces
 {
     public interface IUserManagement
     {
-        Task<bool> CreateAsync(User user);
-        Task<bool> UpdateAsync(User user);
+        Task<bool> CreateAsync(User user, Stream profileImageStream = null, string contentType = null);
+        Task<bool> UpdateAsync(User user, bool updateProfileImage);
         Task<bool> DeleteAsync(int id);
         Task<User> GetUserFromUsernameAsync(string username);
         Task<User> GetUserFromIdAsync(int id);

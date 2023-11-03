@@ -17,10 +17,11 @@ namespace AniX_BusinessLogic
             _httpContextAccessor = httpContextAccessor;
         }
 
-        public void SetSessionAndCookie(string userId, string username, string sessionId)
+        public void SetSessionAndCookie(string userId, string username, string sessionId, string profileImagePath)
         {
             _httpContextAccessor.HttpContext.Session.SetString("UserId", userId);
             _httpContextAccessor.HttpContext.Session.SetString("Username", username);
+            _httpContextAccessor.HttpContext.Session.SetString("ProfileImagePath", profileImagePath);
 
             var cookieOptions = new CookieOptions
             {
@@ -41,6 +42,11 @@ namespace AniX_BusinessLogic
         public string GetUsername()
         {
             return _httpContextAccessor.HttpContext.Session.GetString("Username");
+        }
+
+        public string GetProfileImagePath()
+        {
+            return _httpContextAccessor.HttpContext.Session.GetString("ProfileImagePath");
         }
 
         public void SetUserName(string userName)

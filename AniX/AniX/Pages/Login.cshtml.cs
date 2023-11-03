@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using AniX_Shared.Interfaces;
 using AniX_Shared.DomainModels;
 using System;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Security.Principal;
 using Anix_Shared.DomainModels;
@@ -67,24 +68,24 @@ namespace AniX_WEB.Pages
                 return Page();
             }
 
-            Console.WriteLine($"User successfully logged in with ID: {user.Id}");
+            _sessionService.SetSessionAndCookie(user.Id.ToString(), user.Username, Guid.NewGuid().ToString(), user.ProfileImagePath);
 
-            // Securely set the web user session
-            _authenticationService.SetWebUserSession(user);
+            // No need to check the session immediately after setting it
+            var identity = new ClaimsIdentity(new[]
+            {
+                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+                new Claim(ClaimTypes.Name, user.Username),
+            }, "CustomAuthScheme");
 
-            // Generate a secure session ID and set the session and cookie
-            string sessionId = Guid.NewGuid().ToString();
-            _sessionService.SetSessionAndCookie(user.Id.ToString(), user.Username, sessionId);
-
-            // Update the User identity
-            var identity = new GenericIdentity(user.Id.ToString(), "CustomAuthScheme");
-            var principal = new GenericPrincipal(identity, null);
-            HttpContext.User = principal;
+            HttpContext.User = new ClaimsPrincipal(identity);
 
             Console.WriteLine("Session UserId: " + _sessionService.GetUserId());
             Console.WriteLine("IsAuthenticated: " + User.Identity.IsAuthenticated);
+
             return RedirectToPage("/Index");
         }
+
+
 
         private bool IsInputValid(out string validationMessage)
         {

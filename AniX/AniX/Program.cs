@@ -22,6 +22,7 @@ builder.Services.AddSession(options =>
 });
 
 builder.Services.AddSingleton<IConfiguration>(builder.Configuration);
+builder.Services.AddTransient<IAzureBlobService, AzureBlobService>();
 builder.Services.AddTransient<IUserManagement, UserDAL>();
 builder.Services.AddTransient<IAuthenticationService, AuthenticationService>();
 

@@ -38,7 +38,7 @@ namespace AniX_FormsLogic
                 user.UpdatePassword(existingPassword, existingSalt);
             }
 
-            return await _appModel.UserDal.UpdateAsync(user);
+            return await _appModel.UserDal.UpdateAsync(user, updateProfileImage: false);
         }
 
         public async Task<(bool IsValid, string Message)> ValidateFormAsync(string username, string email, string password, bool isEditMode)

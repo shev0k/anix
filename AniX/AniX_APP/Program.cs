@@ -24,15 +24,20 @@ namespace AniX_APP
 
             var serviceProvider = new ServiceCollection()
                 .AddSingleton<IConfiguration>(configuration)
-                .AddSingleton<ApplicationModel>(sp => new ApplicationModel(null,
-                    sp.GetRequiredService<UserController>(),
-                    sp.GetRequiredService<UserDAL>()))
-                .AddTransient<UserDAL>()
+                .AddSingleton<IAzureBlobService, AzureBlobService>(sp =>
+                {
+                    return new AzureBlobService(configuration);
+                })
+                .AddTransient<UserDAL>(sp => new UserDAL(sp.GetRequiredService<IAzureBlobService>(), configuration))
                 .AddTransient<IUserManagement, UserDAL>()
                 .AddTransient<IAuthenticationService, AuthenticationService>()
-                .AddTransient<UserController>()
                 .AddTransient<UserValidationService>()
                 .AddTransient<AuditService>()
+                .AddTransient<UserController>()
+                .AddSingleton<ApplicationModel>(sp => new ApplicationModel(
+                    null,
+                    sp.GetRequiredService<UserController>(),
+                    sp.GetRequiredService<UserDAL>()))
                 .AddTransient<Main>()
                 .BuildServiceProvider();
 
@@ -42,7 +47,7 @@ namespace AniX_APP
 
             using (var scope = serviceProvider.CreateScope())
             {
-                var form = scope.ServiceProvider.GetRequiredService<Main>(); // This should now work
+                var form = scope.ServiceProvider.GetRequiredService<Main>();
                 Application.Run(form);
             }
         }

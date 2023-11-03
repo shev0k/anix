@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Data;
 using System.Data.SqlClient;
+using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
 using AniX_Shared.DomainModels;
@@ -11,8 +13,11 @@ namespace AniX_DAL
 {
     public class UserDAL : BaseDAL, IUserManagement
     {
-        public UserDAL(IConfiguration configuration) : base(configuration)
+        private readonly IAzureBlobService _blobService;
+
+        public UserDAL(IAzureBlobService blobService, IConfiguration configuration) : base(configuration)
         {
+            _blobService = blobService;
         }
 
         public async Task<User> AuthenticateUserAsync(string username, string rawPassword)
@@ -50,63 +55,146 @@ namespace AniX_DAL
             return null;
         }
 
-        public async Task<bool> CreateAsync(User user)
+        public async Task<bool> CreateAsync(User user, Stream profileImageStream = null, string contentType = null)
         {
+            SqlTransaction transaction = null;
             try
             {
                 await connection.OpenAsync();
-                string query = "INSERT INTO [User] (Username, Password, Salt, Email, RegistrationDate, Banned, IsAdmin, ProfileImagePath) VALUES (@username, @password, @salt, @email, @registrationDate, @banned, @isAdmin, @profileImagePath)";
-                SqlCommand command = new SqlCommand(query, connection);
-                command.Parameters.AddWithValue("@username", user.Username);
+                transaction = connection.BeginTransaction();
+
+                string insertQuery = @"INSERT INTO [User] (Username, Password, Salt, Email, RegistrationDate, Banned, IsAdmin)
+                               OUTPUT INSERTED.Id
+                               VALUES (@username, @password, @salt, @email, @registrationDate, @banned, @isAdmin);
+                               SELECT SCOPE_IDENTITY();";
+
+                SqlCommand insertCommand = new SqlCommand(insertQuery, connection, transaction);
+                insertCommand.Parameters.AddWithValue("@username", user.Username);
                 (string Password, string Salt) = user.RetrieveCredentials();
-                command.Parameters.AddWithValue("@password", Password);
-                command.Parameters.AddWithValue("@salt", Salt);
-                command.Parameters.AddWithValue("@email", user.Email);
-                command.Parameters.AddWithValue("@registrationDate", user.RegistrationDate);
-                command.Parameters.AddWithValue("@banned", user.Banned);
-                command.Parameters.AddWithValue("@isAdmin", user.IsAdmin);
-                string defaultProfileImagePath = "https://i499309.luna.fhict.nl/assets/media/profile/profile.png";
-                command.Parameters.AddWithValue("@profileImagePath", defaultProfileImagePath);
-                return (await command.ExecuteNonQueryAsync()) > 0;
+                insertCommand.Parameters.AddWithValue("@password", Password);
+                insertCommand.Parameters.AddWithValue("@salt", Salt);
+                insertCommand.Parameters.AddWithValue("@email", user.Email);
+                insertCommand.Parameters.AddWithValue("@registrationDate", user.RegistrationDate);
+                insertCommand.Parameters.AddWithValue("@banned", user.Banned);
+                insertCommand.Parameters.AddWithValue("@isAdmin", user.IsAdmin);
+
+                var userId = (int)(await insertCommand.ExecuteScalarAsync());
+                user.Id = userId;
+
+                string profileImagePath = "https://anix.blob.core.windows.net/anixprofile/66574.png";
+
+                if (profileImageStream != null && contentType != null)
+                {
+                    profileImagePath = await _blobService.UploadImageAsync(profileImageStream, user.Id.ToString(), contentType);
+                }
+
+                string updateQuery = "UPDATE [User] SET ProfileImagePath = @profileImagePath WHERE Id = @id";
+                SqlCommand updateCommand = new SqlCommand(updateQuery, connection, transaction);
+                updateCommand.Parameters.AddWithValue("@profileImagePath", profileImagePath);
+                updateCommand.Parameters.AddWithValue("@id", userId);
+
+                await updateCommand.ExecuteNonQueryAsync();
+
+                transaction.Commit();
+                return true;
             }
             catch (Exception ex)
             {
+                if (transaction != null)
+                {
+                    transaction.Rollback();
+                }
                 await ExceptionHandlingService.HandleExceptionAsync(ex);
-                throw;
+                return false;
             }
             finally
             {
+                if (transaction != null)
+                {
+                    transaction.Dispose();
+                }
                 await connection.CloseAsync();
             }
         }
 
-        public async Task<bool> UpdateAsync(User user)
+        public async Task<bool> UpdateAsync(User user, bool updateProfileImage = true)
         {
             try
             {
                 await connection.OpenAsync();
-                string query = "UPDATE [User] SET Username = @username, Password = @password, Salt = @salt, Email = @email, Banned = @banned, IsAdmin = @isAdmin WHERE Id = @id";
-                SqlCommand command = new SqlCommand(query, connection);
-                command.Parameters.AddWithValue("@id", user.Id);
-                command.Parameters.AddWithValue("@username", user.Username);
-                (string Password, string Salt) = user.RetrieveCredentials();
-                command.Parameters.AddWithValue("@password", Password);
-                command.Parameters.AddWithValue("@salt", Salt);
-                command.Parameters.AddWithValue("@email", user.Email);
-                command.Parameters.AddWithValue("@banned", user.Banned);
-                command.Parameters.AddWithValue("@isAdmin", user.IsAdmin);
-                return (await command.ExecuteNonQueryAsync()) > 0;
+                Console.WriteLine("Connection opened.");
+
+                // Start constructing the SQL update command
+                var queryBuilder = new StringBuilder(@"
+            UPDATE [User] SET 
+                Username = @username, 
+                Password = @password, 
+                Salt = @salt, 
+                Email = @email, 
+                Banned = @banned, 
+                IsAdmin = @isAdmin");
+
+                // Conditionally add the ProfileImagePath to the update command
+                if (updateProfileImage)
+                {
+                    queryBuilder.Append(", ProfileImagePath = @profileImagePath");
+                }
+
+                // Finish the SQL command
+                queryBuilder.Append(" WHERE Id = @id");
+                string query = queryBuilder.ToString();
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    // Use the RetrieveCredentials method to get the password and salt
+                    (string password, string salt) = user.RetrieveCredentials();
+
+                    // Add parameters with explicit types
+                    command.Parameters.Add(new SqlParameter("@id", SqlDbType.Int)).Value = user.Id;
+                    command.Parameters.Add(new SqlParameter("@username", SqlDbType.NVarChar)).Value = user.Username;
+                    command.Parameters.Add(new SqlParameter("@password", SqlDbType.NVarChar)).Value = password;
+                    command.Parameters.Add(new SqlParameter("@salt", SqlDbType.NVarChar)).Value = salt;
+                    command.Parameters.Add(new SqlParameter("@email", SqlDbType.NVarChar)).Value = user.Email;
+                    command.Parameters.Add(new SqlParameter("@banned", SqlDbType.Bit)).Value = user.Banned;
+                    command.Parameters.Add(new SqlParameter("@isAdmin", SqlDbType.Bit)).Value = user.IsAdmin;
+
+                    // Conditionally add the profile image path parameter
+                    if (updateProfileImage)
+                    {
+                        command.Parameters.Add(new SqlParameter("@profileImagePath", SqlDbType.NVarChar)).Value = (object)user.ProfileImagePath ?? DBNull.Value;
+                    }
+
+                    // Log the final state of parameters
+                    foreach (SqlParameter param in command.Parameters)
+                    {
+                        Console.WriteLine($"{param.ParameterName}: {param.Value}");
+                    }
+
+                    // Execute the command
+                    int rowsAffected = await command.ExecuteNonQueryAsync();
+                    Console.WriteLine($"Update command executed, affected rows: {rowsAffected}");
+
+                    // Check if at least one row was affected
+                    return rowsAffected > 0;
+                }
             }
             catch (Exception ex)
             {
+                Console.WriteLine("Exception occurred:");
+                Console.WriteLine(ex.ToString());
                 await ExceptionHandlingService.HandleExceptionAsync(ex);
                 throw;
             }
             finally
             {
                 await connection.CloseAsync();
+                Console.WriteLine("Connection closed and method exiting.");
             }
         }
+
+
+
+
 
 
         public async Task<bool> DeleteAsync(int id)

@@ -10,11 +10,15 @@ namespace AniX_BusinessLogic
     public class AuthenticationService : IAuthenticationService
     {
         private readonly IUserManagement _userDal;
+        private readonly IAzureBlobService _blobService; 
+
 
         public ISessionService SessionService { get; set; }
-        public AuthenticationService(IUserManagement userDal)
+
+        public AuthenticationService(IUserManagement userDal, IAzureBlobService blobService)
         {
             _userDal = userDal;
+            _blobService = blobService;
         }
 
         public async Task<User> AuthenticateUserAsync(string username, string password)
@@ -34,12 +38,12 @@ namespace AniX_BusinessLogic
         {
             if (user != null && SessionService != null)
             {
-                string sessionId = Guid.NewGuid().ToString(); 
-                SessionService.SetSessionAndCookie(user.Id.ToString(), user.Username, sessionId);
+                string sessionId = Guid.NewGuid().ToString();
+                SessionService.SetSessionAndCookie(user.Id.ToString(), user.Username, sessionId, user.ProfileImagePath);
             }
         }
 
-        public async Task<bool> RegisterUserAsync(string username, string email, string password)
+        public async Task<bool> RegisterUserAsync(string username, string email, string password, Stream profileImageStream = null, string contentType = null)
         {
             string salt = HashPassword.GenerateSalt();
             string hashedPassword = HashPassword.GenerateHashedPassword(password, salt);
@@ -53,8 +57,16 @@ namespace AniX_BusinessLogic
             };
             newUser.UpdatePassword(hashedPassword, salt);
 
-            return await _userDal.CreateAsync(newUser);
+            bool isCreated = await _userDal.CreateAsync(newUser, profileImageStream, contentType);
+            if (!isCreated)
+            {
+                return false;
+            }
+
+            return true;
         }
+
+
 
         public async Task<bool> DoesUsernameExistAsync(string username)
         {
@@ -66,9 +78,9 @@ namespace AniX_BusinessLogic
             return await _userDal.DoesEmailExistAsync(email);
         }
 
-        public bool ValidateUser(string email, string password)
+        public async Task<bool> ValidateUserAsync(string email, string password)
         {
-            var user = AuthenticateUserAsync(email, password).Result;
+            var user = await AuthenticateUserAsync(email, password);
             return user != null;
         }
     }

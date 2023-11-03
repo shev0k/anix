@@ -1,4 +1,5 @@
-﻿using System.Security.Principal;
+﻿using System.Security.Claims;
+using System.Security.Principal;
 using Microsoft.AspNetCore.Http;
 using System.Threading.Tasks;
 
@@ -17,10 +18,16 @@ namespace AniX_BusinessLogic
         {
             if (context.Session.Keys.Contains("UserId"))
             {
-                var identity = new GenericIdentity(context.Session.GetString("UserId"), "CustomAuthScheme");
-                context.User = new GenericPrincipal(identity, null);
+                var userId = context.Session.GetString("UserId");
+                var claims = new List<Claim>
+                {
+                    new Claim(ClaimTypes.NameIdentifier, userId)
+                };
+                var identity = new ClaimsIdentity(claims, "CustomAuthScheme");
+                context.User = new ClaimsPrincipal(identity);
             }
             await _next(context);
         }
+
     }
 }

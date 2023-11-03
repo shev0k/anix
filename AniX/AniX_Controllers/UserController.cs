@@ -42,6 +42,7 @@ namespace AniX_Controllers
                 }
 
                 var user = await _authenticationService.AuthenticateUserAsync(username, password);
+
                 await _auditService.LogLoginAttemptAsync(username, user != null);
 
                 if (user == null)
@@ -67,6 +68,7 @@ namespace AniX_Controllers
                 throw;
             }
         }
+
 
         public async Task<List<User>> GetUsersInBatchAsync(int startIndex, int batchSize)
         {
