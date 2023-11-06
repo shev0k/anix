@@ -6,11 +6,9 @@ using System.Threading.Tasks;
 
 namespace AniX_Shared.DomainModels
 {
-    public class Genre
+    public class AnimeWithRatings : Anime
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
-
-        public List<Anime> Animes { get; set; }
+        public int NumberOfReviews { get; set; }
+        public float? AverageRating { get; set; }
     }
 }
