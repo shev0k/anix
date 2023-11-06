@@ -8,7 +8,7 @@ namespace AniX_DAL
     {
         protected SqlConnection connection;
 
-        public BaseDAL(IConfiguration configuration)
+        protected BaseDAL(IConfiguration configuration)
         {
             string connectionString = configuration.GetConnectionString("DefaultConnection");
 

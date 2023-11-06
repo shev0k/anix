@@ -1,4 +1,6 @@
-﻿namespace Anix_Shared.DomainModels
+﻿using AniX_Shared.DomainModels;
+
+namespace Anix_Shared.DomainModels
 {
     public class User
     {
@@ -11,6 +13,9 @@
         public bool Banned { get; set; }
         public bool IsAdmin { get; set; }
         public string ProfileImagePath { get; set; }
+
+        public List<Review> Reviews { get; set; }
+        public List<Anime> Watchlist { get; set; }
 
         public void UpdatePassword(string newPassword, string newSalt)
         {

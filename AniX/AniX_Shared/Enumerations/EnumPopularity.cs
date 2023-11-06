@@ -6,7 +6,14 @@ using System.Threading.Tasks;
 
 namespace AniX_Shared.Enumerations
 {
-    internal class EnumPopularity
+    public enum EnumPopularity
     {
+        RecentlyUpdated,
+        ReleaseDate,
+        Trending,
+        Rating,
+        MostWatched,
+        MostPopular,
+        NumberOfEpisodes
     }
 }
