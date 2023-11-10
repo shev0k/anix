@@ -78,24 +78,6 @@ namespace AniX_Controllers
             }
         }
 
-
-        public async Task<List<User>> GetUsersInBatchAsync(int startIndex, int batchSize)
-        {
-            try
-            {
-                return await _userManagement.GetUsersInBatchAsync(startIndex, batchSize);
-            }
-            catch (Exception e)
-            {
-                bool handled = await _exceptionHandlingService.HandleExceptionAsync(e);
-                if (!handled)
-                {
-                    await _errorLoggingService.LogErrorAsync(e, LogSeverity.Critical);
-                }
-                throw;
-            }
-        }
-
         public async Task<List<User>> FetchFilteredAndSearchedUsersAsync(string filter, string searchTerm)
         {
             await semaphore.WaitAsync();

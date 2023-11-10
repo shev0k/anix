@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using AniX_Controllers;
 using Anix_Shared.DomainModels;
 using AniX_DAL;
+using AniX_Shared.DomainModels;
 
 namespace AniX_FormsLogic
 {
@@ -15,11 +16,19 @@ namespace AniX_FormsLogic
         public User UserToEdit { get; set; }
         public UserController UserController { get; set; }
         public UserDAL UserDal { get; set; }
-        public ApplicationModel(User loggedInUser, UserController userController, UserDAL userDal)
+
+        public Anime AnimeToEdit { get; set; }
+        public AnimeController AnimeController { get; set; }
+        public AnimeDAL AnimeDal { get; set; }
+
+        public ApplicationModel(
+            UserController userController, UserDAL userDal,
+            AnimeController animeController, AnimeDAL animeDal)
         {
-            LoggedInUser = loggedInUser;
             UserController = userController;
             UserDal = userDal;
+            AnimeController = animeController;
+            AnimeDal = animeDal;
         }
     }
 }

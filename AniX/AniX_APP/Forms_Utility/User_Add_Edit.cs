@@ -30,14 +30,14 @@ namespace AniX_APP.Forms_Utility
             FormMode mode,
             ApplicationModel appModel,
             IExceptionHandlingService exceptionHandlingService,
-            IErrorLoggingService _errorLoggingService)
+            IErrorLoggingService errorLoggingService)
         {
             InitializeComponent();
             _currentMode = mode;
             _appModel = appModel;
             _userAddEditFormLogic = new UserAddEditFormLogic(_appModel);
             _exceptionHandlingService = exceptionHandlingService;
-            _errorLoggingService = _errorLoggingService;
+            _errorLoggingService = errorLoggingService;
             this.FormBorderStyle = FormBorderStyle.None;
         }
 

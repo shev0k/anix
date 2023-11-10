@@ -41,10 +41,14 @@ namespace AniX_APP
                     sp.GetRequiredService<IErrorLoggingService>(),
                     sp.GetRequiredService<IExceptionHandlingService>()))
                 .AddTransient<UserController>()
+                .AddTransient<AnimeDAL>()
+                .AddTransient<IAnimeManagement, AnimeDAL>()
+                .AddTransient<AnimeController>()
                 .AddSingleton<ApplicationModel>(sp => new ApplicationModel(
-                    null,
                     sp.GetRequiredService<UserController>(),
-                    sp.GetRequiredService<UserDAL>()))
+                    sp.GetRequiredService<UserDAL>(),
+                    sp.GetRequiredService<AnimeController>(),
+                    sp.GetRequiredService<AnimeDAL>()))
                 .AddTransient<Main>()
                 .BuildServiceProvider();
 

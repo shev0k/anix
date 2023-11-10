@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AniX_Shared.DomainModels;
+using AniX_Shared.Extensions;
 using AniX_Shared.Interfaces;
 using AniX_Utility;
 using Microsoft.Extensions.Configuration;
@@ -27,31 +28,43 @@ namespace AniX_DAL
             _errorLoggingService = errorLoggingService;
         }
 
-        public async Task<int> CreateAnimeAsync(Anime anime)
+        public async Task<int> CreateAnimeAsync(Anime anime, List<int> genreIds)
         {
             int animeId = -1;
+            SqlTransaction transaction = null;
+
             try
             {
                 await connection.OpenAsync();
-                var query = @"
-                    INSERT INTO Anime 
-                    (Name, Description, ReleaseDate, TrailerLink, Country, Season, Episodes, 
-                    Studio, Type, Status, Premiered, Aired, CoverImage, Thumbnail, Language, 
-                    Rating, Year)
-                    VALUES 
-                    (@Name, @Description, @ReleaseDate, @TrailerLink, @Country, @Season, @Episodes, 
-                    @Studio, @Type, @Status, @Premiered, @Aired, @CoverImage, @Thumbnail, @Language, 
-                    @Rating, @Year);
-                    SELECT SCOPE_IDENTITY();";
+                transaction = connection.BeginTransaction();
 
-                using (var command = new SqlCommand(query, connection))
+                var query = @"
+                INSERT INTO Anime 
+                (Name, Description, ReleaseDate, TrailerLink, Country, Season, Episodes, 
+                Studio, Type, Status, Premiered, Aired, CoverImage, Thumbnail, Language, 
+                Rating, Year)
+                VALUES 
+                (@Name, @Description, @ReleaseDate, @TrailerLink, @Country, @Season, @Episodes, 
+                @Studio, @Type, @Status, @Premiered, @Aired, @CoverImage, @Thumbnail, @Language, 
+                @Rating, @Year);
+                SELECT SCOPE_IDENTITY();";
+
+                using (var command = new SqlCommand(query, connection, transaction))
                 {
                     AddParametersForAnime(command, anime);
                     animeId = Convert.ToInt32(await command.ExecuteScalarAsync());
                 }
+
+                if (animeId > -1)
+                {
+                    await LinkAnimeWithGenresAsync(animeId, genreIds, transaction);
+                }
+
+                transaction.Commit();
             }
             catch (Exception ex)
             {
+                transaction?.Rollback();
                 await _exceptionHandlingService.HandleExceptionAsync(ex);
                 throw;
             }
@@ -63,44 +76,82 @@ namespace AniX_DAL
             return animeId;
         }
 
-        public async Task<bool> UpdateAnimeAsync(Anime anime)
+
+        public async Task<bool> LinkAnimeWithGenresAsync(int animeId, List<int> genreIds, SqlTransaction transaction)
         {
             try
             {
-                await connection.OpenAsync();
-                var queryBuilder = new StringBuilder(@"
-                UPDATE [Anime] SET 
-                    Name = @Name, 
-                    Description = @Description, 
-                    ReleaseDate = @ReleaseDate, 
-                    TrailerLink = @TrailerLink, 
-                    Country = @Country, 
-                    Season = @Season, 
-                    Episodes = @Episodes, 
-                    Studio = @Studio, 
-                    Type = @Type, 
-                    Status = @Status, 
-                    Premiered = @Premiered, 
-                    Aired = @Aired, 
-                    CoverImage = @CoverImage, 
-                    Thumbnail = @Thumbnail, 
-                    Language = @Language, 
-                    Rating = @Rating, 
-                    Year = @Year
-                WHERE Id = @Id");
-
-                using (SqlCommand command = new SqlCommand(queryBuilder.ToString(), connection))
+                foreach (var genreId in genreIds)
                 {
-                    command.Parameters.AddWithValue("@Id", anime.Id);
-                    AddParametersForAnime(command, anime);
-
-
-                    int rowsAffected = await command.ExecuteNonQueryAsync();
-                    return rowsAffected > 0;
+                    var query = "INSERT INTO Anime_Genre (AnimeId, GenreId) VALUES (@AnimeId, @GenreId);";
+                    using (var command = new SqlCommand(query, connection, transaction))
+                    {
+                        command.Parameters.AddWithValue("@AnimeId", animeId);
+                        command.Parameters.AddWithValue("@GenreId", genreId);
+                        await command.ExecuteNonQueryAsync();
+                    }
                 }
+                return true;
             }
             catch (Exception ex)
             {
+                await _exceptionHandlingService.HandleExceptionAsync(ex);
+                return false;
+            }
+        }
+
+
+        public async Task<bool> UpdateAnimeAsync(Anime anime, List<int> newGenreIds)
+        {
+            SqlTransaction transaction = null;
+            try
+            {
+                await connection.OpenAsync();
+                transaction = connection.BeginTransaction();
+
+                var queryBuilder = new StringBuilder(@"
+            UPDATE [Anime] SET 
+                Name = @Name, 
+                Description = @Description, 
+                ReleaseDate = @ReleaseDate, 
+                TrailerLink = @TrailerLink, 
+                Country = @Country, 
+                Season = @Season, 
+                Episodes = @Episodes, 
+                Studio = @Studio, 
+                Type = @Type, 
+                Status = @Status, 
+                Premiered = @Premiered, 
+                Aired = @Aired, 
+                CoverImage = @CoverImage, 
+                Thumbnail = @Thumbnail, 
+                Language = @Language, 
+                Rating = @Rating, 
+                Year = @Year
+            WHERE Id = @Id");
+
+                using (SqlCommand command = new SqlCommand(queryBuilder.ToString(), connection, transaction))
+                {
+                    command.Parameters.AddWithValue("@Id", anime.Id);
+                    AddParametersForAnime(command, anime);
+                    await command.ExecuteNonQueryAsync();
+                }
+
+                var deleteGenresQuery = "DELETE FROM Anime_Genre WHERE AnimeId = @AnimeId";
+                using (var deleteGenresCommand = new SqlCommand(deleteGenresQuery, connection, transaction))
+                {
+                    deleteGenresCommand.Parameters.AddWithValue("@AnimeId", anime.Id);
+                    await deleteGenresCommand.ExecuteNonQueryAsync();
+                }
+
+                await LinkAnimeWithGenresAsync(anime.Id, newGenreIds, transaction);
+
+                transaction.Commit();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                transaction?.Rollback();
                 await _exceptionHandlingService.HandleExceptionAsync(ex);
                 throw;
             }
@@ -110,27 +161,41 @@ namespace AniX_DAL
             }
         }
 
+
         public async Task<bool> DeleteAnimeAsync(int animeId)
         {
+            SqlTransaction transaction = null;
+
             try
             {
                 await connection.OpenAsync();
-                string query = "DELETE FROM [Anime] WHERE Id = @Id";
-                using (SqlCommand command = new SqlCommand(query, connection))
-                {
-                    command.Parameters.AddWithValue("@Id", animeId);
+                transaction = connection.BeginTransaction();
 
-                    int rowsAffected = await command.ExecuteNonQueryAsync();
+                string deleteGenresQuery = "DELETE FROM [Anime_Genre] WHERE AnimeId = @AnimeId";
+                using (SqlCommand deleteGenresCommand = new SqlCommand(deleteGenresQuery, connection, transaction))
+                {
+                    deleteGenresCommand.Parameters.AddWithValue("@AnimeId", animeId);
+                    await deleteGenresCommand.ExecuteNonQueryAsync();
+                }
+
+                string deleteAnimeQuery = "DELETE FROM [Anime] WHERE Id = @Id";
+                using (SqlCommand deleteAnimeCommand = new SqlCommand(deleteAnimeQuery, connection, transaction))
+                {
+                    deleteAnimeCommand.Parameters.AddWithValue("@Id", animeId);
+                    int rowsAffected = await deleteAnimeCommand.ExecuteNonQueryAsync();
+                    transaction.Commit();
                     return rowsAffected > 0;
                 }
             }
             catch (SqlException ex) when (ex.Number == 547)
             {
+                transaction?.Rollback();
                 await _exceptionHandlingService.HandleExceptionAsync(ex);
                 return false;
             }
             catch (Exception ex)
             {
+                transaction?.Rollback();
                 await _exceptionHandlingService.HandleExceptionAsync(ex);
                 throw;
             }
@@ -140,24 +205,120 @@ namespace AniX_DAL
             }
         }
 
-        public async Task<Anime> GetAnimeByIdAsync(int animeId)
+        public async Task<List<string>> GetSearchSuggestionsAsync(string searchType, string searchTerm)
         {
-            Anime anime = null;
+            List<string> suggestions = new List<string>();
+
+            if (searchType == "Year" && !int.TryParse(searchTerm, out int _))
+            {
+                return suggestions;
+            }
+
+            string columnName = searchType switch
+            {
+                "Name" => "Name",
+                "Year" => "Year",
+                "Studio" => "Studio",
+                _ => throw new ArgumentException("Invalid search type.")
+            };
+
+            string query;
+            if (searchType == "Year")
+            {
+                query = searchTerm.Length < 4 ?
+                        $"SELECT DISTINCT {columnName} FROM [dbo].[Anime] WHERE {columnName} >= @SearchTerm" :
+                        $"SELECT DISTINCT {columnName} FROM [dbo].[Anime] WHERE {columnName} = @SearchTerm";
+            }
+            else
+            {
+                query = $"SELECT DISTINCT TOP 10 {columnName} FROM [dbo].[Anime] WHERE {columnName} LIKE @SearchTerm + '%'";
+            }
+
             try
             {
                 await connection.OpenAsync();
-                string query = "SELECT * FROM [Anime] WHERE Id = @Id";
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@SearchTerm", searchType == "Year" ? int.Parse(searchTerm) : searchTerm);
+
+                    using (SqlDataReader reader = await command.ExecuteReaderAsync())
+                    {
+                        while (await reader.ReadAsync())
+                        {
+                            suggestions.Add(reader[0].ToString());
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                await _exceptionHandlingService.HandleExceptionAsync(ex);
+            }
+            finally
+            {
+                await connection.CloseAsync();
+            }
+
+            return suggestions;
+        }
+
+        public async Task<Anime> GetAnimeByIdAsync(int animeId)
+        {
+            Anime anime = null;
+            List<Genre> genres = new List<Genre>();
+
+            try
+            {
+                await connection.OpenAsync();
+                string query = @"
+            SELECT
+                a.*, 
+                g.Id AS GenreId, 
+                g.Name AS GenreName
+            FROM
+                Anime a
+                LEFT JOIN Anime_Genre ag ON a.Id = ag.AnimeId
+                LEFT JOIN Genre g ON ag.GenreId = g.Id
+            WHERE
+                a.Id = @Id;";
+
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@Id", animeId);
 
                     using (SqlDataReader reader = await command.ExecuteReaderAsync())
                     {
-                        if (await reader.ReadAsync())
+                        var animeProperties = typeof(Anime).GetProperties();
+                        while (await reader.ReadAsync())
                         {
-                            anime = MapReaderToAnime(reader);
+                            if (anime == null)
+                            {
+                                anime = new Anime();
+                                foreach (var prop in animeProperties)
+                                {
+                                    if (reader[prop.Name] != DBNull.Value)
+                                    {
+                                        prop.SetValue(anime, reader[prop.Name]);
+                                    }
+                                }
+                                anime.Genres = new List<Genre>();
+                            }
+
+                            if (!reader.IsDBNull(reader.GetOrdinal("GenreId")))
+                            {
+                                genres.Add(new Genre
+                                {
+                                    Id = reader.GetInt32(reader.GetOrdinal("GenreId")),
+                                    Name = reader.GetString(reader.GetOrdinal("GenreName"))
+                                });
+                            }
                         }
                     }
+                }
+
+                if (anime != null)
+                {
+                    anime.Genres = genres;
                 }
             }
             catch (Exception ex)
@@ -202,6 +363,40 @@ namespace AniX_DAL
             return animes;
         }
 
+        public async Task<List<Genre>> GetAllGenresAsync()
+        {
+            List<Genre> genres = new List<Genre>();
+            try
+            {
+                await connection.OpenAsync();
+                string query = "SELECT * FROM [Genre]";
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    using (SqlDataReader reader = await command.ExecuteReaderAsync())
+                    {
+                        while (await reader.ReadAsync())
+                        {
+                            genres.Add(new Genre
+                            {
+                                Id = reader.GetInt32(reader.GetOrdinal("Id")),
+                                Name = reader.GetString(reader.GetOrdinal("Name"))
+                            });
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                await _exceptionHandlingService.HandleExceptionAsync(ex);
+                throw;
+            }
+            finally
+            {
+                await connection.CloseAsync();
+            }
+            return genres;
+        }
+
         public async Task<List<Anime>> GetAnimesByGenreAsync(string genreName)
         {
             List<Anime> animes = new List<Anime>();
@@ -239,31 +434,99 @@ namespace AniX_DAL
             return animes;
         }
 
-        public async Task<List<Anime>> SearchAnimesAsync(string searchTerm)
+        public async Task<List<Anime>> FetchFilteredAndSearchedAnimesAsync(string filter, string searchTerm)
         {
-            List<Anime> animes = new List<Anime>();
+            var animeList = new List<Anime>();
+            var genreFilterApplied = !string.IsNullOrEmpty(filter) && filter == "Genre";
+            var allAnimeFilterApplied = string.IsNullOrEmpty(filter) || filter == "All Anime";
+
+            var subquery = new StringBuilder();
+            if (genreFilterApplied)
+            {
+                subquery.AppendLine(@"
+            SELECT DISTINCT a.Id
+            FROM [dbo].[Anime] a
+            JOIN [dbo].[Anime_Genre] ag ON a.Id = ag.AnimeId
+            JOIN [dbo].[Genre] g ON ag.GenreId = g.Id
+            WHERE g.Name LIKE @GenreName");
+            }
+
+            var queryBuilder = new StringBuilder();
+            queryBuilder.AppendLine(@"
+            SELECT 
+                a.*,
+                g.Id AS GenreId,
+                g.Name AS GenreName
+            FROM 
+                [dbo].[Anime] a
+            JOIN 
+                [dbo].[Anime_Genre] ag ON a.Id = ag.AnimeId
+            JOIN 
+                [dbo].[Genre] g ON ag.GenreId = g.Id");
+
+            if (genreFilterApplied)
+            {
+                queryBuilder.AppendLine($"WHERE a.Id IN ({subquery})");
+            }
+            else if (!string.IsNullOrEmpty(filter) && !allAnimeFilterApplied)
+            {
+                if (filter == "Rating")
+                {
+                    queryBuilder.AppendLine($"WHERE a.[{filter}] = @FilterValue");
+                }
+                else
+                {
+                    queryBuilder.AppendLine($"WHERE a.[{filter}] LIKE @FilterValue");
+                }
+            }
+
+            queryBuilder.AppendLine("ORDER BY a.Id, g.Id");
+
+            var parameters = new List<SqlParameter>();
+            if (genreFilterApplied)
+            {
+                parameters.Add(new SqlParameter("@GenreName", $"%{searchTerm}%"));
+            }
+            else if (!string.IsNullOrEmpty(filter) && !allAnimeFilterApplied)
+            {
+                parameters.Add(new SqlParameter("@FilterValue", filter == "Rating" ? searchTerm : $"%{searchTerm}%"));
+            }
+
             try
             {
                 await connection.OpenAsync();
-                string query = @"
-                SELECT * 
-                FROM [Anime]
-                WHERE Name LIKE @searchTerm 
-                   OR Description LIKE @searchTerm
-                   OR Studio LIKE @searchTerm
-                   OR Type LIKE @searchTerm
-                   OR Status LIKE @searchTerm
-                   OR Premiered LIKE @searchTerm
-                   OR Language LIKE @searchTerm";
-
-                using (SqlCommand command = new SqlCommand(query, connection))
+                using (SqlCommand command = new SqlCommand(queryBuilder.ToString(), connection))
                 {
-                    command.Parameters.AddWithValue("@searchTerm", $"%{searchTerm}%");
+                    command.Parameters.AddRange(parameters.ToArray());
+
                     using (SqlDataReader reader = await command.ExecuteReaderAsync())
                     {
+                        var genreLookup = new Dictionary<int, List<Genre>>();
+
                         while (await reader.ReadAsync())
                         {
-                            animes.Add(MapReaderToAnime(reader));
+                            int animeId = reader.GetInt32(reader.GetOrdinal("Id"));
+                            if (!animeList.Any(a => a.Id == animeId))
+                            {
+                                var anime = MapReaderToAnime(reader);
+                                anime.Genres = new List<Genre>();
+                                animeList.Add(anime);
+                                genreLookup[animeId] = new List<Genre>();
+                            }
+
+                            int genreId = reader.GetInt32(reader.GetOrdinal("GenreId"));
+                            string genreName = reader.GetString(reader.GetOrdinal("GenreName"));
+
+                            var genres = genreLookup[animeId];
+                            if (!genres.Any(g => g.Id == genreId))
+                            {
+                                genres.Add(new Genre { Id = genreId, Name = genreName });
+                            }
+                        }
+
+                        foreach (var anime in animeList)
+                        {
+                            anime.Genres = genreLookup[anime.Id];
                         }
                     }
                 }
@@ -275,59 +538,15 @@ namespace AniX_DAL
             }
             finally
             {
-                await connection.CloseAsync();
+                if (connection.State == ConnectionState.Open)
+                {
+                    await connection.CloseAsync();
+                }
             }
-            return animes;
+
+            return animeList;
         }
 
-        public async Task<List<Anime>> FilterAnimesAsync(string filter)
-        {
-            List<Anime> animes = new List<Anime>();
-            try
-            {
-                await connection.OpenAsync();
-                var filterParts = filter.Split(':');
-                if (filterParts.Length != 2)
-                {
-                    throw new ArgumentException("Filter must be in the format 'Column:Value'.");
-                }
-                string column = filterParts[0];
-                string value = filterParts[1];
-
-                var validColumns = new HashSet<string> { "Status", "Type", "Season", "Language", "Rating", "Year" };
-                if (!validColumns.Contains(column))
-                {
-                    throw new ArgumentException("Invalid filter column.");
-                }
-
-                string query = $@"
-                SELECT * 
-                FROM [Anime]
-                WHERE [{column}] = @value";
-
-                using (SqlCommand command = new SqlCommand(query, connection))
-                {
-                    command.Parameters.AddWithValue("@value", value);
-                    using (SqlDataReader reader = await command.ExecuteReaderAsync())
-                    {
-                        while (await reader.ReadAsync())
-                        {
-                            animes.Add(MapReaderToAnime(reader));
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                await _exceptionHandlingService.HandleExceptionAsync(ex);
-                throw;
-            }
-            finally
-            {
-                await connection.CloseAsync();
-            }
-            return animes;
-        }
 
         public async Task<bool> DoesAnimeExistAsync(int animeId)
         {
@@ -338,6 +557,30 @@ namespace AniX_DAL
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@animeId", animeId);
+                    int count = Convert.ToInt32(await command.ExecuteScalarAsync());
+                    return count > 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                await _exceptionHandlingService.HandleExceptionAsync(ex);
+                throw;
+            }
+            finally
+            {
+                await connection.CloseAsync();
+            }
+        }
+
+        public async Task<bool> DoesAnimeNameExistAsync(string animeName)
+        {
+            try
+            {
+                await connection.OpenAsync();
+                string query = "SELECT COUNT(1) FROM [Anime] WHERE Name = @animeName";
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@animeName", animeName);
                     int count = Convert.ToInt32(await command.ExecuteScalarAsync());
                     return count > 0;
                 }
@@ -718,6 +961,15 @@ namespace AniX_DAL
                 Year = reader.IsDBNull(reader.GetOrdinal("Year")) ? (int?)null : reader.GetInt32(reader.GetOrdinal("Year")),
                 NumberOfReviews = reader.GetInt32(reader.GetOrdinal("NumberOfReviews")),
                 AverageRating = reader.IsDBNull(reader.GetOrdinal("AverageRating")) ? (float?)null : reader.GetFloat(reader.GetOrdinal("AverageRating")),
+            };
+        }
+
+        private Genre MapReaderToGenre(SqlDataReader reader)
+        {
+            return new Genre
+            {
+                Id = reader.GetInt32(reader.GetOrdinal("Id")),
+                Name = reader.GetString(reader.GetOrdinal("Name"))
             };
         }
 

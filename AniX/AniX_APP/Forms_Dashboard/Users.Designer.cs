@@ -142,7 +142,7 @@ namespace AniX_APP.Forms_Dashboard
             cmbFilter.Font = new Font("Cascadia Code", 10F, FontStyle.Regular, GraphicsUnit.Point);
             cmbFilter.ForeColor = Color.FromArgb(231, 34, 83);
             cmbFilter.IconColor = Color.FromArgb(231, 34, 83);
-            cmbFilter.Items.AddRange(new object[] { "Admin", "User", "Banned", "Not Banned", "All Users" });
+            cmbFilter.Items.AddRange(new object[] { "All Users", "Admin", "User", "Banned", "Not Banned" });
             cmbFilter.ListBackColor = Color.FromArgb(11, 7, 17);
             cmbFilter.ListTextColor = Color.FromArgb(231, 34, 83);
             cmbFilter.Location = new Point(647, 269);

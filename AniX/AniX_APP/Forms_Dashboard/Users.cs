@@ -81,6 +81,7 @@ namespace AniX_APP.Forms_Dashboard
 
         private async void Users_Load(object sender, EventArgs e)
         {
+            dgvUsers.DataBindingComplete += new DataGridViewBindingCompleteEventHandler(DgvUsers_DataBindingComplete);
             await RefreshUsersAsync();
         }
 
@@ -92,7 +93,11 @@ namespace AniX_APP.Forms_Dashboard
                 _exceptionHandlingService,
                 _errorLoggingService
             );
-            form.FormClosed += async (s, args) => await RefreshUsersAsync();
+            form.FormClosed += async (s, args) =>
+            {
+                await RefreshUsersAsync();
+                ResetFiltersAndCombobox();
+            };
             form.ShowDialog();
         }
 
@@ -109,7 +114,11 @@ namespace AniX_APP.Forms_Dashboard
                         _appModel,
                         _exceptionHandlingService,
                         _errorLoggingService);
-                    form.FormClosed += async (s, args) => await RefreshUsersAsync();
+                    form.FormClosed += async (s, args) =>
+                    {
+                        await RefreshUsersAsync();
+                        ResetFiltersAndCombobox();
+                    };
                     form.ShowDialog();
                 }
                 else
@@ -120,6 +129,14 @@ namespace AniX_APP.Forms_Dashboard
             catch (Exception exception)
             {
                 RJMessageBox.Show("No user selected. Please select a user to edit.", "Warning", MessageBoxButtons.OK);
+            }
+        }
+
+        private void ResetFiltersAndCombobox()
+        {
+            if (cmbFilter.Items.Count > 0)
+            {
+                cmbFilter.SelectedIndex = 0;
             }
         }
 
@@ -160,7 +177,6 @@ namespace AniX_APP.Forms_Dashboard
                 RJMessageBox.Show("An error occurred while deleting the user.", "Error", MessageBoxButtons.OK);
             }
         }
-
 
         private async void btnDetails_Click(object sender, EventArgs e)
         {
@@ -232,6 +248,14 @@ namespace AniX_APP.Forms_Dashboard
             return originalUsers[rowIndex].Item1;
         }
 
+        private void DgvUsers_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            if (dgvUsers.Columns.Contains("Id"))
+            {
+                dgvUsers.Columns["Id"].Visible = false;
+            }
+        }
+
         private async Task RefreshUsersAsync()
         {
             List<User> users = await _usersFormLogic.RefreshUsersAsync();
@@ -244,7 +268,6 @@ namespace AniX_APP.Forms_Dashboard
                 dgvUsers.Columns["RegistrationDate"].HeaderText = "Made on";
             if (dgvUsers.Columns["IsAdmin"] != null)
                 dgvUsers.Columns["IsAdmin"].HeaderText = "Admin";
-            dgvUsers.Columns["Id"].Visible = false;
         }
 
         private async Task UpdateUserListAsync()
@@ -263,7 +286,7 @@ namespace AniX_APP.Forms_Dashboard
         {
             int rowIndex = dgvUsers.CurrentCell.RowIndex;
             List<Tuple<User, object>> originalUsers = (List<Tuple<User, object>>)dgvUsers.Tag;
-            
+
             return _usersFormLogic.GetSelectedUserFromDataGridView(originalUsers, rowIndex);
         }
     }

@@ -258,9 +258,30 @@ namespace AniX_APP.CustomElements
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public object SelectedItem
         {
-            get { return cmbList.SelectedItem; }
-            set { cmbList.SelectedItem = value; }
+            get
+            {
+                if (cmbList.InvokeRequired)
+                {
+                    return cmbList.Invoke(new Func<object>(() => cmbList.SelectedItem));
+                }
+                else
+                {
+                    return cmbList.SelectedItem;
+                }
+            }
+            set
+            {
+                if (cmbList.InvokeRequired)
+                {
+                    cmbList.Invoke(new Action(() => cmbList.SelectedItem = value));
+                }
+                else
+                {
+                    cmbList.SelectedItem = value;
+                }
+            }
         }
+
 
         [Category("RJ Code - Data")]
         [Browsable(false)]

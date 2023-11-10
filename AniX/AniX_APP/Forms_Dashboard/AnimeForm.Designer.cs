@@ -2,7 +2,7 @@
 
 namespace AniX_APP.Forms_Dashboard
 {
-    partial class Anime
+    partial class AnimeForm
     {
         /// <summary>
         /// Required designer variable.
@@ -34,16 +34,17 @@ namespace AniX_APP.Forms_Dashboard
             btnUser = new Button();
             panelBackground = new RoundPanel();
             panelFix = new Panel();
+            lbSuggestion = new Label();
+            txtSearch = new housing.CustomElements.RoundTextBox();
+            cmbFilterValues = new CustomComboBox();
+            roundPanelListBox1 = new RoundPanelListBox();
+            dgvAnime = new DataGridView();
             btnDetails = new RoundButton();
-            cmbFilter = new CustomComboBox();
+            cmbFilterOptions = new CustomComboBox();
             label1 = new Label();
             btnEdit = new RoundButton();
             btnRemove = new RoundButton();
             btnAdd = new RoundButton();
-            tbxAnime = new housing.CustomElements.RoundTextBox();
-            lbAnime = new Label();
-            roundPanelListBox1 = new RoundPanelListBox();
-            dgvAnime = new DataGridView();
             panelTop.SuspendLayout();
             panelBackground.SuspendLayout();
             panelFix.SuspendLayout();
@@ -98,19 +99,102 @@ namespace AniX_APP.Forms_Dashboard
             // panelFix
             // 
             panelFix.BackColor = Color.FromArgb(11, 7, 17);
+            panelFix.Controls.Add(lbSuggestion);
+            panelFix.Controls.Add(txtSearch);
+            panelFix.Controls.Add(cmbFilterValues);
+            panelFix.Controls.Add(roundPanelListBox1);
             panelFix.Controls.Add(btnDetails);
-            panelFix.Controls.Add(cmbFilter);
+            panelFix.Controls.Add(cmbFilterOptions);
             panelFix.Controls.Add(label1);
             panelFix.Controls.Add(btnEdit);
             panelFix.Controls.Add(btnRemove);
             panelFix.Controls.Add(btnAdd);
-            panelFix.Controls.Add(tbxAnime);
-            panelFix.Controls.Add(lbAnime);
-            panelFix.Controls.Add(roundPanelListBox1);
             panelFix.Location = new Point(13, 14);
             panelFix.Name = "panelFix";
             panelFix.Size = new Size(921, 412);
             panelFix.TabIndex = 0;
+            // 
+            // lbSuggestion
+            // 
+            lbSuggestion.AutoSize = true;
+            lbSuggestion.Font = new Font("Cascadia Code", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lbSuggestion.ForeColor = Color.FromArgb(231, 34, 83);
+            lbSuggestion.Location = new Point(640, 181);
+            lbSuggestion.Name = "lbSuggestion";
+            lbSuggestion.Size = new Size(100, 21);
+            lbSuggestion.TabIndex = 15;
+            lbSuggestion.Text = "Suggestion";
+            // 
+            // txtSearch
+            // 
+            txtSearch.BackColor = Color.FromArgb(231, 34, 83);
+            txtSearch.BorderColor = Color.FromArgb(231, 34, 83);
+            txtSearch.BorderFocusColor = Color.FromArgb(231, 34, 83);
+            txtSearch.BorderRadius = 10;
+            txtSearch.BorderSize = 2;
+            txtSearch.Font = new Font("Cascadia Code", 10F, FontStyle.Bold, GraphicsUnit.Point);
+            txtSearch.ForeColor = Color.FromArgb(11, 7, 17);
+            txtSearch.Location = new Point(643, 143);
+            txtSearch.Margin = new Padding(4);
+            txtSearch.Multiline = false;
+            txtSearch.Name = "txtSearch";
+            txtSearch.Padding = new Padding(10, 7, 10, 7);
+            txtSearch.PasswordChar = false;
+            txtSearch.PlaceholderColor = Color.FromArgb(11, 7, 17);
+            txtSearch.PlaceholderText = "";
+            txtSearch.Size = new Size(248, 33);
+            txtSearch.TabIndex = 14;
+            txtSearch.Texts = "";
+            txtSearch.UnderlinedStyle = false;
+            txtSearch._TextChanged += txtSearch__TextChanged;
+            // 
+            // cmbFilterValues
+            // 
+            cmbFilterValues.BackColor = Color.FromArgb(11, 7, 17);
+            cmbFilterValues.BorderColor = Color.FromArgb(231, 34, 83);
+            cmbFilterValues.BorderSize = 2;
+            cmbFilterValues.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbFilterValues.Font = new Font("Cascadia Code", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            cmbFilterValues.ForeColor = Color.FromArgb(231, 34, 83);
+            cmbFilterValues.IconColor = Color.FromArgb(231, 34, 83);
+            cmbFilterValues.ListBackColor = Color.FromArgb(11, 7, 17);
+            cmbFilterValues.ListTextColor = Color.FromArgb(231, 34, 83);
+            cmbFilterValues.Location = new Point(644, 143);
+            cmbFilterValues.MinimumSize = new Size(200, 30);
+            cmbFilterValues.Name = "cmbFilterValues";
+            cmbFilterValues.Padding = new Padding(2);
+            cmbFilterValues.Size = new Size(247, 33);
+            cmbFilterValues.TabIndex = 13;
+            cmbFilterValues.Texts = "";
+            cmbFilterValues.OnSelectedIndexChanged += cmbFilterValues_OnSelectedIndexChanged;
+            // 
+            // roundPanelListBox1
+            // 
+            roundPanelListBox1.Controls.Add(dgvAnime);
+            roundPanelListBox1.Location = new Point(38, 50);
+            roundPanelListBox1.Name = "roundPanelListBox1";
+            roundPanelListBox1.Size = new Size(565, 272);
+            roundPanelListBox1.TabIndex = 12;
+            // 
+            // dgvAnime
+            // 
+            dgvAnime.AllowUserToAddRows = false;
+            dgvAnime.AllowUserToDeleteRows = false;
+            dgvAnime.AllowUserToResizeColumns = false;
+            dgvAnime.AllowUserToResizeRows = false;
+            dgvAnime.BackgroundColor = Color.FromArgb(231, 34, 83);
+            dgvAnime.BorderStyle = BorderStyle.None;
+            dgvAnime.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvAnime.GridColor = Color.FromArgb(11, 7, 17);
+            dgvAnime.Location = new Point(0, 0);
+            dgvAnime.Name = "dgvAnime";
+            dgvAnime.ReadOnly = true;
+            dgvAnime.RowHeadersWidth = 62;
+            dgvAnime.RowTemplate.Height = 28;
+            dgvAnime.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvAnime.Size = new Size(565, 272);
+            dgvAnime.TabIndex = 2;
+            dgvAnime.CellContentDoubleClick += dgvAnime_CellDoubleClick;
             // 
             // btnDetails
             // 
@@ -131,32 +215,35 @@ namespace AniX_APP.Forms_Dashboard
             btnDetails.Text = "View Details";
             btnDetails.TextColor = Color.FromArgb(231, 34, 83);
             btnDetails.UseVisualStyleBackColor = false;
+            btnDetails.Click += btnDetails_Click;
             // 
-            // cmbFilter
+            // cmbFilterOptions
             // 
-            cmbFilter.BackColor = Color.FromArgb(11, 7, 17);
-            cmbFilter.BorderColor = Color.FromArgb(231, 34, 83);
-            cmbFilter.BorderSize = 2;
-            cmbFilter.DropDownStyle = ComboBoxStyle.DropDownList;
-            cmbFilter.Font = new Font("Cascadia Code", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            cmbFilter.ForeColor = Color.FromArgb(231, 34, 83);
-            cmbFilter.IconColor = Color.FromArgb(231, 34, 83);
-            cmbFilter.ListBackColor = Color.FromArgb(11, 7, 17);
-            cmbFilter.ListTextColor = Color.FromArgb(231, 34, 83);
-            cmbFilter.Location = new Point(647, 269);
-            cmbFilter.MinimumSize = new Size(200, 30);
-            cmbFilter.Name = "cmbFilter";
-            cmbFilter.Padding = new Padding(2);
-            cmbFilter.Size = new Size(247, 33);
-            cmbFilter.TabIndex = 10;
-            cmbFilter.Texts = "< filter >";
+            cmbFilterOptions.BackColor = Color.FromArgb(11, 7, 17);
+            cmbFilterOptions.BorderColor = Color.FromArgb(231, 34, 83);
+            cmbFilterOptions.BorderSize = 2;
+            cmbFilterOptions.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbFilterOptions.Font = new Font("Cascadia Code", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            cmbFilterOptions.ForeColor = Color.FromArgb(231, 34, 83);
+            cmbFilterOptions.IconColor = Color.FromArgb(231, 34, 83);
+            cmbFilterOptions.Items.AddRange(new object[] { "All Anime", "Name", "Country", "Language", "Year", "Studio", "Rating", "Type", "Status", "Premiered", "Genre" });
+            cmbFilterOptions.ListBackColor = Color.FromArgb(11, 7, 17);
+            cmbFilterOptions.ListTextColor = Color.FromArgb(231, 34, 83);
+            cmbFilterOptions.Location = new Point(644, 101);
+            cmbFilterOptions.MinimumSize = new Size(200, 30);
+            cmbFilterOptions.Name = "cmbFilterOptions";
+            cmbFilterOptions.Padding = new Padding(2);
+            cmbFilterOptions.Size = new Size(247, 33);
+            cmbFilterOptions.TabIndex = 10;
+            cmbFilterOptions.Texts = "All Anime";
+            cmbFilterOptions.OnSelectedIndexChanged += cmbFilterOptions_OnSelectedIndexChanged;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Cascadia Code", 12F, FontStyle.Regular, GraphicsUnit.Point);
             label1.ForeColor = Color.FromArgb(231, 34, 83);
-            label1.Location = new Point(642, 240);
+            label1.Location = new Point(639, 72);
             label1.Name = "label1";
             label1.Size = new Size(100, 21);
             label1.TabIndex = 9;
@@ -174,13 +261,14 @@ namespace AniX_APP.Forms_Dashboard
             btnEdit.FlatStyle = FlatStyle.Flat;
             btnEdit.Font = new Font("Cascadia Code", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             btnEdit.ForeColor = Color.FromArgb(11, 7, 17);
-            btnEdit.Location = new Point(642, 189);
+            btnEdit.Location = new Point(641, 258);
             btnEdit.Name = "btnEdit";
             btnEdit.Size = new Size(250, 43);
             btnEdit.TabIndex = 8;
             btnEdit.Text = "Edit";
             btnEdit.TextColor = Color.FromArgb(11, 7, 17);
             btnEdit.UseVisualStyleBackColor = false;
+            btnEdit.Click += btnEdit_Click;
             // 
             // btnRemove
             // 
@@ -194,13 +282,14 @@ namespace AniX_APP.Forms_Dashboard
             btnRemove.FlatStyle = FlatStyle.Flat;
             btnRemove.Font = new Font("Cascadia Code", 10F, FontStyle.Bold, GraphicsUnit.Point);
             btnRemove.ForeColor = Color.FromArgb(231, 34, 83);
-            btnRemove.Location = new Point(771, 140);
+            btnRemove.Location = new Point(770, 209);
             btnRemove.Name = "btnRemove";
             btnRemove.Size = new Size(121, 43);
             btnRemove.TabIndex = 5;
             btnRemove.Text = "Remove";
             btnRemove.TextColor = Color.FromArgb(231, 34, 83);
             btnRemove.UseVisualStyleBackColor = false;
+            btnRemove.Click += btnRemove_Click;
             // 
             // btnAdd
             // 
@@ -214,72 +303,16 @@ namespace AniX_APP.Forms_Dashboard
             btnAdd.FlatStyle = FlatStyle.Flat;
             btnAdd.Font = new Font("Cascadia Code", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             btnAdd.ForeColor = Color.FromArgb(11, 7, 17);
-            btnAdd.Location = new Point(642, 140);
+            btnAdd.Location = new Point(641, 209);
             btnAdd.Name = "btnAdd";
             btnAdd.Size = new Size(121, 43);
             btnAdd.TabIndex = 4;
             btnAdd.Text = "Add";
             btnAdd.TextColor = Color.FromArgb(11, 7, 17);
             btnAdd.UseVisualStyleBackColor = false;
+            btnAdd.Click += btnAdd_Click;
             // 
-            // tbxAnime
-            // 
-            tbxAnime.BackColor = Color.FromArgb(231, 34, 83);
-            tbxAnime.BorderColor = Color.FromArgb(231, 34, 83);
-            tbxAnime.BorderFocusColor = Color.FromArgb(231, 34, 83);
-            tbxAnime.BorderRadius = 14;
-            tbxAnime.BorderSize = 2;
-            tbxAnime.Font = new Font("Cascadia Code", 10F, FontStyle.Bold, GraphicsUnit.Point);
-            tbxAnime.ForeColor = Color.FromArgb(11, 7, 17);
-            tbxAnime.Location = new Point(642, 92);
-            tbxAnime.Margin = new Padding(4);
-            tbxAnime.Multiline = false;
-            tbxAnime.Name = "tbxAnime";
-            tbxAnime.Padding = new Padding(10, 7, 10, 7);
-            tbxAnime.PasswordChar = false;
-            tbxAnime.PlaceholderColor = Color.FromArgb(11, 7, 17);
-            tbxAnime.PlaceholderText = "< anime >";
-            tbxAnime.Size = new Size(250, 33);
-            tbxAnime.TabIndex = 2;
-            tbxAnime.Texts = "";
-            tbxAnime.UnderlinedStyle = false;
-            // 
-            // lbAnime
-            // 
-            lbAnime.AutoSize = true;
-            lbAnime.Font = new Font("Cascadia Code", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lbAnime.ForeColor = Color.FromArgb(231, 34, 83);
-            lbAnime.Location = new Point(642, 65);
-            lbAnime.Name = "lbAnime";
-            lbAnime.Size = new Size(127, 21);
-            lbAnime.TabIndex = 4;
-            lbAnime.Text = "Search Anime:";
-            // 
-            // roundPanelListBox1
-            // 
-            roundPanelListBox1.Controls.Add(dgvAnime);
-            roundPanelListBox1.Location = new Point(38, 50);
-            roundPanelListBox1.Name = "roundPanelListBox1";
-            roundPanelListBox1.Size = new Size(565, 272);
-            roundPanelListBox1.TabIndex = 3;
-            // 
-            // dgvAnime
-            // 
-            dgvAnime.AllowUserToAddRows = false;
-            dgvAnime.AllowUserToDeleteRows = false;
-            dgvAnime.BackgroundColor = Color.FromArgb(231, 34, 83);
-            dgvAnime.BorderStyle = BorderStyle.None;
-            dgvAnime.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvAnime.GridColor = Color.FromArgb(11, 7, 17);
-            dgvAnime.Location = new Point(0, 0);
-            dgvAnime.Name = "dgvAnime";
-            dgvAnime.ReadOnly = true;
-            dgvAnime.RowHeadersWidth = 62;
-            dgvAnime.RowTemplate.Height = 28;
-            dgvAnime.Size = new Size(565, 272);
-            dgvAnime.TabIndex = 2;
-            // 
-            // Anime
+            // AnimeForm
             // 
             AutoScaleDimensions = new SizeF(8F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -289,9 +322,10 @@ namespace AniX_APP.Forms_Dashboard
             Controls.Add(panelBackground);
             Font = new Font("Cascadia Code", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             FormBorderStyle = FormBorderStyle.FixedToolWindow;
-            Name = "Anime";
+            Name = "AnimeForm";
             ShowIcon = false;
             StartPosition = FormStartPosition.CenterScreen;
+            Load += Anime_Load;
             panelTop.ResumeLayout(false);
             panelBackground.ResumeLayout(false);
             panelFix.ResumeLayout(false);
@@ -308,14 +342,15 @@ namespace AniX_APP.Forms_Dashboard
         private RoundPanel panelBackground;
         private Panel panelFix;
         private RoundButton btnDetails;
-        private CustomComboBox cmbFilter;
+        private CustomComboBox cmbFilterOptions;
         private Label label1;
         private RoundButton btnEdit;
         private RoundButton btnRemove;
         private RoundButton btnAdd;
-        private housing.CustomElements.RoundTextBox tbxAnime;
-        private Label lbAnime;
         private RoundPanelListBox roundPanelListBox1;
         private DataGridView dgvAnime;
+        private housing.CustomElements.RoundTextBox txtSearch;
+        private CustomComboBox cmbFilterValues;
+        private Label lbSuggestion;
     }
 }

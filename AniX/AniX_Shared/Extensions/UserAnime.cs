@@ -1,4 +1,4 @@
-﻿namespace AniX_Shared.DomainModels;
+﻿namespace AniX_Shared.Extensions;
 
 public class UserAnime
 {

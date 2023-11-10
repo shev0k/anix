@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AniX_Shared.DomainModels
+namespace AniX_Shared.Extensions
 {
     public class AnimeGenre
     {

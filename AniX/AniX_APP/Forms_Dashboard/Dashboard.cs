@@ -238,7 +238,8 @@ namespace AniX_APP.Forms_Dashboard
             _exceptionHandlingService = exceptionHandlingService;
             _errorLoggingService = errorLoggingService;
             openChildForm(new Users(dashboardModel, exceptionHandlingService, errorLoggingService));
-            SetActiveButton(btnManagement);
+            SetActiveButton(btnUsers);
+            showSubMenu(panelInformation);
             _dashboardModel = dashboardModel;
         }
 
@@ -261,7 +262,7 @@ namespace AniX_APP.Forms_Dashboard
 
         private void btnAnime_Click(object sender, EventArgs e)
         {
-            openChildForm(new Anime(_dashboardModel.LoggedInUser));
+            openChildForm(new AnimeForm(_dashboardModel, _exceptionHandlingService, _errorLoggingService));
             SetActiveButton((Button)sender);
         }
 

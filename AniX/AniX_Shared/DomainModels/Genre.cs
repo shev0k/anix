@@ -10,7 +10,11 @@ namespace AniX_Shared.DomainModels
     {
         public int Id { get; set; }
         public string Name { get; set; }
-
         public List<Anime> Animes { get; set; }
+
+        public override string ToString()
+        {
+            return this.Name;
+        }
     }
 }
