@@ -17,7 +17,11 @@ namespace AniX_APP.Forms_Utility
         {
             if (disposing && (components != null))
             {
-                components.Dispose();
+                components?.Dispose();
+
+                // Dispose of image streams
+                _coverImageStream?.Dispose();
+                _thumbnailImageStream?.Dispose();
             }
             base.Dispose(disposing);
         }
@@ -31,6 +35,10 @@ namespace AniX_APP.Forms_Utility
         private void InitializeComponent()
         {
             panelButtons = new Panel();
+            btnThumbnail = new CustomElements.RoundButton();
+            tbxThumbnail = new RoundTextBox();
+            btnBanner = new CustomElements.RoundButton();
+            tbxBanner = new RoundTextBox();
             cbxLanguage = new CustomElements.CustomComboBox();
             cbxCountry = new CustomElements.CustomComboBox();
             cbxRating = new CustomElements.CustomComboBox();
@@ -41,9 +49,7 @@ namespace AniX_APP.Forms_Utility
             dpRelease = new CustomElements.CustomDatePicker();
             label1 = new Label();
             lbThumbnail = new Label();
-            tbxThumbnail = new RoundTextBox();
             lbBanner = new Label();
-            tbxBanner = new RoundTextBox();
             lbTrailer = new Label();
             tbxTrailer = new RoundTextBox();
             genreList = new CheckedListBox();
@@ -75,6 +81,10 @@ namespace AniX_APP.Forms_Utility
             // panelButtons
             // 
             panelButtons.BackColor = Color.FromArgb(11, 7, 17);
+            panelButtons.Controls.Add(btnThumbnail);
+            panelButtons.Controls.Add(tbxThumbnail);
+            panelButtons.Controls.Add(btnBanner);
+            panelButtons.Controls.Add(tbxBanner);
             panelButtons.Controls.Add(cbxLanguage);
             panelButtons.Controls.Add(cbxCountry);
             panelButtons.Controls.Add(cbxRating);
@@ -85,9 +95,7 @@ namespace AniX_APP.Forms_Utility
             panelButtons.Controls.Add(dpRelease);
             panelButtons.Controls.Add(label1);
             panelButtons.Controls.Add(lbThumbnail);
-            panelButtons.Controls.Add(tbxThumbnail);
             panelButtons.Controls.Add(lbBanner);
-            panelButtons.Controls.Add(tbxBanner);
             panelButtons.Controls.Add(lbTrailer);
             panelButtons.Controls.Add(tbxTrailer);
             panelButtons.Controls.Add(genreList);
@@ -120,6 +128,92 @@ namespace AniX_APP.Forms_Utility
             panelButtons.Size = new Size(1107, 636);
             panelButtons.TabIndex = 5;
             panelButtons.MouseDown += panelTitleBar_MouseDown;
+            // 
+            // btnThumbnail
+            // 
+            btnThumbnail.BackColor = Color.FromArgb(11, 7, 17);
+            btnThumbnail.BackgroundColor = Color.FromArgb(11, 7, 17);
+            btnThumbnail.BorderColor = Color.FromArgb(10, 189, 198);
+            btnThumbnail.BorderRadius = 0;
+            btnThumbnail.BorderSize = 2;
+            btnThumbnail.ClickedColor = Color.FromArgb(231, 34, 83);
+            btnThumbnail.FlatAppearance.BorderSize = 0;
+            btnThumbnail.FlatStyle = FlatStyle.Flat;
+            btnThumbnail.Font = new Font("Cascadia Code", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnThumbnail.ForeColor = Color.FromArgb(10, 189, 198);
+            btnThumbnail.Location = new Point(533, 356);
+            btnThumbnail.Name = "btnThumbnail";
+            btnThumbnail.Size = new Size(248, 33);
+            btnThumbnail.TabIndex = 57;
+            btnThumbnail.Text = "Select Thumbnail";
+            btnThumbnail.TextColor = Color.FromArgb(10, 189, 198);
+            btnThumbnail.UseVisualStyleBackColor = false;
+            btnThumbnail.Click += btnThumbnail_Click;
+            // 
+            // tbxThumbnail
+            // 
+            tbxThumbnail.BackColor = Color.FromArgb(11, 7, 17);
+            tbxThumbnail.BorderColor = Color.FromArgb(231, 34, 83);
+            tbxThumbnail.BorderFocusColor = Color.FromArgb(231, 34, 83);
+            tbxThumbnail.BorderRadius = 0;
+            tbxThumbnail.BorderSize = 2;
+            tbxThumbnail.Font = new Font("Cascadia Code", 10F, FontStyle.Bold, GraphicsUnit.Point);
+            tbxThumbnail.ForeColor = Color.FromArgb(231, 34, 83);
+            tbxThumbnail.Location = new Point(533, 356);
+            tbxThumbnail.Margin = new Padding(4);
+            tbxThumbnail.Multiline = false;
+            tbxThumbnail.Name = "tbxThumbnail";
+            tbxThumbnail.Padding = new Padding(10, 7, 10, 7);
+            tbxThumbnail.PasswordChar = false;
+            tbxThumbnail.PlaceholderColor = Color.FromArgb(231, 34, 83);
+            tbxThumbnail.PlaceholderText = "";
+            tbxThumbnail.Size = new Size(247, 33);
+            tbxThumbnail.TabIndex = 56;
+            tbxThumbnail.Texts = "";
+            tbxThumbnail.UnderlinedStyle = false;
+            // 
+            // btnBanner
+            // 
+            btnBanner.BackColor = Color.FromArgb(11, 7, 17);
+            btnBanner.BackgroundColor = Color.FromArgb(11, 7, 17);
+            btnBanner.BorderColor = Color.FromArgb(10, 189, 198);
+            btnBanner.BorderRadius = 0;
+            btnBanner.BorderSize = 2;
+            btnBanner.ClickedColor = Color.FromArgb(231, 34, 83);
+            btnBanner.FlatAppearance.BorderSize = 0;
+            btnBanner.FlatStyle = FlatStyle.Flat;
+            btnBanner.Font = new Font("Cascadia Code", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnBanner.ForeColor = Color.FromArgb(10, 189, 198);
+            btnBanner.Location = new Point(533, 315);
+            btnBanner.Name = "btnBanner";
+            btnBanner.Size = new Size(249, 33);
+            btnBanner.TabIndex = 55;
+            btnBanner.Text = "Select Banner";
+            btnBanner.TextColor = Color.FromArgb(10, 189, 198);
+            btnBanner.UseVisualStyleBackColor = false;
+            btnBanner.Click += btnBanner_Click;
+            // 
+            // tbxBanner
+            // 
+            tbxBanner.BackColor = Color.FromArgb(11, 7, 17);
+            tbxBanner.BorderColor = Color.FromArgb(231, 34, 83);
+            tbxBanner.BorderFocusColor = Color.FromArgb(231, 34, 83);
+            tbxBanner.BorderRadius = 0;
+            tbxBanner.BorderSize = 2;
+            tbxBanner.Font = new Font("Cascadia Code", 10F, FontStyle.Bold, GraphicsUnit.Point);
+            tbxBanner.ForeColor = Color.FromArgb(231, 34, 83);
+            tbxBanner.Location = new Point(535, 315);
+            tbxBanner.Margin = new Padding(4);
+            tbxBanner.Multiline = false;
+            tbxBanner.Name = "tbxBanner";
+            tbxBanner.Padding = new Padding(10, 7, 10, 7);
+            tbxBanner.PasswordChar = false;
+            tbxBanner.PlaceholderColor = Color.FromArgb(231, 34, 83);
+            tbxBanner.PlaceholderText = "";
+            tbxBanner.Size = new Size(247, 33);
+            tbxBanner.TabIndex = 54;
+            tbxBanner.Texts = "";
+            tbxBanner.UnderlinedStyle = false;
             // 
             // cbxLanguage
             // 
@@ -208,7 +302,7 @@ namespace AniX_APP.Forms_Utility
             dpYear.Font = new Font("Cascadia Code", 9F, FontStyle.Bold, GraphicsUnit.Point);
             dpYear.Format = DateTimePickerFormat.Custom;
             dpYear.Location = new Point(147, 314);
-            dpYear.MaxDate = new DateTime(2024, 12, 31, 0, 0, 0, 0);
+            dpYear.MaxDate = new DateTime(2030, 12, 31, 0, 0, 0, 0);
             dpYear.MinDate = new DateTime(1970, 1, 1, 0, 0, 0, 0);
             dpYear.MinimumSize = new Size(0, 35);
             dpYear.Name = "dpYear";
@@ -238,7 +332,7 @@ namespace AniX_APP.Forms_Utility
             dpRelease.Font = new Font("Cascadia Code", 9F, FontStyle.Bold, GraphicsUnit.Point);
             dpRelease.Format = DateTimePickerFormat.Custom;
             dpRelease.Location = new Point(535, 227);
-            dpRelease.MaxDate = new DateTime(2024, 12, 31, 0, 0, 0, 0);
+            dpRelease.MaxDate = new DateTime(2030, 12, 31, 0, 0, 0, 0);
             dpRelease.MinDate = new DateTime(1970, 1, 1, 0, 0, 0, 0);
             dpRelease.MinimumSize = new Size(0, 35);
             dpRelease.Name = "dpRelease";
@@ -270,28 +364,6 @@ namespace AniX_APP.Forms_Utility
             lbThumbnail.TabIndex = 41;
             lbThumbnail.Text = "Thumbnail:";
             // 
-            // tbxThumbnail
-            // 
-            tbxThumbnail.BackColor = Color.FromArgb(11, 7, 17);
-            tbxThumbnail.BorderColor = Color.FromArgb(231, 34, 83);
-            tbxThumbnail.BorderFocusColor = Color.FromArgb(231, 34, 83);
-            tbxThumbnail.BorderRadius = 0;
-            tbxThumbnail.BorderSize = 2;
-            tbxThumbnail.Font = new Font("Cascadia Code", 10F, FontStyle.Bold, GraphicsUnit.Point);
-            tbxThumbnail.ForeColor = Color.FromArgb(231, 34, 83);
-            tbxThumbnail.Location = new Point(535, 359);
-            tbxThumbnail.Margin = new Padding(4);
-            tbxThumbnail.Multiline = false;
-            tbxThumbnail.Name = "tbxThumbnail";
-            tbxThumbnail.Padding = new Padding(10, 7, 10, 7);
-            tbxThumbnail.PasswordChar = false;
-            tbxThumbnail.PlaceholderColor = Color.FromArgb(231, 34, 83);
-            tbxThumbnail.PlaceholderText = "";
-            tbxThumbnail.Size = new Size(247, 33);
-            tbxThumbnail.TabIndex = 40;
-            tbxThumbnail.Texts = "";
-            tbxThumbnail.UnderlinedStyle = false;
-            // 
             // lbBanner
             // 
             lbBanner.AutoSize = true;
@@ -302,28 +374,6 @@ namespace AniX_APP.Forms_Utility
             lbBanner.Size = new Size(73, 21);
             lbBanner.TabIndex = 39;
             lbBanner.Text = "Banner:";
-            // 
-            // tbxBanner
-            // 
-            tbxBanner.BackColor = Color.FromArgb(11, 7, 17);
-            tbxBanner.BorderColor = Color.FromArgb(231, 34, 83);
-            tbxBanner.BorderFocusColor = Color.FromArgb(231, 34, 83);
-            tbxBanner.BorderRadius = 0;
-            tbxBanner.BorderSize = 2;
-            tbxBanner.Font = new Font("Cascadia Code", 10F, FontStyle.Bold, GraphicsUnit.Point);
-            tbxBanner.ForeColor = Color.FromArgb(231, 34, 83);
-            tbxBanner.Location = new Point(535, 316);
-            tbxBanner.Margin = new Padding(4);
-            tbxBanner.Multiline = false;
-            tbxBanner.Name = "tbxBanner";
-            tbxBanner.Padding = new Padding(10, 7, 10, 7);
-            tbxBanner.PasswordChar = false;
-            tbxBanner.PlaceholderColor = Color.FromArgb(231, 34, 83);
-            tbxBanner.PlaceholderText = "";
-            tbxBanner.Size = new Size(247, 33);
-            tbxBanner.TabIndex = 38;
-            tbxBanner.Texts = "";
-            tbxBanner.UnderlinedStyle = false;
             // 
             // lbTrailer
             // 
@@ -363,14 +413,14 @@ namespace AniX_APP.Forms_Utility
             genreList.BackColor = Color.FromArgb(11, 7, 17);
             genreList.BorderStyle = BorderStyle.None;
             genreList.ColumnWidth = 140;
-            genreList.Font = new Font("Cascadia Code", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            genreList.Font = new Font("Cascadia Code", 10F, FontStyle.Regular, GraphicsUnit.Point);
             genreList.ForeColor = Color.FromArgb(231, 34, 83);
             genreList.FormattingEnabled = true;
             genreList.Location = new Point(814, 50);
             genreList.MultiColumn = true;
             genreList.Name = "genreList";
             genreList.RightToLeft = RightToLeft.No;
-            genreList.Size = new Size(291, 496);
+            genreList.Size = new Size(291, 486);
             genreList.TabIndex = 35;
             // 
             // cbxType
@@ -489,7 +539,7 @@ namespace AniX_APP.Forms_Utility
             dpAired.Font = new Font("Cascadia Code", 9F, FontStyle.Bold, GraphicsUnit.Point);
             dpAired.Format = DateTimePickerFormat.Custom;
             dpAired.Location = new Point(535, 182);
-            dpAired.MaxDate = new DateTime(2024, 12, 31, 0, 0, 0, 0);
+            dpAired.MaxDate = new DateTime(2030, 12, 31, 0, 0, 0, 0);
             dpAired.MinDate = new DateTime(1970, 1, 1, 0, 0, 0, 0);
             dpAired.MinimumSize = new Size(0, 35);
             dpAired.Name = "dpAired";
@@ -640,11 +690,11 @@ namespace AniX_APP.Forms_Utility
             // btnClose
             // 
             btnClose.FlatAppearance.BorderSize = 0;
-            btnClose.FlatAppearance.MouseOverBackColor = Color.FromArgb(224, 79, 95);
+            btnClose.FlatAppearance.MouseOverBackColor = Color.FromArgb(231, 34, 83);
             btnClose.FlatStyle = FlatStyle.Flat;
             btnClose.Font = new Font("Microsoft Sans Serif", 13F, FontStyle.Regular, GraphicsUnit.Point);
             btnClose.ForeColor = Color.White;
-            btnClose.Location = new Point(1058, 1);
+            btnClose.Location = new Point(1060, 0);
             btnClose.Margin = new Padding(4, 3, 4, 3);
             btnClose.Name = "btnClose";
             btnClose.Size = new Size(47, 38);
@@ -767,9 +817,7 @@ namespace AniX_APP.Forms_Utility
         private Label lbTrailer;
         private RoundTextBox tbxTrailer;
         private Label lbBanner;
-        private RoundTextBox tbxBanner;
         private Label lbThumbnail;
-        private RoundTextBox tbxThumbnail;
         private Label label2;
         private CustomElements.CustomDatePicker dpRelease;
         private Label label1;
@@ -779,5 +827,9 @@ namespace AniX_APP.Forms_Utility
         private CustomElements.CustomDatePicker dpYear;
         private CustomElements.CustomComboBox cbxLanguage;
         private CustomElements.CustomComboBox cbxCountry;
+        private CustomElements.RoundButton btnBanner;
+        private RoundTextBox tbxBanner;
+        private CustomElements.RoundButton btnThumbnail;
+        private RoundTextBox tbxThumbnail;
     }
 }

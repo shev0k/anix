@@ -3394,3 +3394,1277 @@ Message: Object reference not set to an instance of an object.
 Stack Trace:    at AniX_APP.Forms_Dashboard.AnimeForm.GetSelectedAnimeFromDataGridView() in C:\Users\Administrator\source\repos\anix\AniX\AniX_APP\Forms_Dashboard\AnimeForm.cs:line 218
    at AniX_APP.Forms_Dashboard.AnimeForm.btnRemove_Click(Object sender, EventArgs e) in C:\Users\Administrator\source\repos\anix\AniX\AniX_APP\Forms_Dashboard\AnimeForm.cs:line 73
 ---------------------------------------------------
+Timestamp: 11/11/2023 17:25:51
+Severity: Info
+Custom Message: Timestamp: 11/11/2023 17:25:51, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 11/11/2023 18:04:41
+Severity: Info
+Custom Message: Timestamp: 11/11/2023 18:04:41, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 11/11/2023 18:04:48
+Severity: Error
+Exception Type: System.NullReferenceException
+Message: Object reference not set to an instance of an object.
+Stack Trace:    at AniX_APP.Forms_Dashboard.AnimeForm.GetSelectedAnimeFromDataGridView() in C:\Users\Administrator\source\repos\anix\AniX\AniX_APP\Forms_Dashboard\AnimeForm.cs:line 218
+   at AniX_APP.Forms_Dashboard.AnimeForm.btnRemove_Click(Object sender, EventArgs e) in C:\Users\Administrator\source\repos\anix\AniX\AniX_APP\Forms_Dashboard\AnimeForm.cs:line 73
+---------------------------------------------------
+Timestamp: 11/11/2023 19:03:40
+Severity: Info
+Custom Message: Timestamp: 11/11/2023 19:03:40, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 11/11/2023 19:03:42
+Severity: Error
+Exception Type: System.NullReferenceException
+Message: Object reference not set to an instance of an object.
+Stack Trace:    at AniX_APP.Forms_Dashboard.AnimeForm.GetSelectedAnimeFromDataGridView() in C:\Users\Administrator\source\repos\anix\AniX\AniX_APP\Forms_Dashboard\AnimeForm.cs:line 220
+   at AniX_APP.Forms_Dashboard.AnimeForm.btnEdit_Click(Object sender, EventArgs e) in C:\Users\Administrator\source\repos\anix\AniX\AniX_APP\Forms_Dashboard\AnimeForm.cs:line 49
+---------------------------------------------------
+Timestamp: 11/11/2023 19:05:04
+Severity: Info
+Custom Message: Timestamp: 11/11/2023 19:05:04, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 11/11/2023 19:08:00
+Severity: Info
+Custom Message: Timestamp: 11/11/2023 19:08:00, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 11/11/2023 19:09:58
+Severity: Info
+Custom Message: Timestamp: 11/11/2023 19:09:58, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 11/11/2023 19:20:49
+Severity: Info
+Custom Message: Timestamp: 11/11/2023 19:20:49, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 11/11/2023 19:21:21
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: The connection was not closed. The connection's current state is open.
+Stack Trace:    at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.OpenAsync(CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at AniX_DAL.AnimeDAL.GetAnimeImageUrls(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 113
+---------------------------------------------------
+Timestamp: 11/11/2023 19:21:22
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: This SqlTransaction has completed; it is no longer usable.
+Stack Trace:    at System.Data.SqlClient.SqlTransaction.ZombieCheck()
+   at System.Data.SqlClient.SqlTransaction.Rollback()
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 261
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 268
+   at AniX_Controllers.AnimeController.ExecuteWithExceptionHandlingAsync[T](Func`1 action) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\AnimeController.cs:line 164
+---------------------------------------------------
+Timestamp: 11/11/2023 19:21:22
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: This SqlTransaction has completed; it is no longer usable.
+Stack Trace:    at System.Data.SqlClient.SqlTransaction.ZombieCheck()
+   at System.Data.SqlClient.SqlTransaction.Rollback()
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 261
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 268
+   at AniX_Controllers.AnimeController.ExecuteWithExceptionHandlingAsync[T](Func`1 action) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\AnimeController.cs:line 164
+   at AniX_Controllers.AnimeController.ExecuteWithExceptionHandlingAsync[T](Func`1 action) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\AnimeController.cs:line 173
+   at AniX_Controllers.AnimeController.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\AnimeController.cs:line 62
+   at AniX_FormsLogic.AnimeFormLogic.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_FormsLogic\AnimeFormLogic.cs:line 39
+   at AniX_APP.Forms_Dashboard.AnimeForm.btnRemove_Click(Object sender, EventArgs e) in C:\Users\Administrator\source\repos\anix\AniX\AniX_APP\Forms_Dashboard\AnimeForm.cs:line 87
+---------------------------------------------------
+Timestamp: 11/11/2023 19:21:24
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: The connection was not closed. The connection's current state is open.
+Stack Trace:    at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.OpenAsync(CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at AniX_DAL.AnimeDAL.GetAnimeImageUrls(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 113
+---------------------------------------------------
+Timestamp: 11/11/2023 19:21:24
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: This SqlTransaction has completed; it is no longer usable.
+Stack Trace:    at System.Data.SqlClient.SqlTransaction.ZombieCheck()
+   at System.Data.SqlClient.SqlTransaction.Rollback()
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 261
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 268
+   at AniX_Controllers.AnimeController.ExecuteWithExceptionHandlingAsync[T](Func`1 action) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\AnimeController.cs:line 164
+---------------------------------------------------
+Timestamp: 11/11/2023 19:21:25
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: This SqlTransaction has completed; it is no longer usable.
+Stack Trace:    at System.Data.SqlClient.SqlTransaction.ZombieCheck()
+   at System.Data.SqlClient.SqlTransaction.Rollback()
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 261
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 268
+   at AniX_Controllers.AnimeController.ExecuteWithExceptionHandlingAsync[T](Func`1 action) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\AnimeController.cs:line 164
+   at AniX_Controllers.AnimeController.ExecuteWithExceptionHandlingAsync[T](Func`1 action) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\AnimeController.cs:line 173
+   at AniX_Controllers.AnimeController.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\AnimeController.cs:line 62
+   at AniX_FormsLogic.AnimeFormLogic.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_FormsLogic\AnimeFormLogic.cs:line 39
+   at AniX_APP.Forms_Dashboard.AnimeForm.btnRemove_Click(Object sender, EventArgs e) in C:\Users\Administrator\source\repos\anix\AniX\AniX_APP\Forms_Dashboard\AnimeForm.cs:line 87
+---------------------------------------------------
+Timestamp: 11/11/2023 19:24:04
+Severity: Info
+Custom Message: Timestamp: 11/11/2023 19:24:04, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 11/11/2023 19:24:42
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: The connection was not closed. The connection's current state is open.
+Stack Trace:    at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.OpenAsync(CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at AniX_DAL.AnimeDAL.GetAnimeImageUrls(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 113
+---------------------------------------------------
+Timestamp: 11/11/2023 19:24:42
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: This SqlTransaction has completed; it is no longer usable.
+Stack Trace:    at System.Data.SqlClient.SqlTransaction.ZombieCheck()
+   at System.Data.SqlClient.SqlTransaction.Rollback()
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 261
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 268
+   at AniX_Controllers.AnimeController.ExecuteWithExceptionHandlingAsync[T](Func`1 action) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\AnimeController.cs:line 164
+---------------------------------------------------
+Timestamp: 11/11/2023 19:25:08
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: This SqlTransaction has completed; it is no longer usable.
+Stack Trace:    at System.Data.SqlClient.SqlTransaction.ZombieCheck()
+   at System.Data.SqlClient.SqlTransaction.Rollback()
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 261
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 268
+   at AniX_Controllers.AnimeController.ExecuteWithExceptionHandlingAsync[T](Func`1 action) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\AnimeController.cs:line 164
+   at AniX_Controllers.AnimeController.ExecuteWithExceptionHandlingAsync[T](Func`1 action) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\AnimeController.cs:line 173
+   at AniX_Controllers.AnimeController.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\AnimeController.cs:line 62
+   at AniX_FormsLogic.AnimeFormLogic.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_FormsLogic\AnimeFormLogic.cs:line 39
+   at AniX_APP.Forms_Dashboard.AnimeForm.btnRemove_Click(Object sender, EventArgs e) in C:\Users\Administrator\source\repos\anix\AniX\AniX_APP\Forms_Dashboard\AnimeForm.cs:line 87
+---------------------------------------------------
+Timestamp: 11/11/2023 19:25:54
+Severity: Info
+Custom Message: Timestamp: 11/11/2023 19:25:54, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 11/11/2023 19:26:02
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: The connection was not closed. The connection's current state is open.
+Stack Trace:    at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.OpenAsync(CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at AniX_DAL.AnimeDAL.GetAnimeImageUrls(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 113
+---------------------------------------------------
+Timestamp: 11/11/2023 19:26:02
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: This SqlTransaction has completed; it is no longer usable.
+Stack Trace:    at System.Data.SqlClient.SqlTransaction.ZombieCheck()
+   at System.Data.SqlClient.SqlTransaction.Rollback()
+   at AniX_DAL.AnimeDAL.UpdateAnimeAsync(Anime anime, List`1 newGenreIds) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 206
+   at AniX_DAL.AnimeDAL.UpdateAnimeAsync(Anime anime, List`1 newGenreIds) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 213
+   at AniX_Controllers.AnimeController.ExecuteWithExceptionHandlingAsync[T](Func`1 action) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\AnimeController.cs:line 164
+---------------------------------------------------
+Timestamp: 11/11/2023 19:31:16
+Severity: Info
+Custom Message: Timestamp: 11/11/2023 19:31:16, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 11/11/2023 19:37:53
+Severity: Info
+Custom Message: Timestamp: 11/11/2023 19:37:53, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 11/11/2023 19:38:06
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: The connection was not closed. The connection's current state is open.
+Stack Trace:    at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.OpenAsync(CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at AniX_DAL.AnimeDAL.GetAnimeImageUrls(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 113
+---------------------------------------------------
+Timestamp: 11/11/2023 19:38:07
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: This SqlTransaction has completed; it is no longer usable.
+Stack Trace:    at System.Data.SqlClient.SqlTransaction.ZombieCheck()
+   at System.Data.SqlClient.SqlTransaction.Rollback()
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 261
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 268
+   at AniX_Controllers.AnimeController.ExecuteWithExceptionHandlingAsync[T](Func`1 action) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\AnimeController.cs:line 164
+---------------------------------------------------
+Timestamp: 11/11/2023 19:38:09
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: This SqlTransaction has completed; it is no longer usable.
+Stack Trace:    at System.Data.SqlClient.SqlTransaction.ZombieCheck()
+   at System.Data.SqlClient.SqlTransaction.Rollback()
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 261
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 268
+   at AniX_Controllers.AnimeController.ExecuteWithExceptionHandlingAsync[T](Func`1 action) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\AnimeController.cs:line 164
+   at AniX_Controllers.AnimeController.ExecuteWithExceptionHandlingAsync[T](Func`1 action) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\AnimeController.cs:line 173
+   at AniX_Controllers.AnimeController.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\AnimeController.cs:line 62
+   at AniX_FormsLogic.AnimeFormLogic.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_FormsLogic\AnimeFormLogic.cs:line 39
+   at AniX_APP.Forms_Dashboard.AnimeForm.btnRemove_Click(Object sender, EventArgs e) in C:\Users\Administrator\source\repos\anix\AniX\AniX_APP\Forms_Dashboard\AnimeForm.cs:line 87
+---------------------------------------------------
+Timestamp: 11/11/2023 19:40:22
+Severity: Info
+Custom Message: Timestamp: 11/11/2023 19:40:22, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 11/11/2023 19:40:34
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: The connection was not closed. The connection's current state is open.
+Stack Trace:    at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.OpenAsync(CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at AniX_DAL.AnimeDAL.GetAnimeImageUrls(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 113
+---------------------------------------------------
+Timestamp: 11/11/2023 19:40:34
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: This SqlTransaction has completed; it is no longer usable.
+Stack Trace:    at System.Data.SqlClient.SqlTransaction.ZombieCheck()
+   at System.Data.SqlClient.SqlTransaction.Rollback()
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 261
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 268
+   at AniX_Controllers.AnimeController.ExecuteWithExceptionHandlingAsync[T](Func`1 action) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\AnimeController.cs:line 164
+---------------------------------------------------
+Timestamp: 11/11/2023 19:40:42
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: This SqlTransaction has completed; it is no longer usable.
+Stack Trace:    at System.Data.SqlClient.SqlTransaction.ZombieCheck()
+   at System.Data.SqlClient.SqlTransaction.Rollback()
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 261
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 268
+   at AniX_Controllers.AnimeController.ExecuteWithExceptionHandlingAsync[T](Func`1 action) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\AnimeController.cs:line 164
+   at AniX_Controllers.AnimeController.ExecuteWithExceptionHandlingAsync[T](Func`1 action) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\AnimeController.cs:line 173
+   at AniX_Controllers.AnimeController.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\AnimeController.cs:line 62
+   at AniX_FormsLogic.AnimeFormLogic.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_FormsLogic\AnimeFormLogic.cs:line 39
+   at AniX_APP.Forms_Dashboard.AnimeForm.btnRemove_Click(Object sender, EventArgs e) in C:\Users\Administrator\source\repos\anix\AniX\AniX_APP\Forms_Dashboard\AnimeForm.cs:line 87
+---------------------------------------------------
+Timestamp: 11/11/2023 19:44:45
+Severity: Info
+Custom Message: Timestamp: 11/11/2023 19:44:45, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 11/11/2023 19:45:06
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: The connection was not closed. The connection's current state is open.
+Stack Trace:    at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.OpenAsync(CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at AniX_DAL.AnimeDAL.GetAnimeImageUrls(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 113
+---------------------------------------------------
+Timestamp: 11/11/2023 19:45:06
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: This SqlTransaction has completed; it is no longer usable.
+Stack Trace:    at System.Data.SqlClient.SqlTransaction.ZombieCheck()
+   at System.Data.SqlClient.SqlTransaction.Rollback()
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 272
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 279
+   at AniX_Controllers.AnimeController.ExecuteWithExceptionHandlingAsync[T](Func`1 action) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\AnimeController.cs:line 164
+---------------------------------------------------
+Timestamp: 11/11/2023 19:45:06
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: This SqlTransaction has completed; it is no longer usable.
+Stack Trace:    at System.Data.SqlClient.SqlTransaction.ZombieCheck()
+   at System.Data.SqlClient.SqlTransaction.Rollback()
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 272
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 279
+   at AniX_Controllers.AnimeController.ExecuteWithExceptionHandlingAsync[T](Func`1 action) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\AnimeController.cs:line 164
+   at AniX_Controllers.AnimeController.ExecuteWithExceptionHandlingAsync[T](Func`1 action) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\AnimeController.cs:line 173
+   at AniX_Controllers.AnimeController.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\AnimeController.cs:line 62
+   at AniX_FormsLogic.AnimeFormLogic.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_FormsLogic\AnimeFormLogic.cs:line 39
+   at AniX_APP.Forms_Dashboard.AnimeForm.btnRemove_Click(Object sender, EventArgs e) in C:\Users\Administrator\source\repos\anix\AniX\AniX_APP\Forms_Dashboard\AnimeForm.cs:line 87
+---------------------------------------------------
+Timestamp: 11/11/2023 19:45:08
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: The connection was not closed. The connection's current state is open.
+Stack Trace:    at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.OpenAsync(CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at AniX_DAL.AnimeDAL.GetAnimeImageUrls(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 113
+---------------------------------------------------
+Timestamp: 11/11/2023 19:45:08
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: This SqlTransaction has completed; it is no longer usable.
+Stack Trace:    at System.Data.SqlClient.SqlTransaction.ZombieCheck()
+   at System.Data.SqlClient.SqlTransaction.Rollback()
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 272
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 279
+   at AniX_Controllers.AnimeController.ExecuteWithExceptionHandlingAsync[T](Func`1 action) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\AnimeController.cs:line 164
+---------------------------------------------------
+Timestamp: 11/11/2023 19:45:08
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: This SqlTransaction has completed; it is no longer usable.
+Stack Trace:    at System.Data.SqlClient.SqlTransaction.ZombieCheck()
+   at System.Data.SqlClient.SqlTransaction.Rollback()
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 272
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 279
+   at AniX_Controllers.AnimeController.ExecuteWithExceptionHandlingAsync[T](Func`1 action) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\AnimeController.cs:line 164
+   at AniX_Controllers.AnimeController.ExecuteWithExceptionHandlingAsync[T](Func`1 action) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\AnimeController.cs:line 173
+   at AniX_Controllers.AnimeController.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\AnimeController.cs:line 62
+   at AniX_FormsLogic.AnimeFormLogic.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_FormsLogic\AnimeFormLogic.cs:line 39
+   at AniX_APP.Forms_Dashboard.AnimeForm.btnRemove_Click(Object sender, EventArgs e) in C:\Users\Administrator\source\repos\anix\AniX\AniX_APP\Forms_Dashboard\AnimeForm.cs:line 87
+---------------------------------------------------
+Timestamp: 11/11/2023 19:45:25
+Severity: Info
+Custom Message: Timestamp: 11/11/2023 19:45:25, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 11/11/2023 19:45:36
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: The connection was not closed. The connection's current state is open.
+Stack Trace:    at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.OpenAsync(CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at AniX_DAL.AnimeDAL.GetAnimeImageUrls(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 113
+---------------------------------------------------
+Timestamp: 11/11/2023 19:45:36
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: This SqlTransaction has completed; it is no longer usable.
+Stack Trace:    at System.Data.SqlClient.SqlTransaction.ZombieCheck()
+   at System.Data.SqlClient.SqlTransaction.Rollback()
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 272
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 279
+   at AniX_Controllers.AnimeController.ExecuteWithExceptionHandlingAsync[T](Func`1 action) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\AnimeController.cs:line 164
+---------------------------------------------------
+Timestamp: 11/11/2023 19:54:03
+Severity: Info
+Custom Message: Timestamp: 11/11/2023 19:54:03, Username: ADMIN, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 11/11/2023 19:54:05
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: The connection was not closed. The connection's current state is open.
+Stack Trace:    at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.OpenAsync(CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at AniX_DAL.AnimeDAL.GetAnimeImageUrls(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 113
+---------------------------------------------------
+Timestamp: 11/11/2023 19:54:05
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: This SqlTransaction has completed; it is no longer usable.
+Stack Trace:    at System.Data.SqlClient.SqlTransaction.ZombieCheck()
+   at System.Data.SqlClient.SqlTransaction.Rollback()
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 279
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 286
+   at AniX_Controllers.AnimeController.ExecuteWithExceptionHandlingAsync[T](Func`1 action) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\AnimeController.cs:line 164
+---------------------------------------------------
+Timestamp: 11/11/2023 19:54:05
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: This SqlTransaction has completed; it is no longer usable.
+Stack Trace:    at System.Data.SqlClient.SqlTransaction.ZombieCheck()
+   at System.Data.SqlClient.SqlTransaction.Rollback()
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 279
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 286
+   at AniX_Controllers.AnimeController.ExecuteWithExceptionHandlingAsync[T](Func`1 action) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\AnimeController.cs:line 164
+   at AniX_Controllers.AnimeController.ExecuteWithExceptionHandlingAsync[T](Func`1 action) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\AnimeController.cs:line 173
+   at AniX_Controllers.AnimeController.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\AnimeController.cs:line 62
+   at AniX_FormsLogic.AnimeFormLogic.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_FormsLogic\AnimeFormLogic.cs:line 39
+   at AniX_APP.Forms_Dashboard.AnimeForm.btnRemove_Click(Object sender, EventArgs e) in C:\Users\Administrator\source\repos\anix\AniX\AniX_APP\Forms_Dashboard\AnimeForm.cs:line 87
+---------------------------------------------------
+Timestamp: 11/11/2023 20:04:14
+Severity: Info
+Custom Message: Timestamp: 11/11/2023 20:04:14, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 11/11/2023 20:04:23
+Severity: Error
+Exception Type: System.UriFormatException
+Message: Invalid URI: The format of the URI could not be determined.
+Stack Trace:    at System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind, UriCreationOptions& creationOptions)
+   at System.Uri..ctor(String uriString)
+   at AniX_BusinessLogic.AzureBlobService.DeleteImageAsync(String imageUrl) in C:\Users\Administrator\source\repos\anix\AniX\AniX_BusinessLogic\AzureBlobService.cs:line 70
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 250
+---------------------------------------------------
+Timestamp: 11/11/2023 20:04:23
+Severity: Error
+Exception Type: System.UriFormatException
+Message: Invalid URI: The format of the URI could not be determined.
+Stack Trace:    at System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind, UriCreationOptions& creationOptions)
+   at System.Uri..ctor(String uriString)
+   at AniX_BusinessLogic.AzureBlobService.DeleteImageAsync(String imageUrl) in C:\Users\Administrator\source\repos\anix\AniX\AniX_BusinessLogic\AzureBlobService.cs:line 70
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 250
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 272
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 277
+   at AniX_Controllers.AnimeController.ExecuteWithExceptionHandlingAsync[T](Func`1 action) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\AnimeController.cs:line 164
+---------------------------------------------------
+Timestamp: 11/11/2023 20:04:23
+Severity: Error
+Exception Type: System.UriFormatException
+Message: Invalid URI: The format of the URI could not be determined.
+Stack Trace:    at System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind, UriCreationOptions& creationOptions)
+   at System.Uri..ctor(String uriString)
+   at AniX_BusinessLogic.AzureBlobService.DeleteImageAsync(String imageUrl) in C:\Users\Administrator\source\repos\anix\AniX\AniX_BusinessLogic\AzureBlobService.cs:line 70
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 250
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 272
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 277
+   at AniX_Controllers.AnimeController.ExecuteWithExceptionHandlingAsync[T](Func`1 action) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\AnimeController.cs:line 164
+   at AniX_Controllers.AnimeController.ExecuteWithExceptionHandlingAsync[T](Func`1 action) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\AnimeController.cs:line 173
+   at AniX_Controllers.AnimeController.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\AnimeController.cs:line 62
+   at AniX_FormsLogic.AnimeFormLogic.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_FormsLogic\AnimeFormLogic.cs:line 39
+   at AniX_APP.Forms_Dashboard.AnimeForm.btnRemove_Click(Object sender, EventArgs e) in C:\Users\Administrator\source\repos\anix\AniX\AniX_APP\Forms_Dashboard\AnimeForm.cs:line 87
+---------------------------------------------------
+Timestamp: 11/11/2023 20:04:34
+Severity: Info
+Custom Message: Timestamp: 11/11/2023 20:04:34, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 11/11/2023 20:04:46
+Severity: Error
+Exception Type: System.UriFormatException
+Message: Invalid URI: The format of the URI could not be determined.
+Stack Trace:    at System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind, UriCreationOptions& creationOptions)
+   at System.Uri..ctor(String uriString)
+   at AniX_BusinessLogic.AzureBlobService.DeleteImageAsync(String imageUrl) in C:\Users\Administrator\source\repos\anix\AniX\AniX_BusinessLogic\AzureBlobService.cs:line 70
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 250
+---------------------------------------------------
+Timestamp: 11/11/2023 20:04:46
+Severity: Error
+Exception Type: System.UriFormatException
+Message: Invalid URI: The format of the URI could not be determined.
+Stack Trace:    at System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind, UriCreationOptions& creationOptions)
+   at System.Uri..ctor(String uriString)
+   at AniX_BusinessLogic.AzureBlobService.DeleteImageAsync(String imageUrl) in C:\Users\Administrator\source\repos\anix\AniX\AniX_BusinessLogic\AzureBlobService.cs:line 70
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 250
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 272
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 277
+   at AniX_Controllers.AnimeController.ExecuteWithExceptionHandlingAsync[T](Func`1 action) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\AnimeController.cs:line 164
+---------------------------------------------------
+Timestamp: 11/11/2023 20:04:49
+Severity: Error
+Exception Type: System.UriFormatException
+Message: Invalid URI: The format of the URI could not be determined.
+Stack Trace:    at System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind, UriCreationOptions& creationOptions)
+   at System.Uri..ctor(String uriString)
+   at AniX_BusinessLogic.AzureBlobService.DeleteImageAsync(String imageUrl) in C:\Users\Administrator\source\repos\anix\AniX\AniX_BusinessLogic\AzureBlobService.cs:line 70
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 250
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 272
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 277
+   at AniX_Controllers.AnimeController.ExecuteWithExceptionHandlingAsync[T](Func`1 action) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\AnimeController.cs:line 164
+   at AniX_Controllers.AnimeController.ExecuteWithExceptionHandlingAsync[T](Func`1 action) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\AnimeController.cs:line 173
+   at AniX_Controllers.AnimeController.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\AnimeController.cs:line 62
+   at AniX_FormsLogic.AnimeFormLogic.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_FormsLogic\AnimeFormLogic.cs:line 39
+   at AniX_APP.Forms_Dashboard.AnimeForm.btnRemove_Click(Object sender, EventArgs e) in C:\Users\Administrator\source\repos\anix\AniX\AniX_APP\Forms_Dashboard\AnimeForm.cs:line 87
+---------------------------------------------------
+Timestamp: 11/11/2023 20:08:23
+Severity: Info
+Custom Message: Timestamp: 11/11/2023 20:08:23, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 11/11/2023 20:08:26
+Severity: Error
+Exception Type: System.UriFormatException
+Message: Invalid URI: The format of the URI could not be determined.
+Stack Trace:    at System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind, UriCreationOptions& creationOptions)
+   at System.Uri..ctor(String uriString)
+   at AniX_BusinessLogic.AzureBlobService.DeleteImageAsync(String imageUrl) in C:\Users\Administrator\source\repos\anix\AniX\AniX_BusinessLogic\AzureBlobService.cs:line 70
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 252
+---------------------------------------------------
+Timestamp: 11/11/2023 20:08:26
+Severity: Error
+Exception Type: System.UriFormatException
+Message: Invalid URI: The format of the URI could not be determined.
+Stack Trace:    at System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind, UriCreationOptions& creationOptions)
+   at System.Uri..ctor(String uriString)
+   at AniX_BusinessLogic.AzureBlobService.DeleteImageAsync(String imageUrl) in C:\Users\Administrator\source\repos\anix\AniX\AniX_BusinessLogic\AzureBlobService.cs:line 70
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 252
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 279
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 284
+   at AniX_Controllers.AnimeController.ExecuteWithExceptionHandlingAsync[T](Func`1 action) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\AnimeController.cs:line 164
+---------------------------------------------------
+Timestamp: 11/11/2023 20:08:26
+Severity: Error
+Exception Type: System.UriFormatException
+Message: Invalid URI: The format of the URI could not be determined.
+Stack Trace:    at System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind, UriCreationOptions& creationOptions)
+   at System.Uri..ctor(String uriString)
+   at AniX_BusinessLogic.AzureBlobService.DeleteImageAsync(String imageUrl) in C:\Users\Administrator\source\repos\anix\AniX\AniX_BusinessLogic\AzureBlobService.cs:line 70
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 252
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 279
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 284
+   at AniX_Controllers.AnimeController.ExecuteWithExceptionHandlingAsync[T](Func`1 action) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\AnimeController.cs:line 164
+   at AniX_Controllers.AnimeController.ExecuteWithExceptionHandlingAsync[T](Func`1 action) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\AnimeController.cs:line 173
+   at AniX_Controllers.AnimeController.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\AnimeController.cs:line 62
+   at AniX_FormsLogic.AnimeFormLogic.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_FormsLogic\AnimeFormLogic.cs:line 39
+   at AniX_APP.Forms_Dashboard.AnimeForm.btnRemove_Click(Object sender, EventArgs e) in C:\Users\Administrator\source\repos\anix\AniX\AniX_APP\Forms_Dashboard\AnimeForm.cs:line 87
+---------------------------------------------------
+Timestamp: 11/11/2023 20:09:09
+Severity: Error
+Exception Type: System.UriFormatException
+Message: Invalid URI: The format of the URI could not be determined.
+Stack Trace:    at System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind, UriCreationOptions& creationOptions)
+   at System.Uri..ctor(String uriString)
+   at AniX_BusinessLogic.AzureBlobService.DeleteImageAsync(String imageUrl) in C:\Users\Administrator\source\repos\anix\AniX\AniX_BusinessLogic\AzureBlobService.cs:line 70
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 252
+---------------------------------------------------
+Timestamp: 11/11/2023 20:09:09
+Severity: Error
+Exception Type: System.UriFormatException
+Message: Invalid URI: The format of the URI could not be determined.
+Stack Trace:    at System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind, UriCreationOptions& creationOptions)
+   at System.Uri..ctor(String uriString)
+   at AniX_BusinessLogic.AzureBlobService.DeleteImageAsync(String imageUrl) in C:\Users\Administrator\source\repos\anix\AniX\AniX_BusinessLogic\AzureBlobService.cs:line 70
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 252
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 279
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 284
+   at AniX_Controllers.AnimeController.ExecuteWithExceptionHandlingAsync[T](Func`1 action) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\AnimeController.cs:line 164
+---------------------------------------------------
+Timestamp: 11/11/2023 20:09:09
+Severity: Error
+Exception Type: System.UriFormatException
+Message: Invalid URI: The format of the URI could not be determined.
+Stack Trace:    at System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind, UriCreationOptions& creationOptions)
+   at System.Uri..ctor(String uriString)
+   at AniX_BusinessLogic.AzureBlobService.DeleteImageAsync(String imageUrl) in C:\Users\Administrator\source\repos\anix\AniX\AniX_BusinessLogic\AzureBlobService.cs:line 70
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 252
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 279
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 284
+   at AniX_Controllers.AnimeController.ExecuteWithExceptionHandlingAsync[T](Func`1 action) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\AnimeController.cs:line 164
+   at AniX_Controllers.AnimeController.ExecuteWithExceptionHandlingAsync[T](Func`1 action) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\AnimeController.cs:line 173
+   at AniX_Controllers.AnimeController.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\AnimeController.cs:line 62
+   at AniX_FormsLogic.AnimeFormLogic.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_FormsLogic\AnimeFormLogic.cs:line 39
+   at AniX_APP.Forms_Dashboard.AnimeForm.btnRemove_Click(Object sender, EventArgs e) in C:\Users\Administrator\source\repos\anix\AniX\AniX_APP\Forms_Dashboard\AnimeForm.cs:line 87
+---------------------------------------------------
+Timestamp: 11/11/2023 20:10:49
+Severity: Info
+Custom Message: Timestamp: 11/11/2023 20:10:49, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 11/11/2023 20:16:32
+Severity: Info
+Custom Message: Timestamp: 11/11/2023 20:16:32, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 11/11/2023 20:20:30
+Severity: Info
+Custom Message: Timestamp: 11/11/2023 20:20:30, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 11/11/2023 20:22:15
+Severity: Info
+Custom Message: Timestamp: 11/11/2023 20:22:15, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 11/11/2023 20:24:34
+Severity: Info
+Custom Message: Timestamp: 11/11/2023 20:24:34, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 11/11/2023 20:26:32
+Severity: Info
+Custom Message: Timestamp: 11/11/2023 20:26:32, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 11/11/2023 20:28:35
+Severity: Info
+Custom Message: Timestamp: 11/11/2023 20:28:35, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 11/11/2023 20:29:54
+Severity: Info
+Custom Message: Timestamp: 11/11/2023 20:29:54, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 11/11/2023 20:30:58
+Severity: Info
+Custom Message: Timestamp: 11/11/2023 20:30:58, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 11/11/2023 20:33:05
+Severity: Info
+Custom Message: Timestamp: 11/11/2023 20:33:05, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 11/11/2023 20:33:08
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: The connection was not closed. The connection's current state is open.
+Stack Trace:    at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.OpenAsync(CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at AniX_DAL.AnimeDAL.GetAnimeImageUrls(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 113
+---------------------------------------------------
+Timestamp: 11/11/2023 20:33:08
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: This SqlTransaction has completed; it is no longer usable.
+Stack Trace:    at System.Data.SqlClient.SqlTransaction.ZombieCheck()
+   at System.Data.SqlClient.SqlTransaction.Rollback()
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 257
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 264
+   at AniX_Controllers.AnimeController.ExecuteWithExceptionHandlingAsync[T](Func`1 action) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\AnimeController.cs:line 164
+---------------------------------------------------
+Timestamp: 11/11/2023 20:33:08
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: This SqlTransaction has completed; it is no longer usable.
+Stack Trace:    at System.Data.SqlClient.SqlTransaction.ZombieCheck()
+   at System.Data.SqlClient.SqlTransaction.Rollback()
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 257
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 264
+   at AniX_Controllers.AnimeController.ExecuteWithExceptionHandlingAsync[T](Func`1 action) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\AnimeController.cs:line 164
+   at AniX_Controllers.AnimeController.ExecuteWithExceptionHandlingAsync[T](Func`1 action) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\AnimeController.cs:line 173
+   at AniX_Controllers.AnimeController.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\AnimeController.cs:line 62
+   at AniX_FormsLogic.AnimeFormLogic.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_FormsLogic\AnimeFormLogic.cs:line 39
+   at AniX_APP.Forms_Dashboard.AnimeForm.btnRemove_Click(Object sender, EventArgs e) in C:\Users\Administrator\source\repos\anix\AniX\AniX_APP\Forms_Dashboard\AnimeForm.cs:line 87
+---------------------------------------------------
+Timestamp: 11/11/2023 20:33:16
+Severity: Info
+Custom Message: Timestamp: 11/11/2023 20:33:16, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 11/11/2023 20:33:26
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: The connection was not closed. The connection's current state is open.
+Stack Trace:    at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.OpenAsync(CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at AniX_DAL.AnimeDAL.GetAnimeImageUrls(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 113
+---------------------------------------------------
+Timestamp: 11/11/2023 20:33:26
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: This SqlTransaction has completed; it is no longer usable.
+Stack Trace:    at System.Data.SqlClient.SqlTransaction.ZombieCheck()
+   at System.Data.SqlClient.SqlTransaction.Rollback()
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 257
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 264
+   at AniX_Controllers.AnimeController.ExecuteWithExceptionHandlingAsync[T](Func`1 action) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\AnimeController.cs:line 164
+---------------------------------------------------
+Timestamp: 11/11/2023 20:34:10
+Severity: Info
+Custom Message: Timestamp: 11/11/2023 20:34:10, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 11/11/2023 20:34:13
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: The connection was not closed. The connection's current state is open.
+Stack Trace:    at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.OpenAsync(CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at AniX_DAL.AnimeDAL.GetAnimeImageUrls(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 113
+---------------------------------------------------
+Timestamp: 11/11/2023 20:34:54
+Severity: Info
+Custom Message: Timestamp: 11/11/2023 20:34:54, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 11/11/2023 20:36:29
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: The connection was not closed. The connection's current state is open.
+Stack Trace:    at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.OpenAsync(CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at AniX_DAL.AnimeDAL.GetAnimeImageUrls(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 113
+---------------------------------------------------
+Timestamp: 11/11/2023 20:37:24
+Severity: Info
+Custom Message: Timestamp: 11/11/2023 20:37:24, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 11/11/2023 20:38:40
+Severity: Info
+Custom Message: Timestamp: 11/11/2023 20:38:39, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 11/11/2023 20:39:03
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: The connection was not closed. The connection's current state is open.
+Stack Trace:    at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.OpenAsync(CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at AniX_DAL.AnimeDAL.GetAnimeImageUrls(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 113
+---------------------------------------------------
+Timestamp: 11/11/2023 20:39:22
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: This SqlTransaction has completed; it is no longer usable.
+Stack Trace:    at System.Data.SqlClient.SqlTransaction.ZombieCheck()
+   at System.Data.SqlClient.SqlTransaction.Rollback()
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 257
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 264
+   at AniX_Controllers.AnimeController.ExecuteWithExceptionHandlingAsync[T](Func`1 action) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\AnimeController.cs:line 164
+---------------------------------------------------
+Timestamp: 11/11/2023 20:39:23
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: This SqlTransaction has completed; it is no longer usable.
+Stack Trace:    at System.Data.SqlClient.SqlTransaction.ZombieCheck()
+   at System.Data.SqlClient.SqlTransaction.Rollback()
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 257
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 264
+   at AniX_Controllers.AnimeController.ExecuteWithExceptionHandlingAsync[T](Func`1 action) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\AnimeController.cs:line 164
+   at AniX_Controllers.AnimeController.ExecuteWithExceptionHandlingAsync[T](Func`1 action) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\AnimeController.cs:line 173
+   at AniX_Controllers.AnimeController.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\AnimeController.cs:line 62
+   at AniX_FormsLogic.AnimeFormLogic.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_FormsLogic\AnimeFormLogic.cs:line 39
+   at AniX_APP.Forms_Dashboard.AnimeForm.btnRemove_Click(Object sender, EventArgs e) in C:\Users\Administrator\source\repos\anix\AniX\AniX_APP\Forms_Dashboard\AnimeForm.cs:line 87
+---------------------------------------------------
+Timestamp: 11/11/2023 20:39:39
+Severity: Info
+Custom Message: Timestamp: 11/11/2023 20:39:39, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 11/11/2023 20:41:15
+Severity: Info
+Custom Message: Timestamp: 11/11/2023 20:41:15, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 11/11/2023 20:41:25
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: BeginExecuteReader requires the command to have a transaction when the connection assigned to the command is in a pending local transaction.  The Transaction property of the command has not been initialized.
+Stack Trace:    at System.Data.SqlClient.SqlCommand.ValidateCommand(Boolean async, String method)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.BeginExecuteReader(AsyncCallback callback, Object stateObject, CommandBehavior behavior)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncImpl[TArg1](Func`4 beginMethod, Func`2 endFunction, Action`1 endAction, TArg1 arg1, Object state, TaskCreationOptions creationOptions)
+   at System.Data.SqlClient.SqlCommand.ExecuteReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at AniX_DAL.AnimeDAL.GetAnimeImageUrls(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 123
+---------------------------------------------------
+Timestamp: 11/11/2023 20:41:26
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: This SqlTransaction has completed; it is no longer usable.
+Stack Trace:    at System.Data.SqlClient.SqlTransaction.ZombieCheck()
+   at System.Data.SqlClient.SqlTransaction.Rollback()
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 267
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 274
+   at AniX_Controllers.AnimeController.ExecuteWithExceptionHandlingAsync[T](Func`1 action) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\AnimeController.cs:line 164
+---------------------------------------------------
+Timestamp: 11/11/2023 20:41:33
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: This SqlTransaction has completed; it is no longer usable.
+Stack Trace:    at System.Data.SqlClient.SqlTransaction.ZombieCheck()
+   at System.Data.SqlClient.SqlTransaction.Rollback()
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 267
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 274
+   at AniX_Controllers.AnimeController.ExecuteWithExceptionHandlingAsync[T](Func`1 action) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\AnimeController.cs:line 164
+   at AniX_Controllers.AnimeController.ExecuteWithExceptionHandlingAsync[T](Func`1 action) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\AnimeController.cs:line 173
+   at AniX_Controllers.AnimeController.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\AnimeController.cs:line 62
+   at AniX_FormsLogic.AnimeFormLogic.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_FormsLogic\AnimeFormLogic.cs:line 39
+   at AniX_APP.Forms_Dashboard.AnimeForm.btnRemove_Click(Object sender, EventArgs e) in C:\Users\Administrator\source\repos\anix\AniX\AniX_APP\Forms_Dashboard\AnimeForm.cs:line 87
+---------------------------------------------------
+Timestamp: 11/11/2023 20:42:05
+Severity: Info
+Custom Message: Timestamp: 11/11/2023 20:42:05, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 11/11/2023 20:46:41
+Severity: Info
+Custom Message: Timestamp: 11/11/2023 20:46:41, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 11/11/2023 20:47:58
+Severity: Info
+Custom Message: Timestamp: 11/11/2023 20:47:58, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 11/11/2023 20:48:05
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: The connection was not closed. The connection's current state is open.
+Stack Trace:    at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.OpenAsync(CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at AniX_DAL.AnimeDAL.UpdateAnimeAsync(Anime anime, List`1 newGenreIds) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 157
+---------------------------------------------------
+Timestamp: 11/11/2023 20:48:05
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: The connection was not closed. The connection's current state is open.
+Stack Trace:    at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.OpenAsync(CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at AniX_DAL.AnimeDAL.UpdateAnimeAsync(Anime anime, List`1 newGenreIds) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 157
+   at AniX_DAL.AnimeDAL.UpdateAnimeAsync(Anime anime, List`1 newGenreIds) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 204
+   at AniX_DAL.AnimeDAL.UpdateAnimeAsync(Anime anime, List`1 newGenreIds) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 209
+   at AniX_Controllers.AnimeController.ExecuteWithExceptionHandlingAsync[T](Func`1 action) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\AnimeController.cs:line 164
+---------------------------------------------------
+Timestamp: 11/11/2023 20:49:24
+Severity: Info
+Custom Message: Timestamp: 11/11/2023 20:49:24, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 11/11/2023 20:51:07
+Severity: Info
+Custom Message: Timestamp: 11/11/2023 20:51:07, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 11/11/2023 20:54:31
+Severity: Info
+Custom Message: Timestamp: 11/11/2023 20:54:31, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 11/11/2023 20:57:07
+Severity: Info
+Custom Message: Timestamp: 11/11/2023 20:57:07, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 11/11/2023 21:04:48
+Severity: Info
+Custom Message: Timestamp: 11/11/2023 21:04:48, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 11/11/2023 21:06:41
+Severity: Info
+Custom Message: Timestamp: 11/11/2023 21:06:41, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 11/11/2023 21:12:32
+Severity: Info
+Custom Message: Timestamp: 11/11/2023 21:12:32, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 11/11/2023 21:16:08
+Severity: Info
+Custom Message: Timestamp: 11/11/2023 21:16:08, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 11/11/2023 21:17:28
+Severity: Info
+Custom Message: Timestamp: 11/11/2023 21:17:28, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 11/11/2023 21:20:54
+Severity: Info
+Custom Message: Timestamp: 11/11/2023 21:20:54, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 11/11/2023 21:21:04
+Severity: Error
+Exception Type: System.ArgumentException
+Message: Unsupported content type: mimeType (Parameter 'contentType')
+Stack Trace: 
+---------------------------------------------------
+Timestamp: 11/11/2023 21:21:18
+Severity: Info
+Custom Message: Timestamp: 11/11/2023 21:21:18, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 11/11/2023 21:21:34
+Severity: Error
+Exception Type: System.ArgumentException
+Message: Unsupported content type: mimeType (Parameter 'contentType')
+Stack Trace: 
+---------------------------------------------------
+Timestamp: 11/11/2023 21:21:47
+Severity: Error
+Exception Type: System.ArgumentException
+Message: Unsupported content type: mimeType (Parameter 'contentType')
+Stack Trace: 
+---------------------------------------------------
+Timestamp: 11/11/2023 21:22:43
+Severity: Info
+Custom Message: Timestamp: 11/11/2023 21:22:43, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 11/11/2023 21:22:54
+Severity: Error
+Exception Type: System.ArgumentException
+Message: Unsupported content type: mimeType (Parameter 'contentType')
+Stack Trace: 
+---------------------------------------------------
+Timestamp: 11/11/2023 21:28:27
+Severity: Info
+Custom Message: Timestamp: 11/11/2023 21:28:27, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 11/11/2023 21:30:45
+Severity: Info
+Custom Message: Timestamp: 11/11/2023 21:30:45, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 11/11/2023 21:33:11
+Severity: Info
+Custom Message: Timestamp: 11/11/2023 21:33:11, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 11/11/2023 21:33:25
+Severity: Error
+Exception Type: System.ArgumentException
+Message: Unsupported content type:  (Parameter 'contentType')
+Stack Trace: 
+---------------------------------------------------
+Timestamp: 11/11/2023 22:28:47
+Severity: Info
+Custom Message: Timestamp: 11/11/2023 22:28:47, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 11/11/2023 22:29:07
+Severity: Info
+Custom Message: Timestamp: 11/11/2023 22:29:07, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 11/11/2023 22:34:28
+Severity: Info
+Custom Message: Timestamp: 11/11/2023 22:34:28, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 11/11/2023 22:36:56
+Severity: Info
+Custom Message: Timestamp: 11/11/2023 22:36:56, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 11/11/2023 22:37:21
+Severity: Info
+Custom Message: Timestamp: 11/11/2023 22:37:21, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 11/11/2023 22:38:14
+Severity: Info
+Custom Message: Timestamp: 11/11/2023 22:38:14, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 11/11/2023 22:38:19
+Severity: Error
+Exception Type: System.NullReferenceException
+Message: Object reference not set to an instance of an object.
+Stack Trace:    at AniX_APP.Forms_Dashboard.AnimeForm.GetSelectedAnimeFromDataGridView() in C:\Users\Administrator\source\repos\anix\AniX\AniX_APP\Forms_Dashboard\AnimeForm.cs:line 226
+   at AniX_APP.Forms_Dashboard.AnimeForm.btnEdit_Click(Object sender, EventArgs e) in C:\Users\Administrator\source\repos\anix\AniX\AniX_APP\Forms_Dashboard\AnimeForm.cs:line 55
+---------------------------------------------------
+Timestamp: 11/11/2023 22:40:03
+Severity: Info
+Custom Message: Timestamp: 11/11/2023 22:40:03, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 11/11/2023 22:41:49
+Severity: Info
+Custom Message: Timestamp: 11/11/2023 22:41:49, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 11/11/2023 22:54:04
+Severity: Info
+Custom Message: Timestamp: 11/11/2023 22:54:04, Username: ADMIN, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 11/11/2023 23:06:34
+Severity: Info
+Custom Message: Timestamp: 11/11/2023 23:06:34, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 11/11/2023 23:06:44
+Severity: Error
+Exception Type: System.NullReferenceException
+Message: Object reference not set to an instance of an object.
+Stack Trace:    at AniX_APP.Forms_Dashboard.AnimeForm.GetSelectedAnimeFromDataGridView() in C:\Users\Administrator\source\repos\anix\AniX\AniX_APP\Forms_Dashboard\AnimeForm.cs:line 226
+   at AniX_APP.Forms_Dashboard.AnimeForm.btnEdit_Click(Object sender, EventArgs e) in C:\Users\Administrator\source\repos\anix\AniX\AniX_APP\Forms_Dashboard\AnimeForm.cs:line 55
+---------------------------------------------------
+Timestamp: 11/11/2023 23:08:37
+Severity: Info
+Custom Message: Timestamp: 11/11/2023 23:08:37, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 11/11/2023 23:08:40
+Severity: Error
+Exception Type: System.NullReferenceException
+Message: Object reference not set to an instance of an object.
+Stack Trace:    at AniX_APP.Forms_Dashboard.AnimeForm.GetSelectedAnimeFromDataGridView() in C:\Users\Administrator\source\repos\anix\AniX\AniX_APP\Forms_Dashboard\AnimeForm.cs:line 226
+   at AniX_APP.Forms_Dashboard.AnimeForm.btnRemove_Click(Object sender, EventArgs e) in C:\Users\Administrator\source\repos\anix\AniX\AniX_APP\Forms_Dashboard\AnimeForm.cs:line 81
+---------------------------------------------------
+Timestamp: 11/11/2023 23:08:45
+Severity: Error
+Exception Type: System.UriFormatException
+Message: Invalid URI: The format of the URI could not be determined.
+Stack Trace:    at System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind, UriCreationOptions& creationOptions)
+   at System.Uri..ctor(String uriString)
+   at AniX_BusinessLogic.AzureBlobService.DeleteImageAsync(String imageUrl) in C:\Users\Administrator\source\repos\anix\AniX\AniX_BusinessLogic\AzureBlobService.cs:line 108
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 287
+---------------------------------------------------
+Timestamp: 11/11/2023 23:08:45
+Severity: Error
+Exception Type: System.UriFormatException
+Message: Invalid URI: The format of the URI could not be determined.
+Stack Trace:    at System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind, UriCreationOptions& creationOptions)
+   at System.Uri..ctor(String uriString)
+   at AniX_BusinessLogic.AzureBlobService.DeleteImageAsync(String imageUrl) in C:\Users\Administrator\source\repos\anix\AniX\AniX_BusinessLogic\AzureBlobService.cs:line 108
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 287
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 308
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 313
+   at AniX_Controllers.AnimeController.ExecuteWithExceptionHandlingAsync[T](Func`1 action) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\AnimeController.cs:line 169
+---------------------------------------------------
+Timestamp: 11/11/2023 23:08:45
+Severity: Error
+Exception Type: System.UriFormatException
+Message: Invalid URI: The format of the URI could not be determined.
+Stack Trace:    at System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind, UriCreationOptions& creationOptions)
+   at System.Uri..ctor(String uriString)
+   at AniX_BusinessLogic.AzureBlobService.DeleteImageAsync(String imageUrl) in C:\Users\Administrator\source\repos\anix\AniX\AniX_BusinessLogic\AzureBlobService.cs:line 108
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 287
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 308
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 313
+   at AniX_Controllers.AnimeController.ExecuteWithExceptionHandlingAsync[T](Func`1 action) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\AnimeController.cs:line 169
+   at AniX_Controllers.AnimeController.ExecuteWithExceptionHandlingAsync[T](Func`1 action) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\AnimeController.cs:line 178
+   at AniX_Controllers.AnimeController.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\AnimeController.cs:line 69
+   at AniX_FormsLogic.AnimeFormLogic.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_FormsLogic\AnimeFormLogic.cs:line 39
+   at AniX_APP.Forms_Dashboard.AnimeForm.btnRemove_Click(Object sender, EventArgs e) in C:\Users\Administrator\source\repos\anix\AniX\AniX_APP\Forms_Dashboard\AnimeForm.cs:line 87
+---------------------------------------------------
+Timestamp: 11/11/2023 23:08:47
+Severity: Error
+Exception Type: System.UriFormatException
+Message: Invalid URI: The format of the URI could not be determined.
+Stack Trace:    at System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind, UriCreationOptions& creationOptions)
+   at System.Uri..ctor(String uriString)
+   at AniX_BusinessLogic.AzureBlobService.DeleteImageAsync(String imageUrl) in C:\Users\Administrator\source\repos\anix\AniX\AniX_BusinessLogic\AzureBlobService.cs:line 108
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 287
+---------------------------------------------------
+Timestamp: 11/11/2023 23:08:47
+Severity: Error
+Exception Type: System.UriFormatException
+Message: Invalid URI: The format of the URI could not be determined.
+Stack Trace:    at System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind, UriCreationOptions& creationOptions)
+   at System.Uri..ctor(String uriString)
+   at AniX_BusinessLogic.AzureBlobService.DeleteImageAsync(String imageUrl) in C:\Users\Administrator\source\repos\anix\AniX\AniX_BusinessLogic\AzureBlobService.cs:line 108
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 287
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 308
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 313
+   at AniX_Controllers.AnimeController.ExecuteWithExceptionHandlingAsync[T](Func`1 action) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\AnimeController.cs:line 169
+---------------------------------------------------
+Timestamp: 11/11/2023 23:08:47
+Severity: Error
+Exception Type: System.UriFormatException
+Message: Invalid URI: The format of the URI could not be determined.
+Stack Trace:    at System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind, UriCreationOptions& creationOptions)
+   at System.Uri..ctor(String uriString)
+   at AniX_BusinessLogic.AzureBlobService.DeleteImageAsync(String imageUrl) in C:\Users\Administrator\source\repos\anix\AniX\AniX_BusinessLogic\AzureBlobService.cs:line 108
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 287
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 308
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 313
+   at AniX_Controllers.AnimeController.ExecuteWithExceptionHandlingAsync[T](Func`1 action) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\AnimeController.cs:line 169
+   at AniX_Controllers.AnimeController.ExecuteWithExceptionHandlingAsync[T](Func`1 action) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\AnimeController.cs:line 178
+   at AniX_Controllers.AnimeController.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\AnimeController.cs:line 69
+   at AniX_FormsLogic.AnimeFormLogic.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_FormsLogic\AnimeFormLogic.cs:line 39
+   at AniX_APP.Forms_Dashboard.AnimeForm.btnRemove_Click(Object sender, EventArgs e) in C:\Users\Administrator\source\repos\anix\AniX\AniX_APP\Forms_Dashboard\AnimeForm.cs:line 87
+---------------------------------------------------
+Timestamp: 11/11/2023 23:08:50
+Severity: Error
+Exception Type: System.UriFormatException
+Message: Invalid URI: The format of the URI could not be determined.
+Stack Trace:    at System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind, UriCreationOptions& creationOptions)
+   at System.Uri..ctor(String uriString)
+   at AniX_BusinessLogic.AzureBlobService.DeleteImageAsync(String imageUrl) in C:\Users\Administrator\source\repos\anix\AniX\AniX_BusinessLogic\AzureBlobService.cs:line 108
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 287
+---------------------------------------------------
+Timestamp: 11/11/2023 23:08:50
+Severity: Error
+Exception Type: System.UriFormatException
+Message: Invalid URI: The format of the URI could not be determined.
+Stack Trace:    at System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind, UriCreationOptions& creationOptions)
+   at System.Uri..ctor(String uriString)
+   at AniX_BusinessLogic.AzureBlobService.DeleteImageAsync(String imageUrl) in C:\Users\Administrator\source\repos\anix\AniX\AniX_BusinessLogic\AzureBlobService.cs:line 108
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 287
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 308
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 313
+   at AniX_Controllers.AnimeController.ExecuteWithExceptionHandlingAsync[T](Func`1 action) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\AnimeController.cs:line 169
+---------------------------------------------------
+Timestamp: 11/11/2023 23:08:50
+Severity: Error
+Exception Type: System.UriFormatException
+Message: Invalid URI: The format of the URI could not be determined.
+Stack Trace:    at System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind, UriCreationOptions& creationOptions)
+   at System.Uri..ctor(String uriString)
+   at AniX_BusinessLogic.AzureBlobService.DeleteImageAsync(String imageUrl) in C:\Users\Administrator\source\repos\anix\AniX\AniX_BusinessLogic\AzureBlobService.cs:line 108
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 287
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 308
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 313
+   at AniX_Controllers.AnimeController.ExecuteWithExceptionHandlingAsync[T](Func`1 action) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\AnimeController.cs:line 169
+   at AniX_Controllers.AnimeController.ExecuteWithExceptionHandlingAsync[T](Func`1 action) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\AnimeController.cs:line 178
+   at AniX_Controllers.AnimeController.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\AnimeController.cs:line 69
+   at AniX_FormsLogic.AnimeFormLogic.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_FormsLogic\AnimeFormLogic.cs:line 39
+   at AniX_APP.Forms_Dashboard.AnimeForm.btnRemove_Click(Object sender, EventArgs e) in C:\Users\Administrator\source\repos\anix\AniX\AniX_APP\Forms_Dashboard\AnimeForm.cs:line 87
+---------------------------------------------------
+Timestamp: 11/11/2023 23:08:53
+Severity: Error
+Exception Type: System.UriFormatException
+Message: Invalid URI: The format of the URI could not be determined.
+Stack Trace:    at System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind, UriCreationOptions& creationOptions)
+   at System.Uri..ctor(String uriString)
+   at AniX_BusinessLogic.AzureBlobService.DeleteImageAsync(String imageUrl) in C:\Users\Administrator\source\repos\anix\AniX\AniX_BusinessLogic\AzureBlobService.cs:line 108
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 287
+---------------------------------------------------
+Timestamp: 11/11/2023 23:08:53
+Severity: Error
+Exception Type: System.UriFormatException
+Message: Invalid URI: The format of the URI could not be determined.
+Stack Trace:    at System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind, UriCreationOptions& creationOptions)
+   at System.Uri..ctor(String uriString)
+   at AniX_BusinessLogic.AzureBlobService.DeleteImageAsync(String imageUrl) in C:\Users\Administrator\source\repos\anix\AniX\AniX_BusinessLogic\AzureBlobService.cs:line 108
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 287
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 308
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 313
+   at AniX_Controllers.AnimeController.ExecuteWithExceptionHandlingAsync[T](Func`1 action) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\AnimeController.cs:line 169
+---------------------------------------------------
+Timestamp: 11/11/2023 23:08:53
+Severity: Error
+Exception Type: System.UriFormatException
+Message: Invalid URI: The format of the URI could not be determined.
+Stack Trace:    at System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind, UriCreationOptions& creationOptions)
+   at System.Uri..ctor(String uriString)
+   at AniX_BusinessLogic.AzureBlobService.DeleteImageAsync(String imageUrl) in C:\Users\Administrator\source\repos\anix\AniX\AniX_BusinessLogic\AzureBlobService.cs:line 108
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 287
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 308
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 313
+   at AniX_Controllers.AnimeController.ExecuteWithExceptionHandlingAsync[T](Func`1 action) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\AnimeController.cs:line 169
+   at AniX_Controllers.AnimeController.ExecuteWithExceptionHandlingAsync[T](Func`1 action) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\AnimeController.cs:line 178
+   at AniX_Controllers.AnimeController.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\AnimeController.cs:line 69
+   at AniX_FormsLogic.AnimeFormLogic.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_FormsLogic\AnimeFormLogic.cs:line 39
+   at AniX_APP.Forms_Dashboard.AnimeForm.btnRemove_Click(Object sender, EventArgs e) in C:\Users\Administrator\source\repos\anix\AniX\AniX_APP\Forms_Dashboard\AnimeForm.cs:line 87
+---------------------------------------------------
+Timestamp: 11/11/2023 23:08:55
+Severity: Error
+Exception Type: System.UriFormatException
+Message: Invalid URI: The format of the URI could not be determined.
+Stack Trace:    at System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind, UriCreationOptions& creationOptions)
+   at System.Uri..ctor(String uriString)
+   at AniX_BusinessLogic.AzureBlobService.DeleteImageAsync(String imageUrl) in C:\Users\Administrator\source\repos\anix\AniX\AniX_BusinessLogic\AzureBlobService.cs:line 108
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 287
+---------------------------------------------------
+Timestamp: 11/11/2023 23:08:55
+Severity: Error
+Exception Type: System.UriFormatException
+Message: Invalid URI: The format of the URI could not be determined.
+Stack Trace:    at System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind, UriCreationOptions& creationOptions)
+   at System.Uri..ctor(String uriString)
+   at AniX_BusinessLogic.AzureBlobService.DeleteImageAsync(String imageUrl) in C:\Users\Administrator\source\repos\anix\AniX\AniX_BusinessLogic\AzureBlobService.cs:line 108
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 287
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 308
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 313
+   at AniX_Controllers.AnimeController.ExecuteWithExceptionHandlingAsync[T](Func`1 action) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\AnimeController.cs:line 169
+---------------------------------------------------
+Timestamp: 11/11/2023 23:08:55
+Severity: Error
+Exception Type: System.UriFormatException
+Message: Invalid URI: The format of the URI could not be determined.
+Stack Trace:    at System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind, UriCreationOptions& creationOptions)
+   at System.Uri..ctor(String uriString)
+   at AniX_BusinessLogic.AzureBlobService.DeleteImageAsync(String imageUrl) in C:\Users\Administrator\source\repos\anix\AniX\AniX_BusinessLogic\AzureBlobService.cs:line 108
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 287
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 308
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 313
+   at AniX_Controllers.AnimeController.ExecuteWithExceptionHandlingAsync[T](Func`1 action) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\AnimeController.cs:line 169
+   at AniX_Controllers.AnimeController.ExecuteWithExceptionHandlingAsync[T](Func`1 action) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\AnimeController.cs:line 178
+   at AniX_Controllers.AnimeController.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\AnimeController.cs:line 69
+   at AniX_FormsLogic.AnimeFormLogic.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_FormsLogic\AnimeFormLogic.cs:line 39
+   at AniX_APP.Forms_Dashboard.AnimeForm.btnRemove_Click(Object sender, EventArgs e) in C:\Users\Administrator\source\repos\anix\AniX\AniX_APP\Forms_Dashboard\AnimeForm.cs:line 87
+---------------------------------------------------
+Timestamp: 11/11/2023 23:08:57
+Severity: Error
+Exception Type: System.NullReferenceException
+Message: Object reference not set to an instance of an object.
+Stack Trace:    at AniX_APP.Forms_Dashboard.AnimeForm.GetSelectedAnimeFromDataGridView() in C:\Users\Administrator\source\repos\anix\AniX\AniX_APP\Forms_Dashboard\AnimeForm.cs:line 226
+   at AniX_APP.Forms_Dashboard.AnimeForm.btnRemove_Click(Object sender, EventArgs e) in C:\Users\Administrator\source\repos\anix\AniX\AniX_APP\Forms_Dashboard\AnimeForm.cs:line 81
+---------------------------------------------------
+Timestamp: 11/11/2023 23:09:00
+Severity: Error
+Exception Type: System.UriFormatException
+Message: Invalid URI: The format of the URI could not be determined.
+Stack Trace:    at System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind, UriCreationOptions& creationOptions)
+   at System.Uri..ctor(String uriString)
+   at AniX_BusinessLogic.AzureBlobService.DeleteImageAsync(String imageUrl) in C:\Users\Administrator\source\repos\anix\AniX\AniX_BusinessLogic\AzureBlobService.cs:line 108
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 287
+---------------------------------------------------
+Timestamp: 11/11/2023 23:09:00
+Severity: Error
+Exception Type: System.UriFormatException
+Message: Invalid URI: The format of the URI could not be determined.
+Stack Trace:    at System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind, UriCreationOptions& creationOptions)
+   at System.Uri..ctor(String uriString)
+   at AniX_BusinessLogic.AzureBlobService.DeleteImageAsync(String imageUrl) in C:\Users\Administrator\source\repos\anix\AniX\AniX_BusinessLogic\AzureBlobService.cs:line 108
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 287
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 308
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 313
+   at AniX_Controllers.AnimeController.ExecuteWithExceptionHandlingAsync[T](Func`1 action) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\AnimeController.cs:line 169
+---------------------------------------------------
+Timestamp: 11/11/2023 23:09:00
+Severity: Error
+Exception Type: System.UriFormatException
+Message: Invalid URI: The format of the URI could not be determined.
+Stack Trace:    at System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind, UriCreationOptions& creationOptions)
+   at System.Uri..ctor(String uriString)
+   at AniX_BusinessLogic.AzureBlobService.DeleteImageAsync(String imageUrl) in C:\Users\Administrator\source\repos\anix\AniX\AniX_BusinessLogic\AzureBlobService.cs:line 108
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 287
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 308
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 313
+   at AniX_Controllers.AnimeController.ExecuteWithExceptionHandlingAsync[T](Func`1 action) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\AnimeController.cs:line 169
+   at AniX_Controllers.AnimeController.ExecuteWithExceptionHandlingAsync[T](Func`1 action) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\AnimeController.cs:line 178
+   at AniX_Controllers.AnimeController.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\AnimeController.cs:line 69
+   at AniX_FormsLogic.AnimeFormLogic.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_FormsLogic\AnimeFormLogic.cs:line 39
+   at AniX_APP.Forms_Dashboard.AnimeForm.btnRemove_Click(Object sender, EventArgs e) in C:\Users\Administrator\source\repos\anix\AniX\AniX_APP\Forms_Dashboard\AnimeForm.cs:line 87
+---------------------------------------------------
+Timestamp: 11/11/2023 23:09:35
+Severity: Info
+Custom Message: Timestamp: 11/11/2023 23:09:35, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 11/11/2023 23:09:50
+Severity: Error
+Exception Type: System.UriFormatException
+Message: Invalid URI: The format of the URI could not be determined.
+Stack Trace:    at System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind, UriCreationOptions& creationOptions)
+   at System.Uri..ctor(String uriString)
+   at AniX_BusinessLogic.AzureBlobService.DeleteImageAsync(String imageUrl) in C:\Users\Administrator\source\repos\anix\AniX\AniX_BusinessLogic\AzureBlobService.cs:line 108
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 287
+---------------------------------------------------
+Timestamp: 11/11/2023 23:09:50
+Severity: Error
+Exception Type: System.UriFormatException
+Message: Invalid URI: The format of the URI could not be determined.
+Stack Trace:    at System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind, UriCreationOptions& creationOptions)
+   at System.Uri..ctor(String uriString)
+   at AniX_BusinessLogic.AzureBlobService.DeleteImageAsync(String imageUrl) in C:\Users\Administrator\source\repos\anix\AniX\AniX_BusinessLogic\AzureBlobService.cs:line 108
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 287
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 308
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 313
+   at AniX_Controllers.AnimeController.ExecuteWithExceptionHandlingAsync[T](Func`1 action) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\AnimeController.cs:line 169
+---------------------------------------------------
+Timestamp: 11/11/2023 23:09:55
+Severity: Error
+Exception Type: System.UriFormatException
+Message: Invalid URI: The format of the URI could not be determined.
+Stack Trace:    at System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind, UriCreationOptions& creationOptions)
+   at System.Uri..ctor(String uriString)
+   at AniX_BusinessLogic.AzureBlobService.DeleteImageAsync(String imageUrl) in C:\Users\Administrator\source\repos\anix\AniX\AniX_BusinessLogic\AzureBlobService.cs:line 108
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 287
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 308
+   at AniX_DAL.AnimeDAL.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 313
+   at AniX_Controllers.AnimeController.ExecuteWithExceptionHandlingAsync[T](Func`1 action) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\AnimeController.cs:line 169
+   at AniX_Controllers.AnimeController.ExecuteWithExceptionHandlingAsync[T](Func`1 action) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\AnimeController.cs:line 178
+   at AniX_Controllers.AnimeController.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\AnimeController.cs:line 69
+   at AniX_FormsLogic.AnimeFormLogic.DeleteAnimeAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_FormsLogic\AnimeFormLogic.cs:line 39
+   at AniX_APP.Forms_Dashboard.AnimeForm.btnRemove_Click(Object sender, EventArgs e) in C:\Users\Administrator\source\repos\anix\AniX\AniX_APP\Forms_Dashboard\AnimeForm.cs:line 87
+---------------------------------------------------
+Timestamp: 11/11/2023 23:14:47
+Severity: Info
+Custom Message: Timestamp: 11/11/2023 23:14:47, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 11/11/2023 23:16:30
+Severity: Info
+Custom Message: Timestamp: 11/11/2023 23:16:30, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 11/11/2023 23:25:35
+Severity: Error
+Exception Type: System.NullReferenceException
+Message: Object reference not set to an instance of an object.
+Stack Trace:    at AniX_APP.Forms_Dashboard.AnimeForm.GetSelectedAnimeFromDataGridView() in C:\Users\Administrator\source\repos\anix\AniX\AniX_APP\Forms_Dashboard\AnimeForm.cs:line 226
+   at AniX_APP.Forms_Dashboard.AnimeForm.btnEdit_Click(Object sender, EventArgs e) in C:\Users\Administrator\source\repos\anix\AniX\AniX_APP\Forms_Dashboard\AnimeForm.cs:line 55
+---------------------------------------------------
+Timestamp: 11/11/2023 23:26:57
+Severity: Info
+Custom Message: Timestamp: 11/11/2023 23:26:57, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 11/11/2023 23:32:47
+Severity: Info
+Custom Message: Timestamp: 11/11/2023 23:32:47, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 11/11/2023 23:34:15
+Severity: Error
+Exception Type: AniX_Controllers.UserController+ValidationException
+Message: Username cannot be empty.
+Stack Trace:    at AniX_Controllers.UserController.LoginAsync(String username, String password) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 46
+---------------------------------------------------
+Timestamp: 11/11/2023 23:34:21
+Severity: Info
+Custom Message: Timestamp: 11/11/2023 23:34:21, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 11/11/2023 23:35:02
+Severity: Info
+Custom Message: Timestamp: 11/11/2023 23:35:02, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 11/11/2023 23:35:46
+Severity: Info
+Custom Message: Timestamp: 11/11/2023 23:35:46, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 11/11/2023 23:36:34
+Severity: Info
+Custom Message: Timestamp: 11/11/2023 23:36:34, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 11/11/2023 23:37:10
+Severity: Info
+Custom Message: Timestamp: 11/11/2023 23:37:10, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 11/11/2023 23:37:12
+Severity: Error
+Exception Type: System.NullReferenceException
+Message: Object reference not set to an instance of an object.
+Stack Trace:    at AniX_APP.Forms_Dashboard.AnimeForm.GetSelectedAnimeFromDataGridView() in C:\Users\Administrator\source\repos\anix\AniX\AniX_APP\Forms_Dashboard\AnimeForm.cs:line 226
+   at AniX_APP.Forms_Dashboard.AnimeForm.btnEdit_Click(Object sender, EventArgs e) in C:\Users\Administrator\source\repos\anix\AniX\AniX_APP\Forms_Dashboard\AnimeForm.cs:line 55
+---------------------------------------------------

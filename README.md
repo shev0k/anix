@@ -66,4 +66,4 @@ AniX is a centralized platform designed for anime enthusiasts. It allows users t
 
 ## Additional Software
 
-- **PlantUML**: Optional, used for generating UML diagrams for the project.
+- **NClass**: Optional, used for generating UML diagrams for the project.

@@ -41,7 +41,11 @@ namespace AniX_APP
                     sp.GetRequiredService<IErrorLoggingService>(),
                     sp.GetRequiredService<IExceptionHandlingService>()))
                 .AddTransient<UserController>()
-                .AddTransient<AnimeDAL>()
+                .AddTransient<AnimeDAL>(sp => new AnimeDAL(
+                    sp.GetRequiredService<IAzureBlobService>(),
+                    configuration,
+                    sp.GetRequiredService<IExceptionHandlingService>(),
+                    sp.GetRequiredService<IErrorLoggingService>()))
                 .AddTransient<IAnimeManagement, AnimeDAL>()
                 .AddTransient<AnimeController>()
                 .AddSingleton<ApplicationModel>(sp => new ApplicationModel(
@@ -49,6 +53,12 @@ namespace AniX_APP
                     sp.GetRequiredService<UserDAL>(),
                     sp.GetRequiredService<AnimeController>(),
                     sp.GetRequiredService<AnimeDAL>()))
+                .AddTransient<AnimeAddEditFormLogic>(sp =>
+                {
+                    var appModel = sp.GetRequiredService<ApplicationModel>();
+                    var azureBlobService = sp.GetRequiredService<IAzureBlobService>();
+                    return new AnimeAddEditFormLogic(appModel, azureBlobService);
+                })
                 .AddTransient<Main>()
                 .BuildServiceProvider();
 
@@ -56,7 +66,13 @@ namespace AniX_APP
 
             using (var scope = serviceProvider.CreateScope())
             {
-                var form = scope.ServiceProvider.GetRequiredService<Main>();
+                var appModel = scope.ServiceProvider.GetRequiredService<ApplicationModel>();
+                var exceptionHandlingService = scope.ServiceProvider.GetRequiredService<IExceptionHandlingService>();
+                var errorLoggingService = scope.ServiceProvider.GetRequiredService<IErrorLoggingService>();
+                var azureBlobService = scope.ServiceProvider.GetRequiredService<IAzureBlobService>();
+
+                var form = new Main(appModel, exceptionHandlingService, errorLoggingService, azureBlobService);
+
                 Application.Run(form);
             }
         }

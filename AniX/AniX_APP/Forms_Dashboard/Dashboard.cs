@@ -12,6 +12,7 @@ using Anix_Shared.DomainModels;
 using AniX_Controllers;
 using AniX_APP.CustomElements;
 using AniX_FormsLogic;
+using AniX_Shared.Interfaces;
 using AniX_Utility;
 
 namespace AniX_APP.Forms_Dashboard
@@ -225,11 +226,13 @@ namespace AniX_APP.Forms_Dashboard
         private ApplicationModel _dashboardModel;
         private readonly IExceptionHandlingService _exceptionHandlingService;
         private readonly IErrorLoggingService _errorLoggingService;
+        private readonly IAzureBlobService _azureBlobService;
 
         public Dashboard(
             ApplicationModel dashboardModel,
             IExceptionHandlingService exceptionHandlingService,
-            IErrorLoggingService errorLoggingService)
+            IErrorLoggingService errorLoggingService,
+            IAzureBlobService azureBlobService)
         {
             InitializeComponent();
             SetButtonStyles();
@@ -237,6 +240,7 @@ namespace AniX_APP.Forms_Dashboard
             hideSubMenu();
             _exceptionHandlingService = exceptionHandlingService;
             _errorLoggingService = errorLoggingService;
+            _azureBlobService = azureBlobService;
             openChildForm(new Users(dashboardModel, exceptionHandlingService, errorLoggingService));
             SetActiveButton(btnUsers);
             showSubMenu(panelInformation);
@@ -262,7 +266,7 @@ namespace AniX_APP.Forms_Dashboard
 
         private void btnAnime_Click(object sender, EventArgs e)
         {
-            openChildForm(new AnimeForm(_dashboardModel, _exceptionHandlingService, _errorLoggingService));
+            openChildForm(new AnimeForm(_dashboardModel, _exceptionHandlingService, _errorLoggingService, _azureBlobService));
             SetActiveButton((Button)sender);
         }
 
@@ -295,8 +299,9 @@ namespace AniX_APP.Forms_Dashboard
             _dashboardModel.LoggedInUser = null;
             Main windowOpen = new Main(
                 _dashboardModel,
-                _exceptionHandlingService,
-                _errorLoggingService);
+                _exceptionHandlingService,  
+                _errorLoggingService,
+                _azureBlobService);
             this.Hide();
             windowOpen.ShowDialog();
             this.Close();

@@ -78,7 +78,7 @@ namespace AniX_FormsLogic
                     anime.Type,
                     anime.Status,
                     anime.Premiered,
-                    Genre = string.Join(", ", anime.Genres.Select(g => g.Name).Distinct()) // Ensure unique genre names
+                    Genre = string.Join(", ", anime.Genres.Select(g => g.Name).Distinct())
                 }
             )).ToList();
         }

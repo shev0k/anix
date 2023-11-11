@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using AniX_APP.CustomElements;
 using AniX_FormsLogic;
 using AniX_Shared.DomainModels;
+using AniX_Shared.Interfaces;
 using AniX_Utility;
 
 namespace AniX_APP.Forms_Utility
@@ -23,21 +24,25 @@ namespace AniX_APP.Forms_Utility
         private readonly AnimeAddEditFormLogic _animeAddEditFormLogic;
         private readonly IExceptionHandlingService _exceptionHandlingService;
         private readonly IErrorLoggingService _errorLoggingService;
+        private Stream _coverImageStream;
+        private Stream _thumbnailImageStream;
 
         public Anime_Add_Edit(
             FormMode mode,
             ApplicationModel appModel,
             IExceptionHandlingService exceptionHandlingService,
-            IErrorLoggingService errorLoggingService)
+            IErrorLoggingService errorLoggingService,
+            IAzureBlobService azureBlobService)
         {
             InitializeComponent();
             _currentMode = mode;
             _appModel = appModel;
-            _animeAddEditFormLogic = new AnimeAddEditFormLogic(_appModel);
+            _animeAddEditFormLogic = new AnimeAddEditFormLogic(_appModel, azureBlobService);
             _exceptionHandlingService = exceptionHandlingService;
             _errorLoggingService = errorLoggingService;
             this.FormBorderStyle = FormBorderStyle.None;
         }
+
 
         private void Anime_Add_Edit_Load(object sender, EventArgs e)
         {
@@ -82,12 +87,17 @@ namespace AniX_APP.Forms_Utility
 
                     if (_currentMode == FormMode.Add)
                     {
-                        operationResult = await _animeAddEditFormLogic.AddNewAnimeAsync(anime, genreIds);
+                        operationResult = await _animeAddEditFormLogic.AddNewAnimeAsync(anime, genreIds, _coverImageStream, _thumbnailImageStream);
+                        _coverImageStream?.Dispose();
+                        _thumbnailImageStream?.Dispose();
                     }
                     else
                     {
-                        operationResult = await _animeAddEditFormLogic.UpdateExistingAnimeAsync(anime, genreIds);
+                        operationResult = await _animeAddEditFormLogic.UpdateExistingAnimeAsync(anime, genreIds, _coverImageStream, _thumbnailImageStream);
+                        _coverImageStream?.Dispose();
+                        _thumbnailImageStream?.Dispose();
                     }
+
 
                     RJMessageBox.Show(operationResult.Message);
                     if (operationResult.Success)
@@ -112,6 +122,58 @@ namespace AniX_APP.Forms_Utility
             else
             {
                 RJMessageBox.Show(validationOutcome.Message);
+            }
+        }
+
+        private void btnBanner_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (OpenFileDialog openFileDialog = new OpenFileDialog())
+                {
+                    openFileDialog.Filter = "Image files (*.jpg;*.jpeg;*.png)|*.jpg;*.jpeg;*.png";
+                    if (openFileDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        _coverImageStream?.Dispose();
+                        _coverImageStream = new FileStream(openFileDialog.FileName, FileMode.Open, FileAccess.Read);
+
+                        string shortFileName = Path.GetFileName(openFileDialog.FileName);
+                        btnBanner.Text = shortFileName;
+
+                        tbxBanner.Texts = openFileDialog.FileName;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                _errorLoggingService.LogErrorAsync(ex);
+                RJMessageBox.Show("Failed to load banner image. " + ex.Message);
+            }
+        }
+
+        private void btnThumbnail_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (OpenFileDialog openFileDialog = new OpenFileDialog())
+                {
+                    openFileDialog.Filter = "Image files (*.jpg;*.jpeg;*.png)|*.jpg;*.jpeg;*.png";
+                    if (openFileDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        _thumbnailImageStream?.Dispose();
+                        _thumbnailImageStream = new FileStream(openFileDialog.FileName, FileMode.Open, FileAccess.Read);
+
+                        string shortFileName = Path.GetFileName(openFileDialog.FileName);
+                        btnThumbnail.Text = shortFileName;
+
+                        tbxThumbnail.Texts = openFileDialog.FileName;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                _errorLoggingService.LogErrorAsync(ex);
+                RJMessageBox.Show("Failed to load thumbnail image. " + ex.Message);
             }
         }
 
@@ -167,6 +229,16 @@ namespace AniX_APP.Forms_Utility
                             genreList.SetItemChecked(i, true);
                         }
                     }
+                }
+
+                if (!string.IsNullOrEmpty(_appModel.AnimeToEdit.CoverImage))
+                {
+                    btnBanner.Text = $"{_appModel.AnimeToEdit.CoverImage}";
+                }
+
+                if (!string.IsNullOrEmpty(_appModel.AnimeToEdit.Thumbnail))
+                {
+                    btnThumbnail.Text = $"{_appModel.AnimeToEdit.Thumbnail}";
                 }
 
                 lbAnime.Text = "Edit Anime";
@@ -276,6 +348,5 @@ namespace AniX_APP.Forms_Utility
         }
 
         #endregion
-
     }
 }

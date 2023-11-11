@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Mime-Detective" Version="23.10.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\AniX_BusinessLogic\AniX_BusinessLogic.csproj" />
     <ProjectReference Include="..\AniX_Controllers\AniX_Controllers.csproj" />
     <ProjectReference Include="..\AniX_Shared\AniX_Shared.csproj" />

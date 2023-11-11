@@ -3,6 +3,7 @@ using AniX_APP.CustomElements;
 using AniX_APP.Forms_Utility;
 using AniX_FormsLogic;
 using AniX_Shared.DomainModels;
+using AniX_Shared.Interfaces;
 using AniX_Utility;
 
 namespace AniX_APP.Forms_Dashboard
@@ -13,18 +14,25 @@ namespace AniX_APP.Forms_Dashboard
         private AnimeFormLogic _animeFormLogic;
         private readonly IExceptionHandlingService _exceptionHandlingService;
         private readonly IErrorLoggingService _errorLoggingService;
+        private readonly IAzureBlobService _azureBlobService;
         private System.Threading.Timer dgvTimer;
         private System.Windows.Forms.Timer suggestionTimer;
 
-        public AnimeForm(ApplicationModel appModel, IExceptionHandlingService exceptionHandlingService, IErrorLoggingService errorLoggingService)
+        public AnimeForm(
+            ApplicationModel appModel,
+            IExceptionHandlingService exceptionHandlingService,
+            IErrorLoggingService errorLoggingService,
+            IAzureBlobService azureBlobService)
         {
             InitializeComponent();
             _appModel = appModel;
             _animeFormLogic = new AnimeFormLogic(_appModel);
             _exceptionHandlingService = exceptionHandlingService;
             _errorLoggingService = errorLoggingService;
+            _azureBlobService = azureBlobService;
             btnUser.Text = $" {_appModel.LoggedInUser.Username}";
             InitializeDataGridViewStyles();
+
 
             txtSearch.Visible = false;
             cmbFilterValues.Visible = false;
@@ -363,7 +371,7 @@ namespace AniX_APP.Forms_Dashboard
         {
             public const string NoAnimeSelectedToEdit = "No anime selected. Please select an anime to edit.";
             public const string NoAnimeSelectedToDelete = "No anime selected. Please select an anime to delete.";
-            public const string DeleteConfirmation = "Confirmation";
+            public const string DeleteConfirmation = $"Do you want to delete the anime?";
             public const string Success = "Success";
             public const string Warning = "Warning";
             public const string Error = "Error";
@@ -434,7 +442,8 @@ namespace AniX_APP.Forms_Dashboard
                 mode,
                 _appModel,
                 _exceptionHandlingService,
-                _errorLoggingService);
+                _errorLoggingService,
+                _azureBlobService);
 
             form.FormClosed += async (s, args) =>
             {

@@ -136,7 +136,7 @@ namespace AniX_APP.Forms_Utility
             // btnClose
             // 
             btnClose.FlatAppearance.BorderSize = 0;
-            btnClose.FlatAppearance.MouseOverBackColor = Color.FromArgb(224, 79, 95);
+            btnClose.FlatAppearance.MouseOverBackColor = Color.FromArgb(231, 34, 83);
             btnClose.FlatStyle = FlatStyle.Flat;
             btnClose.Font = new Font("Microsoft Sans Serif", 13F, FontStyle.Regular, GraphicsUnit.Point);
             btnClose.ForeColor = Color.White;

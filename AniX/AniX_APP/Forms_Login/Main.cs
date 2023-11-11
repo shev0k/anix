@@ -9,6 +9,7 @@ using System;
 using System.Windows.Forms;
 using AniX_Controllers;
 using AniX_FormsLogic;
+using AniX_Shared.Interfaces;
 using static AniX_Controllers.UserController;
 
 namespace AniX_APP
@@ -214,10 +215,12 @@ namespace AniX_APP
         private ApplicationModel _appModel;
         private readonly IExceptionHandlingService _exceptionHandlingService;
         private readonly IErrorLoggingService _errorLoggingService;
+        private readonly IAzureBlobService _azureBlobService;
         public Main(
             ApplicationModel appModel,
             IExceptionHandlingService exceptionHandlingService,
-            IErrorLoggingService errorLoggingService)
+            IErrorLoggingService errorLoggingService,
+            IAzureBlobService azureBlobService)
         {
             InitializeComponent();
             SetButtonStyles();
@@ -225,6 +228,7 @@ namespace AniX_APP
             _appModel = appModel;
             _exceptionHandlingService = exceptionHandlingService;
             _errorLoggingService = errorLoggingService;
+            _azureBlobService = azureBlobService;
         }
 
         private void btnInformation_Click(object sender, EventArgs e)
@@ -282,7 +286,8 @@ namespace AniX_APP
             Dashboard windowOpen = new Dashboard(
                 _appModel,
                 _exceptionHandlingService,
-                _errorLoggingService
+                _errorLoggingService,
+                _azureBlobService
             );
             RJMessageBox.Show($"Welcome back, < {_appModel.LoggedInUser.Username} >", "", MessageBoxButtons.OK);
             this.Hide();

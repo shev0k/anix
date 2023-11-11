@@ -13,6 +13,8 @@ namespace AniX_Shared.Interfaces
         Task<int> CreateAnimeAsync(Anime anime, List<int> genreIds);
         Task<bool> UpdateAnimeAsync(Anime anime, List<int> newGenreIds);
         Task<bool> DeleteAnimeAsync(int animeId);
+        Task<(string coverImageUrl, string thumbnailUrl)> GetAnimeImageUrls(int animeId);
+        Task<bool> UpdateAnimeImages(int animeId, string coverImageUrl, string thumbnailUrl);
         Task<Anime> GetAnimeByIdAsync(int animeId);
         Task<List<string>> GetSearchSuggestionsAsync(string searchType, string searchTerm);
         Task<List<Anime>> GetAllAnimesAsync();

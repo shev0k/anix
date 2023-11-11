@@ -1,4 +1,5 @@
 ﻿using AniX_Shared.DomainModels;
+using AniX_Shared.Interfaces;
 using AniX_Utility;
 using System;
 using System.Threading.Tasks;
@@ -8,21 +9,59 @@ namespace AniX_FormsLogic
     public class AnimeAddEditFormLogic
     {
         private readonly ApplicationModel _appModel;
+        private readonly IAzureBlobService _azureBlobService;
 
-        public AnimeAddEditFormLogic(ApplicationModel appModel)
+        public AnimeAddEditFormLogic(ApplicationModel appModel, IAzureBlobService azureBlobService)
         {
             _appModel = appModel;
+            _azureBlobService = azureBlobService;
         }
 
-        public async Task<OperationResult> AddNewAnimeAsync(Anime anime, List<int> genreIds)
+        public async Task<OperationResult> AddNewAnimeAsync(Anime anime, List<int> genreIds, Stream coverImageStream, Stream thumbnailStream)
         {
             try
             {
                 int animeId = await _appModel.AnimeController.CreateAnimeAsync(anime, genreIds);
+                if (animeId <= 0)
+                {
+                    return new OperationResult
+                    {
+                        Success = false,
+                        Message = "Failed to add anime."
+                    };
+                }
+
+                anime.Id = animeId;
+
+                string coverImageUrl = anime.CoverImage;
+                string thumbnailUrl = anime.Thumbnail;
+
+                if (coverImageStream != null)
+                {
+                    coverImageUrl = await _azureBlobService.UploadAnimeImageAsync(
+                                       coverImageStream, $"cover_{anime.Id}_" + Guid.NewGuid().ToString(), "image/png");
+                }
+
+                if (thumbnailStream != null)
+                {
+                    thumbnailUrl = await _azureBlobService.UploadAnimeImageAsync(
+                                       thumbnailStream, $"thumbnail_{anime.Id}_" + Guid.NewGuid().ToString(), "image/png");
+                }
+
+                bool updateImagesResult = await _appModel.AnimeController.UpdateAnimeImages(anime.Id, coverImageUrl, thumbnailUrl);
+                if (!updateImagesResult)
+                {
+                    return new OperationResult
+                    {
+                        Success = false,
+                        Message = "Failed to update anime images."
+                    };
+                }
+
                 return new OperationResult
                 {
-                    Success = animeId > 0,
-                    Message = animeId > 0 ? "Anime added successfully." : "Failed to add anime."
+                    Success = true,
+                    Message = "Anime added successfully."
                 };
             }
             catch (Exception ex)
@@ -35,15 +74,66 @@ namespace AniX_FormsLogic
             }
         }
 
-        public async Task<OperationResult> UpdateExistingAnimeAsync(Anime anime, List<int> newGenreIds)
+
+        public async Task<OperationResult> UpdateExistingAnimeAsync(Anime anime, List<int> newGenreIds, Stream coverImageStream, Stream thumbnailStream)
         {
             try
             {
+                var imageUrls = await _appModel.AnimeController.GetAnimeImageUrls(anime.Id);
+                string coverImageUrl = imageUrls.CoverImageUrl;
+                string thumbnailUrl = imageUrls.ThumbnailUrl;
+
+                bool IsValidUri(string uri) => Uri.TryCreate(uri, UriKind.Absolute, out Uri _);
+
+                if (coverImageStream != null)
+                {
+                    coverImageUrl = await _azureBlobService.UploadAnimeImageAsync(
+                                        coverImageStream, $"cover_{anime.Id}_" + Guid.NewGuid().ToString(), "image/png");
+
+                    if (IsValidUri(imageUrls.CoverImageUrl) && !string.IsNullOrEmpty(imageUrls.CoverImageUrl) && coverImageUrl != imageUrls.CoverImageUrl)
+                    {
+                        await _azureBlobService.DeleteImageAsync(imageUrls.CoverImageUrl);
+                    }
+                }
+
+                if (thumbnailStream != null)
+                {
+                    thumbnailUrl = await _azureBlobService.UploadAnimeImageAsync(
+                                       thumbnailStream, $"thumbnail_{anime.Id}_" + Guid.NewGuid().ToString(), "image/png");
+
+                    if (IsValidUri(imageUrls.ThumbnailUrl) && !string.IsNullOrEmpty(imageUrls.ThumbnailUrl) && thumbnailUrl != imageUrls.ThumbnailUrl)
+                    {
+                        await _azureBlobService.DeleteImageAsync(imageUrls.ThumbnailUrl);
+                    }
+                }
+
+                anime.CoverImage = coverImageUrl;
+                anime.Thumbnail = thumbnailUrl;
+
                 bool success = await _appModel.AnimeController.UpdateAnimeAsync(anime, newGenreIds);
+                if (!success)
+                {
+                    return new OperationResult
+                    {
+                        Success = false,
+                        Message = "Failed to update anime details."
+                    };
+                }
+
+                success = await _appModel.AnimeController.UpdateAnimeImages(anime.Id, coverImageUrl, thumbnailUrl);
+                if (!success)
+                {
+                    return new OperationResult
+                    {
+                        Success = false,
+                        Message = "Failed to update anime images."
+                    };
+                }
+
                 return new OperationResult
                 {
-                    Success = success,
-                    Message = success ? "Anime updated successfully." : "Failed to update anime."
+                    Success = true,
+                    Message = "Anime updated successfully."
                 };
             }
             catch (Exception ex)
@@ -55,6 +145,7 @@ namespace AniX_FormsLogic
                 };
             }
         }
+
 
         public async Task<(bool IsValid, string Message)> ValidateAnimeFormAsync(
                 string name,

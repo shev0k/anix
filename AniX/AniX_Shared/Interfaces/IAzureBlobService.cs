@@ -9,6 +9,7 @@ namespace AniX_Shared.Interfaces
     public interface IAzureBlobService
     {
         Task<string> UploadImageAsync(Stream imageStream, string userId, string contentType);
+        Task<string> UploadAnimeImageAsync(Stream imageStream, string animeId, string contentType);
         Task DeleteImageAsync(string blobName);
         string GetImageUri(string blobName);
     }

@@ -39,6 +39,21 @@ namespace AniX_Controllers
             });
         }
 
+        public async Task<(string CoverImageUrl, string ThumbnailUrl)> GetAnimeImageUrls(int animeId)
+        {
+            return await ExecuteWithExceptionHandlingAsync(() =>
+            {
+                return _animeManagement.GetAnimeImageUrls(animeId);
+            });
+        }
+
+        public async Task<bool> UpdateAnimeImages(int animeId, string coverImageUrl, string thumbnailUrl)
+        {
+            return await ExecuteWithExceptionHandlingAsync(async () =>
+            {
+                return await _animeManagement.UpdateAnimeImages(animeId, coverImageUrl, thumbnailUrl);
+            });
+        }
 
         public async Task<bool> UpdateAnimeAsync(Anime anime, List<int> newGenreIds)
         {
@@ -82,8 +97,6 @@ namespace AniX_Controllers
                 semaphore.Release();
             }
         }
-
-
 
         public async Task<List<Genre>> GetAllGenresAsync()
         {

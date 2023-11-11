@@ -31,7 +31,7 @@ namespace AniX_BusinessLogic
             {
                 "image/jpeg" => ".jpg",
                 "image/png" => ".png",
-                "image/jpg" => ".jpg",
+                "image/jpg" => ".jpeg",
                 "image/gif" => ".gif",
                 _ => null
             };
@@ -64,15 +64,32 @@ namespace AniX_BusinessLogic
             }
         }
 
-
-        public async Task DeleteImageAsync(string blobName)
+        public async Task<string> UploadAnimeImageAsync(Stream imageStream, string animeId, string contentType)
         {
+            var fileExtension = contentType switch
+            {
+                "image/jpeg" => ".jpg",
+                "image/png" => ".png",
+                "image/jpg" => ".jpeg",
+                "image/gif" => ".gif",
+                _ => null
+            };
+
+            if (fileExtension == null)
+            {
+                var errorMessage = $"Unsupported content type: {contentType}";
+                await _errorLoggingService.LogErrorAsync(new ArgumentException(errorMessage, nameof(contentType)));
+                throw new ArgumentException(errorMessage, nameof(contentType));
+            }
+
+            var blobName = $"anime_{animeId}_{Guid.NewGuid()}{fileExtension}";
             var blobContainerClient = _blobServiceClient.GetBlobContainerClient(_containerName);
             var blobClient = blobContainerClient.GetBlobClient(blobName);
 
             try
             {
-                await blobClient.DeleteIfExistsAsync();
+                await blobClient.UploadAsync(imageStream, new BlobHttpHeaders { ContentType = contentType });
+                return blobClient.Uri.AbsoluteUri;
             }
             catch (RequestFailedException ex)
             {
@@ -83,6 +100,30 @@ namespace AniX_BusinessLogic
             {
                 await _errorLoggingService.LogErrorAsync(ex);
                 throw new InvalidOperationException("An error occurred while uploading the image.", ex);
+            }
+        }
+
+        public async Task DeleteImageAsync(string imageUrl)
+        {
+            Uri uri = new Uri(imageUrl);
+            string blobName = uri.Segments[^1];
+
+            var blobContainerClient = _blobServiceClient.GetBlobContainerClient(_containerName);
+            var blobClient = blobContainerClient.GetBlobClient(blobName);
+
+            try
+            {
+                await blobClient.DeleteIfExistsAsync();
+            }
+            catch (RequestFailedException ex)
+            {
+                await _errorLoggingService.LogErrorAsync(ex);
+                throw new InvalidOperationException("Error deleting image from Azure Blob Storage.", ex);
+            }
+            catch (Exception ex)
+            {
+                await _errorLoggingService.LogErrorAsync(ex);
+                throw new InvalidOperationException("An error occurred while deleting the image.", ex);
             }
         }
 

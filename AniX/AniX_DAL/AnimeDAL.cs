@@ -15,15 +15,18 @@ namespace AniX_DAL
 {
     public class AnimeDAL : BaseDAL, IAnimeManagement
     {
+        private readonly IAzureBlobService _blobService;
         private readonly IExceptionHandlingService _exceptionHandlingService;
         private readonly IErrorLoggingService _errorLoggingService;
 
         public AnimeDAL(
+            IAzureBlobService blobService,
             IConfiguration configuration,
             IExceptionHandlingService exceptionHandlingService,
             IErrorLoggingService errorLoggingService
         ) : base(configuration)
         {
+            _blobService = blobService;
             _exceptionHandlingService = exceptionHandlingService;
             _errorLoggingService = errorLoggingService;
         }
@@ -76,7 +79,6 @@ namespace AniX_DAL
             return animeId;
         }
 
-
         public async Task<bool> LinkAnimeWithGenresAsync(int animeId, List<int> genreIds, SqlTransaction transaction)
         {
             try
@@ -100,6 +102,87 @@ namespace AniX_DAL
             }
         }
 
+        public async Task<(string coverImageUrl, string thumbnailUrl)> GetAnimeImageUrls(int animeId)
+        {
+            string coverImageUrl = null;
+            string thumbnailUrl = null;
+
+            try
+            {
+                await connection.OpenAsync();
+                var query = "SELECT CoverImage, Thumbnail FROM Anime WHERE Id = @Id";
+                using (var command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@Id", animeId);
+                    using (var reader = await command.ExecuteReaderAsync())
+                    {
+                        if (await reader.ReadAsync())
+                        {
+                            coverImageUrl = reader["CoverImage"] as string;
+                            thumbnailUrl = reader["Thumbnail"] as string;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                await _exceptionHandlingService.HandleExceptionAsync(ex);
+            }
+            finally
+            {
+                await connection.CloseAsync();
+            }
+
+            return (coverImageUrl, thumbnailUrl);
+        }
+
+        public async Task<bool> UpdateAnimeImages(int animeId, string coverImageUrl, string thumbnailUrl)
+        {
+            SqlTransaction transaction = null;
+            try
+            {
+                await connection.OpenAsync();
+                transaction = connection.BeginTransaction();
+
+                var query = @"
+            UPDATE [Anime] SET
+                CoverImage = @CoverImage,
+                Thumbnail = @Thumbnail
+            WHERE Id = @Id";
+
+                using (SqlCommand command = new SqlCommand(query, connection, transaction))
+                {
+                    command.Parameters.AddWithValue("@Id", animeId);
+                    command.Parameters.AddWithValue("@CoverImage", coverImageUrl ?? (object)DBNull.Value);
+                    command.Parameters.AddWithValue("@Thumbnail", thumbnailUrl ?? (object)DBNull.Value);
+                    int rowsAffected = await command.ExecuteNonQueryAsync();
+
+                    if (rowsAffected > 0)
+                    {
+                        transaction.Commit();
+                        return true;
+                    }
+                    else
+                    {
+                        transaction.Rollback();
+                        return false;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                transaction?.Rollback();
+                await _exceptionHandlingService.HandleExceptionAsync(ex);
+                return false;
+            }
+            finally
+            {
+                if (connection.State == ConnectionState.Open)
+                {
+                    await connection.CloseAsync();
+                }
+            }
+        }
 
         public async Task<bool> UpdateAnimeAsync(Anime anime, List<int> newGenreIds)
         {
@@ -161,7 +244,6 @@ namespace AniX_DAL
             }
         }
 
-
         public async Task<bool> DeleteAnimeAsync(int animeId)
         {
             SqlTransaction transaction = null;
@@ -170,6 +252,22 @@ namespace AniX_DAL
             {
                 await connection.OpenAsync();
                 transaction = connection.BeginTransaction();
+
+                string coverImageUrl = null;
+                string thumbnailUrl = null;
+                var query = "SELECT CoverImage, Thumbnail FROM Anime WHERE Id = @Id";
+                using (var command = new SqlCommand(query, connection, transaction))
+                {
+                    command.Parameters.AddWithValue("@Id", animeId);
+                    using (var reader = await command.ExecuteReaderAsync())
+                    {
+                        if (await reader.ReadAsync())
+                        {
+                            coverImageUrl = reader["CoverImage"] as string;
+                            thumbnailUrl = reader["Thumbnail"] as string;
+                        }
+                    }
+                }
 
                 string deleteGenresQuery = "DELETE FROM [Anime_Genre] WHERE AnimeId = @AnimeId";
                 using (SqlCommand deleteGenresCommand = new SqlCommand(deleteGenresQuery, connection, transaction))
@@ -183,9 +281,21 @@ namespace AniX_DAL
                 {
                     deleteAnimeCommand.Parameters.AddWithValue("@Id", animeId);
                     int rowsAffected = await deleteAnimeCommand.ExecuteNonQueryAsync();
-                    transaction.Commit();
-                    return rowsAffected > 0;
+
+                    bool IsValidUri(string uri) => Uri.TryCreate(uri, UriKind.Absolute, out Uri _);
+
+                    if (!string.IsNullOrEmpty(coverImageUrl) && IsValidUri(coverImageUrl))
+                    {
+                        await _blobService.DeleteImageAsync(coverImageUrl);
+                    }
+                    if (!string.IsNullOrEmpty(thumbnailUrl) && IsValidUri(thumbnailUrl))
+                    {
+                        await _blobService.DeleteImageAsync(thumbnailUrl);
+                    }
                 }
+
+                transaction.Commit();
+                return true;
             }
             catch (SqlException ex) when (ex.Number == 547)
             {
@@ -547,7 +657,6 @@ namespace AniX_DAL
             return animeList;
         }
 
-
         public async Task<bool> DoesAnimeExistAsync(int animeId)
         {
             try
@@ -629,7 +738,6 @@ namespace AniX_DAL
 
             return animesWithViewCount;
         }
-
 
         public async Task<List<AnimeWithPopularity>> GetMostPopularAnimesAsync()
         {
@@ -716,7 +824,6 @@ namespace AniX_DAL
 
             return (animes, totalCount);
         }
-
 
         public async Task<List<AnimeWithRatings>> GetAnimesWithRatingsAsync()
         {
@@ -884,7 +991,6 @@ namespace AniX_DAL
             command.Parameters.AddWithValue("@Rating", anime.Rating ?? (object)DBNull.Value);
             command.Parameters.AddWithValue("@Year", anime.Year ?? (object)DBNull.Value);
         }
-
 
         private Anime MapReaderToAnime(SqlDataReader reader)
         {
