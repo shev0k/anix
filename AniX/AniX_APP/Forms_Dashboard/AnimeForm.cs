@@ -187,6 +187,26 @@ namespace AniX_APP.Forms_Dashboard
             PerformSearch();
         }
 
+        private void lbSuggestion_MouseClick(object sender, MouseEventArgs e)
+        {
+            var label = sender as Label;
+            if (label != null && label.Text.Length > 0)
+            {
+                string[] lines = label.Text.Split(new string[] { Environment.NewLine }, StringSplitOptions.None);
+                int lineHeight = label.Height / lines.Length;
+
+                int clickedLineIndex = e.Y / lineHeight;
+
+                if (clickedLineIndex >= 0 && clickedLineIndex < lines.Length)
+                {
+                    string selectedSuggestion = lines[clickedLineIndex];
+                    txtSearch.Texts = selectedSuggestion;
+                    lbSuggestion.Text = string.Empty;
+                    lbSuggestion.Visible = false;
+                }
+            }
+        }
+
         #region USEFUL
 
         private void ClearSuggestions()
@@ -355,7 +375,10 @@ namespace AniX_APP.Forms_Dashboard
                 var suggestions = await _animeFormLogic.GetSearchSuggestionsAsync(searchType, searchTerm);
 
                 lbSuggestion.Text = string.Join(Environment.NewLine, suggestions);
-                lbSuggestion.Visible = suggestions.Any();
+
+                bool exactMatch = suggestions.Any(s => s.Equals(searchTerm, StringComparison.OrdinalIgnoreCase));
+
+                lbSuggestion.Visible = suggestions.Any() && !exactMatch;
             }
             else
             {
@@ -480,5 +503,6 @@ namespace AniX_APP.Forms_Dashboard
         }
 
         #endregion
+
     }
 }

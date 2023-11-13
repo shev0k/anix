@@ -4668,3 +4668,84 @@ Message: Object reference not set to an instance of an object.
 Stack Trace:    at AniX_APP.Forms_Dashboard.AnimeForm.GetSelectedAnimeFromDataGridView() in C:\Users\Administrator\source\repos\anix\AniX\AniX_APP\Forms_Dashboard\AnimeForm.cs:line 226
    at AniX_APP.Forms_Dashboard.AnimeForm.btnEdit_Click(Object sender, EventArgs e) in C:\Users\Administrator\source\repos\anix\AniX\AniX_APP\Forms_Dashboard\AnimeForm.cs:line 55
 ---------------------------------------------------
+Timestamp: 13/11/2023 10:42:56
+Severity: Info
+Custom Message: Timestamp: 13/11/2023 10:42:56, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 13/11/2023 12:55:30
+Severity: Info
+Custom Message: Timestamp: 13/11/2023 12:55:30, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 13/11/2023 12:55:32
+Severity: Error
+Exception Type: System.Data.SqlClient.SqlException
+Message: Invalid column name 'Title'.
+Stack Trace:    at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader()
+   at System.Data.SqlClient.SqlCommand.InternalEndExecuteReader(IAsyncResult asyncResult, String endMethod)
+   at System.Data.SqlClient.SqlCommand.EndExecuteReaderInternal(IAsyncResult asyncResult)
+   at System.Data.SqlClient.SqlCommand.EndExecuteReader(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at AniX_DAL.AnimeDAL.FetchFilteredAndSearchedAnimesAsync(String filter, String searchTerm) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 612
+---------------------------------------------------
+Timestamp: 13/11/2023 12:55:32
+Severity: Error
+Exception Type: System.Data.SqlClient.SqlException
+Message: Invalid column name 'Title'.
+Stack Trace:    at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader()
+   at System.Data.SqlClient.SqlCommand.InternalEndExecuteReader(IAsyncResult asyncResult, String endMethod)
+   at System.Data.SqlClient.SqlCommand.EndExecuteReaderInternal(IAsyncResult asyncResult)
+   at System.Data.SqlClient.SqlCommand.EndExecuteReader(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at AniX_DAL.AnimeDAL.FetchFilteredAndSearchedAnimesAsync(String filter, String searchTerm) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 612
+   at AniX_DAL.AnimeDAL.FetchFilteredAndSearchedAnimesAsync(String filter, String searchTerm) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 647
+   at AniX_DAL.AnimeDAL.FetchFilteredAndSearchedAnimesAsync(String filter, String searchTerm) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 655
+   at AniX_Controllers.AnimeController.FetchFilteredAndSearchedAnimesAsync(String filter, String searchTerm) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\AnimeController.cs:line 111
+---------------------------------------------------
+Timestamp: 13/11/2023 12:55:45
+Severity: Info
+Custom Message: Timestamp: 13/11/2023 12:55:45, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 13/11/2023 13:01:21
+Severity: Info
+Custom Message: Timestamp: 13/11/2023 13:01:21, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 13/11/2023 13:01:49
+Severity: Info
+Custom Message: Timestamp: 13/11/2023 13:01:49, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 13/11/2023 13:03:57
+Severity: Info
+Custom Message: Timestamp: 13/11/2023 13:03:57, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 13/11/2023 13:04:36
+Severity: Info
+Custom Message: Timestamp: 13/11/2023 13:04:36, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 13/11/2023 13:06:05
+Severity: Info
+Custom Message: Timestamp: 13/11/2023 13:06:05, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 13/11/2023 13:08:02
+Severity: Info
+Custom Message: Timestamp: 13/11/2023 13:08:02, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 13/11/2023 13:13:42
+Severity: Info
+Custom Message: Timestamp: 13/11/2023 13:13:42, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------

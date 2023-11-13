@@ -590,7 +590,7 @@ namespace AniX_DAL
                 }
             }
 
-            queryBuilder.AppendLine("ORDER BY a.Id, g.Id");
+            queryBuilder.AppendLine("ORDER BY a.Name, g.Id");
 
             var parameters = new List<SqlParameter>();
             if (genreFilterApplied)

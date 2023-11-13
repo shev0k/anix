@@ -124,6 +124,7 @@ namespace AniX_APP.Forms_Dashboard
             lbSuggestion.Size = new Size(100, 21);
             lbSuggestion.TabIndex = 15;
             lbSuggestion.Text = "Suggestion";
+            lbSuggestion.MouseClick += lbSuggestion_MouseClick;
             // 
             // txtSearch
             // 
