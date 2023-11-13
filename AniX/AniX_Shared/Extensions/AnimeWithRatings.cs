@@ -10,6 +10,6 @@ namespace AniX_Shared.Extensions
     public class AnimeWithRatings : Anime
     {
         public int NumberOfReviews { get; set; }
-        public float? AverageRating { get; set; }
+        public double? AverageRating { get; set; }
     }
 }

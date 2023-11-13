@@ -16,6 +16,12 @@ namespace AniX_Shared.Interfaces
         Task<(string coverImageUrl, string thumbnailUrl)> GetAnimeImageUrls(int animeId);
         Task<bool> UpdateAnimeImages(int animeId, string coverImageUrl, string thumbnailUrl);
         Task<Anime> GetAnimeByIdAsync(int animeId);
+        Task<AnimeDetailModel> GetAnimeDetailAsync(int animeId);
+        Task<AnimeWithRatings> GetUpcomingAnimeAsync();
+        Task<List<AnimeWithRatings>> GetTopRatedAnimesAsync(int count);
+        Task<List<AnimeWithRatings>> GetNewlyReleasedAnimesAsync(int count);
+        Task<List<AnimeWithRatings>> GetRecentlyUpdatedAnimesAsync(int count);
+        Task<List<AnimeWithRatings>> GetRandomAnimesAsync(int count);
         Task<List<string>> GetSearchSuggestionsAsync(string searchType, string searchTerm);
         Task<List<Anime>> GetAllAnimesAsync();
         Task<List<Anime>> GetAnimesByGenreAsync(string genreName);

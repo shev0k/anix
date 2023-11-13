@@ -10,5 +10,6 @@ namespace AniX_Shared.Extensions
     public class AnimeWithViewCount : Anime
     {
         public int ViewCount { get; set; }
+        public double? AverageRating { get; set; }
     }
 }

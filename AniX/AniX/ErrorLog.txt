@@ -10,3 +10,171 @@ Exception Type: System.ArgumentException
 Message: Unsupported content type: image/gif (Parameter 'contentType')
 Stack Trace: 
 ---------------------------------------------------
+Timestamp: 13/11/2023 15:34:00
+Severity: Error
+Exception Type: System.Data.SqlClient.SqlException
+Message: Incorrect syntax near '('.
+Stack Trace:    at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader()
+   at System.Data.SqlClient.SqlCommand.InternalEndExecuteReader(IAsyncResult asyncResult, String endMethod)
+   at System.Data.SqlClient.SqlCommand.EndExecuteReaderInternal(IAsyncResult asyncResult)
+   at System.Data.SqlClient.SqlCommand.EndExecuteReader(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at AniX_DAL.AnimeDAL.GetUpcomingAnimeAsync() in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 465
+---------------------------------------------------
+Timestamp: 13/11/2023 17:37:15
+Severity: Error
+Exception Type: System.InvalidCastException
+Message: Unable to cast object of type 'System.Double' to type 'System.Single'.
+Stack Trace:    at System.Data.SqlClient.SqlBuffer.get_Single()
+   at System.Data.SqlClient.SqlDataReader.GetFloat(Int32 i)
+   at AniX_DAL.AnimeDAL.MapReaderToAnimeWithRatings(SqlDataReader reader) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 1229
+   at AniX_DAL.AnimeDAL.GetTopRatedAnimesAsync(Int32 count) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 507
+---------------------------------------------------
+Timestamp: 13/11/2023 17:37:20
+Severity: Error
+Exception Type: System.InvalidCastException
+Message: Unable to cast object of type 'System.Double' to type 'System.Single'.
+Stack Trace:    at System.Data.SqlClient.SqlBuffer.get_Single()
+   at System.Data.SqlClient.SqlDataReader.GetFloat(Int32 i)
+   at AniX_DAL.AnimeDAL.MapReaderToAnimeWithRatings(SqlDataReader reader) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 1229
+   at AniX_DAL.AnimeDAL.GetTopRatedAnimesAsync(Int32 count) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 507
+---------------------------------------------------
+Timestamp: 13/11/2023 18:19:01
+Severity: Error
+Exception Type: System.InvalidCastException
+Message: Unable to cast object of type 'System.Double' to type 'System.Single'.
+Stack Trace:    at System.Data.SqlClient.SqlBuffer.get_Single()
+   at System.Data.SqlClient.SqlDataReader.GetFloat(Int32 i)
+   at AniX_DAL.AnimeDAL.GetMostPopularAnimesAsync() in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 935
+---------------------------------------------------
+Timestamp: 13/11/2023 18:42:16
+Severity: Error
+Exception Type: System.IndexOutOfRangeException
+Message: AverageRating
+Stack Trace:    at System.Data.ProviderBase.BasicFieldNameLookup.GetOrdinal(String fieldName)
+   at System.Data.SqlClient.SqlDataReader.GetOrdinal(String name)
+   at AniX_DAL.AnimeDAL.MapReaderToAnimeWithViewCount(SqlDataReader reader) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 1206
+   at AniX_DAL.AnimeDAL.GetMostWatchedAnimesAsync() in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 901
+---------------------------------------------------
+Timestamp: 13/11/2023 18:42:32
+Severity: Error
+Exception Type: System.IndexOutOfRangeException
+Message: AverageRating
+Stack Trace:    at System.Data.ProviderBase.BasicFieldNameLookup.GetOrdinal(String fieldName)
+   at System.Data.SqlClient.SqlDataReader.GetOrdinal(String name)
+   at AniX_DAL.AnimeDAL.MapReaderToAnimeWithViewCount(SqlDataReader reader) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 1206
+   at AniX_DAL.AnimeDAL.GetMostWatchedAnimesAsync() in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 901
+---------------------------------------------------
+Timestamp: 13/11/2023 18:42:33
+Severity: Error
+Exception Type: System.IndexOutOfRangeException
+Message: AverageRating
+Stack Trace:    at System.Data.ProviderBase.BasicFieldNameLookup.GetOrdinal(String fieldName)
+   at System.Data.SqlClient.SqlDataReader.GetOrdinal(String name)
+   at AniX_DAL.AnimeDAL.MapReaderToAnimeWithViewCount(SqlDataReader reader) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 1206
+   at AniX_DAL.AnimeDAL.GetMostWatchedAnimesAsync() in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 901
+---------------------------------------------------
+Timestamp: 13/11/2023 18:42:33
+Severity: Error
+Exception Type: System.IndexOutOfRangeException
+Message: AverageRating
+Stack Trace:    at System.Data.ProviderBase.BasicFieldNameLookup.GetOrdinal(String fieldName)
+   at System.Data.SqlClient.SqlDataReader.GetOrdinal(String name)
+   at AniX_DAL.AnimeDAL.MapReaderToAnimeWithViewCount(SqlDataReader reader) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 1206
+   at AniX_DAL.AnimeDAL.GetMostWatchedAnimesAsync() in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 901
+---------------------------------------------------
+Timestamp: 13/11/2023 18:42:52
+Severity: Error
+Exception Type: System.IndexOutOfRangeException
+Message: AverageRating
+Stack Trace:    at System.Data.ProviderBase.BasicFieldNameLookup.GetOrdinal(String fieldName)
+   at System.Data.SqlClient.SqlDataReader.GetOrdinal(String name)
+   at AniX_DAL.AnimeDAL.MapReaderToAnimeWithViewCount(SqlDataReader reader) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 1206
+   at AniX_DAL.AnimeDAL.GetMostWatchedAnimesAsync() in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 901
+---------------------------------------------------
+Timestamp: 13/11/2023 18:49:22
+Severity: Error
+Exception Type: System.IndexOutOfRangeException
+Message: AverageRating
+Stack Trace:    at System.Data.ProviderBase.BasicFieldNameLookup.GetOrdinal(String fieldName)
+   at System.Data.SqlClient.SqlDataReader.GetOrdinal(String name)
+   at AniX_DAL.AnimeDAL.MapReaderToAnimeWithViewCount(SqlDataReader reader) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 1206
+   at AniX_DAL.AnimeDAL.GetMostWatchedAnimesAsync() in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 901
+---------------------------------------------------
+Timestamp: 13/11/2023 19:33:29
+Severity: Error
+Exception Type: System.Data.SqlTypes.SqlNullValueException
+Message: Data is Null. This method or property cannot be called on Null values.
+Stack Trace:    at System.Data.SqlClient.SqlBuffer.ThrowIfNull()
+   at System.Data.SqlClient.SqlBuffer.get_Double()
+   at System.Data.SqlClient.SqlDataReader.GetDouble(Int32 i)
+   at AniX_DAL.AnimeDAL.MapReaderToAnimeDetail(SqlDataReader reader) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 1369
+   at AniX_DAL.AnimeDAL.GetAnimeDetailAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 476
+---------------------------------------------------
+Timestamp: 13/11/2023 19:33:37
+Severity: Error
+Exception Type: System.Data.SqlTypes.SqlNullValueException
+Message: Data is Null. This method or property cannot be called on Null values.
+Stack Trace:    at System.Data.SqlClient.SqlBuffer.ThrowIfNull()
+   at System.Data.SqlClient.SqlBuffer.get_Double()
+   at System.Data.SqlClient.SqlDataReader.GetDouble(Int32 i)
+   at AniX_DAL.AnimeDAL.MapReaderToAnimeDetail(SqlDataReader reader) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 1369
+   at AniX_DAL.AnimeDAL.GetAnimeDetailAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 476
+---------------------------------------------------
+Timestamp: 13/11/2023 20:10:47
+Severity: Error
+Exception Type: System.Data.SqlClient.SqlException
+Message: The parameterized query '(@AnimeName nvarchar(4000))
+        SELECT 
+            ar.*,' expects the parameter '@AnimeName', which was not supplied.
+Stack Trace:    at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader()
+   at System.Data.SqlClient.SqlCommand.InternalEndExecuteReader(IAsyncResult asyncResult, String endMethod)
+   at System.Data.SqlClient.SqlCommand.EndExecuteReaderInternal(IAsyncResult asyncResult)
+   at System.Data.SqlClient.SqlCommand.EndExecuteReader(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at AniX_DAL.AnimeDAL.GetAnimeDetailByNameAsync(String animeName) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 520
+---------------------------------------------------
+Timestamp: 13/11/2023 20:41:13
+Severity: Error
+Exception Type: System.IndexOutOfRangeException
+Message: ProfileImagePath
+Stack Trace:    at System.Data.ProviderBase.BasicFieldNameLookup.GetOrdinal(String fieldName)
+   at System.Data.SqlClient.SqlDataReader.GetOrdinal(String name)
+   at System.Data.SqlClient.SqlDataReader.get_Item(String name)
+   at AniX_DAL.AnimeDAL.MapReaderToReview(SqlDataReader reader) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 1420
+   at AniX_DAL.AnimeDAL.GetAnimeDetailAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 487
+---------------------------------------------------
+Timestamp: 13/11/2023 20:41:50
+Severity: Error
+Exception Type: System.IndexOutOfRangeException
+Message: ProfileImagePath
+Stack Trace:    at System.Data.ProviderBase.BasicFieldNameLookup.GetOrdinal(String fieldName)
+   at System.Data.SqlClient.SqlDataReader.GetOrdinal(String name)
+   at AniX_DAL.AnimeDAL.MapReaderToReview(SqlDataReader reader) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 1420
+   at AniX_DAL.AnimeDAL.GetAnimeDetailAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 487
+---------------------------------------------------
+Timestamp: 13/11/2023 20:42:31
+Severity: Error
+Exception Type: System.IndexOutOfRangeException
+Message: ProfileImagePath
+Stack Trace:    at System.Data.ProviderBase.BasicFieldNameLookup.GetOrdinal(String fieldName)
+   at System.Data.SqlClient.SqlDataReader.GetOrdinal(String name)
+   at AniX_DAL.AnimeDAL.MapReaderToReview(SqlDataReader reader) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 1420
+   at AniX_DAL.AnimeDAL.GetAnimeDetailAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 487
+---------------------------------------------------

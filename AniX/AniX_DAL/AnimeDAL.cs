@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Anix_Shared.DomainModels;
 using AniX_Shared.DomainModels;
 using AniX_Shared.Extensions;
 using AniX_Shared.Interfaces;
@@ -443,6 +444,244 @@ namespace AniX_DAL
             return anime;
         }
 
+        public async Task<AnimeDetailModel> GetAnimeDetailAsync(int animeId)
+        {
+            AnimeDetailModel animeDetail = null;
+
+            try
+            {
+                await connection.OpenAsync();
+                string animeQuery = @"
+            SELECT ar.*, 
+            (SELECT STRING_AGG(g.Name, ', ') FROM [Anime_Genre] ag JOIN [Genre] g ON ag.GenreId = g.Id WHERE ag.AnimeId = ar.Id FOR XML PATH(''), TYPE).value('.', 'NVARCHAR(MAX)') AS Genres
+            FROM [dbo].[AnimeWithRatings] ar
+            WHERE ar.Id = @AnimeId";
+
+                string reviewQuery = @"
+            SELECT r.*, u.Username, u.ProfileImagePath
+            FROM [Review] r 
+            JOIN [User] u ON r.UserId = u.Id 
+            WHERE r.AnimeId = @AnimeId";
+
+                using (SqlCommand command = new SqlCommand(animeQuery, connection))
+                {
+                    command.Parameters.AddWithValue("@AnimeId", animeId);
+                    using (SqlDataReader reader = await command.ExecuteReaderAsync())
+                    {
+                        if (await reader.ReadAsync())
+                        {
+                            animeDetail = MapReaderToAnimeDetail(reader);
+                        }
+                    }
+                }
+
+                if (animeDetail != null)
+                {
+                    using (SqlCommand command = new SqlCommand(reviewQuery, connection))
+                    {
+                        command.Parameters.AddWithValue("@AnimeId", animeId);
+                        using (SqlDataReader reader = await command.ExecuteReaderAsync())
+                        {
+                            while (await reader.ReadAsync())
+                            {
+                                var review = MapReaderToReview(reader);
+                                animeDetail.Reviews.Add(review);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                await _exceptionHandlingService.HandleExceptionAsync(ex);
+                throw;
+            }
+            finally
+            {
+                await connection.CloseAsync();
+            }
+
+            return animeDetail;
+        }
+
+        public async Task<AnimeWithRatings> GetUpcomingAnimeAsync()
+        {
+            AnimeWithRatings upcomingAnime = null;
+            try
+            {
+                await connection.OpenAsync();
+                string query = @"
+                SELECT TOP 1 
+                    ar.*,
+                    (SELECT STRING_AGG(g.Name, ', ') 
+                     FROM [Anime_Genre] ag
+                     JOIN [Genre] g ON ag.GenreId = g.Id
+                     WHERE ag.AnimeId = ar.Id
+                     FOR XML PATH(''), TYPE).value('.', 'NVARCHAR(MAX)') AS Genres
+                FROM [dbo].[AnimeWithRatings] ar
+                WHERE ar.Status = 'Not Yet Aired' AND ar.ReleaseDate > GETDATE()
+                ORDER BY ar.ReleaseDate ASC";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    using (SqlDataReader reader = await command.ExecuteReaderAsync())
+                    {
+                        if (await reader.ReadAsync())
+                        {
+                            upcomingAnime = MapReaderToAnimeWithGenres(reader);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                await _exceptionHandlingService.HandleExceptionAsync(ex);
+                throw;
+            }
+            finally
+            {
+                await connection.CloseAsync();
+            }
+            return upcomingAnime;
+        }
+
+        public async Task<List<AnimeWithRatings>> GetTopRatedAnimesAsync(int count)
+        {
+            var topRatedAnimes = new List<AnimeWithRatings>();
+
+            try
+            {
+                await connection.OpenAsync();
+                string query = @"
+            SELECT TOP (@Count) *
+            FROM [dbo].[AnimeWithRatings]
+            ORDER BY AverageRating DESC, NumberOfReviews DESC";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@Count", count);
+
+                    using (SqlDataReader reader = await command.ExecuteReaderAsync())
+                    {
+                        while (await reader.ReadAsync())
+                        {
+                            topRatedAnimes.Add(MapReaderToAnimeWithRatings(reader));
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                await _exceptionHandlingService.HandleExceptionAsync(ex);
+                throw;
+            }
+            finally
+            {
+                await connection.CloseAsync();
+            }
+
+            return topRatedAnimes;
+        }
+
+        public async Task<List<AnimeWithRatings>> GetNewlyReleasedAnimesAsync(int count)
+        {
+            var newlyReleasedAnimes = new List<AnimeWithRatings>();
+
+            try
+            {
+                await connection.OpenAsync();
+                string query = @"
+            SELECT TOP (@Count) *
+            FROM [dbo].[AnimeWithRatings]
+            WHERE ReleaseDate <= GETDATE() 
+            ORDER BY ReleaseDate DESC";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@Count", count);
+
+                    using (SqlDataReader reader = await command.ExecuteReaderAsync())
+                    {
+                        while (await reader.ReadAsync())
+                        {
+                            newlyReleasedAnimes.Add(MapReaderToAnimeWithRatings(reader));
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                await _exceptionHandlingService.HandleExceptionAsync(ex);
+                throw;
+            }
+            finally
+            {
+                await connection.CloseAsync();
+            }
+
+            return newlyReleasedAnimes;
+        }
+
+        public async Task<List<AnimeWithRatings>> GetRecentlyUpdatedAnimesAsync(int count)
+        {
+            var animes = new List<AnimeWithRatings>();
+            try
+            {
+                await connection.OpenAsync();
+                string query = $"SELECT TOP {count} * FROM [dbo].[AnimeWithRatings] ORDER BY Id DESC";
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    using (SqlDataReader reader = await command.ExecuteReaderAsync())
+                    {
+                        while (await reader.ReadAsync())
+                        {
+                            animes.Add(MapReaderToAnimeWithRatings(reader));
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                await _exceptionHandlingService.HandleExceptionAsync(ex);
+                throw;
+            }
+            finally
+            {
+                await connection.CloseAsync();
+            }
+            return animes;
+        }
+
+        public async Task<List<AnimeWithRatings>> GetRandomAnimesAsync(int count)
+        {
+            var animes = new List<AnimeWithRatings>();
+            try
+            {
+                await connection.OpenAsync();
+                string query = $"SELECT TOP {count} * FROM [dbo].[AnimeWithRatings] ORDER BY NEWID()";
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    using (SqlDataReader reader = await command.ExecuteReaderAsync())
+                    {
+                        while (await reader.ReadAsync())
+                        {
+                            animes.Add(MapReaderToAnimeWithRatings(reader));
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                await _exceptionHandlingService.HandleExceptionAsync(ex);
+                throw;
+            }
+            finally
+            {
+                await connection.CloseAsync();
+            }
+            return animes;
+        }
+
         public async Task<List<Anime>> GetAllAnimesAsync()
         {
             List<Anime> animes = new List<Anime>();
@@ -756,8 +995,14 @@ namespace AniX_DAL
                         {
                             var anime = new AnimeWithPopularity
                             {
+                                Id = reader.GetInt32(reader.GetOrdinal("Id")),
                                 Name = reader.GetString(reader.GetOrdinal("Name")),
-                                WatchlistCount = reader.GetInt32(reader.GetOrdinal("WatchlistCount"))
+                                Type = reader.GetString(reader.GetOrdinal("Type")),
+                                Thumbnail = reader.GetString(reader.GetOrdinal("Thumbnail")),
+                                WatchlistCount = reader.GetInt32(reader.GetOrdinal("WatchlistCount")),
+                                AverageRating = reader.IsDBNull(reader.GetOrdinal("AverageRating"))
+                                    ? (double?)null
+                                    : reader.GetDouble(reader.GetOrdinal("AverageRating"))
                             };
                             animesWithPopularity.Add(anime);
                         }
@@ -1039,7 +1284,8 @@ namespace AniX_DAL
                 Language = reader.IsDBNull(reader.GetOrdinal("Language")) ? null : reader.GetString(reader.GetOrdinal("Language")),
                 Rating = reader.IsDBNull(reader.GetOrdinal("Rating")) ? null : reader.GetString(reader.GetOrdinal("Rating")),
                 Year = reader.IsDBNull(reader.GetOrdinal("Year")) ? (int?)null : reader.GetInt32(reader.GetOrdinal("Year")),
-                ViewCount = reader.GetInt32(reader.GetOrdinal("ViewCount"))
+                ViewCount = reader.GetInt32(reader.GetOrdinal("ViewCount")),
+                AverageRating = reader.IsDBNull(reader.GetOrdinal("AverageRating")) ? (double?)null : reader.GetDouble(reader.GetOrdinal("AverageRating")),
             };
         }
 
@@ -1066,7 +1312,7 @@ namespace AniX_DAL
                 Rating = reader.IsDBNull(reader.GetOrdinal("Rating")) ? null : reader.GetString(reader.GetOrdinal("Rating")),
                 Year = reader.IsDBNull(reader.GetOrdinal("Year")) ? (int?)null : reader.GetInt32(reader.GetOrdinal("Year")),
                 NumberOfReviews = reader.GetInt32(reader.GetOrdinal("NumberOfReviews")),
-                AverageRating = reader.IsDBNull(reader.GetOrdinal("AverageRating")) ? (float?)null : reader.GetFloat(reader.GetOrdinal("AverageRating")),
+                AverageRating = reader.IsDBNull(reader.GetOrdinal("AverageRating")) ? (double?)null : reader.GetDouble(reader.GetOrdinal("AverageRating")),
             };
         }
 
@@ -1087,6 +1333,99 @@ namespace AniX_DAL
                 AnimeId = reader.GetInt32(reader.GetOrdinal("AnimeId")),
                 UserId = reader.GetInt32(reader.GetOrdinal("UserId")),
                 ViewDate = reader.GetDateTime(reader.GetOrdinal("ViewDate"))
+            };
+        }
+
+        private AnimeWithRatings MapReaderToAnimeWithGenres(SqlDataReader reader)
+        {
+            var anime = new AnimeWithRatings
+            {
+                Id = reader.GetInt32(reader.GetOrdinal("Id")),
+                Name = reader.GetString(reader.GetOrdinal("Name")),
+                Description = reader.IsDBNull(reader.GetOrdinal("Description")) ? null : reader.GetString(reader.GetOrdinal("Description")),
+                ReleaseDate = reader.IsDBNull(reader.GetOrdinal("ReleaseDate")) ? (DateTime?)null : reader.GetDateTime(reader.GetOrdinal("ReleaseDate")),
+                TrailerLink = reader.IsDBNull(reader.GetOrdinal("TrailerLink")) ? null : reader.GetString(reader.GetOrdinal("TrailerLink")),
+                Country = reader.IsDBNull(reader.GetOrdinal("Country")) ? null : reader.GetString(reader.GetOrdinal("Country")),
+                Season = reader.IsDBNull(reader.GetOrdinal("Season")) ? null : reader.GetString(reader.GetOrdinal("Season")),
+                Episodes = reader.IsDBNull(reader.GetOrdinal("Episodes")) ? (int?)null : reader.GetInt32(reader.GetOrdinal("Episodes")),
+                Studio = reader.IsDBNull(reader.GetOrdinal("Studio")) ? null : reader.GetString(reader.GetOrdinal("Studio")),
+                Type = reader.IsDBNull(reader.GetOrdinal("Type")) ? null : reader.GetString(reader.GetOrdinal("Type")),
+                Status = reader.IsDBNull(reader.GetOrdinal("Status")) ? null : reader.GetString(reader.GetOrdinal("Status")),
+                Premiered = reader.IsDBNull(reader.GetOrdinal("Premiered")) ? null : reader.GetString(reader.GetOrdinal("Premiered")),
+                Aired = reader.IsDBNull(reader.GetOrdinal("Aired")) ? (DateTime?)null : reader.GetDateTime(reader.GetOrdinal("Aired")),
+                CoverImage = reader.IsDBNull(reader.GetOrdinal("CoverImage")) ? null : reader.GetString(reader.GetOrdinal("CoverImage")),
+                Thumbnail = reader.IsDBNull(reader.GetOrdinal("Thumbnail")) ? null : reader.GetString(reader.GetOrdinal("Thumbnail")),
+                Language = reader.IsDBNull(reader.GetOrdinal("Language")) ? null : reader.GetString(reader.GetOrdinal("Language")),
+                Rating = reader.IsDBNull(reader.GetOrdinal("Rating")) ? null : reader.GetString(reader.GetOrdinal("Rating")),
+                Year = reader.IsDBNull(reader.GetOrdinal("Year")) ? (int?)null : reader.GetInt32(reader.GetOrdinal("Year")),
+                NumberOfReviews = reader.GetInt32(reader.GetOrdinal("NumberOfReviews")),
+                AverageRating = reader.IsDBNull(reader.GetOrdinal("AverageRating")) ? (double?)null : reader.GetDouble(reader.GetOrdinal("AverageRating")),
+            };
+
+            if (!reader.IsDBNull(reader.GetOrdinal("Genres")))
+            {
+                anime.Genres = reader.GetString(reader.GetOrdinal("Genres"))
+                    .Split(',')
+                    .Select(name => new Genre { Name = name.Trim() })
+                    .ToList();
+            }
+            else
+            {
+                anime.Genres = new List<Genre>();
+            }
+
+            return anime;
+        }
+
+        private AnimeDetailModel MapReaderToAnimeDetail(SqlDataReader reader)
+        {
+            var animeDetail = new AnimeDetailModel
+            {
+                Anime = new Anime
+                {
+                    Id = reader.GetInt32(reader.GetOrdinal("Id")),
+                    Name = reader.GetString(reader.GetOrdinal("Name")),
+                    Description = reader.IsDBNull(reader.GetOrdinal("Description")) ? null : reader.GetString(reader.GetOrdinal("Description")),
+                    ReleaseDate = reader.IsDBNull(reader.GetOrdinal("ReleaseDate")) ? (DateTime?)null : reader.GetDateTime(reader.GetOrdinal("ReleaseDate")),
+                    TrailerLink = reader.IsDBNull(reader.GetOrdinal("TrailerLink")) ? null : reader.GetString(reader.GetOrdinal("TrailerLink")),
+                    Country = reader.IsDBNull(reader.GetOrdinal("Country")) ? null : reader.GetString(reader.GetOrdinal("Country")),
+                    Season = reader.IsDBNull(reader.GetOrdinal("Season")) ? null : reader.GetString(reader.GetOrdinal("Season")),
+                    Episodes = reader.IsDBNull(reader.GetOrdinal("Episodes")) ? (int?)null : reader.GetInt32(reader.GetOrdinal("Episodes")),
+                    Studio = reader.IsDBNull(reader.GetOrdinal("Studio")) ? null : reader.GetString(reader.GetOrdinal("Studio")),
+                    Type = reader.IsDBNull(reader.GetOrdinal("Type")) ? null : reader.GetString(reader.GetOrdinal("Type")),
+                    Status = reader.IsDBNull(reader.GetOrdinal("Status")) ? null : reader.GetString(reader.GetOrdinal("Status")),
+                    Premiered = reader.IsDBNull(reader.GetOrdinal("Premiered")) ? null : reader.GetString(reader.GetOrdinal("Premiered")),
+                    Aired = reader.IsDBNull(reader.GetOrdinal("Aired")) ? (DateTime?)null : reader.GetDateTime(reader.GetOrdinal("Aired")),
+                    CoverImage = reader.IsDBNull(reader.GetOrdinal("CoverImage")) ? null : reader.GetString(reader.GetOrdinal("CoverImage")),
+                    Thumbnail = reader.IsDBNull(reader.GetOrdinal("Thumbnail")) ? null : reader.GetString(reader.GetOrdinal("Thumbnail")),
+                    Language = reader.IsDBNull(reader.GetOrdinal("Language")) ? null : reader.GetString(reader.GetOrdinal("Language")),
+                    Rating = reader.IsDBNull(reader.GetOrdinal("Rating")) ? null : reader.GetString(reader.GetOrdinal("Rating")),
+                    Year = reader.IsDBNull(reader.GetOrdinal("Year")) ? (int?)null : reader.GetInt32(reader.GetOrdinal("Year")),
+                },
+                NumberOfReviews = reader.GetInt32(reader.GetOrdinal("NumberOfReviews")),
+                AverageRating = reader.IsDBNull(reader.GetOrdinal("AverageRating")) ? (double?)null : reader.GetDouble(reader.GetOrdinal("AverageRating")),
+
+                Genres = reader.GetString(reader.GetOrdinal("Genres"))
+                    .Split(',')
+                    .Select(name => new Genre { Name = name.Trim() })
+                    .ToList(),
+                Reviews = new List<Review>()
+            };
+
+            return animeDetail;
+        }
+
+        private Review MapReaderToReview(SqlDataReader reader)
+        {
+            return new Review
+            {
+                User = new User
+                {
+                    Username = reader.GetString(reader.GetOrdinal("Username")),
+                    ProfileImagePath = reader.IsDBNull(reader.GetOrdinal("ProfileImagePath")) ? null : reader.GetString(reader.GetOrdinal("ProfileImagePath"))
+                },
+                Text = reader.IsDBNull(reader.GetOrdinal("Text")) ? null : reader.GetString(reader.GetOrdinal("Text")) // Add this line
+
             };
         }
     }

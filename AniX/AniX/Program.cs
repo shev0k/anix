@@ -6,6 +6,7 @@ using Microsoft.Extensions.Hosting;
 using AniX_BusinessLogic;
 using AniX_Shared.Interfaces;
 using AniX_DAL;
+using AniX_Shared.DomainModels;
 using AniX_Utility;
 using Microsoft.AspNetCore.Http;
 
@@ -37,6 +38,14 @@ builder.Services.AddTransient<IUserManagement, UserDAL>(sp => new UserDAL(
     sp.GetRequiredService<IExceptionHandlingService>(),
     sp.GetRequiredService<IErrorLoggingService>()
 ));
+
+builder.Services.AddTransient<IAnimeManagement, AnimeDAL>(sp => new AnimeDAL(
+    sp.GetRequiredService<IAzureBlobService>(),
+    sp.GetRequiredService<IConfiguration>(),
+    sp.GetRequiredService<IExceptionHandlingService>(),
+    sp.GetRequiredService<IErrorLoggingService>()
+));
+
 builder.Services.AddTransient<IAuthenticationService, AuthenticationService>();
 
 // Register IHttpContextAccessor and ISessionService

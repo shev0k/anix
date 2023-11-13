@@ -10,5 +10,6 @@ namespace AniX_Shared.Extensions
     public class AnimeWithPopularity : Anime
     {
         public int WatchlistCount { get; set; }
+        public double? AverageRating { get; set; }
     }
 }

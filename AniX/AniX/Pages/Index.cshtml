@@ -3,74 +3,75 @@
 @{
     ViewData["Title"] = "AniX";
 }
+<style>
+    .anime-cover {
+        width: 746px;
+        height: 600px;
+        object-fit: cover;
+    }
+}
+</style>
+
+@functions {
+    public static string TruncateDescription(string description, int maxLength = 150)
+    {
+        if (string.IsNullOrEmpty(description)) return description;
+        return description.Length <= maxLength ? description : description.Substring(0, maxLength) + "...";
+    }
+    public static string TruncateTitle(string title, int maxLength = 25)
+    {
+        if (string.IsNullOrEmpty(title)) return title;
+        return title.Length <= maxLength ? title : title.Substring(0, maxLength) + "...";
+    }
+
+    public static string TruncateRating(double? rating, int maxLength = 4)
+    {
+        if (rating == null) return "TBA";
+        string formattedRating = rating.Value.ToString("F2", System.Globalization.CultureInfo.InvariantCulture);
+        return formattedRating.Length <= maxLength ? formattedRating : formattedRating.Substring(0, maxLength);
+    }
+
+    private string GetRankClass(int rank)
+    {
+        return rank switch
+        {
+            1 => "light-text text-center color-yellow",
+            2 => "light-text text-center color-purple",
+            3 => "light-text text-center color-grey",
+            _ => "light-text text-center"
+            };
+    }
+}
 
 <!--=====================================-->
 <!--=        Banner Area Start          =-->
 <!--=====================================-->
 <section class="banner style-1 banner-slider">
-    <div class="banner-block overflow-hidden style-2">
-        <div class="container">
-            <div class="banner-content">
-                <div class="row ">
-                    <div class="col-lg-5 col-12">
-                        <h2 class="title">MY HERO<br> <b>ACADEMIA</b></h2>
-                        <p class="text">SEASON 4</p>
-                        <a href="streaming-season.html" class="text-box active">pg-13</a>
-                        <a href="streaming-season.html" class="text-box">★ 7.88</a>
-                        <a href="streaming-season.html" class="text-box">TV</a>
-                        <p class="light-text">APRIL 03, 2016</p>
-                        <p>The appearance of "quirks," newly discovered super powers, has been steadily increasing over the years, with 80 percent of humanity possessing various abilities from manipulation of elements to shapeshifting.</p>
-                        <a class="banner-btn" href="streaming-season.html">PLAY NOW</a>
-                    </div>
-                    <div class="col-lg-7 col-12">
-                        <img src="./assets/media/banner/banner-img-2.png" alt="">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="banner-block overflow-hidden style-1">
-        <div class="container">
-            <div class="banner-content">
-                <div class="row ">
-                    <div class="col-lg-5 col-12 ">
-                        <h2 class="title">ATTACK ON <br> <b>TITAN</b></h2>
-                        <p class="text">SEASON 3</p>
-                        <a href="streaming-season.html" class="text-box active">pg-13</a>
-                        <a href="streaming-season.html" class="text-box">★ 8.54</a>
-                        <a href="streaming-season.html" class="text-box">TV</a>
-                        <p class="light-text">APRIL 07, 2013</p>
-                        <p>Centuries ago, mankind was slaughtered to near extinction by monstrous humanoid creatures called Titans, forcing humans to hide in fear behind enormous concentric walls.</p>
-                        <a class="banner-btn" href="streaming-season.html">PLAY NOW</a>
-                    </div>
-                    <div class="col-lg-7 col-12">
-                        <img src="./assets/media/banner/banner-img-1.png" alt="">
+    @foreach (var anime in Model.FeaturedAnimes)
+    {
+        var backgroundStyle = $"background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('{anime.CoverImage}'); background-repeat: no-repeat; background-size: cover;";
+        <div class="banner-block overflow-hidden" style="@backgroundStyle">
+            <div class="container">
+                <div class="banner-content">
+                    <div class="row ">
+                        <div class="col-lg-5 col-12">
+                            <h2 class="title">@TruncateTitle(anime.Name)</h2>
+                            <p class="text">Season @anime.Season</p>
+                            <a href="@Url.Page("/AnimeDetail", new { id = anime.Id })" class="text-box active">@anime.Rating</a>
+                            <a href="@Url.Page("/AnimeDetail", new { id = anime.Id })" class="text-box">★ @TruncateRating(anime.AverageRating)</a>
+                            <a href="@Url.Page("/AnimeDetail", new { id = anime.Id })" class="text-box">@anime.Type</a>
+                            <p class="light-text">@anime.ReleaseDate?.ToString("MMMM dd, yyyy")</p>
+                            <p>@TruncateDescription(anime.Description)</p>
+                            <a class="banner-btn" href="@Url.Page("/AnimeDetail", new { id = anime.Id })">PLAY NOW</a>
+                        </div>
+                        <div class="col-lg-7 col-12">
+                            <img src="@anime.CoverImage" alt="@anime.Name" class="anime-cover">
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="banner-block overflow-hidden style-3">
-        <div class="container">
-            <div class="banner-content">
-                <div class="row ">
-                    <div class="col-lg-5 col-12 ">
-                        <h2 class="title">ONE <b>PIECE</b></h2>
-                        <p class="text">SEASON 5</p>
-                        <a href="streaming-season.html" class="text-box active">pg-13</a>
-                        <a href="streaming-season.html" class="text-box">★ 8.70</a>
-                        <a href="streaming-season.html" class="text-box">TV</a>
-                        <p class="light-text">OCTOBER 20, 1999</p>
-                        <p>Barely surviving in a barrel after passing through a terrible whirlpool at sea, carefree Monkey D. Luffy ends up aboard a ship under attack by fearsome pirates. Despite being a naive-looking teenager, he is not to be underestimated.</p>
-                        <a class="banner-btn" href="streaming-season.html">PLAY NOW</a>
-                    </div>
-                    <div class="col-lg-7 col-12">
-                        <img src="./assets/media/banner/banner-img-3.png" alt="">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    }
 </section>
 <!--=====================================-->
 <!--=        Recent Area Start          =-->
@@ -78,378 +79,82 @@
 <section class="recent sec-mar">
     <div class="container">
         <div class="heading style-1">
-            <h2>Recently Updated <span>Thursday 19 Sep 2023</span></h2>
+            <h2>Recently Updated <span>@DateTime.Now.ToString("dddd dd MMM yyyy")</span></h2>
         </div>
         <div class="row">
-            <div class="col-xl-3 col-lg-4 col-sm-6 col-12">
-                <div class="anime-blog">
-                    <a href="streaming-season.html" class="img-block">
-                        <img src="assets/media/anime/img-2.png" alt="">
-                    </a>
-                    <a href="./streaming-season.html" class="action-overlay"><i class="fal fa-play-circle"></i> Play Now</a>
-                    <div class="detail">
-                        <div class="tags">
-                            <a href="streaming-season.html" class="text-box">★ 7.88</a>
-                            <a href="streaming-season.html" class="text-box">TV</a>
-                            <p class="text-box active">PG 13</p>
+            @foreach (var anime in Model.RecentlyUpdatedAnimes)
+            {
+                <div class="col-xl-3 col-lg-4 col-sm-6 col-12">
+                    <div class="anime-blog">
+                        <a href="@Url.Page("/AnimeDetail", new { id = anime.Id })" class="img-block">
+                            <img src="@anime.Thumbnail" alt="@anime.Name" class="anime-image">
+                        </a>
+                        <a href="@Url.Page("/AnimeDetail", new { id = anime.Id })" class="action-overlay"><i class="fal fa-play-circle"></i> Play Now</a>
+                        <div class="detail">
+                            <div class="tags">
+                                <a href="@Url.Page("/AnimeDetail", new { id = anime.Id })" class="text-box">★ @TruncateRating(anime.AverageRating)</a>
+                                <a href="@Url.Page("/AnimeDetail", new { id = anime.Id })" class="text-box active">@anime.Type</a>
+                            </div>
+                            <div class="dropdown">
+                                <button type="button" class="dropdown-toggle" data-bs-toggle="dropdown">
+                                    <svg width="32" height="22" viewBox="0 0 32 22" fill="none"
+                                         xmlns="http://www.w3.org/2000/svg">
+                                        <rect x="0.145264" y="0.00012207" width="21.4395" height="2.68125" rx="1.34062"
+                                              fill="#999999" />
+                                        <rect x="0.145264" y="7.41272" width="21.4395" height="2.68125" rx="1.34062"
+                                              fill="#999999" />
+                                        <rect x="0.145264" y="14.8258" width="16.4914" height="2.68125" rx="1.34062"
+                                              fill="#999999" />
+                                        <path d="M19.8784 16.0712C19.8784 15.4163 20.4093 14.8854 21.0642 14.8854H30.2463C30.9011 14.8854 31.432 15.4163 31.432 16.0712C31.432 16.7261 30.9011 17.257 30.2463 17.257H21.0642C20.4093 17.257 19.8784 16.7261 19.8784 16.0712Z"
+                                              fill="#999999" />
+                                        <path d="M25.6552 22.0001C25.0171 22.0001 24.4999 21.4828 24.4999 20.8447V11.2977C24.4999 10.6596 25.0171 10.1423 25.6552 10.1423C26.2933 10.1423 26.8106 10.6596 26.8106 11.2977V20.8447C26.8106 21.4828 26.2933 22.0001 25.6552 22.0001Z"
+                                              fill="#999999" />
+                                    </svg>
+                                </button>
+                                <ul class="dropdown-menu bg-color-black pt-3 pb-3 ps-3 pe-3">
+                                    <li>
+                                        <a href="" class="none"><i class="fa fa-check"></i> Watch Later </a>
+                                    </li>
+                                    <li>
+                                        <a href=""><i class="fas fa-plus"></i> Add to Playlist </a>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
-                        <div class="dropdown">
-                            <button type="button" class="dropdown-toggle" data-bs-toggle="dropdown">
-                                <svg width="32" height="22" viewBox="0 0 32 22" fill="none"
-                                     xmlns="http://www.w3.org/2000/svg">
-                                    <rect x="0.145264" y="0.00012207" width="21.4395" height="2.68125" rx="1.34062"
-                                          fill="#999999" />
-                                    <rect x="0.145264" y="7.41272" width="21.4395" height="2.68125" rx="1.34062"
-                                          fill="#999999" />
-                                    <rect x="0.145264" y="14.8258" width="16.4914" height="2.68125" rx="1.34062"
-                                          fill="#999999" />
-                                    <path d="M19.8784 16.0712C19.8784 15.4163 20.4093 14.8854 21.0642 14.8854H30.2463C30.9011 14.8854 31.432 15.4163 31.432 16.0712C31.432 16.7261 30.9011 17.257 30.2463 17.257H21.0642C20.4093 17.257 19.8784 16.7261 19.8784 16.0712Z"
-                                          fill="#999999" />
-                                    <path d="M25.6552 22.0001C25.0171 22.0001 24.4999 21.4828 24.4999 20.8447V11.2977C24.4999 10.6596 25.0171 10.1423 25.6552 10.1423C26.2933 10.1423 26.8106 10.6596 26.8106 11.2977V20.8447C26.8106 21.4828 26.2933 22.0001 25.6552 22.0001Z"
-                                          fill="#999999" />
-                                </svg>
-                            </button>
-                            <ul class="dropdown-menu bg-color-black pt-3 pb-3 ps-3 pe-3">
-                                <li>
-                                    <a href="" class="none"><i class="fa fa-check"></i> Watch Later </a>
-                                </li>
-                                <li>
-                                    <a href=""><i class="fas fa-plus"></i> Add to Playlist </a>
-                                </li>
-                            </ul>
-                        </div>
+                        <a href="@Url.Page("/AnimeDetail", new { id = anime.Id })">
+                            <p>@anime.Name</p>
+                        </a>
                     </div>
-                    <a href="./streaming-season.html">
-                        <p>My Hero Academia</p>
-                    </a>
                 </div>
-            </div>
-            <div class="col-xl-3 col-lg-4 col-sm-6 col-12">
-                <div class="anime-blog">
-                    <a href="streaming-season.html" class="img-block">
-                        <img src="assets/media/anime/img-21.png" alt="">
-                    </a>
-                    <a href="./streaming-season.html" class="action-overlay"><i class="fal fa-play-circle"></i> Play Now</a>
-                    <div class="detail">
-                        <div class="tags">
-                            <a href="streaming-season.html" class="text-box">★ 7.09</a>
-                            <a href="streaming-season.html" class="text-box">TV</a>
-                            <p class="text-box active">PG 13</p>
-                        </div>
-                        <div class="dropdown">
-                            <button type="button" class="dropdown-toggle" data-bs-toggle="dropdown">
-                                <svg width="32" height="22" viewBox="0 0 32 22" fill="none"
-                                     xmlns="http://www.w3.org/2000/svg">
-                                    <rect x="0.145264" y="0.00012207" width="21.4395" height="2.68125" rx="1.34062"
-                                          fill="#999999" />
-                                    <rect x="0.145264" y="7.41272" width="21.4395" height="2.68125" rx="1.34062"
-                                          fill="#999999" />
-                                    <rect x="0.145264" y="14.8258" width="16.4914" height="2.68125" rx="1.34062"
-                                          fill="#999999" />
-                                    <path d="M19.8784 16.0712C19.8784 15.4163 20.4093 14.8854 21.0642 14.8854H30.2463C30.9011 14.8854 31.432 15.4163 31.432 16.0712C31.432 16.7261 30.9011 17.257 30.2463 17.257H21.0642C20.4093 17.257 19.8784 16.7261 19.8784 16.0712Z"
-                                          fill="#999999" />
-                                    <path d="M25.6552 22.0001C25.0171 22.0001 24.4999 21.4828 24.4999 20.8447V11.2977C24.4999 10.6596 25.0171 10.1423 25.6552 10.1423C26.2933 10.1423 26.8106 10.6596 26.8106 11.2977V20.8447C26.8106 21.4828 26.2933 22.0001 25.6552 22.0001Z"
-                                          fill="#999999" />
-                                </svg>
-                            </button>
-                            <ul class="dropdown-menu bg-color-black pt-3 pb-3 ps-3 pe-3">
-                                <li>
-                                    <a href="" class="none"><i class="fa fa-check"></i> Watch Later </a>
-                                </li>
-                                <li>
-                                    <a href=""><i class="fas fa-plus"></i> Add to Playlist </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <a href="./streaming-season.html">
-                        <p>Black Bullet</p>
-                    </a>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-4 col-sm-6 col-12">
-                <div class="anime-blog">
-                    <a href="streaming-season.html" class="img-block">
-                        <img src="assets/media/anime/img-7.png" alt="">
-                    </a>
-                    <a href="./streaming-season.html" class="action-overlay"><i class="fal fa-play-circle"></i> Play Now</a>
-                    <div class="detail">
-                        <div class="tags">
-                            <a href="streaming-season.html" class="text-box">★ 8.39</a>
-                            <a href="streaming-season.html" class="text-box">MOVIE</a>
-                            <p class="text-box active">PG 13</p>
-                        </div>
-                        <div class="dropdown">
-                            <button type="button" class="dropdown-toggle" data-bs-toggle="dropdown">
-                                <svg width="32" height="22" viewBox="0 0 32 22" fill="none"
-                                     xmlns="http://www.w3.org/2000/svg">
-                                    <rect x="0.145264" y="0.00012207" width="21.4395" height="2.68125" rx="1.34062"
-                                          fill="#999999" />
-                                    <rect x="0.145264" y="7.41272" width="21.4395" height="2.68125" rx="1.34062"
-                                          fill="#999999" />
-                                    <rect x="0.145264" y="14.8258" width="16.4914" height="2.68125" rx="1.34062"
-                                          fill="#999999" />
-                                    <path d="M19.8784 16.0712C19.8784 15.4163 20.4093 14.8854 21.0642 14.8854H30.2463C30.9011 14.8854 31.432 15.4163 31.432 16.0712C31.432 16.7261 30.9011 17.257 30.2463 17.257H21.0642C20.4093 17.257 19.8784 16.7261 19.8784 16.0712Z"
-                                          fill="#999999" />
-                                    <path d="M25.6552 22.0001C25.0171 22.0001 24.4999 21.4828 24.4999 20.8447V11.2977C24.4999 10.6596 25.0171 10.1423 25.6552 10.1423C26.2933 10.1423 26.8106 10.6596 26.8106 11.2977V20.8447C26.8106 21.4828 26.2933 22.0001 25.6552 22.0001Z"
-                                          fill="#999999" />
-                                </svg>
-                            </button>
-                            <ul class="dropdown-menu bg-color-black pt-3 pb-3 ps-3 pe-3">
-                                <li>
-                                    <a href="" class="none"><i class="fa fa-check"></i> Watch Later </a>
-                                </li>
-                                <li>
-                                    <a href=""><i class="fas fa-plus"></i> Add to Playlist </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <a href="./streaming-season.html">
-                        <p>Your Name</p>
-                    </a>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-4 col-sm-6 col-12">
-                <div class="anime-blog">
-                    <a href="streaming-season.html" class="img-block">
-                        <img src="assets/media/anime/img-8.png" alt="">
-                    </a>
-                    <a href="./streaming-season.html" class="action-overlay"><i class="fal fa-play-circle"></i> Play Now</a>
-                    <div class="detail">
-                        <div class="tags">
-                            <a href="streaming-season.html" class="text-box">★ 9.53</a>
-                            <a href="streaming-season.html" class="text-box">TV</a>
-                            <p class="text-box active">PG 13</p>
-                        </div>
-                        <div class="dropdown">
-                            <button type="button" class="dropdown-toggle" data-bs-toggle="dropdown">
-                                <svg width="32" height="22" viewBox="0 0 32 22" fill="none"
-                                     xmlns="http://www.w3.org/2000/svg">
-                                    <rect x="0.145264" y="0.00012207" width="21.4395" height="2.68125" rx="1.34062"
-                                          fill="#999999" />
-                                    <rect x="0.145264" y="7.41272" width="21.4395" height="2.68125" rx="1.34062"
-                                          fill="#999999" />
-                                    <rect x="0.145264" y="14.8258" width="16.4914" height="2.68125" rx="1.34062"
-                                          fill="#999999" />
-                                    <path d="M19.8784 16.0712C19.8784 15.4163 20.4093 14.8854 21.0642 14.8854H30.2463C30.9011 14.8854 31.432 15.4163 31.432 16.0712C31.432 16.7261 30.9011 17.257 30.2463 17.257H21.0642C20.4093 17.257 19.8784 16.7261 19.8784 16.0712Z"
-                                          fill="#999999" />
-                                    <path d="M25.6552 22.0001C25.0171 22.0001 24.4999 21.4828 24.4999 20.8447V11.2977C24.4999 10.6596 25.0171 10.1423 25.6552 10.1423C26.2933 10.1423 26.8106 10.6596 26.8106 11.2977V20.8447C26.8106 21.4828 26.2933 22.0001 25.6552 22.0001Z"
-                                          fill="#999999" />
-                                </svg>
-                            </button>
-                            <ul class="dropdown-menu bg-color-black pt-3 pb-3 ps-3 pe-3">
-                                <li>
-                                    <a href="" class="none"><i class="fa fa-check"></i> Watch Later </a>
-                                </li>
-                                <li>
-                                    <a href=""><i class="fas fa-plus"></i> Add to Playlist </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <a href="./streaming-season.html">
-                        <p>Darling in the Frax!</p>
-                    </a>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-4 col-sm-6 col-12">
-                <div class="anime-blog">
-                    <a href="streaming-season.html" class="img-block">
-                        <img src="assets/media/anime/img-5.png" alt="">
-                    </a>
-                    <a href="./streaming-season.html" class="action-overlay"><i class="fal fa-play-circle"></i> Play Now</a>
-                    <div class="detail">
-                        <div class="tags">
-                            <a href="streaming-season.html" class="text-box">★ 8.44</a>
-                            <a href="streaming-season.html" class="text-box">TV</a>
-                            <p class="text-box active">PG 13</p>
-                        </div>
-                        <div class="dropdown">
-                            <button type="button" class="dropdown-toggle" data-bs-toggle="dropdown">
-                                <svg width="32" height="22" viewBox="0 0 32 22" fill="none"
-                                     xmlns="http://www.w3.org/2000/svg">
-                                    <rect x="0.145264" y="0.00012207" width="21.4395" height="2.68125" rx="1.34062"
-                                          fill="#999999" />
-                                    <rect x="0.145264" y="7.41272" width="21.4395" height="2.68125" rx="1.34062"
-                                          fill="#999999" />
-                                    <rect x="0.145264" y="14.8258" width="16.4914" height="2.68125" rx="1.34062"
-                                          fill="#999999" />
-                                    <path d="M19.8784 16.0712C19.8784 15.4163 20.4093 14.8854 21.0642 14.8854H30.2463C30.9011 14.8854 31.432 15.4163 31.432 16.0712C31.432 16.7261 30.9011 17.257 30.2463 17.257H21.0642C20.4093 17.257 19.8784 16.7261 19.8784 16.0712Z"
-                                          fill="#999999" />
-                                    <path d="M25.6552 22.0001C25.0171 22.0001 24.4999 21.4828 24.4999 20.8447V11.2977C24.4999 10.6596 25.0171 10.1423 25.6552 10.1423C26.2933 10.1423 26.8106 10.6596 26.8106 11.2977V20.8447C26.8106 21.4828 26.2933 22.0001 25.6552 22.0001Z"
-                                          fill="#999999" />
-                                </svg>
-                            </button>
-                            <ul class="dropdown-menu bg-color-black pt-3 pb-3 ps-3 pe-3">
-                                <li>
-                                    <a href="" class="none"><i class="fa fa-check"></i> Watch Later </a>
-                                </li>
-                                <li>
-                                    <a href=""><i class="fas fa-plus"></i> Add to Playlist </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <a href="./streaming-season.html">
-                        <p>Haikyu</p>
-                    </a>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-4 col-sm-6 col-12">
-                <div class="anime-blog">
-                    <a href="streaming-season.html" class="img-block">
-                        <img src="assets/media/anime/img-22.png" alt="">
-                    </a>
-                    <a href="./streaming-season.html" class="action-overlay"><i class="fal fa-play-circle"></i> Play Now</a>
-                    <div class="detail">
-                        <div class="tags">
-                            <a href="streaming-season.html" class="text-box">★ 7.38</a>
-                            <a href="streaming-season.html" class="text-box">TV</a>
-                            <p class="text-box active">PG 13</p>
-                        </div>
-                        <div class="dropdown">
-                            <button type="button" class="dropdown-toggle" data-bs-toggle="dropdown">
-                                <svg width="32" height="22" viewBox="0 0 32 22" fill="none"
-                                     xmlns="http://www.w3.org/2000/svg">
-                                    <rect x="0.145264" y="0.00012207" width="21.4395" height="2.68125" rx="1.34062"
-                                          fill="#999999" />
-                                    <rect x="0.145264" y="7.41272" width="21.4395" height="2.68125" rx="1.34062"
-                                          fill="#999999" />
-                                    <rect x="0.145264" y="14.8258" width="16.4914" height="2.68125" rx="1.34062"
-                                          fill="#999999" />
-                                    <path d="M19.8784 16.0712C19.8784 15.4163 20.4093 14.8854 21.0642 14.8854H30.2463C30.9011 14.8854 31.432 15.4163 31.432 16.0712C31.432 16.7261 30.9011 17.257 30.2463 17.257H21.0642C20.4093 17.257 19.8784 16.7261 19.8784 16.0712Z"
-                                          fill="#999999" />
-                                    <path d="M25.6552 22.0001C25.0171 22.0001 24.4999 21.4828 24.4999 20.8447V11.2977C24.4999 10.6596 25.0171 10.1423 25.6552 10.1423C26.2933 10.1423 26.8106 10.6596 26.8106 11.2977V20.8447C26.8106 21.4828 26.2933 22.0001 25.6552 22.0001Z"
-                                          fill="#999999" />
-                                </svg>
-                            </button>
-                            <ul class="dropdown-menu bg-color-black pt-3 pb-3 ps-3 pe-3">
-                                <li>
-                                    <a href="" class="none"><i class="fa fa-check"></i> Watch Later </a>
-                                </li>
-                                <li>
-                                    <a href=""><i class="fas fa-plus"></i> Add to Playlist </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <a href="./streaming-season.html">
-                        <p>Kiznaiver</p>
-                    </a>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-4 col-sm-6 col-12">
-                <div class="anime-blog">
-                    <a href="streaming-season.html" class="img-block">
-                        <img src="assets/media/anime/img-6.png" alt="">
-                    </a>
-                    <a href="./streaming-season.html" class="action-overlay"><i class="fal fa-play-circle"></i> Play Now</a>
-                    <div class="detail">
-                        <div class="tags">
-                            <a href="streaming-season.html" class="text-box">★ 8.34</a>
-                            <a href="streaming-season.html" class="text-box">TV</a>
-                            <p class="text-box active">PG 18</p>
-                        </div>
-                        <div class="dropdown">
-                            <button type="button" class="dropdown-toggle" data-bs-toggle="dropdown">
-                                <svg width="32" height="22" viewBox="0 0 32 22" fill="none"
-                                     xmlns="http://www.w3.org/2000/svg">
-                                    <rect x="0.145264" y="0.00012207" width="21.4395" height="2.68125" rx="1.34062"
-                                          fill="#999999" />
-                                    <rect x="0.145264" y="7.41272" width="21.4395" height="2.68125" rx="1.34062"
-                                          fill="#999999" />
-                                    <rect x="0.145264" y="14.8258" width="16.4914" height="2.68125" rx="1.34062"
-                                          fill="#999999" />
-                                    <path d="M19.8784 16.0712C19.8784 15.4163 20.4093 14.8854 21.0642 14.8854H30.2463C30.9011 14.8854 31.432 15.4163 31.432 16.0712C31.432 16.7261 30.9011 17.257 30.2463 17.257H21.0642C20.4093 17.257 19.8784 16.7261 19.8784 16.0712Z"
-                                          fill="#999999" />
-                                    <path d="M25.6552 22.0001C25.0171 22.0001 24.4999 21.4828 24.4999 20.8447V11.2977C24.4999 10.6596 25.0171 10.1423 25.6552 10.1423C26.2933 10.1423 26.8106 10.6596 26.8106 11.2977V20.8447C26.8106 21.4828 26.2933 22.0001 25.6552 22.0001Z"
-                                          fill="#999999" />
-                                </svg>
-                            </button>
-                            <ul class="dropdown-menu bg-color-black pt-3 pb-3 ps-3 pe-3">
-                                <li>
-                                    <a href="" class="none"><i class="fa fa-check"></i> Watch Later </a>
-                                </li>
-                                <li>
-                                    <a href=""><i class="fas fa-plus"></i> Add to Playlist </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <a href="./streaming-season.html">
-                        <p>Psycho Pass</p>
-                    </a>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-4 col-sm-6 col-12">
-                <div class="anime-blog">
-                    <a href="streaming-season.html" class="img-block">
-                        <img src="assets/media/anime/img-4.png" alt="">
-                    </a>
-                    <a href="./streaming-season.html" class="action-overlay"><i class="fal fa-play-circle"></i> Play Now</a>
-                    <div class="detail">
-                        <div class="tags">
-                            <a href="streaming-season.html" class="text-box">★ 8.55</a>
-                            <a href="streaming-season.html" class="text-box">TV</a>
-                            <p class="text-box active">PG 18</p>
-                        </div>
-                        <div class="dropdown">
-                            <button type="button" class="dropdown-toggle" data-bs-toggle="dropdown">
-                                <svg width="32" height="22" viewBox="0 0 32 22" fill="none"
-                                     xmlns="http://www.w3.org/2000/svg">
-                                    <rect x="0.145264" y="0.00012207" width="21.4395" height="2.68125" rx="1.34062"
-                                          fill="#999999" />
-                                    <rect x="0.145264" y="7.41272" width="21.4395" height="2.68125" rx="1.34062"
-                                          fill="#999999" />
-                                    <rect x="0.145264" y="14.8258" width="16.4914" height="2.68125" rx="1.34062"
-                                          fill="#999999" />
-                                    <path d="M19.8784 16.0712C19.8784 15.4163 20.4093 14.8854 21.0642 14.8854H30.2463C30.9011 14.8854 31.432 15.4163 31.432 16.0712C31.432 16.7261 30.9011 17.257 30.2463 17.257H21.0642C20.4093 17.257 19.8784 16.7261 19.8784 16.0712Z"
-                                          fill="#999999" />
-                                    <path d="M25.6552 22.0001C25.0171 22.0001 24.4999 21.4828 24.4999 20.8447V11.2977C24.4999 10.6596 25.0171 10.1423 25.6552 10.1423C26.2933 10.1423 26.8106 10.6596 26.8106 11.2977V20.8447C26.8106 21.4828 26.2933 22.0001 25.6552 22.0001Z"
-                                          fill="#999999" />
-                                </svg>
-                            </button>
-                            <ul class="dropdown-menu bg-color-black pt-3 pb-3 ps-3 pe-3">
-                                <li>
-                                    <a href="" class="none"><i class="fa fa-check"></i> Watch Later </a>
-                                </li>
-                                <li>
-                                    <a href=""><i class="fas fa-plus"></i> Add to Playlist </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <a href="./streaming-season.html">
-                        <p>Chainsaw Man</p>
-                    </a>
-                </div>
-            </div>
+            }
         </div>
     </div>
 </section>
 <!--=====================================-->
 <!--=        Coming out Area Start     =-->
 <!--=====================================-->
-<section class="coming-out style-1 sec-mar  sec-pad">
-    <div class="container">
-        <div class="comingOut-content">
-            <h2 class="title">ATTACK ON <br> TITAN</h2>
-            <p class="light-text">Season 4</p>
-            <p class="text">Dark fantasy, Post Apocalyptic</p>
-            <a href="#" class="text-box active">pg-13</a>
-            <a href="#" class="text-box">★ 8.54</a>
-            <a href="#" class="text-box">TV</a>
-            <p class="copyright-text">Coming Out in</p>
-            <ul class="timer countdown">
-                <li>29<small>d</small></li>
-                <li>23<small>h</small></li>
-                <li>50<small>m</small></li>
-                <li>34<small>s</small></li>
-            </ul>
+@if (Model.UpcomingAnime != null)
+{
+    <section class="coming-out style-1 sec-mar sec-pad" style="background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('@Model.UpcomingAnime.CoverImage'); background-size: cover;">
+        <div class="container">
+            <div class="comingOut-content">
+                <h2 class="title">@Model.UpcomingAnime.Name</h2>
+                <p class="light-text">Season @Model.UpcomingAnime.Season</p>
+                <p class="text">@string.Join(", ", Model.UpcomingAnime.Genres)</p>
+                <a href="@Model.UpcomingAnime.TrailerLink" class="text-box active">@Model.UpcomingAnime.Rating</a>
+                <a href="@Model.UpcomingAnime.TrailerLink" class="text-box">★ @TruncateRating(Model.UpcomingAnime.AverageRating)</a>
+                <a href="@Model.UpcomingAnime.TrailerLink" class="text-box">@Model.UpcomingAnime.Type</a>
+                <p class="copyright-text">Coming Out in</p>
+                <ul class="timer countdown" id="countdown">
+                    <li><span id="days">00</span><small>d</small></li>
+                    <li><span id="hours">00</span><small>h</small></li>
+                    <li><span id="minutes">00</span><small>m</small></li>
+                    <li><span id="seconds">00</span><small>s</small></li>
+                </ul>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
+}
 <!--=====================================-->
 <!--=        Popular Anime Area Start =-->
 <!--=====================================-->
@@ -459,178 +164,51 @@
             <h2>Popular Anime</h2>
         </div>
         <div class="row">
-            <div class="col-xl-3 col-lg-4 col-sm-6 col-12">
-                <div class="anime-blog">
-                    <a href="./streaming-season.html" class="img-block">
-                        <img src="assets/media/anime/img-5.png" alt="">
-                    </a>
-                    <a href="./streaming-season.html" class="action-overlay"><i class="fal fa-play-circle"></i> Play Now</a>
-                    <div class="detail">
-                        <div class="tags">
-                            <a href="streaming-season.html" class="text-box">★ 8.44</a>
-                            <a href="streaming-season.html" class="text-box">TV</a>
-                            <p class="text-box active">PG 13</p>
+            @foreach (var anime in Model.PopularAnimes.Take(4))
+            {
+                <div class="col-xl-3 col-lg-4 col-sm-6 col-12">
+                    <div class="anime-blog">
+                        <a href="@Url.Page("/AnimeDetail", new { id = anime.Id })" class="img-block">
+                            <img src="@anime.Thumbnail" alt="@anime.Name" class="anime-image">
+                        </a>
+                        <a href="@Url.Page("/AnimeDetail", new { id = anime.Id })" class="action-overlay"><i class="fal fa-play-circle"></i> Play Now</a>
+                        <div class="detail">
+                            <div class="tags">
+                                <a href="@Url.Page("/AnimeDetail", new { id = anime.Id })" class="text-box">★ @TruncateRating(anime.AverageRating)</a>
+                                <a href="@Url.Page("/AnimeDetail", new { id = anime.Id })" class="text-box active">@anime.Type</a>
+                            </div>
+                            <div class="dropdown">
+                                <button type="button" class="dropdown-toggle" data-bs-toggle="dropdown">
+                                    <svg width="32" height="22" viewBox="0 0 32 22" fill="none"
+                                         xmlns="http://www.w3.org/2000/svg">
+                                        <rect x="0.145264" y="0.00012207" width="21.4395" height="2.68125" rx="1.34062"
+                                              fill="#999999" />
+                                        <rect x="0.145264" y="7.41272" width="21.4395" height="2.68125" rx="1.34062"
+                                              fill="#999999" />
+                                        <rect x="0.145264" y="14.8258" width="16.4914" height="2.68125" rx="1.34062"
+                                              fill="#999999" />
+                                        <path d="M19.8784 16.0712C19.8784 15.4163 20.4093 14.8854 21.0642 14.8854H30.2463C30.9011 14.8854 31.432 15.4163 31.432 16.0712C31.432 16.7261 30.9011 17.257 30.2463 17.257H21.0642C20.4093 17.257 19.8784 16.7261 19.8784 16.0712Z"
+                                              fill="#999999" />
+                                        <path d="M25.6552 22.0001C25.0171 22.0001 24.4999 21.4828 24.4999 20.8447V11.2977C24.4999 10.6596 25.0171 10.1423 25.6552 10.1423C26.2933 10.1423 26.8106 10.6596 26.8106 11.2977V20.8447C26.8106 21.4828 26.2933 22.0001 25.6552 22.0001Z"
+                                              fill="#999999" />
+                                    </svg>
+                                </button>
+                                <ul class="dropdown-menu bg-color-black pt-3 pb-3 ps-3 pe-3">
+                                    <li>
+                                        <a href="" class="none"><i class="fa fa-check"></i> Watch Later </a>
+                                    </li>
+                                    <li>
+                                        <a href=""><i class="fas fa-plus"></i> Add to Playlist </a>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
-                        <div class="dropdown">
-                            <button type="button" class="dropdown-toggle" data-bs-toggle="dropdown">
-                                <svg width="32" height="22" viewBox="0 0 32 22" fill="none"
-                                     xmlns="http://www.w3.org/2000/svg">
-                                    <rect x="0.145264" y="0.00012207" width="21.4395" height="2.68125" rx="1.34062"
-                                          fill="#999999" />
-                                    <rect x="0.145264" y="7.41272" width="21.4395" height="2.68125" rx="1.34062"
-                                          fill="#999999" />
-                                    <rect x="0.145264" y="14.8258" width="16.4914" height="2.68125" rx="1.34062"
-                                          fill="#999999" />
-                                    <path d="M19.8784 16.0712C19.8784 15.4163 20.4093 14.8854 21.0642 14.8854H30.2463C30.9011 14.8854 31.432 15.4163 31.432 16.0712C31.432 16.7261 30.9011 17.257 30.2463 17.257H21.0642C20.4093 17.257 19.8784 16.7261 19.8784 16.0712Z"
-                                          fill="#999999" />
-                                    <path d="M25.6552 22.0001C25.0171 22.0001 24.4999 21.4828 24.4999 20.8447V11.2977C24.4999 10.6596 25.0171 10.1423 25.6552 10.1423C26.2933 10.1423 26.8106 10.6596 26.8106 11.2977V20.8447C26.8106 21.4828 26.2933 22.0001 25.6552 22.0001Z"
-                                          fill="#999999" />
-                                </svg>
-                            </button>
-                            <ul class="dropdown-menu bg-color-black pt-3 pb-3 ps-3 pe-3">
-                                <li>
-                                    <a href="" class="none"><i class="fa fa-check"></i> Watch Later </a>
-                                </li>
-                                <li>
-                                    <a href=""><i class="fas fa-plus"></i> Add to Playlist </a>
-                                </li>
-                            </ul>
-                        </div>
+                        <a href="@Url.Page("/AnimeDetail", new { id = anime.Id })">
+                            <p>@anime.Name</p>
+                        </a>
                     </div>
-                    <a href="./streaming-season.html">
-                        <p>Haikyu</p>
-                    </a>
                 </div>
-            </div>
-            <div class="col-xl-3 col-lg-4 col-sm-6 col-12">
-                <div class="anime-blog">
-                    <a href="./streaming-season.html" class="img-block">
-                        <img src="assets/media/anime/img-6.png" alt="">
-                    </a>
-                    <a href="./streaming-season.html" class="action-overlay"><i class="fal fa-play-circle"></i> Play Now</a>
-                    <div class="detail">
-                        <div class="tags">
-                            <a href="streaming-season.html" class="text-box">★ 8.34</a>
-                            <a href="streaming-season.html" class="text-box">TV</a>
-                            <p class="text-box active">PG 18</p>
-                        </div>
-                        <div class="dropdown">
-                            <button type="button" class="dropdown-toggle" data-bs-toggle="dropdown">
-                                <svg width="32" height="22" viewBox="0 0 32 22" fill="none"
-                                     xmlns="http://www.w3.org/2000/svg">
-                                    <rect x="0.145264" y="0.00012207" width="21.4395" height="2.68125" rx="1.34062"
-                                          fill="#999999" />
-                                    <rect x="0.145264" y="7.41272" width="21.4395" height="2.68125" rx="1.34062"
-                                          fill="#999999" />
-                                    <rect x="0.145264" y="14.8258" width="16.4914" height="2.68125" rx="1.34062"
-                                          fill="#999999" />
-                                    <path d="M19.8784 16.0712C19.8784 15.4163 20.4093 14.8854 21.0642 14.8854H30.2463C30.9011 14.8854 31.432 15.4163 31.432 16.0712C31.432 16.7261 30.9011 17.257 30.2463 17.257H21.0642C20.4093 17.257 19.8784 16.7261 19.8784 16.0712Z"
-                                          fill="#999999" />
-                                    <path d="M25.6552 22.0001C25.0171 22.0001 24.4999 21.4828 24.4999 20.8447V11.2977C24.4999 10.6596 25.0171 10.1423 25.6552 10.1423C26.2933 10.1423 26.8106 10.6596 26.8106 11.2977V20.8447C26.8106 21.4828 26.2933 22.0001 25.6552 22.0001Z"
-                                          fill="#999999" />
-                                </svg>
-                            </button>
-                            <ul class="dropdown-menu bg-color-black pt-3 pb-3 ps-3 pe-3">
-                                <li>
-                                    <a href="" class="none"><i class="fa fa-check"></i> Watch Later </a>
-                                </li>
-                                <li>
-                                    <a href=""><i class="fas fa-plus"></i> Add to Playlist </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <a href="./streaming-season.html">
-                        <p>Psycho Pass</p>
-                    </a>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-4 col-sm-6 col-12">
-                <div class="anime-blog">
-                    <a href="./streaming-season.html" class="img-block">
-                        <img src="assets/media/anime/img-7.png" alt="">
-                    </a>
-                    <a href="./streaming-season.html" class="action-overlay"><i class="fal fa-play-circle"></i> Play Now</a>
-                    <div class="detail">
-                        <div class="tags">
-                            <a href="streaming-season.html" class="text-box">★ 8.39</a>
-                            <a href="streaming-season.html" class="text-box">MOVIE</a>
-                            <p class="text-box active">PG 13</p>
-                        </div>
-                        <div class="dropdown">
-                            <button type="button" class="dropdown-toggle" data-bs-toggle="dropdown">
-                                <svg width="32" height="22" viewBox="0 0 32 22" fill="none"
-                                     xmlns="http://www.w3.org/2000/svg">
-                                    <rect x="0.145264" y="0.00012207" width="21.4395" height="2.68125" rx="1.34062"
-                                          fill="#999999" />
-                                    <rect x="0.145264" y="7.41272" width="21.4395" height="2.68125" rx="1.34062"
-                                          fill="#999999" />
-                                    <rect x="0.145264" y="14.8258" width="16.4914" height="2.68125" rx="1.34062"
-                                          fill="#999999" />
-                                    <path d="M19.8784 16.0712C19.8784 15.4163 20.4093 14.8854 21.0642 14.8854H30.2463C30.9011 14.8854 31.432 15.4163 31.432 16.0712C31.432 16.7261 30.9011 17.257 30.2463 17.257H21.0642C20.4093 17.257 19.8784 16.7261 19.8784 16.0712Z"
-                                          fill="#999999" />
-                                    <path d="M25.6552 22.0001C25.0171 22.0001 24.4999 21.4828 24.4999 20.8447V11.2977C24.4999 10.6596 25.0171 10.1423 25.6552 10.1423C26.2933 10.1423 26.8106 10.6596 26.8106 11.2977V20.8447C26.8106 21.4828 26.2933 22.0001 25.6552 22.0001Z"
-                                          fill="#999999" />
-                                </svg>
-                            </button>
-                            <ul class="dropdown-menu bg-color-black pt-3 pb-3 ps-3 pe-3">
-                                <li>
-                                    <a href="" class="none"><i class="fa fa-check"></i> Watch Later </a>
-                                </li>
-                                <li>
-                                    <a href=""><i class="fas fa-plus"></i> Add to Playlist </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <a href="./streaming-season.html">
-                        <p>Your Name</p>
-                    </a>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-4 col-sm-6 col-12">
-                <div class="anime-blog">
-                    <a href="./streaming-season.html" class="img-block">
-                        <img src="assets/media/anime/img-8.png" alt="">
-                    </a>
-                    <a href="./streaming-season.html" class="action-overlay"><i class="fal fa-play-circle"></i> Play Now</a>
-                    <div class="detail">
-                        <div class="tags">
-                            <a href="streaming-season.html" class="text-box">★ 9.53</a>
-                            <a href="streaming-season.html" class="text-box">TV</a>
-                            <p class="text-box active">PG 13</p>
-                        </div>
-                        <div class="dropdown">
-                            <button type="button" class="dropdown-toggle" data-bs-toggle="dropdown">
-                                <svg width="32" height="22" viewBox="0 0 32 22" fill="none"
-                                     xmlns="http://www.w3.org/2000/svg">
-                                    <rect x="0.145264" y="0.00012207" width="21.4395" height="2.68125" rx="1.34062"
-                                          fill="#999999" />
-                                    <rect x="0.145264" y="7.41272" width="21.4395" height="2.68125" rx="1.34062"
-                                          fill="#999999" />
-                                    <rect x="0.145264" y="14.8258" width="16.4914" height="2.68125" rx="1.34062"
-                                          fill="#999999" />
-                                    <path d="M19.8784 16.0712C19.8784 15.4163 20.4093 14.8854 21.0642 14.8854H30.2463C30.9011 14.8854 31.432 15.4163 31.432 16.0712C31.432 16.7261 30.9011 17.257 30.2463 17.257H21.0642C20.4093 17.257 19.8784 16.7261 19.8784 16.0712Z"
-                                          fill="#999999" />
-                                    <path d="M25.6552 22.0001C25.0171 22.0001 24.4999 21.4828 24.4999 20.8447V11.2977C24.4999 10.6596 25.0171 10.1423 25.6552 10.1423C26.2933 10.1423 26.8106 10.6596 26.8106 11.2977V20.8447C26.8106 21.4828 26.2933 22.0001 25.6552 22.0001Z"
-                                          fill="#999999" />
-                                </svg>
-                            </button>
-                            <ul class="dropdown-menu bg-color-black pt-3 pb-3 ps-3 pe-3">
-                                <li>
-                                    <a href="" class="none"><i class="fa fa-check"></i> Watch Later </a>
-                                </li>
-                                <li>
-                                    <a href=""><i class="fas fa-plus"></i> Add to Playlist </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <a href="./streaming-season.html">
-                        <p>Darling in the Franxx!</p>
-                    </a>
-                </div>
-            </div>
+            }
         </div>
     </div>
 </section>
@@ -638,380 +216,123 @@
 <!--=           top Area Start          =-->
 <!--=====================================-->
 <section class="top sec-mar">
-    <div class="container">
-        <div class="row">
-            <div class="col-xl-4 col-lg-6 col-md-6 col-sm-8 offset-xl-0 offset-lg-0 offset-md-0 offset-sm-2 col-12">
-                <h3>Top Rated Anime</h3>
-                <div class="anime-box bg-color-black">
-                    <a href="./streaming-season.html">
-                        <div class="row m-0">
-                            <div class="p-0 col-2">
-                                <span class="light-text text-center color-yellow">1</span>
-                            </div>
-                            <div class="p-0 col-2">
-                                <img src="assets/media/anime-sm-img/anime-img-1.png" alt="">
-                            </div>
-                            <div class="p-0 col-7">
-                                <div class="anime-blog">
-                                    <p>Darling in the Franxx!</p>
-                                    <p class="text-box">★ 9.53</p>
-                                    <p class="text-box">PG 13</p>
-                                </div>
-                            </div>
-                            <div class="p-0 col-1 show-type">
-                                <span class="show-type">TV</span>
-                            </div>
+<div class="container">
+<div class="row">
+<div class="col-xl-4 col-lg-6 col-md-6 col-sm-8 offset-xl-0 offset-lg-0 offset-md-0 offset-sm-2 col-12">
+    <h3>Top Watched</h3>
+    @for (int i = 0; i < Model.TopWatchedAnimes.Count && i < 6; i++)
+    {
+        var anime = Model.TopWatchedAnimes[i];
+        string rankClass = GetRankClass(i + 1); 
+
+        <div class="anime-box bg-color-black">
+            <a href="@Url.Page("/AnimeDetail", new { id = anime.Id })">
+                <div class="row m-0">
+                    <div class="p-0 col-2">
+                        <span class="@rankClass">@((i + 1).ToString())</span>
+                    </div>
+                    <div class="p-0 col-2">
+                        <img src="@anime.Thumbnail" class="anime-blog-image" alt="@anime.Name">
+                    </div>
+                    <div class="p-0 col-7">
+                        <div class="anime-blog">
+                            <p>@anime.Name</p>
+                            <p class="text-box">★ @TruncateRating(anime.AverageRating)</p>
+                            <p class="text-box">@anime.Rating</p>
                         </div>
-                    </a>
+                    </div>
+                    <div class="p-0 col-1 show-type">
+                        <span class="show-type">@anime.Type</span>
+                    </div>
                 </div>
-                <div class="anime-box bg-color-black">
-                    <a href="./streaming-season.html">
-                        <div class="row m-0">
-                            <div class="p-0 col-2">
-                                <span class="light-text text-center color-purple">2</span>
-                            </div>
-                            <div class="p-0 col-2">
-                                <img src="assets/media/anime-sm-img/anime-img-2.png" alt="">
-                            </div>
-                            <div class="p-0 col-7">
-                                <div class="anime-blog">
-                                    <p>Plastic Memories</p>
-                                    <p class="text-box">★ 9.28</p>
-                                    <p class="text-box">PG 13</p>
-                                </div>
-                            </div>
-                            <div class="p-0 col-1 show-type">
-                                <span class="show-type">TV</span>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="anime-box bg-color-black">
-                    <a href="./streaming-season.html">
-                        <div class="row m-0">
-                            <div class="p-0 col-2">
-                                <span class="light-text text-center color-grey">3</span>
-                            </div>
-                            <div class="p-0 col-2">
-                                <img src="assets/media/anime-sm-img/anime-img-3.png" alt="">
-                            </div>
-                            <div class="p-0 col-7">
-                                <div class="anime-blog">
-                                    <p>That Time I Reincarnated</p>
-                                    <p class="text-box">★ 9.18</p>
-                                    <p class="text-box">PG 13</p>
-                                </div>
-                            </div>
-                            <div class="p-0 col-1 show-type">
-                                <span class="show-type">TV</span>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="anime-box bg-color-black">
-                    <a href="./streaming-season.html">
-                        <div class="row m-0">
-                            <div class="p-0 col-2">
-                                <span class="light-text text-center">4</span>
-                            </div>
-                            <div class="p-0 col-2">
-                                <img src="assets/media/anime-sm-img/anime-img-4.png" alt="">
-                            </div>
-                            <div class="p-0 col-7">
-                                <div class="anime-blog">
-                                    <p>Assassination Classroom</p>
-                                    <p class="text-box">★ 9.08</p>
-                                    <p class="text-box">PG 13</p>
-                                </div>
-                            </div>
-                            <div class="p-0 col-1 show-type">
-                                <span class="show-type">TV</span>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="anime-box bg-color-black">
-                    <a href="./streaming-season.html">
-                        <div class="row m-0">
-                            <div class="p-0 col-2">
-                                <span class="light-text text-center ">5</span>
-                            </div>
-                            <div class="p-0 col-2">
-                                <img src="assets/media/anime-sm-img/anime-img-5.png" alt="">
-                            </div>
-                            <div class="p-0 col-7">
-                                <div class="anime-blog">
-                                    <p>Chainsaw Man</p>
-                                    <p class="text-box">★ 8.55</p>
-                                    <p class="text-box">PG 18</p>
-                                    <p class="text-box active">18+</p>
-                                </div>
-                            </div>
-                            <div class="p-0 col-1 show-type">
-                                <span class="show-type">TV</span>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="anime-box bg-color-black">
-                    <a href="./streaming-season.html">
-                        <div class="row m-0">
-                            <div class="p-0 col-2">
-                                <span class="light-text text-center ">6</span>
-                            </div>
-                            <div class="p-0 col-2">
-                                <img src="assets/media/anime-sm-img/anime-img-6.png" alt="">
-                            </div>
-                            <div class="p-0 col-7">
-                                <div class="anime-blog">
-                                    <p>No Game No Life Zero</p>
-                                    <p class="text-box">★ 8.50</p>
-                                    <p class="text-box">PG 13</p>
-                                </div>
-                            </div>
-                            <div class="p-0 col-1 show-type">
-                                <span class="show-type">TV</span>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="col-xl-4 col-lg-6 col-md-6 col-sm-8 offset-xl-0 offset-lg-0 offset-md-0 offset-sm-2 col-12">
-                <h3>New</h3>
-                <div class="anime-box bg-color-black">
-                    <a href="./streaming-season.html">
-                        <div class="row m-0">
-                            <div class="p-0 col-2">
-                                <img src="assets/media/anime-sm-img/anime-img-7.png" alt="">
-                            </div>
-                            <div class="p-0 col-9">
-                                <div class="anime-blog">
-                                    <p>86</p>
-                                    <p class="text-box">★ 8.32</p>
-                                    <p class="text-box">PG 13</p>
-                                </div>
-                            </div>
-                            <div class="p-0 col-1 show-type">
-                                <span class="show-type">TV</span>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="anime-box bg-color-black">
-                    <a href="./streaming-season.html">
-                        <div class="row m-0">
-                            <div class="p-0 col-2">
-                                <img src="assets/media/anime-sm-img/anime-img-8.png" alt="">
-                            </div>
-                            <div class="p-0 col-9">
-                                <div class="anime-blog">
-                                    <p>Re-Zero</p>
-                                    <p class="text-box">★ 8.49</p>
-                                    <p class="text-box">PG 18</p>
-                                    <p class="text-box active">18+</p>
-                                </div>
-                            </div>
-                            <div class="p-0 col-1 show-type">
-                                <span class="show-type">TV</span>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="anime-box bg-color-black">
-                    <a href="./streaming-season.html">
-                        <div class="row m-0">
-                            <div class="p-0 col-2">
-                                <img src="assets/media/anime-sm-img/anime-img-9.png" alt="">
-                            </div>
-                            <div class="p-0 col-9">
-                                <div class="anime-blog">
-                                    <p>Tokyo Ghoul</p>
-                                    <p class="text-box">★ 7.90</p>
-                                    <p class="text-box">PG 13</p>
-                                </div>
-                            </div>
-                            <div class="p-0 col-1 show-type">
-                                <span class="show-type">TV</span>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="anime-box bg-color-black">
-                    <a href="./streaming-season.html">
-                        <div class="row m-0">
-                            <div class="p-0 col-2">
-                                <img src="assets/media/anime-sm-img/anime-img-10.png" alt="">
-                            </div>
-                            <div class="p-0 col-9">
-                                <div class="anime-blog">
-                                    <p>Sword Art Online</p>
-                                    <p class="text-box">★ 8.50</p>
-                                    <p class="text-box">PG 13</p>
-                                </div>
-                            </div>
-                            <div class="p-0 col-1 show-type">
-                                <span class="show-type">TV</span>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="anime-box bg-color-black">
-                    <a href="./streaming-season.html">
-                        <div class="row m-0">
-                            <div class="p-0 col-2">
-                                <img src="assets/media/anime-sm-img/anime-img-11.png" alt="">
-                            </div>
-                            <div class="p-0 col-9">
-                                <div class="anime-blog">
-                                    <p>Sword Art Online: Alicization</p>
-                                    <p class="text-box">★ 8.12</p>
-                                    <p class="text-box">PG 13</p>
-                                </div>
-                            </div>
-                            <div class="p-0 col-1 show-type">
-                                <span class="show-type">TV</span>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="anime-box bg-color-black">
-                    <a href="./streaming-season.html">
-                        <div class="row m-0">
-                            <div class="p-0 col-2">
-                                <img src="assets/media/anime-sm-img/anime-img-12.png" alt="">
-                            </div>
-                            <div class="p-0 col-9">
-                                <div class="anime-blog">
-                                    <p>One Piece</p>
-                                    <p class="text-box">★ 8.70</p>
-                                    <p class="text-box">PG 13</p>
-                                </div>
-                            </div>
-                            <div class="p-0 col-1 show-type">
-                                <span class="show-type">TV</span>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="col-xl-4 col-lg-6 col-md-6 col-sm-8 offset-xl-0 offset-lg-3 offset-md-3 offset-sm-2 col-12">
-                <h3>Recently Completed</h3>
-                <div class="anime-box bg-color-black">
-                    <a href="./streaming-season.html">
-                        <div class="row m-0">
-                            <div class="p-0 col-2">
-                                <img src="assets/media/anime-sm-img/anime-img-1.png" alt="">
-                            </div>
-                            <div class="p-0 col-9">
-                                <div class="anime-blog">
-                                    <p>Darling in the Franxx!</p>
-                                    <p class="text-box">★ 9.53</p>
-                                    <p class="text-box">PG 13</p>
-                                </div>
-                            </div>
-                            <div class="p-0 col-1 show-type">
-                                <span class="show-type">TV</span>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="anime-box bg-color-black">
-                    <a href="./streaming-season.html">
-                        <div class="row m-0">
-                            <div class="p-0 col-2">
-                                <img src="assets/media/anime-sm-img/anime-img-2.png" alt="">
-                            </div>
-                            <div class="p-0 col-9">
-                                <div class="anime-blog">
-                                    <p>Plastic Memories</p>
-                                    <p class="text-box">★ 9.28</p>
-                                    <p class="text-box">PG 13</p>
-                                </div>
-                            </div>
-                            <div class="p-0 col-1 show-type">
-                                <span class="show-type">TV</span>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="anime-box bg-color-black">
-                    <a href="./streaming-season.html">
-                        <div class="row m-0">
-                            <div class="p-0 col-2">
-                                <img src="assets/media/anime-sm-img/anime-img-3.png" alt="">
-                            </div>
-                            <div class="p-0 col-9">
-                                <div class="anime-blog">
-                                    <p>That Time I Reincarnated</p>
-                                    <p class="text-box">★ 9.28</p>
-                                    <p class="text-box">PG 13</p>
-                                </div>
-                            </div>
-                            <div class="p-0 col-1 show-type">
-                                <span class="show-type">TV</span>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="anime-box bg-color-black">
-                    <a href="./streaming-season.html">
-                        <div class="row m-0">
-                            <div class="p-0 col-2">
-                                <img src="assets/media/anime-sm-img/anime-img-4.png" alt="">
-                            </div>
-                            <div class="p-0 col-9">
-                                <div class="anime-blog">
-                                    <p>Assassination Classroom</p>
-                                    <p class="text-box">★ 9.08</p>
-                                    <p class="text-box">PG 13</p>
-                                </div>
-                            </div>
-                            <div class="p-0 col-1 show-type">
-                                <span class="show-type">TV</span>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="anime-box bg-color-black">
-                    <a href="./streaming-season.html">
-                        <div class="row m-0">
-                            <div class="p-0 col-2">
-                                <img src="assets/media/anime-sm-img/anime-img-5.png" alt="">
-                            </div>
-                            <div class="p-0 col-9">
-                                <div class="anime-blog">
-                                    <p>Chainsaw Man</p>
-                                    <p class="text-box">★ 8.55</p>
-                                    <p class="text-box">PG 18</p>
-                                    <p class="text-box active">18+</p>
-                                </div>
-                            </div>
-                            <div class="p-0 col-1 show-type">
-                                <span class="show-type">TV</span>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="anime-box bg-color-black mb-0">
-                    <a href="./streaming-season.html">
-                        <div class="row m-0">
-                            <div class="p-0 col-2">
-                                <img src="assets/media/anime-sm-img/anime-img-6.png" alt="">
-                            </div>
-                            <div class="p-0 col-9">
-                                <div class="anime-blog">
-                                    <p>No Game No Life Zero</p>
-                                    <p class="text-box">★ 8.50</p>
-                                    <p class="text-box">PG 13</p>
-                                </div>
-                            </div>
-                            <div class="p-0 col-1 show-type">
-                                <span class="show-type">TV</span>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
+            </a>
         </div>
-    </div>
+    }
+</div>
+<div class="col-xl-4 col-lg-6 col-md-6 col-sm-8 offset-xl-0 offset-lg-0 offset-md-0 offset-sm-2 col-12">
+    <h3>Recently Released</h3>
+    @foreach (var anime in Model.NewlyReleasedAnimes)
+    {
+        <div class="anime-box bg-color-black">
+            <a href="@Url.Page("/AnimeDetail", new { id = anime.Id })">
+                <div class="row m-0">
+                    <div class="col-2 p-0">
+                        <img src="@anime.Thumbnail" class="anime-blog-image" alt="@anime.Name">
+                    </div>
+                    <div class="col-8 p-0">
+                        <div class="anime-blog">
+                            <p>@anime.Name</p>
+                            <p class="text-box">★ @TruncateRating(anime.AverageRating)</p>
+                            <p class="text-box">@anime.Rating</p>
+                        </div>
+                    </div>
+                    <div class="col-2 p-0 show-type">
+                        <span class="show-type">@anime.Type</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+    }
+</div>
+
+<div class="col-xl-4 col-lg-6 col-md-6 col-sm-8 offset-xl-0 offset-lg-3 offset-md-3 offset-sm-2 col-12">
+    <h3>Top Rated</h3>
+    @foreach (var anime in Model.TopRatedAnime){
+        <div class="anime-box bg-color-black">
+            <a href="@Url.Page("/AnimeDetail", new { id = anime.Id })">
+                <div class="row m-0">
+                    <div class="col-2 p-0">
+                        <img src="@anime.Thumbnail" class="anime-blog-image" alt="@anime.Name">
+                    </div>
+                    <div class="col-8 p-0">
+                        <div class="anime-blog">
+                            <p>@anime.Name</p>
+                            <p class="text-box">★ @TruncateRating(anime.AverageRating)</p>
+                            <p class="text-box">@anime.Rating</p>
+                        </div>
+                    </div>
+                    <div class="col-2 p-0 show-type">
+                        <span class="show-type">@anime.Type</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+    }
+</div>
+</div>
+</div>
 </section>
+
+@section Scripts {
+<script>
+    function updateCountdown() {
+        var releaseDate = new Date('@Model.UpcomingAnime.ReleaseDate').getTime();
+        var now = new Date().getTime();
+        var distance = releaseDate - now;
+
+        // Time calculations
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        // Display the result
+        document.querySelector('.coming-out .timer').innerHTML =
+            '<li>' + days + '<small>d</small></li>' +
+            '<li>' + hours + '<small>h</small></li>' +
+            '<li>' + minutes + '<small>m</small></li>' +
+            '<li>' + seconds + '<small>s</small></li>';
+
+        // If the countdown is over
+        if (distance < 0) {
+            clearInterval(x);
+            document.querySelector('.coming-out .timer').innerHTML = 'Released';
+        }
+    }
+
+    // Update the countdown every second
+    var x = setInterval(updateCountdown, 1000);
+</script>
+}
+
+
