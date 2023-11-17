@@ -37,7 +37,7 @@
                             <input class="form-control" type="password" id="confirm-password" name="ConfirmPassword" required placeholder="confirm password">
                             <span class="text-end toggle-password" toggle="#confirm-password"> <i class="fal fa-eye field-icon toggle-password"></i></span>
                         </div>
-                        <p class="policy">By continuing, you agree to AniX <a style="font-size: 15px; font-weight: bold;" href="./comments.html">Terms of Use</a> and <a style="font-size: 15px; font-weight: bold;" href="./privacy.html">Privacy Policy</a>.</p>
+                        <p class="policy">By continuing, you agree to AniX <a style="font-size: 15px; font-weight: bold;" href="./TermsOfUse">Terms of Use</a> and <a style="font-size: 15px; font-weight: bold;" href="./Privacy">Privacy Policy</a>.</p>
                         <button type="submit" class="anime-btn btn-dark border-change">
                             SIGN UP
                         </button>
@@ -55,3 +55,15 @@
         var serverMessage = "@Model.Message";
     </script>
 }
+
+<script>
+    $(document).ready(function() {
+        $('.modal').on('hidden.bs.modal', function() {
+            if (!$('.modal.show').length) {
+                $('body').removeClass('modal-open');
+                $('.modal-backdrop').remove();
+                $('body').css('overflow', 'auto');
+            }
+        });
+    });
+</script>

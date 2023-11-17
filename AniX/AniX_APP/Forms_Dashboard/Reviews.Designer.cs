@@ -34,15 +34,13 @@ namespace AniX_APP.Forms_Dashboard
             btnUser = new Button();
             panelBackground = new RoundPanel();
             panelFix = new Panel();
+            btnApprove = new RoundButton();
             btnDetails = new RoundButton();
             cmbFilter = new CustomComboBox();
             label1 = new Label();
             btnRemove = new RoundButton();
-            tbxReview = new housing.CustomElements.RoundTextBox();
-            lbReview = new Label();
             roundPanelListBox1 = new RoundPanelListBox();
             dgvReviews = new DataGridView();
-            btnApprove = new RoundButton();
             panelTop.SuspendLayout();
             panelBackground.SuspendLayout();
             panelFix.SuspendLayout();
@@ -102,13 +100,32 @@ namespace AniX_APP.Forms_Dashboard
             panelFix.Controls.Add(cmbFilter);
             panelFix.Controls.Add(label1);
             panelFix.Controls.Add(btnRemove);
-            panelFix.Controls.Add(tbxReview);
-            panelFix.Controls.Add(lbReview);
             panelFix.Controls.Add(roundPanelListBox1);
             panelFix.Location = new Point(13, 14);
             panelFix.Name = "panelFix";
             panelFix.Size = new Size(921, 412);
             panelFix.TabIndex = 0;
+            // 
+            // btnApprove
+            // 
+            btnApprove.BackColor = Color.FromArgb(231, 34, 83);
+            btnApprove.BackgroundColor = Color.FromArgb(231, 34, 83);
+            btnApprove.BorderColor = Color.FromArgb(231, 34, 83);
+            btnApprove.BorderRadius = 14;
+            btnApprove.BorderSize = 2;
+            btnApprove.ClickedColor = Color.FromArgb(231, 34, 83);
+            btnApprove.FlatAppearance.BorderSize = 0;
+            btnApprove.FlatStyle = FlatStyle.Flat;
+            btnApprove.Font = new Font("Cascadia Code", 10F, FontStyle.Bold, GraphicsUnit.Point);
+            btnApprove.ForeColor = Color.FromArgb(11, 7, 17);
+            btnApprove.Location = new Point(640, 156);
+            btnApprove.Name = "btnApprove";
+            btnApprove.Size = new Size(121, 43);
+            btnApprove.TabIndex = 12;
+            btnApprove.Text = "Approve";
+            btnApprove.TextColor = Color.FromArgb(11, 7, 17);
+            btnApprove.UseVisualStyleBackColor = false;
+            btnApprove.Click += btnApprove_Click;
             // 
             // btnDetails
             // 
@@ -129,6 +146,7 @@ namespace AniX_APP.Forms_Dashboard
             btnDetails.Text = "View Details";
             btnDetails.TextColor = Color.FromArgb(231, 34, 83);
             btnDetails.UseVisualStyleBackColor = false;
+            btnDetails.Click += btnDetails_Click;
             // 
             // cmbFilter
             // 
@@ -141,20 +159,21 @@ namespace AniX_APP.Forms_Dashboard
             cmbFilter.IconColor = Color.FromArgb(231, 34, 83);
             cmbFilter.ListBackColor = Color.FromArgb(11, 7, 17);
             cmbFilter.ListTextColor = Color.FromArgb(231, 34, 83);
-            cmbFilter.Location = new Point(647, 269);
+            cmbFilter.Location = new Point(643, 106);
             cmbFilter.MinimumSize = new Size(200, 30);
             cmbFilter.Name = "cmbFilter";
             cmbFilter.Padding = new Padding(2);
             cmbFilter.Size = new Size(247, 33);
             cmbFilter.TabIndex = 10;
-            cmbFilter.Texts = "< filter >";
+            cmbFilter.Texts = "";
+            cmbFilter.OnSelectedIndexChanged += cmbFilter_SelectedIndexChanged;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Cascadia Code", 12F, FontStyle.Regular, GraphicsUnit.Point);
             label1.ForeColor = Color.FromArgb(231, 34, 83);
-            label1.Location = new Point(642, 240);
+            label1.Location = new Point(638, 77);
             label1.Name = "label1";
             label1.Size = new Size(100, 21);
             label1.TabIndex = 9;
@@ -162,8 +181,8 @@ namespace AniX_APP.Forms_Dashboard
             // 
             // btnRemove
             // 
-            btnRemove.BackColor = Color.FromArgb(231, 34, 83);
-            btnRemove.BackgroundColor = Color.FromArgb(231, 34, 83);
+            btnRemove.BackColor = Color.FromArgb(11, 7, 17);
+            btnRemove.BackgroundColor = Color.FromArgb(11, 7, 17);
             btnRemove.BorderColor = Color.FromArgb(231, 34, 83);
             btnRemove.BorderRadius = 14;
             btnRemove.BorderSize = 2;
@@ -171,47 +190,15 @@ namespace AniX_APP.Forms_Dashboard
             btnRemove.FlatAppearance.BorderSize = 0;
             btnRemove.FlatStyle = FlatStyle.Flat;
             btnRemove.Font = new Font("Cascadia Code", 10F, FontStyle.Bold, GraphicsUnit.Point);
-            btnRemove.ForeColor = Color.FromArgb(11, 7, 17);
-            btnRemove.Location = new Point(642, 140);
+            btnRemove.ForeColor = Color.FromArgb(231, 34, 83);
+            btnRemove.Location = new Point(769, 156);
             btnRemove.Name = "btnRemove";
             btnRemove.Size = new Size(121, 43);
             btnRemove.TabIndex = 5;
             btnRemove.Text = "Remove";
-            btnRemove.TextColor = Color.FromArgb(11, 7, 17);
+            btnRemove.TextColor = Color.FromArgb(231, 34, 83);
             btnRemove.UseVisualStyleBackColor = false;
-            // 
-            // tbxReview
-            // 
-            tbxReview.BackColor = Color.FromArgb(231, 34, 83);
-            tbxReview.BorderColor = Color.FromArgb(231, 34, 83);
-            tbxReview.BorderFocusColor = Color.FromArgb(231, 34, 83);
-            tbxReview.BorderRadius = 14;
-            tbxReview.BorderSize = 2;
-            tbxReview.Font = new Font("Cascadia Code", 10F, FontStyle.Bold, GraphicsUnit.Point);
-            tbxReview.ForeColor = Color.FromArgb(11, 7, 17);
-            tbxReview.Location = new Point(642, 92);
-            tbxReview.Margin = new Padding(4);
-            tbxReview.Multiline = false;
-            tbxReview.Name = "tbxReview";
-            tbxReview.Padding = new Padding(10, 7, 10, 7);
-            tbxReview.PasswordChar = false;
-            tbxReview.PlaceholderColor = Color.FromArgb(11, 7, 17);
-            tbxReview.PlaceholderText = "< review >";
-            tbxReview.Size = new Size(250, 33);
-            tbxReview.TabIndex = 2;
-            tbxReview.Texts = "";
-            tbxReview.UnderlinedStyle = false;
-            // 
-            // lbReview
-            // 
-            lbReview.AutoSize = true;
-            lbReview.Font = new Font("Cascadia Code", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lbReview.ForeColor = Color.FromArgb(231, 34, 83);
-            lbReview.Location = new Point(642, 65);
-            lbReview.Name = "lbReview";
-            lbReview.Size = new Size(136, 21);
-            lbReview.TabIndex = 4;
-            lbReview.Text = "Search Review:";
+            btnRemove.Click += btnRemove_Click;
             // 
             // roundPanelListBox1
             // 
@@ -225,6 +212,8 @@ namespace AniX_APP.Forms_Dashboard
             // 
             dgvReviews.AllowUserToAddRows = false;
             dgvReviews.AllowUserToDeleteRows = false;
+            dgvReviews.AllowUserToResizeColumns = false;
+            dgvReviews.AllowUserToResizeRows = false;
             dgvReviews.BackgroundColor = Color.FromArgb(231, 34, 83);
             dgvReviews.BorderStyle = BorderStyle.None;
             dgvReviews.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -234,28 +223,10 @@ namespace AniX_APP.Forms_Dashboard
             dgvReviews.ReadOnly = true;
             dgvReviews.RowHeadersWidth = 62;
             dgvReviews.RowTemplate.Height = 28;
+            dgvReviews.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvReviews.Size = new Size(565, 272);
             dgvReviews.TabIndex = 2;
-            // 
-            // btnApprove
-            // 
-            btnApprove.BackColor = Color.FromArgb(11, 7, 17);
-            btnApprove.BackgroundColor = Color.FromArgb(11, 7, 17);
-            btnApprove.BorderColor = Color.FromArgb(231, 34, 83);
-            btnApprove.BorderRadius = 14;
-            btnApprove.BorderSize = 2;
-            btnApprove.ClickedColor = Color.FromArgb(231, 34, 83);
-            btnApprove.FlatAppearance.BorderSize = 0;
-            btnApprove.FlatStyle = FlatStyle.Flat;
-            btnApprove.Font = new Font("Cascadia Code", 10F, FontStyle.Bold, GraphicsUnit.Point);
-            btnApprove.ForeColor = Color.FromArgb(231, 34, 83);
-            btnApprove.Location = new Point(769, 140);
-            btnApprove.Name = "btnApprove";
-            btnApprove.Size = new Size(121, 43);
-            btnApprove.TabIndex = 12;
-            btnApprove.Text = "Approve";
-            btnApprove.TextColor = Color.FromArgb(231, 34, 83);
-            btnApprove.UseVisualStyleBackColor = false;
+            dgvReviews.CellDoubleClick += dgvReviews_CellDoubleClick;
             // 
             // Reviews
             // 
@@ -270,6 +241,7 @@ namespace AniX_APP.Forms_Dashboard
             Name = "Reviews";
             ShowIcon = false;
             StartPosition = FormStartPosition.CenterScreen;
+            Load += Reviews_Load;
             panelTop.ResumeLayout(false);
             panelBackground.ResumeLayout(false);
             panelFix.ResumeLayout(false);
@@ -289,8 +261,6 @@ namespace AniX_APP.Forms_Dashboard
         private CustomComboBox cmbFilter;
         private Label label1;
         private RoundButton btnRemove;
-        private housing.CustomElements.RoundTextBox tbxReview;
-        private Label lbReview;
         private RoundPanelListBox roundPanelListBox1;
         private DataGridView dgvReviews;
         private RoundButton btnApprove;

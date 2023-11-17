@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using AniX_Shared.Extensions
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -40,12 +41,12 @@
                     <i class="fas fa-bars"></i>
                 </button>
                 <div class="collapse navbar-collapse" id="mynavbar">
-                    <form action="./list-view.html">
+                    <form asp-page="/filter" method="get">
                         <div class="input-group header-search-box">
                             <button class="input-group-text anime-btn" type="submit">
                                 <i class="fal fa-search"></i>
                             </button>
-                            <input class="form-control" name="query" type="text" placeholder="Search anime..">
+                            <input class="form-control" name="searchQuery" type="text" placeholder="Search anime.." value="@Context.Request.Query["searchQuery"]">
                         </div>
                     </form>
                     <ul class="navbar-nav me-3 mainmenu right-nav ms-auto">
@@ -53,10 +54,10 @@
                             <a href="/Index">Home</a>
                         </li>
                         <li class="menu-item-has-children">
-                            <a href="./list-view.html">Trending</a>
+                            <a href="@Url.Page("/filter", new { sortBy = (int)SortCriteria.MostPopular })">Trending</a>
                         </li>
                         <li class="menu-item-has-children">
-                            <a href="/Index">Updates</a>
+                            <a href="@Url.Page("/filter", new { sortBy = (int)SortCriteria.RecentlyUpdated })">Updates</a>
                         </li>
                         <li class="menu-item-has-children">
                             <a href="#Pages" class="dropdown-toggle" id="pages" data-bs-toggle="dropdown"
@@ -66,28 +67,28 @@
                                     <a href="/Index">Home</a>
                                 </li>
                                 <li>
-                                    <a href="./streaming-season.html">Trailer</a>
+                                    <a href="./watch">Trailer</a>
                                 </li>
                                 <li>
-                                    <a href="./list-view.html">List View</a>
+                                    <a href="./filter">List View</a>
                                 </li>
                                 <li>
-                                    <a href="./grid-view.html">Grid View</a>
+                                    <a href="./filter">Grid View</a>
                                 </li>
                                 <li>
-                                    <a href="./privacy.html"> Privacy Policy</a>
+                                    <a href="./Privacy"> Privacy Policy</a>
                                 </li>
                                 <li>
-                                    <a href="./comments.html"> Terms of Use </a>
+                                    <a href="./TermsOfUse"> Terms of Use </a>
                                 </li>
                                 <li>
-                                    <a href="./profile.html">Profile</a>
+                                    <a href="./Profile">Profile</a>
                                 </li>
                                 <li>
-                                    <a href="./edit-profile.html"> Edit Profile</a>
+                                    <a href="./ProfileEdit"> Edit Profile</a>
                                 </li>
                                 <li>
-                                    <a href="./playlist.html">Playlist</a>
+                                    <a href="/playlist">Playlist</a>
                                 </li>
                                 <li>
                                     <a href="/Login">Log In</a>
@@ -99,7 +100,7 @@
                                     <a href="./reset-password.html">Reset Password</a>
                                 </li>
                                 <li>
-                                    <a href="./404.html">404</a>
+                                    <a href="./404">404</a>
                                 </li>
                             </ul>
                         </li>
@@ -130,7 +131,7 @@
                     </div>
                     <div class="col-lg-6 col-12">
                         <div class="footer-bottom-link text-end">
-                            <span style="color: #DF0051;"> ▶</span><a href="./privacy.html" class="ps-2">About</a>
+                            <span style="color: #DF0051;"> ▶</span><a href="./Privacy" class="ps-2">About</a>
                         </div>
                     </div>
                 </div>
@@ -152,7 +153,7 @@
         </div>
     </footer>
 </div>
-<div id="errorModal" class="modal fade" tabindex="-1" role="dialog">
+    <div id="errorModal" class="modal fade" tabindex="-1" style="overflow:auto !important" role="dialog">
     <div class="modal-dialog modal-dialog-centered modal-confirm">
         <div class="modal-content">
             <div class="modal-header">
@@ -200,6 +201,18 @@ window.addEventListener("load", function () {
     }, 800);
 });
 
+</script>
+
+<script>
+    $(document).ready(function() {
+        $('.modal').on('hidden.bs.modal', function() {
+            if (!$('.modal.show').length) {
+                $('body').removeClass('modal-open');
+                $('.modal-backdrop').remove();
+                $('body').css('overflow', 'auto');
+            }
+        });
+    });
 </script>
 <!-- Site Scripts -->
 <script src="assets/js/app.js"></script>

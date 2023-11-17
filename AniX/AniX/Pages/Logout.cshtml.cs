@@ -19,7 +19,7 @@ namespace AniX_WEB.Pages
             _sessionService.SignOut();
 
             Response.Cookies.Delete("SessionID");
-
+            TempData.Clear();
             return RedirectToPage("/Index");
         }
     }

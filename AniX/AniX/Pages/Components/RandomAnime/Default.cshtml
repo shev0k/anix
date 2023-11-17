@@ -1,0 +1,11 @@
+﻿@*
+
+*@
+@{
+}
+@model AniX_Shared.Extensions.AnimeWithRatings
+
+@if (Model != null)
+{
+    <a href="@Url.Page("/watch", new { id = Model.Id })">Random</a>
+}

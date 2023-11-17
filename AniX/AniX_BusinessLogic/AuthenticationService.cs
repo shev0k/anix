@@ -58,7 +58,6 @@ namespace AniX_BusinessLogic
         {
             OperationResult result = new OperationResult();
 
-            // Check if username or email already exists
             if (await DoesUsernameExistAsync(username))
             {
                 result.Success = false;
@@ -72,11 +71,9 @@ namespace AniX_BusinessLogic
                 return result;
             }
 
-            // Generate salt and hashed password
             string salt = HashPassword.GenerateSalt();
             string hashedPassword = HashPassword.GenerateHashedPassword(password, salt);
 
-            // Create new user object
             User newUser = new User
             {
                 Username = username,
@@ -87,21 +84,16 @@ namespace AniX_BusinessLogic
             };
             newUser.UpdatePassword(hashedPassword, salt);
 
-            // Attempt to create the new user
             OperationResult createResult = await _userDal.CreateAsync(newUser, profileImageStream, contentType);
             if (!createResult.Success)
             {
-                return createResult; // Directly return the OperationResult from CreateAsync
+                return createResult;
             }
 
-            // If the user was successfully created
             result.Success = true;
             result.Message = "User registered successfully.";
             return result;
         }
-
-
-
 
         public async Task<bool> DoesUsernameExistAsync(string username)
         {

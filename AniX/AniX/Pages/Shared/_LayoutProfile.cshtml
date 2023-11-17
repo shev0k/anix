@@ -39,215 +39,72 @@
     <i class="fas fa-bars"></i>
 </button>
 <div class="collapse navbar-collapse" id="mynavbar">
-<form action="./list-view.html">
+<form asp-page="/filter" method="get">
     <div class="input-group header-search-box">
         <button class="input-group-text anime-btn" type="submit">
             <i class="fal fa-search"></i>
         </button>
-        <input class="form-control" name="query" type="text" placeholder="Search anime..">
+        <input class="form-control" name="searchQuery" type="text" placeholder="Search anime.." value="@Context.Request.Query["searchQuery"]">
     </div>
 </form>
 <ul class="navbar-nav me-3 mainmenu">
-<li class="menu-item-has-children">
-    <a href="#Genres" class="dropdown-toggle" id="genres" data-bs-toggle="dropdown"
-       data-bs-auto-close="outside" aria-expanded="false">Genres</a>
-    <ul class="dropdown-menu genre-dropdown " aria-labelledby="genres">
-        <li>
-            <a href="./list-view.html">Action</a>
-        </li>
-        <li>
-            <a href="./list-view.html">Adventure</a>
-        </li>
-        <li>
-            <a href="./list-view.html">Avant Grade</a>
-        </li>
-        <li>
-            <a href="./list-view.html">Boys Love</a>
-        </li>
-        <li>
-            <a href="./list-view.html">Comedy</a>
-        </li>
-        <li>
-            <a href="./list-view.html">Demons</a>
-        </li>
-        <li>
-            <a href="./list-view.html">Drama</a>
-        </li>
-        <li>
-            <a href="./list-view.html">Ecchi</a>
-        </li>
-        <li>
-            <a href="./list-view.html">Fantasy</a>
-        </li>
-        <li>
-            <a href="./list-view.html">Girls Love</a>
-        </li>
-        <li>
-            <a href="./list-view.html">Gourmet</a>
-        </li>
-        <li>
-            <a href="./list-view.html">Harem</a>
-        </li>
-        <li>
-            <a href="./list-view.html">Horror</a>
-        </li>
-        <li>
-            <a href="./list-view.html">Isekai</a>
-        </li>
-        <li>
-            <a href="./list-view.html">Iyashikei</a>
-        </li>
-        <li>
-            <a href="./list-view.html">Josei</a>
-        </li>
-        <li>
-            <a href="./list-view.html">Kids</a>
-        </li>
-        <li>
-            <a href="./list-view.html">Magic</a>
-        </li>
-        <li>
-            <a href="./list-view.html">Mahou Shoujo</a>
-        </li>
-        <li>
-            <a href="./list-view.html">Martial Arts</a>
-        </li>
-        <li>
-            <a href="./list-view.html">Mecha</a>
-        </li>
-        <li>
-            <a href="./list-view.html">Military</a>
-        </li>
-        <li>
-            <a href="./list-view.html">Music</a>
-        </li>
-        <li>
-            <a href="./list-view.html">Mystery</a>
-        </li>
-        <li>
-            <a href="./list-view.html">Parody</a>
-        </li>
-        <li>
-            <a href="./list-view.html">Psychological</a>
-        </li>
-        <li>
-            <a href="./list-view.html">Reverse Harem</a>
-        </li>
-        <li>
-            <a href="./list-view.html">Romance</a>
-        </li>
-        <li>
-            <a href="./list-view.html">School</a>
-        </li>
-        <li>
-            <a href="./list-view.html">Sci-Fi</a>
-        </li>
-        <li>
-            <a href="./list-view.html">Seinen</a>
-        </li>
-        <li>
-            <a href="./list-view.html">Shoujo</a>
-        </li>
-        <li>
-            <a href="./list-view.html">Shounen</a>
-        </li>
-        <li>
-            <a href="./list-view.html">Slice of Life</a>
-        </li>
-        <li>
-            <a href="./list-view.html">Space</a>
-        </li>
-        <li>
-            <a href="./list-view.html">Sports</a>
-        </li>
-        <li>
-            <a href="./list-view.html">Super Power</a>
-        </li>
-        <li>
-            <a href="./list-view.html">Supernatural</a>
-        </li>
-        <li>
-            <a href="./list-view.html">Suspense</a>
-        </li>
-        <li>
-            <a href="./list-view.html">Thriller</a>
-        </li>
-        <li>
-            <a href="./list-view.html">Vampire</a>
-        </li>
-    </ul>
-</li>
-<li class="menu-item-has-children">
-    <a href="#Types" class="dropdown-toggle" id="types" data-bs-toggle="dropdown"
-       data-bs-auto-close="outside" aria-expanded="false">Types</a>
-    <ul class="dropdown-menu" aria-labelledby="types">
-        <li>
-            <a href="./list-view.html">Movie</a>
-        </li>
-        <li>
-            <a href="./list-view.html">TV</a>
-        </li>
-        <li>
-            <a href="./list-view.html">OVA</a>
-        </li>
-        <li>
-            <a href="./list-view.html">ONA</a>
-        </li>
-        <li>
-            <a href="./list-view.html">SPECIAL</a>
-        </li>
-        <li>
-            <a href="./list-view.html">MUSIC</a>
-        </li>
-    </ul>
-</li>
-<li class="menu-item-has-children">
-    <a href="./list-view.html">Random</a>
-</li>
+    <li class="menu-item-has-children">
+        <a href="#Genres" class="dropdown-toggle" id="genres" data-bs-toggle="dropdown"
+           data-bs-auto-close="outside" aria-expanded="false">Genres</a>
+        @await Component.InvokeAsync("Genres")
+    </li>
+    <li class="menu-item-has-children">
+        <a href="#Types" class="dropdown-toggle" id="types" data-bs-toggle="dropdown"
+           data-bs-auto-close="outside" aria-expanded="false">Types</a>
+        @await Component.InvokeAsync("Types")
+    </li>
+    <li class="menu-item-has-children">
+        @await Component.InvokeAsync("RandomAnime")
+    </li>
 <li class="menu-item-has-children">
     <a href="#Pages" class="dropdown-toggle" id="pages" data-bs-toggle="dropdown"
        data-bs-auto-close="outside" aria-expanded="false">Pages</a>
-    <ul class="dropdown-menu" aria-labelledby="pages">
-        <li>
-            <a href="/Index">Home</a>
-        </li>
-        <li>
-            <a href="./streaming-season.html">Trailer</a>
-        </li>
-        <li>
-            <a href="./list-view.html">List View</a>
-        </li>
-        <li>
-            <a href="./grid-view.html">Grid View</a>
-        </li>
-        <li>
-            <a href="./privacy.html"> Privacy Policy</a>
-        </li>
-        <li>
-            <a href="./comments.html"> Terms of Use </a>
-        </li>
-        <li>
-            <a href="./Profile">Profile</a>
-        </li>
-        <li>
-            <a href="./ProfileEdit"> Edit Profile</a>
-        </li>
-        <li>
-            <a href="./playlist.html">Playlist</a>
-        </li>
-        <li>
-            <a href="/Login">Log In</a>
-        </li>
-        <li>
-            <a href="/Register">Sign Up</a>
-        </li>
-        <li>
-            <a href="./reset-password.html">Reset Password</a>
-        </li>
-        <li>
-            <a href="./404.html">404</a>
-        </li>
-    </ul>
+                                <ul class="dropdown-menu" aria-labelledby="pages">
+                                    <li>
+                                        <a href="/Index">Home</a>
+                                    </li>
+                                    <li>
+                                        <a href="./watch">Trailer</a>
+                                    </li>
+                                    <li>
+                                        <a href="./filter">List View</a>
+                                    </li>
+                                    <li>
+                                        <a href="./filter">Grid View</a>
+                                    </li>
+                                    <li>
+                                        <a href="./Privacy"> Privacy Policy</a>
+                                    </li>
+                                    <li>
+                                        <a href="./TermsOfUse"> Terms of Use </a>
+                                    </li>
+                                    <li>
+                                        <a href="./Profile">Profile</a>
+                                    </li>
+                                    <li>
+                                        <a href="./ProfileEdit"> Edit Profile</a>
+                                    </li>
+                                    <li>
+                                        <a href="/playlist">Playlist</a>
+                                    </li>
+                                    <li>
+                                        <a href="/Login">Log In</a>
+                                    </li>
+                                    <li>
+                                        <a href="/Register">Sign Up</a>
+                                    </li>
+                                    <li>
+                                        <a href="./reset-password.html">Reset Password</a>
+                                    </li>
+                                    <li>
+                                        <a href="./404">404</a>
+                                    </li>
+                                </ul>
 </li>
 </ul>
 <div class="d-flex ms-auto navbar-nav me-3 mainmenu">
@@ -296,7 +153,7 @@ else
                 </div>
                 <div class="col-lg-6 col-12">
                     <div class="footer-bottom-link text-end">
-                        <span style="color: #DF0051;"> ▶</span><a href="./privacy.html" class="ps-2">About</a>
+                        <span style="color: #DF0051;"> ▶</span><a href="./Privacy" class="ps-2">About</a>
                     </div>
                 </div>
             </div>
@@ -350,11 +207,8 @@ else
             if (serverMessage.length > 0) {
                 document.getElementById('error-message').innerText = serverMessage;
 
-                // Check the message type and apply appropriate class or icon
                 if (messageType === "success") {
-                    // Logic to handle success message
                 } else if (messageType === "error") {
-                    // Logic to handle error message
                 }
 
                 var myModal = new bootstrap.Modal(document.getElementById('errorModal'));

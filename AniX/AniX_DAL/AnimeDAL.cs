@@ -373,63 +373,68 @@ namespace AniX_DAL
             return suggestions;
         }
 
-        public async Task<Anime> GetAnimeByIdAsync(int animeId)
+        public async Task<List<AnimeWithRatings>> GetRecommendedAnimesAsync(int? userId, int? currentAnimeId)
         {
-            Anime anime = null;
-            List<Genre> genres = new List<Genre>();
+            var recommendedAnimes = new List<AnimeWithRatings>();
+
+            if (userId == null && currentAnimeId == null)
+            {
+                throw new ArgumentException("Either UserId or CurrentAnimeId must be provided.");
+            }
 
             try
             {
                 await connection.OpenAsync();
-                string query = @"
-            SELECT
-                a.*, 
-                g.Id AS GenreId, 
-                g.Name AS GenreName
-            FROM
-                Anime a
-                LEFT JOIN Anime_Genre ag ON a.Id = ag.AnimeId
-                LEFT JOIN Genre g ON ag.GenreId = g.Id
-            WHERE
-                a.Id = @Id;";
+                var query = @"
+                    WITH DistinctAnimes AS (
+                        SELECT DISTINCT
+                            ar.Id, ar.Name, ar.Description, ar.ReleaseDate, ar.TrailerLink,
+                            ar.Country, ar.Season, ar.Episodes, ar.Studio, ar.Type, ar.Status,
+                            ar.Premiered, ar.Aired, ar.CoverImage, ar.Thumbnail, ar.Language,
+                            ar.Rating, ar.Year, ar.NumberOfReviews, ar.AverageRating,
+                            Genres = (SELECT STRING_AGG(g.Name, ', ') 
+                                      FROM [Anime_Genre] ag
+                                      JOIN [Genre] g ON ag.GenreId = g.Id
+                                      WHERE ag.AnimeId = ar.Id
+                                      FOR XML PATH(''), TYPE).value('.', 'NVARCHAR(MAX)')
+                        FROM [dbo].[AnimeWithRatings] ar
+                        INNER JOIN [dbo].[Anime_Genre] ag ON ar.Id = ag.AnimeId
+                        WHERE 
+                            (@UserId IS NOT NULL AND ag.GenreId IN (
+                                SELECT TOP(3) GenreId
+                                FROM [dbo].[AnimeViews] av
+                                INNER JOIN [dbo].[Anime_Genre] ag ON av.AnimeId = ag.AnimeId
+                                WHERE av.UserId = @UserId
+                                GROUP BY ag.GenreId
+                                ORDER BY COUNT(*) DESC
+                            ) AND ar.Id NOT IN (
+                                SELECT AnimeId FROM [dbo].[AnimeViews] WHERE UserId = @UserId
+                            ))
+                            OR
+                            (@CurrentAnimeId IS NOT NULL AND ar.Id <> @CurrentAnimeId AND
+                            (ag.GenreId IN (
+                                SELECT GenreId FROM [dbo].[Anime_Genre] WHERE AnimeId = @CurrentAnimeId)
+                                OR ar.Studio = (SELECT Studio FROM [dbo].[AnimeWithRatings] WHERE Id = @CurrentAnimeId)
+                                OR ar.Type = (SELECT Type FROM [dbo].[AnimeWithRatings] WHERE Id = @CurrentAnimeId)
+                            ))
+                    )
+                    SELECT *, NEWID() AS RandomOrder
+                    FROM DistinctAnimes
+                    ORDER BY RandomOrder;";
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    command.Parameters.AddWithValue("@Id", animeId);
+                    command.Parameters.AddWithValue("@UserId", userId ?? (object)DBNull.Value);
+                    command.Parameters.AddWithValue("@CurrentAnimeId", currentAnimeId ?? (object)DBNull.Value);
 
                     using (SqlDataReader reader = await command.ExecuteReaderAsync())
                     {
-                        var animeProperties = typeof(Anime).GetProperties();
                         while (await reader.ReadAsync())
                         {
-                            if (anime == null)
-                            {
-                                anime = new Anime();
-                                foreach (var prop in animeProperties)
-                                {
-                                    if (reader[prop.Name] != DBNull.Value)
-                                    {
-                                        prop.SetValue(anime, reader[prop.Name]);
-                                    }
-                                }
-                                anime.Genres = new List<Genre>();
-                            }
-
-                            if (!reader.IsDBNull(reader.GetOrdinal("GenreId")))
-                            {
-                                genres.Add(new Genre
-                                {
-                                    Id = reader.GetInt32(reader.GetOrdinal("GenreId")),
-                                    Name = reader.GetString(reader.GetOrdinal("GenreName"))
-                                });
-                            }
+                            var anime = MapReaderToAnimeRecommended(reader);
+                            recommendedAnimes.Add(anime);
                         }
                     }
-                }
-
-                if (anime != null)
-                {
-                    anime.Genres = genres;
                 }
             }
             catch (Exception ex)
@@ -441,28 +446,27 @@ namespace AniX_DAL
             {
                 await connection.CloseAsync();
             }
-            return anime;
+
+            return recommendedAnimes;
         }
 
-        public async Task<AnimeDetailModel> GetAnimeDetailAsync(int animeId)
+        public async Task<AnimeDetailModel> GetAnimeDetailAsync(int animeId, int? currentUserId = null)
         {
             AnimeDetailModel animeDetail = null;
 
             try
             {
                 await connection.OpenAsync();
+                // Query for fetching anime details
                 string animeQuery = @"
             SELECT ar.*, 
-            (SELECT STRING_AGG(g.Name, ', ') FROM [Anime_Genre] ag JOIN [Genre] g ON ag.GenreId = g.Id WHERE ag.AnimeId = ar.Id FOR XML PATH(''), TYPE).value('.', 'NVARCHAR(MAX)') AS Genres
+            (SELECT STRING_AGG(g.Name, ', ') FROM [Anime_Genre] ag 
+             JOIN [Genre] g ON ag.GenreId = g.Id WHERE ag.AnimeId = ar.Id 
+             FOR XML PATH(''), TYPE).value('.', 'NVARCHAR(MAX)') AS Genres
             FROM [dbo].[AnimeWithRatings] ar
             WHERE ar.Id = @AnimeId";
 
-                string reviewQuery = @"
-            SELECT r.*, u.Username, u.ProfileImagePath
-            FROM [Review] r 
-            JOIN [User] u ON r.UserId = u.Id 
-            WHERE r.AnimeId = @AnimeId";
-
+                // Execute the query for anime details
                 using (SqlCommand command = new SqlCommand(animeQuery, connection))
                 {
                     command.Parameters.AddWithValue("@AnimeId", animeId);
@@ -475,8 +479,17 @@ namespace AniX_DAL
                     }
                 }
 
+                // If anime details were fetched successfully
                 if (animeDetail != null)
                 {
+                    // Query for fetching approved reviews
+                    string reviewQuery = @"
+                SELECT r.*, u.Username, u.ProfileImagePath
+                FROM [Review] r 
+                JOIN [User] u ON r.UserId = u.Id 
+                WHERE r.AnimeId = @AnimeId AND r.IsApproved = 1";
+
+                    // Execute the query for approved reviews
                     using (SqlCommand command = new SqlCommand(reviewQuery, connection))
                     {
                         command.Parameters.AddWithValue("@AnimeId", animeId);
@@ -486,6 +499,49 @@ namespace AniX_DAL
                             {
                                 var review = MapReaderToReview(reader);
                                 animeDetail.Reviews.Add(review);
+                            }
+                        }
+                    }
+
+                    // Fetch pending reviews for the current user if authenticated
+                    if (currentUserId.HasValue)
+                    {
+                        string pendingReviewsQuery = @"
+                        SELECT r.*, u.Username, u.ProfileImagePath
+                        FROM [Review] r 
+                        JOIN [User] u ON r.UserId = u.Id 
+                        WHERE r.AnimeId = @AnimeId AND r.UserId = @UserId AND r.IsApproved = 0";
+
+                        using (SqlCommand command = new SqlCommand(pendingReviewsQuery, connection))
+                        {
+                            command.Parameters.AddWithValue("@AnimeId", animeId);
+                            command.Parameters.AddWithValue("@UserId", currentUserId.Value);
+                            using (SqlDataReader reader = await command.ExecuteReaderAsync())
+                            {
+                                while (await reader.ReadAsync())
+                                {
+                                    var review = MapReaderToReview(reader);
+                                    animeDetail.PendingReviews.Add(review);
+                                }
+                            }
+                        }
+                    }
+
+                    if (animeDetail != null && currentUserId.HasValue)
+                    {
+                        string userRatingQuery = @"
+                        SELECT r.Rating
+                        FROM [Review] r
+                        WHERE r.AnimeId = @AnimeId AND r.UserId = @UserId AND r.IsApproved = 1";
+
+                        using (SqlCommand command = new SqlCommand(userRatingQuery, connection))
+                        {
+                            command.Parameters.AddWithValue("@AnimeId", animeId);
+                            command.Parameters.AddWithValue("@UserId", currentUserId.Value);
+                            object result = await command.ExecuteScalarAsync();
+                            if (result != DBNull.Value)
+                            {
+                                animeDetail.CurrentUserRating = Convert.ToDouble(result);
                             }
                         }
                     }
@@ -682,20 +738,20 @@ namespace AniX_DAL
             return animes;
         }
 
-        public async Task<List<Anime>> GetAllAnimesAsync()
+        public async Task<AnimeWithRatings> GetRandomAnimeAsync()
         {
-            List<Anime> animes = new List<Anime>();
+            AnimeWithRatings anime = null;
             try
             {
                 await connection.OpenAsync();
-                string query = "SELECT * FROM [Anime]";
+                string query = $"SELECT TOP 1 * FROM [dbo].[AnimeWithRatings] ORDER BY NEWID()";
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
                     using (SqlDataReader reader = await command.ExecuteReaderAsync())
                     {
                         while (await reader.ReadAsync())
                         {
-                            animes.Add(MapReaderToAnime(reader));
+                            anime = MapReaderToAnimeWithRatings(reader);
                         }
                     }
                 }
@@ -709,7 +765,276 @@ namespace AniX_DAL
             {
                 await connection.CloseAsync();
             }
-            return animes;
+            return anime;
+        }
+
+        public async Task<(List<AnimeWithRatings> Animes, int TotalCount)> GetFilteredAnimesAsync(AnimeFilterModel filter, int pageNumber, int pageSize)
+        {
+            List<AnimeWithRatings> animes = new List<AnimeWithRatings>();
+            int totalCount = 0;
+
+            try
+            {
+                await connection.OpenAsync();
+
+                string countQuery = BuildFilterCountQuery(filter);
+                using (SqlCommand countCommand = new SqlCommand(countQuery, connection))
+                {
+                    AddFilterParameters(countCommand, filter);
+                    totalCount = (int)await countCommand.ExecuteScalarAsync();
+                }
+                int offset = (pageNumber - 1) * pageSize;
+                string paginatedQuery = BuildFilterPaginatedQuery(filter, offset, pageSize);
+                using (SqlCommand command = new SqlCommand(paginatedQuery, connection))
+                {
+                    AddFilterParameters(command, filter);
+                    command.Parameters.AddWithValue("@Offset", offset);
+                    command.Parameters.AddWithValue("@PageSize", pageSize);
+
+
+                    using (SqlDataReader reader = await command.ExecuteReaderAsync())
+                    {
+                        while (await reader.ReadAsync())
+                        {
+                            var animeDetail = MapReaderToAnimeWithGenres(reader);
+                            animes.Add(animeDetail);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                await _exceptionHandlingService.HandleExceptionAsync(ex);
+                throw;
+            }
+            finally
+            {
+                await connection.CloseAsync();
+            }
+
+            return (Animes: animes, TotalCount: totalCount);
+        }
+
+        private string BuildFilterCountQuery(AnimeFilterModel filter)
+        {
+            var queryBuilder = new StringBuilder("SELECT COUNT(DISTINCT A.Id) FROM [dbo].[AnimeWithRatings] AS A ");
+
+            if (filter.GenreIds != null && filter.GenreIds.Count > 0)
+            {
+                queryBuilder.Append("INNER JOIN [dbo].[Anime_Genre] AS AG ON A.Id = AG.AnimeId ");
+            }
+
+            List<string> whereClauses = new List<string>();
+
+
+            if (filter.GenreIds != null && filter.GenreIds.Count > 0)
+            {
+                whereClauses.Add($"AG.GenreId IN ({string.Join(", ", filter.GenreIds.Select((_, i) => $"@GenreId{i}"))})");
+            }
+
+            if (filter.Countries != null && filter.Countries.Count > 0)
+            {
+                whereClauses.Add($"A.Country IN ({string.Join(", ", filter.Countries.Select((_, i) => $"@Country{i}"))})");
+            }
+
+            if (filter.Premiered != null && filter.Premiered.Count > 0)
+            {
+                whereClauses.Add($"A.Premiered IN ({string.Join(", ", filter.Premiered.Select((_, i) => $"@Premiered{i}"))})");
+            }
+
+            if (filter.Years != null && filter.Years.Count > 0)
+            {
+                whereClauses.Add($"A.Year IN ({string.Join(", ", filter.Years.Select((year, i) => $"@Year{i}"))})");
+            }
+
+            if (filter.Types != null && filter.Types.Count > 0)
+            {
+                whereClauses.Add($"A.Type IN ({string.Join(", ", filter.Types.Select((_, i) => $"@Type{i}"))})");
+            }
+
+            if (filter.Statuses != null && filter.Statuses.Count > 0)
+            {
+                whereClauses.Add($"A.Status IN ({string.Join(", ", filter.Statuses.Select((_, i) => $"@Status{i}"))})");
+            }
+
+            if (filter.Languages != null && filter.Languages.Count > 0)
+            {
+                whereClauses.Add($"A.Language IN ({string.Join(", ", filter.Languages.Select((_, i) => $"@Language{i}"))})");
+            }
+
+            if (filter.Ratings != null && filter.Ratings.Count > 0)
+            {
+                whereClauses.Add($"A.Rating IN ({string.Join(", ", filter.Ratings.Select((_, i) => $"@Rating{i}"))})");
+            }
+
+            if (!string.IsNullOrWhiteSpace(filter.SearchQuery))
+            {
+                whereClauses.Add("A.Name LIKE @SearchQuery");
+            }
+
+            if (whereClauses.Any())
+            {
+                queryBuilder.Append("WHERE " + string.Join(" AND ", whereClauses));
+            }
+
+            return queryBuilder.ToString();
+        }
+
+        private string BuildFilterPaginatedQuery(AnimeFilterModel filter, int offset, int pageSize)
+        {
+            var queryBuilder = new StringBuilder();
+
+            queryBuilder.Append(@"SELECT A.*, STUFF((SELECT ',' + G.Name FROM [dbo].[Genre] G INNER JOIN [dbo].[Anime_Genre] AG ON G.Id = AG.GenreId WHERE AG.AnimeId = A.Id FOR XML PATH('')), 1, 1, '') AS Genres FROM [dbo].[AnimeWithRatings] A ");
+
+            List<string> whereClauses = new List<string>();
+
+            if (filter.SortBy == SortCriteria.MostWatched)
+            {
+                queryBuilder.Append("LEFT JOIN [dbo].[AnimeViews] AV ON A.Id = AV.AnimeId ");
+            }
+            else if (filter.SortBy == SortCriteria.MostPopular)
+            {
+                queryBuilder.Append("LEFT JOIN [dbo].[User_Anime] UA ON A.Id = UA.AnimeId ");
+            }
+
+            if (filter.GenreIds != null && filter.GenreIds.Count > 0)
+            {
+                queryBuilder.Append("INNER JOIN [dbo].[Anime_Genre] AS AG ON A.Id = AG.AnimeId ");
+                whereClauses.Add($"AG.GenreId IN ({string.Join(", ", filter.GenreIds.Select((_, i) => $"@GenreId{i}"))})");
+            }
+
+            if (filter.Countries != null && filter.Countries.Count > 0)
+            {
+                whereClauses.Add($"A.Country IN ({string.Join(", ", filter.Countries.Select((_, i) => $"@Country{i}"))})");
+            }
+
+            if (filter.Premiered != null && filter.Premiered.Count > 0)
+            {
+                whereClauses.Add($"A.Premiered IN ({string.Join(", ", filter.Premiered.Select((_, i) => $"@Premiered{i}"))})");
+            }
+
+            if (filter.Years != null && filter.Years.Count > 0)
+            {
+                whereClauses.Add($"A.Year IN ({string.Join(", ", filter.Years.Select((year, i) => $"@Year{i}"))})");
+            }
+
+            if (filter.Types != null && filter.Types.Count > 0)
+            {
+                whereClauses.Add($"A.Type IN ({string.Join(", ", filter.Types.Select((_, i) => $"@Type{i}"))})");
+            }
+
+            if (filter.Statuses != null && filter.Statuses.Count > 0)
+            {
+                whereClauses.Add($"A.Status IN ({string.Join(", ", filter.Statuses.Select((_, i) => $"@Status{i}"))})");
+            }
+
+            if (filter.Languages != null && filter.Languages.Count > 0)
+            {
+                whereClauses.Add($"A.Language IN ({string.Join(", ", filter.Languages.Select((_, i) => $"@Language{i}"))})");
+            }
+
+            if (filter.Ratings != null && filter.Ratings.Count > 0)
+            {
+                whereClauses.Add($"A.Rating IN ({string.Join(", ", filter.Ratings.Select((_, i) => $"@Rating{i}"))})");
+            }
+
+            if (!string.IsNullOrWhiteSpace(filter.SearchQuery))
+            {
+                whereClauses.Add("A.Name LIKE @SearchQuery");
+            }
+
+            if (whereClauses.Any())
+            {
+                queryBuilder.Append("WHERE " + string.Join(" AND ", whereClauses) + " ");
+            }
+
+            if (filter.SortBy == SortCriteria.MostWatched || filter.SortBy == SortCriteria.MostPopular)
+            {
+                queryBuilder.Append(@"GROUP BY A.Id, A.Name, A.Description, A.ReleaseDate, A.TrailerLink, A.Country,
+                             A.Season, A.Episodes, A.Studio, A.Type, A.Status, A.Premiered, A.Aired, A.CoverImage,
+                             A.Thumbnail, A.Language, A.Rating, A.Year, A.NumberOfReviews, A.AverageRating ");
+            }
+
+            if (filter.SortBy == SortCriteria.MostWatched)
+            {
+                queryBuilder.Append("ORDER BY COUNT(AV.Id) DESC ");
+            }
+            else if (filter.SortBy == SortCriteria.MostPopular)
+            {
+                queryBuilder.Append("ORDER BY COUNT(UA.UserId) DESC ");
+            }
+            else
+            {
+                switch (filter.SortBy)
+                {
+                    case SortCriteria.RecentlyUpdated:
+                        queryBuilder.Append("ORDER BY A.Id DESC ");
+                        break;
+                    case SortCriteria.ReleaseDate:
+                        queryBuilder.Append("ORDER BY A.ReleaseDate ");
+                        break;
+                    case SortCriteria.Rating:
+                        queryBuilder.Append("ORDER BY A.AverageRating DESC ");
+                        break;
+                    case SortCriteria.NumberOfEpisodes:
+                        queryBuilder.Append("ORDER BY A.Episodes DESC ");
+                        break;
+                    default:
+                        queryBuilder.Append("ORDER BY A.Id ");
+                        break;
+                }
+            }
+
+            queryBuilder.Append($" OFFSET {offset} ROWS FETCH NEXT {pageSize} ROWS ONLY");
+
+            return queryBuilder.ToString();
+        }
+
+        private void AddFilterParameters(SqlCommand command, AnimeFilterModel filter)
+        {
+            if (filter.GenreIds != null && filter.GenreIds.Any())
+            {
+                var genreIdParameters = new List<string>();
+                for (int i = 0; i < filter.GenreIds.Count; i++)
+                {
+                    var paramName = $"@GenreId{i}";
+                    command.Parameters.AddWithValue(paramName, filter.GenreIds[i]);
+                    genreIdParameters.Add(paramName);
+                }
+                command.CommandText = command.CommandText.Replace("@GenreIds", string.Join(",", genreIdParameters));
+            }
+
+            AddListParametersToCommand(command, filter.Countries, "Country");
+
+            AddListParametersToCommand(command, filter.Premiered, "Premiered");
+
+            AddListParametersToCommand(command, filter.Years, "Year");
+
+            AddListParametersToCommand(command, filter.Types, "Type");
+
+            AddListParametersToCommand(command, filter.Statuses, "Status");
+
+            AddListParametersToCommand(command, filter.Languages, "Language");
+
+            AddListParametersToCommand(command, filter.Ratings, "Rating");
+
+            if (!string.IsNullOrWhiteSpace(filter.SearchQuery))
+            {
+                command.Parameters.AddWithValue("@SearchQuery", $"%{filter.SearchQuery}%");
+            }
+
+        }
+
+        private void AddListParametersToCommand<T>(SqlCommand command, List<T> list, string parameterBaseName)
+        {
+            if (list != null && list.Any())
+            {
+                for (int i = 0; i < list.Count; i++)
+                {
+                    string parameterName = $"@{parameterBaseName}{i}";
+                    command.Parameters.AddWithValue(parameterName, list[i]);
+                }
+            }
         }
 
         public async Task<List<Genre>> GetAllGenresAsync()
@@ -744,43 +1069,6 @@ namespace AniX_DAL
                 await connection.CloseAsync();
             }
             return genres;
-        }
-
-        public async Task<List<Anime>> GetAnimesByGenreAsync(string genreName)
-        {
-            List<Anime> animes = new List<Anime>();
-            try
-            {
-                await connection.OpenAsync();
-                string query = @"
-                SELECT a.* 
-                FROM [Anime] a
-                INNER JOIN [Anime_Genre] ag ON a.Id = ag.AnimeId
-                INNER JOIN [Genre] g ON ag.GenreId = g.Id
-                WHERE g.Name = @genreName";
-
-                using (SqlCommand command = new SqlCommand(query, connection))
-                {
-                    command.Parameters.AddWithValue("@genreName", genreName);
-                    using (SqlDataReader reader = await command.ExecuteReaderAsync())
-                    {
-                        while (await reader.ReadAsync())
-                        {
-                            animes.Add(MapReaderToAnime(reader));
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                await _exceptionHandlingService.HandleExceptionAsync(ex);
-                throw;
-            }
-            finally
-            {
-                await connection.CloseAsync();
-            }
-            return animes;
         }
 
         public async Task<List<Anime>> FetchFilteredAndSearchedAnimesAsync(string filter, string searchTerm)
@@ -896,30 +1184,6 @@ namespace AniX_DAL
             return animeList;
         }
 
-        public async Task<bool> DoesAnimeExistAsync(int animeId)
-        {
-            try
-            {
-                await connection.OpenAsync();
-                string query = "SELECT COUNT(1) FROM [Anime] WHERE Id = @animeId";
-                using (SqlCommand command = new SqlCommand(query, connection))
-                {
-                    command.Parameters.AddWithValue("@animeId", animeId);
-                    int count = Convert.ToInt32(await command.ExecuteScalarAsync());
-                    return count > 0;
-                }
-            }
-            catch (Exception ex)
-            {
-                await _exceptionHandlingService.HandleExceptionAsync(ex);
-                throw;
-            }
-            finally
-            {
-                await connection.CloseAsync();
-            }
-        }
-
         public async Task<bool> DoesAnimeNameExistAsync(string animeName)
         {
             try
@@ -985,10 +1249,21 @@ namespace AniX_DAL
             try
             {
                 await connection.OpenAsync();
-                using (SqlCommand command = new SqlCommand("[dbo].[GetMostPopularAnime]", connection))
-                {
-                    command.CommandType = CommandType.StoredProcedure;
+                var query = @"
+                SELECT 
+                    awr.Id,
+                    awr.Name,
+                    awr.Type,
+                    awr.Thumbnail,
+                    COUNT(ua.UserId) AS WatchlistCount,
+                    awr.AverageRating
+                FROM [dbo].[AnimeWithRatings] awr
+                INNER JOIN [dbo].[User_Anime] ua ON awr.Id = ua.AnimeId
+                GROUP BY awr.Id, awr.Name, awr.Type, awr.Thumbnail, awr.AverageRating
+                ORDER BY WatchlistCount DESC";
 
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
                     using (SqlDataReader reader = await command.ExecuteReaderAsync())
                     {
                         while (await reader.ReadAsync())
@@ -1020,121 +1295,6 @@ namespace AniX_DAL
             }
 
             return animesWithPopularity;
-        }
-
-        public async Task<(List<Anime> Animes, int TotalCount)> GetAnimesWithPaginationAsync(int page, int pageSize)
-        {
-            List<Anime> animes = new List<Anime>();
-            int totalCount = 0;
-
-            try
-            {
-                await connection.OpenAsync();
-                using (var transaction = connection.BeginTransaction())
-                {
-                    // Get the total count of animes
-                    using (SqlCommand countCommand = new SqlCommand("SELECT COUNT(*) FROM [Anime]", connection, transaction))
-                    {
-                        totalCount = (int)await countCommand.ExecuteScalarAsync();
-                    }
-
-                    using (SqlCommand command = new SqlCommand("[dbo].[GetAnimesWithPagination]", connection, transaction))
-                    {
-                        command.CommandType = CommandType.StoredProcedure;
-                        command.Parameters.AddWithValue("@PageNumber", page);
-                        command.Parameters.AddWithValue("@PageSize", pageSize);
-
-                        using (SqlDataReader reader = await command.ExecuteReaderAsync())
-                        {
-                            while (await reader.ReadAsync())
-                            {
-                                Anime anime = MapReaderToAnime(reader);
-                                animes.Add(anime);
-                            }
-                        }
-                    }
-
-                    transaction.Commit();
-                }
-            }
-            catch (Exception ex)
-            {
-                await _exceptionHandlingService.HandleExceptionAsync(ex);
-                throw;
-            }
-            finally
-            {
-                await connection.CloseAsync();
-            }
-
-            return (animes, totalCount);
-        }
-
-        public async Task<List<AnimeWithRatings>> GetAnimesWithRatingsAsync()
-        {
-            var animesWithRatings = new List<AnimeWithRatings>();
-
-            try
-            {
-                await connection.OpenAsync();
-                using (SqlCommand command = new SqlCommand("SELECT * FROM [AnimeWithRatings]", connection))
-                {
-                    using (SqlDataReader reader = await command.ExecuteReaderAsync())
-                    {
-                        while (await reader.ReadAsync())
-                        {
-                            AnimeWithRatings anime = MapReaderToAnimeWithRatings(reader);
-                            animesWithRatings.Add(anime);
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                await _exceptionHandlingService.HandleExceptionAsync(ex);
-                throw;
-            }
-            finally
-            {
-                await connection.CloseAsync();
-            }
-
-            return animesWithRatings;
-        }
-
-        public async Task<List<Anime>> GetRecommendedAnimesAsync(int userId)
-        {
-            var recommendedAnimes = new List<Anime>();
-
-            try
-            {
-                await connection.OpenAsync();
-                using (SqlCommand command = new SqlCommand("[dbo].[GetRecommendedAnimes]", connection))
-                {
-                    command.CommandType = CommandType.StoredProcedure;
-                    command.Parameters.AddWithValue("@UserId", userId);
-
-                    using (SqlDataReader reader = await command.ExecuteReaderAsync())
-                    {
-                        while (await reader.ReadAsync())
-                        {
-                            Anime anime = MapReaderToAnime(reader);
-                            recommendedAnimes.Add(anime);
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                await _exceptionHandlingService.HandleExceptionAsync(ex);
-                throw;
-            }
-            finally
-            {
-                await connection.CloseAsync();
-            }
-
-            return recommendedAnimes;
         }
 
         public async Task<bool> RecordAnimeViewAsync(AnimeViews animeView)
@@ -1316,15 +1476,6 @@ namespace AniX_DAL
             };
         }
 
-        private Genre MapReaderToGenre(SqlDataReader reader)
-        {
-            return new Genre
-            {
-                Id = reader.GetInt32(reader.GetOrdinal("Id")),
-                Name = reader.GetString(reader.GetOrdinal("Name"))
-            };
-        }
-
         private AnimeViews MapReaderToAnimeView(SqlDataReader reader)
         {
             return new AnimeViews
@@ -1415,6 +1566,38 @@ namespace AniX_DAL
             return animeDetail;
         }
 
+        private AnimeWithRatings MapReaderToAnimeRecommended(SqlDataReader reader)
+        {
+            return new AnimeWithRatings
+            {
+                Id = reader.GetInt32(reader.GetOrdinal("Id")),
+                Name = reader.GetString(reader.GetOrdinal("Name")),
+                Description = reader.IsDBNull(reader.GetOrdinal("Description")) ? null : reader.GetString(reader.GetOrdinal("Description")),
+                ReleaseDate = reader.IsDBNull(reader.GetOrdinal("ReleaseDate")) ? (DateTime?)null : reader.GetDateTime(reader.GetOrdinal("ReleaseDate")),
+                TrailerLink = reader.IsDBNull(reader.GetOrdinal("TrailerLink")) ? null : reader.GetString(reader.GetOrdinal("TrailerLink")),
+                Country = reader.IsDBNull(reader.GetOrdinal("Country")) ? null : reader.GetString(reader.GetOrdinal("Country")),
+                Season = reader.IsDBNull(reader.GetOrdinal("Season")) ? null : reader.GetString(reader.GetOrdinal("Season")),
+                Episodes = reader.IsDBNull(reader.GetOrdinal("Episodes")) ? (int?)null : reader.GetInt32(reader.GetOrdinal("Episodes")),
+                Studio = reader.IsDBNull(reader.GetOrdinal("Studio")) ? null : reader.GetString(reader.GetOrdinal("Studio")),
+                Type = reader.IsDBNull(reader.GetOrdinal("Type")) ? null : reader.GetString(reader.GetOrdinal("Type")),
+                Status = reader.IsDBNull(reader.GetOrdinal("Status")) ? null : reader.GetString(reader.GetOrdinal("Status")),
+                Premiered = reader.IsDBNull(reader.GetOrdinal("Premiered")) ? null : reader.GetString(reader.GetOrdinal("Premiered")),
+                Aired = reader.IsDBNull(reader.GetOrdinal("Aired")) ? (DateTime?)null : reader.GetDateTime(reader.GetOrdinal("Aired")),
+                CoverImage = reader.IsDBNull(reader.GetOrdinal("CoverImage")) ? null : reader.GetString(reader.GetOrdinal("CoverImage")),
+                Thumbnail = reader.IsDBNull(reader.GetOrdinal("Thumbnail")) ? null : reader.GetString(reader.GetOrdinal("Thumbnail")),
+                Language = reader.IsDBNull(reader.GetOrdinal("Language")) ? null : reader.GetString(reader.GetOrdinal("Language")),
+                Rating = reader.IsDBNull(reader.GetOrdinal("Rating")) ? null : reader.GetString(reader.GetOrdinal("Rating")),
+                Year = reader.IsDBNull(reader.GetOrdinal("Year")) ? (int?)null : reader.GetInt32(reader.GetOrdinal("Year")),
+                NumberOfReviews = reader.GetInt32(reader.GetOrdinal("NumberOfReviews")),
+                AverageRating = reader.IsDBNull(reader.GetOrdinal("AverageRating")) ? (double?)null : reader.GetDouble(reader.GetOrdinal("AverageRating")),
+
+                Genres = reader.GetString(reader.GetOrdinal("Genres"))
+                    .Split(',')
+                    .Select(name => new Genre { Name = name.Trim() })
+                    .ToList(),
+            };
+        }
+
         private Review MapReaderToReview(SqlDataReader reader)
         {
             return new Review
@@ -1424,7 +1607,11 @@ namespace AniX_DAL
                     Username = reader.GetString(reader.GetOrdinal("Username")),
                     ProfileImagePath = reader.IsDBNull(reader.GetOrdinal("ProfileImagePath")) ? null : reader.GetString(reader.GetOrdinal("ProfileImagePath"))
                 },
-                Text = reader.IsDBNull(reader.GetOrdinal("Text")) ? null : reader.GetString(reader.GetOrdinal("Text")) // Add this line
+                Id = reader.GetInt32(reader.GetOrdinal("Id")),
+                UserId = reader.GetInt32(reader.GetOrdinal("UserId")),
+                Text = reader.IsDBNull(reader.GetOrdinal("Text")) ? null : reader.GetString(reader.GetOrdinal("Text")),
+                AnimeId = reader.GetInt32(reader.GetOrdinal("AnimeId"))
+
 
             };
         }

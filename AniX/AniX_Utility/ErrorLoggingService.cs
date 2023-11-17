@@ -75,7 +75,6 @@ namespace AniX_Utility
             }
             catch
             {
-                // If this also fails, consider logging to a system event log or another fallback option.
             }
         }
 

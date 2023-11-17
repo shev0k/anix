@@ -29,11 +29,6 @@ namespace AniX_FormsLogic
             return await _appModel.AnimeController.GetSearchSuggestionsAsync(searchType, searchTerm);
         }
 
-        public async Task<List<Genre>> GetAllGenresAsync()
-        {
-            return await _appModel.AnimeController.GetAllGenresAsync();
-        }
-
         public async Task<OperationResult> DeleteAnimeAsync(int animeId)
         {
             bool success = await _appModel.AnimeController.DeleteAnimeAsync(animeId);

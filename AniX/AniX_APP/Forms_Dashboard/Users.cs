@@ -36,55 +36,6 @@ namespace AniX_APP.Forms_Dashboard
             InitializeDataGridViewStyles();
         }
 
-        private void InitializeDataGridViewStyles()
-        {
-            #region COLORS DATAGRID
-            dgvUsers.DefaultCellStyle.SelectionBackColor = Color.FromArgb(231, 34, 83);
-            dgvUsers.DefaultCellStyle.SelectionForeColor = dgvUsers.DefaultCellStyle.ForeColor;
-            dgvUsers.RowHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(231, 34, 83);
-            dgvUsers.RowHeadersDefaultCellStyle.SelectionForeColor = dgvUsers.RowHeadersDefaultCellStyle.ForeColor;
-            dgvUsers.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dgvUsers.AdvancedRowHeadersBorderStyle.Top = DataGridViewAdvancedCellBorderStyle.Single;
-            dgvUsers.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dgvUsers.AdvancedColumnHeadersBorderStyle.Left = DataGridViewAdvancedCellBorderStyle.Single;
-            dgvUsers.BackgroundColor = Color.FromArgb(231, 34, 83);
-            dgvUsers.GridColor = Color.FromArgb(11, 7, 17);
-            dgvUsers.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(231, 34, 83);
-            dgvUsers.RowHeadersDefaultCellStyle.BackColor = Color.FromArgb(11, 7, 17);
-            dgvUsers.DefaultCellStyle.ForeColor = Color.White;
-            dgvUsers.DefaultCellStyle.BackColor = Color.FromArgb(11, 7, 17);
-            dgvUsers.DefaultCellStyle.SelectionForeColor = Color.White;
-            dgvUsers.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
-            dgvUsers.EnableHeadersVisualStyles = false;
-            dgvUsers.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgvUsers.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None;
-            dgvUsers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dgvUsers.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dgvUsers.AllowUserToResizeRows = false;
-
-            foreach (DataGridViewColumn column in dgvUsers.Columns)
-            {
-                column.SortMode = DataGridViewColumnSortMode.NotSortable;
-            }
-
-            foreach (DataGridViewColumn column in dgvUsers.Columns)
-            {
-                column.Resizable = DataGridViewTriState.False;
-            }
-
-            foreach (DataGridViewRow row in dgvUsers.Rows)
-            {
-                row.Resizable = DataGridViewTriState.False;
-            }
-            #endregion
-        }
-
-        private async void Users_Load(object sender, EventArgs e)
-        {
-            dgvUsers.DataBindingComplete += new DataGridViewBindingCompleteEventHandler(DgvUsers_DataBindingComplete);
-            await RefreshUsersAsync();
-        }
-
         private async void btnAdd_Click(object sender, EventArgs e)
         {
             User_Add_Edit form = new User_Add_Edit(
@@ -129,14 +80,6 @@ namespace AniX_APP.Forms_Dashboard
             catch (Exception exception)
             {
                 RJMessageBox.Show("No user selected. Please select a user to edit.", "Warning", MessageBoxButtons.OK);
-            }
-        }
-
-        private void ResetFiltersAndCombobox()
-        {
-            if (cmbFilter.Items.Count > 0)
-            {
-                cmbFilter.SelectedIndex = 0;
             }
         }
 
@@ -235,19 +178,72 @@ namespace AniX_APP.Forms_Dashboard
             await UpdateUserListAsync();
         }
 
+        #region USEFUL
+        private void InitializeDataGridViewStyles()
+        {
+            #region COLORS DATAGRID
+            dgvUsers.DefaultCellStyle.SelectionBackColor = Color.FromArgb(231, 34, 83);
+            dgvUsers.DefaultCellStyle.SelectionForeColor = dgvUsers.DefaultCellStyle.ForeColor;
+            dgvUsers.RowHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(231, 34, 83);
+            dgvUsers.RowHeadersDefaultCellStyle.SelectionForeColor = dgvUsers.RowHeadersDefaultCellStyle.ForeColor;
+            dgvUsers.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dgvUsers.AdvancedRowHeadersBorderStyle.Top = DataGridViewAdvancedCellBorderStyle.Single;
+            dgvUsers.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dgvUsers.AdvancedColumnHeadersBorderStyle.Left = DataGridViewAdvancedCellBorderStyle.Single;
+            dgvUsers.BackgroundColor = Color.FromArgb(231, 34, 83);
+            dgvUsers.GridColor = Color.FromArgb(11, 7, 17);
+            dgvUsers.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(231, 34, 83);
+            dgvUsers.RowHeadersDefaultCellStyle.BackColor = Color.FromArgb(11, 7, 17);
+            dgvUsers.DefaultCellStyle.ForeColor = Color.White;
+            dgvUsers.DefaultCellStyle.BackColor = Color.FromArgb(11, 7, 17);
+            dgvUsers.DefaultCellStyle.SelectionForeColor = Color.White;
+            dgvUsers.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            dgvUsers.EnableHeadersVisualStyles = false;
+            dgvUsers.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvUsers.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None;
+            dgvUsers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dgvUsers.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            dgvUsers.AllowUserToResizeRows = false;
+
+            foreach (DataGridViewColumn column in dgvUsers.Columns)
+            {
+                column.SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
+
+            foreach (DataGridViewColumn column in dgvUsers.Columns)
+            {
+                column.Resizable = DataGridViewTriState.False;
+            }
+
+            foreach (DataGridViewRow row in dgvUsers.Rows)
+            {
+                row.Resizable = DataGridViewTriState.False;
+            }
+            #endregion
+        }
+        private async void Users_Load(object sender, EventArgs e)
+        {
+            dgvUsers.DataBindingComplete += new DataGridViewBindingCompleteEventHandler(DgvUsers_DataBindingComplete);
+            await RefreshUsersAsync();
+        }
+        private void ResetFiltersAndCombobox()
+        {
+            if (cmbFilter.Items.Count > 0)
+            {
+                cmbFilter.SelectedIndex = 0;
+            }
+        }
         private void ShowUserDetails(User user)
         {
             string userDetails = $"Username: {user.Username}\nEmail: {user.Email}\nBanned: {(user.Banned ? "Yes" : "No")}\nAdmin: {(user.IsAdmin ? "Yes" : "No")}";
             RJMessageBox.Show($"{userDetails}", "View User", MessageBoxButtons.OK);
         }
-
         private User GetSelectedUserFromDataGridView(string selectionType)
         {
             int rowIndex = (selectionType == "SelectedRows") ? dgvUsers.SelectedRows[0].Index : dgvUsers.CurrentCell.RowIndex;
             List<Tuple<User, object>> originalUsers = (List<Tuple<User, object>>)dgvUsers.Tag;
             return originalUsers[rowIndex].Item1;
         }
-
         private void DgvUsers_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
             if (dgvUsers.Columns.Contains("Id"))
@@ -255,7 +251,6 @@ namespace AniX_APP.Forms_Dashboard
                 dgvUsers.Columns["Id"].Visible = false;
             }
         }
-
         private async Task RefreshUsersAsync()
         {
             List<User> users = await _usersFormLogic.RefreshUsersAsync();
@@ -269,7 +264,6 @@ namespace AniX_APP.Forms_Dashboard
             if (dgvUsers.Columns["IsAdmin"] != null)
                 dgvUsers.Columns["IsAdmin"].HeaderText = "Admin";
         }
-
         private async Task UpdateUserListAsync()
         {
             string selectedFilter = cmbFilter.SelectedItem?.ToString() ?? "All Users";
@@ -281,7 +275,6 @@ namespace AniX_APP.Forms_Dashboard
             dgvUsers.DataSource = transformedUsers.Select(t => t.Item2).ToList();
             dgvUsers.Tag = transformedUsers;
         }
-
         private User GetSelectedUserFromDataGridView()
         {
             int rowIndex = dgvUsers.CurrentCell.RowIndex;
@@ -289,5 +282,6 @@ namespace AniX_APP.Forms_Dashboard
 
             return _usersFormLogic.GetSelectedUserFromDataGridView(originalUsers, rowIndex);
         }
+        #endregion
     }
 }

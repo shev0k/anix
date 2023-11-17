@@ -108,8 +108,6 @@ namespace AniX_APP.Forms_Utility
             }
         }
 
-
-
         private User CreateUserFromForm()
         {
             return new User

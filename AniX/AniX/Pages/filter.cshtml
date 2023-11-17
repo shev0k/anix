@@ -1,0 +1,390 @@
+﻿@page
+@using AniX_Shared.Extensions
+@model AniX_WEB.Pages.FilterListModel
+@{
+}
+@functions {
+	public static string TruncateDescription(string description, int maxLength = 150)
+	{
+		if (string.IsNullOrEmpty(description)) return description;
+		return description.Length <= maxLength ? description : description.Substring(0, maxLength) + "...";
+	}
+	public static string TruncateTitle(string title, int maxLength = 25)
+	{
+		if (string.IsNullOrEmpty(title)) return title;
+		return title.Length <= maxLength ? title : title.Substring(0, maxLength) + "...";
+	}
+	public static string TruncateRating(double? rating, int maxLength = 4)
+	{
+		if (rating == null) return "TBA";
+		string formattedRating = rating.Value.ToString("F2", System.Globalization.CultureInfo.InvariantCulture);
+		return formattedRating.Length <= maxLength ? formattedRating : formattedRating.Substring(0, maxLength);
+	}
+}
+
+
+<!--=====================================-->
+<!--=      Breadcrumb Area Start        =-->
+<!--=====================================-->
+<section class="breadcrumb">
+	<div class="container">
+		<div class="breadcrumb-content">
+			<ul>
+				<li><a href="index">Home</a></li>
+				<li><a class="active">List</a></li>
+			</ul>
+		</div>
+	</div>
+</section>
+<!--=====================================-->
+<!--=        filter Area Start          =-->
+<!--=====================================-->
+<form method="post" asp-page-handler="ApplyFilters" id="filterForm">
+	<section class="filter sec-mar">
+		<div class="container">
+			<div class="heading style-1">
+				<h2>
+					Filter
+                    <span>
+                        <input type="hidden" asp-for="IsGridView" />
+                        <input type="hidden" name="searchQuery" value="@Model.Filter.SearchQuery" />
+                        <a href="@Url.Page("/filter", new { gridView = true, searchQuery = Model.Filter.SearchQuery, currentPage = Model.CurrentPage, genreIds = Model.Filter.GenreIds, countries = Model.Filter.Countries, premiered = Model.Filter.Premiered, years = Model.Filter.Years, types = Model.Filter.Types, statuses = Model.Filter.Statuses, languages = Model.Filter.Languages, ratings = Model.Filter.Ratings, sortBy = Model.Filter.SortBy })" class="@(Model.IsGridView ? "ms-2 me-2 active" : "ms-2 me-2")"><i class="fal fa-th-large"></i></a>
+                        <a href="@Url.Page("/filter", new { gridView = false, searchQuery = Model.Filter.SearchQuery, currentPage = Model.CurrentPage, genreIds = Model.Filter.GenreIds, countries = Model.Filter.Countries, premiered = Model.Filter.Premiered, years = Model.Filter.Years, types = Model.Filter.Types, statuses = Model.Filter.Statuses, languages = Model.Filter.Languages, ratings = Model.Filter.Ratings, sortBy = Model.Filter.SortBy })" class="@(Model.IsGridView ? "ms-2 me-2" : "ms-2 me-2 active")"><i class="fa fa-solid fa-list"></i></a>
+                        @{
+                            var startIndex = (Model.CurrentPage - 1) * Model.PageSize;
+                            var endIndex = Math.Min(Model.CurrentPage * Model.PageSize, Model.TotalCount);
+                            var visibleAnimes = endIndex - startIndex;
+                        }
+                        SHOWING @visibleAnimes – @Model.PageSize OF @Model.TotalCount ANIME
+                    </span>
+				</h2>
+			</div>
+			<ul class="filter-block style-2">
+            <li>
+                <a href="@Url.Page("/filter", new { gridView = Model.IsGridView, currentPage = 1, genreIds = (int[])null, countries = (string[])null, premiered = (string[])null, years = (int[])null, types = (string[])null, statuses = (string[])null, languages = (string[])null, ratings = (string[])null, sortBy = SortCriteria.None })" class="anime-btn btn-dark">Reset Filters</a>
+            </li>
+				<li>
+					<a href="#" class="anime-btn btn-dark dropdown-toggle" id="genre" data-bs-toggle="dropdown"
+					   data-bs-auto-close="outside" aria-expanded="false">
+						Genre <span><i class="fa fa-chevron-down"></i></span>
+					</a>
+					<ul class="dropdown-menu" aria-labelledby="genre">
+						@foreach (var genre in Model.AvailableGenres)
+						{
+							<li>
+								<div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" 
+                                           name="Filter.GenreIds" value="@genre.Id" 
+                                           id="@($"genre{genre.Id}")" 
+                                           @(Model.Filter.GenreIds.Contains(genre.Id) ? "checked" : "") />
+									<label class="custom-control-label" for="@($"genre{genre.Id}")">@genre.Name</label>
+								</div>
+							</li>
+						}
+					</ul>
+				</li>
+				<li>
+					<a href="#" class="anime-btn btn-dark dropdown-toggle" id="country" data-bs-toggle="dropdown"
+					   data-bs-auto-close="outside" aria-expanded="false">
+						Country <span><i class="fa fa-chevron-down"></i></span>
+					</a>
+                    <ul class="dropdown-menu" aria-labelledby="country">
+                        @foreach (var country in Model.AvailableCountries)
+                        {
+                            <li>
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" name="Filter.Countries[]" value="@country" id="@country"
+                                           @(Model.Filter.Countries.Contains(country) ? "checked" : "") />
+                                    <label class="custom-control-label" for="@country">@country</label>
+                                </div>
+                            </li>
+                        }
+                    </ul>
+				</li>
+				<li>
+					<a href="#" class="anime-btn btn-dark dropdown-toggle" id="season" data-bs-toggle="dropdown"
+					   data-bs-auto-close="outside" aria-expanded="false">
+						Season <span><i class="fa fa-chevron-down"></i></span>
+					</a>
+                    <ul class="dropdown-menu" aria-labelledby="season">
+                        @foreach (var season in new[] { "Winter", "Spring", "Summer", "Fall" })
+                        {
+                            <li>
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" name="Filter.Premiered[]" value="@season" id="@season"
+                                           @(Model.Filter.Premiered.Contains(season) ? "checked" : "")>
+                                    <label class="custom-control-label" for="@season">@season</label>
+                                </div>
+                            </li>
+                        }
+                    </ul>
+				</li>
+				<li>
+					<a href="#" class="anime-btn btn-dark dropdown-toggle" id="year" data-bs-toggle="dropdown"
+					   data-bs-auto-close="outside" aria-expanded="false">
+						Year <span><i class="fa fa-chevron-down"></i></span>
+					</a>
+                    <ul class="dropdown-menu" aria-labelledby="year">
+                        @for (int year = DateTime.Now.Year; year >= 1990; year--)
+                        {
+                            <li>
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" name="Filter.Years[]" value="@year"
+                                           id="@($"yr{year}")" @(Model.Filter.Years.Contains(year) ? "checked" : "") />
+                                    <label class="custom-control-label" for="@($"yr{year}")">@year</label>
+                                </div>
+                            </li>
+                        }
+                    </ul>
+				</li>
+				<li>
+					<a href="#" class="anime-btn btn-dark dropdown-toggle" id="type" data-bs-toggle="dropdown"
+					   data-bs-auto-close="outside" aria-expanded="false">
+						Type <span><i class="fa fa-chevron-down"></i></span>
+					</a>
+                    <ul class="dropdown-menu" aria-labelledby="type">
+                        @foreach (var type in new[] { "Movie", "TV", "OVA", "ONA", "Special", "Music" })
+                        {
+                            <li>
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" name="Filter.Types[]" value="@type" id="@type"
+                                           @(Model.Filter.Types.Contains(type) ? "checked" : "")>
+                                    <label class="custom-control-label" for="@type">@type</label>
+                                </div>
+                            </li>
+                        }
+                    </ul>
+				</li>
+				<li>
+					<a href="#" class="anime-btn btn-dark dropdown-toggle" id="status" data-bs-toggle="dropdown"
+					   data-bs-auto-close="outside" aria-expanded="false">
+						Status <span><i class="fa fa-chevron-down"></i></span>
+					</a>
+                    <ul class="dropdown-menu" aria-labelledby="status">
+                        @foreach (var status in new[] { "Not Yet Aired", "Currently Airing", "Finished Airing" })
+                        {
+                            <li>
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" name="Filter.Statuses[]" value="@status" id="@status"
+                                           @(Model.Filter.Statuses.Contains(status) ? "checked" : "")>
+                                    <label class="custom-control-label" for="@status">@status</label>
+                                </div>
+                            </li>
+                        }
+                    </ul>
+				</li>
+				<li>
+					<a href="#" class="anime-btn btn-dark dropdown-toggle" id="language" data-bs-toggle="dropdown"
+					   data-bs-auto-close="outside" aria-expanded="false">
+						Language <span><i class="fa fa-chevron-down"></i></span>
+					</a>
+                    <ul class="dropdown-menu" aria-labelledby="language">
+                        <li>
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" name="Filter.Languages[]" value="Sub" id="Sub" 
+                                       @(Model.Filter.Languages.Contains("Sub") ? "checked" : "")>
+                                <label class="custom-control-label" for="Sub">Sub</label>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" name="Filter.Languages[]" value="Dub" id="Dub" 
+                                       @(Model.Filter.Languages.Contains("Dub") ? "checked" : "")>
+                                <label class="custom-control-label" for="Dub">Dub</label>
+                            </div>
+                        </li>
+                    </ul>
+				</li>
+				<li>
+					<a href="#" class="anime-btn btn-dark dropdown-toggle" id="rating" data-bs-toggle="dropdown"
+					   data-bs-auto-close="outside" aria-expanded="false">
+						Rating <span><i class="fa fa-chevron-down"></i></span>
+					</a>
+                    <ul class="dropdown-menu" aria-labelledby="rating">
+                        <li>
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" name="Filter.Ratings[]" value="G" id="G" 
+                                       @(Model.Filter.Ratings.Contains("G") ? "checked" : "")>
+                                <label class="custom-control-label" for="G">G</label>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" name="Filter.Ratings[]" value="PG" id="PG" 
+                                       @(Model.Filter.Ratings.Contains("PG") ? "checked" : "")>
+                                <label class="custom-control-label" for="PG">PG</label>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" name="Filter.Ratings[]" value="PG-13" id="PG-13" 
+                                       @(Model.Filter.Ratings.Contains("PG-13") ? "checked" : "")>
+                                <label class="custom-control-label" for="PG-13">PG-13</label>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" name="Filter.Ratings[]" value="R" id="R" 
+                                       @(Model.Filter.Ratings.Contains("R") ? "checked" : "")>
+                                <label class="custom-control-label" for="R">R</label>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" name="Filter.Ratings[]" value="R-17+" id="R-17+" 
+                                       @(Model.Filter.Ratings.Contains("R-17+") ? "checked" : "")>
+                                <label class="custom-control-label" for="R-17+">R-17+</label>
+                            </div>
+                        </li>
+                    </ul>
+				</li>
+				<li>
+					<a href="#" class="anime-btn btn-dark dropdown-toggle" id="sort-by" data-bs-toggle="dropdown"
+					   data-bs-auto-close="outside" aria-expanded="false">
+						Sort by <span><i class="fa fa-chevron-down"></i></span>
+					</a>
+					<ul class="dropdown-menu" aria-labelledby="sort-by">
+                        <li>
+                            <div class="custom-control custom-checkbox">
+                                <input type="radio" class="custom-control-input" name="Filter.SortBy" value="RecentlyUpdated" id="RecentlyUpdated" 
+                                       @(Model.Filter.SortBy == SortCriteria.RecentlyUpdated ? "checked" : "") />
+                                <label class="custom-control-label" for="RecentlyUpdated">Recently Updated</label>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="custom-control custom-checkbox">
+                                <input type="radio" class="custom-control-input" name="Filter.SortBy" value="ReleaseDate" id="ReleaseDate"
+                                       @(Model.Filter.SortBy == SortCriteria.ReleaseDate ? "checked" : "") />
+                                <label class="custom-control-label" for="ReleaseDate">Release Date</label>
+                            </div>
+                        </li>
+						<li>
+							<div class="custom-control custom-checkbox">
+                                <input type="radio" class="custom-control-input" name="Filter.SortBy" value="Rating" id="Rating" 
+                                       @(Model.Filter.SortBy == SortCriteria.Rating ? "checked" : "") />
+								<label class="custom-control-label" for="Rating">Rating</label>
+							</div>
+						</li>
+						<li>
+							<div class="custom-control custom-checkbox">
+                                <input type="radio" class="custom-control-input" name="Filter.SortBy" value="MostWatched" id="MostWatched" 
+                                       @(Model.Filter.SortBy == SortCriteria.MostWatched ? "checked" : "") />
+								<label class="custom-control-label" for="MostWatched">Most Watched</label>
+							</div>
+						</li>
+						<li>
+							<div class="custom-control custom-checkbox">
+                                <input type="radio" class="custom-control-input" name="Filter.SortBy" value="MostPopular" id="MostPopular" 
+                                       @(Model.Filter.SortBy == SortCriteria.MostPopular ? "checked" : "") />
+								<label class="custom-control-label" for="MostPopular">Most Popular</label>
+							</div>
+						</li>
+						<li>
+							<div class="custom-control custom-checkbox">
+                                <input type="radio" class="custom-control-input" name="Filter.SortBy" value="NumberOfEpisodes" id="NumberOfEpisodes" 
+                                       @(Model.Filter.SortBy == SortCriteria.NumberOfEpisodes ? "checked" : "") />
+								<label class="custom-control-label" for="NumberOfEpisodes">Number of Episodes</label>
+							</div>
+                        </li>
+                    </ul>
+                </li>
+            <li>
+                <button class="anime-btn btn-dark border-change" type="submit">Filter Now</button>
+            </li>
+			</ul>
+		</div>
+	</section>
+</form>
+<!--=====================================-->
+<!--=        anime Area Start          =-->
+<!--=====================================-->
+<section class="anime sec-mar">
+	<div class="container">
+        <div class="row">
+            
+            @if (Model.IsGridView)
+            {
+                @foreach (var anime in Model.Animes)
+                {
+                    <div class="col-xl-3 col-lg-4 col-sm-6 col-12">
+                        <div class="anime-blog">
+                            <a href="@Url.Page("/watch", new { id = anime.Id })" class="img-block">
+                                <img src="@anime.Thumbnail" alt="@anime.Name" class="anime-image">
+                            </a>
+                            <a href="@Url.Page("/watch", new { id = anime.Id })" class="action-overlay"><i class="fal fa-play-circle"></i> Play Now</a>
+                            <div class="detail">
+                                <div class="tags">
+                                    <a href="@Url.Page("/watch", new { id = anime.Id })" class="text-box">★ @TruncateRating(anime.AverageRating)</a>
+                                    <a href="@Url.Page("/watch", new { id = anime.Id })" class="text-box active">@anime.Type</a>
+                                </div>
+                            </div>
+                            <a href="@Url.Page("/watch", new { id = anime.Id })">
+                                <p>@anime.Name</p>
+                            </a>
+                        </div>
+                    </div>
+                }
+            }
+            else
+            {
+            @foreach (var anime in Model.Animes)
+            {
+                <div class="col-lg-4 col-md-6 col-sm-8 offset-md-0 offset-sm-2 col-12">
+                    <div class="anime-box bg-color-black">
+                        <a href="@Url.Page("/watch", new { id = anime.Id })">
+                            <div class="row m-0">
+                                <div class="col-2 p-0">
+                                    <img src="@anime.Thumbnail" class="anime-blog-image" alt="@anime.Name">
+                                </div>
+                                <div class="col-8 p-0">
+                                    <div class="anime-blog">
+                                        <p>@anime.Name</p>
+                                        <p class="text-box">★ @TruncateRating(anime.AverageRating)</p>
+                                        <p class="text-box">@anime.Rating</p>
+                                    </div>
+                                </div>
+                                <div class="col-2 p-0 show-type">
+                                    <span class="show-type">@anime.Type</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            }
+            }
+            
+        </div>
+        <!-- Pagination -->
+        @if (Model.TotalCount > Model.PageSize)
+        {
+            <div class="pagination-wrape">
+                <ul class="pagination">
+                    <!-- Previous Page Link -->
+                    @if (Model.CurrentPage > 1)
+                    {
+                        <li class="page-item">
+                            <a class="page-link arrow" href="?@Model.GenerateQueryStringWithFilters(Model.CurrentPage - 1)" aria-label="Previous">
+                                <i class="fa fa-chevron-left"></i>
+                            </a>
+                        </li>
+                    }
+                    @foreach (var pageNum in Model.GetPagination())
+                    {
+                        <li class="page-item">
+                            <a class="page-link @(pageNum == Model.CurrentPage ? "current" : "")" href="?@Model.GenerateQueryStringWithFilters(pageNum)">@pageNum</a>
+                        </li>
+                    }
+                    <!-- Next Page Link -->
+                    @if (Model.CurrentPage < Math.Ceiling((double)Model.TotalCount / Model.PageSize))
+                    {
+                        <li class="page-item">
+                            <a class="page-link arrow" href="?@Model.GenerateQueryStringWithFilters(Model.CurrentPage + 1)" aria-label="next">
+                                <i class="fa fa-chevron-right"></i>
+                            </a>
+                        </li>
+                    }
+                </ul>
+            </div>
+        }
+	</div>
+</section>

@@ -36,7 +36,7 @@ namespace AniX_WEB.Pages
 
             if (CurrentUser == null)
             {
-                return RedirectToPage("/Error");
+                return RedirectToPage("/404");
             }
 
             IsOwnProfile = User.FindFirstValue(ClaimTypes.NameIdentifier) == CurrentUser.Id.ToString();

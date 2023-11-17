@@ -5,7 +5,6 @@ namespace AniX_BusinessLogic
 {
     public class UserValidationService
     {
-        // Configuration options for rules
         private readonly int minUsernameLength;
         private readonly int minPasswordLength;
         private readonly string passwordRegexPattern;

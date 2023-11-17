@@ -211,7 +211,6 @@ namespace AniX_DAL
             }
         }
 
-
         public async Task<OperationResult> DeleteAsync(int id)
         {
             OperationResult result = new OperationResult();
@@ -246,45 +245,9 @@ namespace AniX_DAL
             return result;
         }
 
-
-
         public async Task<User> GetUserFromIdAsync(int id)
         {
             return await GetUserByIdAsync(id);
-        }
-
-        public async Task<User> GetUserFromUsernameAsync(string username)
-        {
-            User user = null;
-            try
-            {
-                await connection.OpenAsync();
-                string query = "SELECT * FROM [User] WHERE Username = @username";
-                SqlCommand command = new SqlCommand(query, connection);
-                command.Parameters.AddWithValue("@username", username);
-
-                SqlDataReader reader = await command.ExecuteReaderAsync();
-
-                if (await reader.ReadAsync())
-                {
-                    user = MapReaderToUser(reader);
-                }
-            }
-            catch (Exception ex)
-            {
-                bool handled = await _exceptionHandlingService.HandleExceptionAsync(ex);
-                if (!handled)
-                {
-                    await _errorLoggingService.LogErrorAsync(ex, LogSeverity.Critical);
-                }
-
-                throw;
-            }
-            finally
-            {
-                await connection.CloseAsync();
-            }
-            return user;
         }
 
         private async Task<User> GetUserByIdAsync(int id)
@@ -319,42 +282,6 @@ namespace AniX_DAL
             }
 
             return user;
-        }
-
-        public async Task<List<User>> GetUsersInBatchAsync(int startIndex, int batchSize)
-        {
-            List<User> users = new List<User>();
-
-            try
-            {
-                await connection.OpenAsync();
-
-                string query = $"SELECT * FROM [User] ORDER BY Id OFFSET {startIndex} ROWS FETCH NEXT {batchSize} ROWS ONLY";
-                SqlCommand command = new SqlCommand(query, connection);
-
-                SqlDataReader reader = await command.ExecuteReaderAsync();
-
-                while (await reader.ReadAsync())
-                {
-                    users.Add(MapReaderToUser(reader));
-                }
-            }
-            catch (Exception ex)
-            {
-                bool handled = await _exceptionHandlingService.HandleExceptionAsync(ex);
-                if (!handled)
-                {
-                    await _errorLoggingService.LogErrorAsync(ex, LogSeverity.Critical);
-                }
-
-                throw;
-            }
-            finally
-            {
-                await connection.CloseAsync();
-            }
-
-            return users;
         }
 
         public async Task<List<User>> FetchFilteredAndSearchedUsersAsync(string filter, string searchTerm)
@@ -415,7 +342,6 @@ namespace AniX_DAL
 
             return users;
         }
-
 
         public async Task<bool> DoesUsernameExistAsync(string username)
         {

@@ -272,7 +272,7 @@ namespace AniX_APP.Forms_Dashboard
 
         private void btnReviews_Click(object sender, EventArgs e)
         {
-            openChildForm(new Reviews(_dashboardModel.LoggedInUser));
+            openChildForm(new Reviews(_dashboardModel, _exceptionHandlingService, _errorLoggingService));
             SetActiveButton((Button)sender);
         }
 

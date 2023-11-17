@@ -1,0 +1,184 @@
+﻿@page
+@using AniX_Shared.Interfaces
+@using AniX_Shared.DomainModels
+@model AniX_WEB.Pages.PlaylistModel
+@{
+    Layout = "_Layout";
+}
+<!--=====================================-->
+<!--=      Breadcrumb Area Start        =-->
+<!--=====================================-->
+<section class="breadcrumb">
+    <div class="container">
+        <div class="breadcrumb-content">
+            <ul>
+                <li><a href="/index">Home</a></li>
+                <li><a href="/profile">Profile</a></li>
+                <li><a class="active">Playlist</a></li>
+            </ul>
+        </div>
+    </div>
+</section>
+<!--=====================================-->
+<!--=      schedule Area Start        =-->
+<!--=====================================-->
+<section class="schedule style-3  sec-mar">
+    <div class="container">
+        <div class="heading style-1">
+            <h2>PLAYLIST</h2>
+        </div>
+        <div class="row">
+            <div class="col-xl-9 col-sm-12 col-12">
+                <div class="schedule-box">
+                    <div class="card">
+                        <div class="card-header">
+                            <ul class="nav nav-tabs card-header-tabs" data-bs-tabs="tabs">
+                                <li class="nav-item">
+                                    <a class="nav-link text-center active" aria-current="true" data-bs-toggle="tab"
+                                       href="#later">
+                                        <h2>WATCH LATER</h2>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-center" aria-current="true" data-bs-toggle="tab"
+                                       href="#playlist">
+                                        <h2>YOUR PLAYLIST</h2>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="card-body style-1 tab-content">
+                            <div class="row justify-content-between ps-3 pe-3 pb-4">
+                                <div class="col-lg-6 col-sm-6 col-12">
+                                    <h4 class="d-inline">Details</h4>
+                                </div>
+                            </div>
+                            <div class="tab-pane active scrollable-container" id="later">
+                                @foreach (var item in Model.WatchlistAnimes)
+                                {
+                                    <form method="post" asp-page-handler="RemoveFromWatchlist">
+                                        <input type="hidden" name="animeId" value="@item.Anime.Id" />
+                                        <a href="@Url.Page("/watch", new { id = item.Anime.Id })">
+                                            <div class="row ps-3 pe-3">
+                                                <div class="col-xl-7 col-lg-8 col-12 col-md-7 col-sm-8">
+                                                    <div class="row">
+                                                        <div class="col-lg-2 col-sm-3 col-3 ps-0 space-left pe-0 text-end">
+                                                            <img class="anime-blog-image" src="@item.Anime.Thumbnail" alt="@item.Anime.Name">
+                                                        </div>
+                                                        <div class="col-lg-10 col-sm-9 col-9">
+                                                            <div class="schedule-content align-middle align-middle">
+                                                                <p class="small-title">@item.Anime.Name</p>
+                                                                <p class="text-box">@item.Anime.Type</p>
+                                                                <p style="color: black;" class="text-box active">@item.Anime.Rating</p>
+                                                                <button class="anime-button btn-dark" onclick="removeFromWatchlist(@item.Anime.Id)">Remove</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <hr>
+                                    </form>
+                                }
+                            </div>
+                            <div class="tab-pane scrollable-container" id="playlist">
+                                @foreach (var item in Model.PlaylistAnimes){
+                                    <form method="post" asp-page-handler="RemoveFromPlaylist">
+                                        <input type="hidden" name="animeId" value="@item.Anime.Id" />
+                                        <a href="@Url.Page("/watch", new { id = item.Anime.Id })">
+                                            <div class="row ps-3 pe-3">
+                                                <div class="col-xl-7 col-lg-8 col-12 col-md-7 col-sm-8">
+                                                    <div class="row">
+                                                        <div class="col-lg-2 col-sm-3 col-3 ps-0 space-left pe-0 text-end">
+                                                            <img class="anime-blog-image" src="@item.Anime.Thumbnail" alt="@item.Anime.Name">
+                                                        </div>
+                                                        <div class="col-lg-10 col-sm-9 col-9">
+                                                            <div class="schedule-content align-middle align-middle">
+                                                                <p class="small-title">@item.Anime.Name</p>
+                                                                <p class="text-box">@item.Anime.Type</p>
+                                                                <p style="color: black;" class="text-box active">@item.Anime.Rating</p>
+                                                                <button class="anime-button btn-dark" onclick="removeFromWatchlist(@item.Anime.Id)">Remove</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <hr>
+                                    </form>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12 order d-none d-xl-block">
+                <div class="row align-items-end">
+                    <div class="col-lg-12 col-sm-8 col-6">
+                        <div class="img-box">
+                            <img style="border-radius: 10% !important;" src="@Model.CurrentUser.ProfileImagePath" draggable="false" alt="" onerror="this.onerror=null;this.src='./assets/media/profile/edit-profile.png';">
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-sm-6 col-6">
+                        <p class="small-text pt-1">@('@')@Model.CurrentUser.Username</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+@section Scripts
+    {
+    <script>
+        var serverMessage = "@Html.Raw(TempData["Message"] ?? "")";
+        var messageType = "@(TempData["MessageType"] ?? "info")";
+
+        document.addEventListener("DOMContentLoaded", function () {
+            if (serverMessage.length > 0) {
+                var modalId = messageType === "success" ? 'successModal' : 'errorModal';
+                var messageElementId = messageType === "success" ? 'success-message' : 'error-message';
+                document.getElementById(messageElementId).innerText = serverMessage;
+                var myModal = new bootstrap.Modal(document.getElementById(modalId));
+                myModal.show();
+            }
+
+            $('.modal').on('hidden.bs.modal', function () {
+                if ($('.modal.show').length === 0) {
+                    $('body').removeClass('modal-open');
+                    $('.modal-backdrop').remove();
+                    document.body.style.overflow = '';
+                }
+            });
+
+            document.querySelectorAll('.rate-now, .post-btn').forEach(btn => {
+                btn.addEventListener('click', function (event) {
+                    if (!@User.Identity.IsAuthenticated) {
+                        event.preventDefault();
+                        var loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
+                        loginModal.show();
+                    }
+                });
+            });
+        });
+
+        $(document).ready(function () {
+            $('.modal').on('hidden.bs.modal', function () {
+                if (!$('.modal.show').length) {
+                    $('body').removeClass('modal-open');
+                    $('.modal-backdrop').remove();
+                    $('body').css('overflow', 'auto');
+                }
+            });
+        });
+    </script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+    var hash = window.location.hash;
+    if (hash === "#playlist") {
+        new bootstrap.Tab(document.querySelector('[href="' + hash + '"]')).show();
+    }
+    });
+    </script>
+}

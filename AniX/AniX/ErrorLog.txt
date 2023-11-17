@@ -178,3 +178,1073 @@ Stack Trace:    at System.Data.ProviderBase.BasicFieldNameLookup.GetOrdinal(Stri
    at AniX_DAL.AnimeDAL.MapReaderToReview(SqlDataReader reader) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 1420
    at AniX_DAL.AnimeDAL.GetAnimeDetailAsync(Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 487
 ---------------------------------------------------
+Timestamp: 14/11/2023 09:47:00
+Severity: Error
+Exception Type: System.IndexOutOfRangeException
+Message: NumberOfReviews
+Stack Trace:    at System.Data.ProviderBase.BasicFieldNameLookup.GetOrdinal(String fieldName)
+   at System.Data.SqlClient.SqlDataReader.GetOrdinal(String name)
+   at AniX_DAL.AnimeDAL.MapReaderToAnimeDetail(SqlDataReader reader) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 1417
+   at AniX_DAL.AnimeDAL.GetRecommendedAnimesAsync(Nullable`1 userId, Nullable`1 currentAnimeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 393
+---------------------------------------------------
+Timestamp: 14/11/2023 09:49:05
+Severity: Error
+Exception Type: System.IndexOutOfRangeException
+Message: AverageRating
+Stack Trace:    at System.Data.ProviderBase.BasicFieldNameLookup.GetOrdinal(String fieldName)
+   at System.Data.SqlClient.SqlDataReader.GetOrdinal(String name)
+   at AniX_DAL.AnimeDAL.MapReaderToAnimeRecommended(SqlDataReader reader) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 1455
+   at AniX_DAL.AnimeDAL.GetRecommendedAnimesAsync(Nullable`1 userId, Nullable`1 currentAnimeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 393
+---------------------------------------------------
+Timestamp: 14/11/2023 09:50:29
+Severity: Error
+Exception Type: System.IndexOutOfRangeException
+Message: NumberOfReviews
+Stack Trace:    at System.Data.ProviderBase.BasicFieldNameLookup.GetOrdinal(String fieldName)
+   at System.Data.SqlClient.SqlDataReader.GetOrdinal(String name)
+   at AniX_DAL.AnimeDAL.MapReaderToAnimeRecommended(SqlDataReader reader) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 1455
+   at AniX_DAL.AnimeDAL.GetRecommendedAnimesAsync(Nullable`1 userId, Nullable`1 currentAnimeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 393
+---------------------------------------------------
+Timestamp: 14/11/2023 09:50:39
+Severity: Error
+Exception Type: System.IndexOutOfRangeException
+Message: Genres
+Stack Trace:    at System.Data.ProviderBase.BasicFieldNameLookup.GetOrdinal(String fieldName)
+   at System.Data.SqlClient.SqlDataReader.GetOrdinal(String name)
+   at AniX_DAL.AnimeDAL.MapReaderToAnimeRecommended(SqlDataReader reader) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 1455
+   at AniX_DAL.AnimeDAL.GetRecommendedAnimesAsync(Nullable`1 userId, Nullable`1 currentAnimeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 393
+---------------------------------------------------
+Timestamp: 14/11/2023 13:00:07
+Severity: Error
+Exception Type: System.IndexOutOfRangeException
+Message: Genres
+Stack Trace:    at System.Data.ProviderBase.BasicFieldNameLookup.GetOrdinal(String fieldName)
+   at System.Data.SqlClient.SqlDataReader.GetOrdinal(String name)
+   at AniX_DAL.AnimeDAL.MapReaderToAnimeAll(SqlDataReader reader) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 1523
+   at AniX_DAL.AnimeDAL.GetAllAnimesAsync(Int32 pageNumber, Int32 pageSize) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 799
+---------------------------------------------------
+Timestamp: 14/11/2023 14:49:47
+Severity: Error
+Exception Type: System.Data.SqlClient.SqlException
+Message: Procedure or function GetFilteredAnimes has too many arguments specified.
+Stack Trace:    at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader()
+   at System.Data.SqlClient.SqlCommand.InternalEndExecuteReader(IAsyncResult asyncResult, String endMethod)
+   at System.Data.SqlClient.SqlCommand.EndExecuteReaderInternal(IAsyncResult asyncResult)
+   at System.Data.SqlClient.SqlCommand.EndExecuteReader(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at AniX_DAL.AnimeDAL.GetFilteredAnimesAsync(String genreFilter, String countryFilter, String seasonFilter, String yearFilter, String typeFilter, String statusFilter, String languageFilter, String ratingFilter, String sortBy, Int32 pageNumber, Int32 pageSize) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 448
+---------------------------------------------------
+Timestamp: 14/11/2023 14:52:47
+Severity: Error
+Exception Type: System.Data.SqlClient.SqlException
+Message: Procedure or function GetFilteredAnimes has too many arguments specified.
+Stack Trace:    at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader()
+   at System.Data.SqlClient.SqlCommand.InternalEndExecuteReader(IAsyncResult asyncResult, String endMethod)
+   at System.Data.SqlClient.SqlCommand.EndExecuteReaderInternal(IAsyncResult asyncResult)
+   at System.Data.SqlClient.SqlCommand.EndExecuteReader(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at AniX_DAL.AnimeDAL.GetFilteredAnimesAsync(String genreFilter, String countryFilter, String seasonFilter, String yearFilter, String typeFilter, String statusFilter, String languageFilter, String ratingFilter, String sortBy, Int32 pageNumber, Int32 pageSize) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 448
+---------------------------------------------------
+Timestamp: 14/11/2023 14:57:41
+Severity: Error
+Exception Type: System.Data.SqlClient.SqlException
+Message: Procedure or function GetFilteredAnimes has too many arguments specified.
+Stack Trace:    at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader()
+   at System.Data.SqlClient.SqlCommand.InternalEndExecuteReader(IAsyncResult asyncResult, String endMethod)
+   at System.Data.SqlClient.SqlCommand.EndExecuteReaderInternal(IAsyncResult asyncResult)
+   at System.Data.SqlClient.SqlCommand.EndExecuteReader(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at AniX_DAL.AnimeDAL.GetFilteredAnimesAsync(String genreFilter, String countryFilter, String seasonFilter, String yearFilter, String typeFilter, String statusFilter, String languageFilter, String ratingFilter, String sortBy, Int32 pageNumber, Int32 pageSize) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 448
+---------------------------------------------------
+Timestamp: 14/11/2023 15:01:25
+Severity: Error
+Exception Type: System.Data.SqlClient.SqlException
+Message: Procedure or function GetFilteredAnimes has too many arguments specified.
+Stack Trace:    at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader()
+   at System.Data.SqlClient.SqlCommand.InternalEndExecuteReader(IAsyncResult asyncResult, String endMethod)
+   at System.Data.SqlClient.SqlCommand.EndExecuteReaderInternal(IAsyncResult asyncResult)
+   at System.Data.SqlClient.SqlCommand.EndExecuteReader(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at AniX_DAL.AnimeDAL.GetFilteredAnimesAsync(String genreFilter, String countryFilter, String seasonFilter, String yearFilter, String typeFilter, String statusFilter, String languageFilter, String ratingFilter, String sortBy, Int32 pageNumber, Int32 pageSize) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 448
+---------------------------------------------------
+Timestamp: 14/11/2023 15:22:14
+Severity: Error
+Exception Type: System.IndexOutOfRangeException
+Message: Id
+Stack Trace:    at System.Data.ProviderBase.BasicFieldNameLookup.GetOrdinal(String fieldName)
+   at System.Data.SqlClient.SqlDataReader.GetOrdinal(String name)
+   at AniX_DAL.AnimeDAL.MapReaderToAnimeWithRatings(SqlDataReader reader) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 1411
+   at AniX_DAL.AnimeDAL.GetFilteredAnimesAsync(String genreFilter, String countryFilter, String seasonFilter, String yearFilter, String typeFilter, String statusFilter, String languageFilter, String ratingFilter, String sortBy, Int32 pageNumber, Int32 pageSize) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 452
+---------------------------------------------------
+Timestamp: 14/11/2023 15:36:14
+Severity: Error
+Exception Type: System.IndexOutOfRangeException
+Message: Id
+Stack Trace:    at System.Data.ProviderBase.BasicFieldNameLookup.GetOrdinal(String fieldName)
+   at System.Data.SqlClient.SqlDataReader.GetOrdinal(String name)
+   at AniX_DAL.AnimeDAL.MapReaderToAnimeWithRatings(SqlDataReader reader) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 1411
+   at AniX_DAL.AnimeDAL.GetFilteredAnimesAsync(String genreFilter, String countryFilter, String seasonFilter, String yearFilter, String typeFilter, String statusFilter, String languageFilter, String ratingFilter, String sortBy, Int32 pageNumber, Int32 pageSize) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 452
+---------------------------------------------------
+Timestamp: 14/11/2023 15:36:21
+Severity: Error
+Exception Type: System.IndexOutOfRangeException
+Message: Id
+Stack Trace:    at System.Data.ProviderBase.BasicFieldNameLookup.GetOrdinal(String fieldName)
+   at System.Data.SqlClient.SqlDataReader.GetOrdinal(String name)
+   at AniX_DAL.AnimeDAL.MapReaderToAnimeWithRatings(SqlDataReader reader) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 1411
+   at AniX_DAL.AnimeDAL.GetFilteredAnimesAsync(String genreFilter, String countryFilter, String seasonFilter, String yearFilter, String typeFilter, String statusFilter, String languageFilter, String ratingFilter, String sortBy, Int32 pageNumber, Int32 pageSize) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 452
+---------------------------------------------------
+Timestamp: 14/11/2023 15:36:26
+Severity: Error
+Exception Type: System.IndexOutOfRangeException
+Message: Id
+Stack Trace:    at System.Data.ProviderBase.BasicFieldNameLookup.GetOrdinal(String fieldName)
+   at System.Data.SqlClient.SqlDataReader.GetOrdinal(String name)
+   at AniX_DAL.AnimeDAL.MapReaderToAnimeWithRatings(SqlDataReader reader) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 1411
+   at AniX_DAL.AnimeDAL.GetFilteredAnimesAsync(String genreFilter, String countryFilter, String seasonFilter, String yearFilter, String typeFilter, String statusFilter, String languageFilter, String ratingFilter, String sortBy, Int32 pageNumber, Int32 pageSize) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 452
+---------------------------------------------------
+Timestamp: 14/11/2023 15:36:40
+Severity: Error
+Exception Type: System.IndexOutOfRangeException
+Message: Id
+Stack Trace:    at System.Data.ProviderBase.BasicFieldNameLookup.GetOrdinal(String fieldName)
+   at System.Data.SqlClient.SqlDataReader.GetOrdinal(String name)
+   at AniX_DAL.AnimeDAL.MapReaderToAnimeWithRatings(SqlDataReader reader) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 1411
+   at AniX_DAL.AnimeDAL.GetFilteredAnimesAsync(String genreFilter, String countryFilter, String seasonFilter, String yearFilter, String typeFilter, String statusFilter, String languageFilter, String ratingFilter, String sortBy, Int32 pageNumber, Int32 pageSize) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 452
+---------------------------------------------------
+Timestamp: 14/11/2023 16:48:49
+Severity: Error
+Exception Type: System.Data.SqlClient.SqlException
+Message: Incorrect syntax near 'OFFSET'.
+Invalid usage of the option NEXT in the FETCH statement.
+Stack Trace:    at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader()
+   at System.Data.SqlClient.SqlCommand.InternalEndExecuteReader(IAsyncResult asyncResult, String endMethod)
+   at System.Data.SqlClient.SqlCommand.EndExecuteReaderInternal(IAsyncResult asyncResult)
+   at System.Data.SqlClient.SqlCommand.EndExecuteReader(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at AniX_DAL.AnimeDAL.GetFilteredAnimesAsync(AnimeFilterModel filter, Int32 pageNumber, Int32 pageSize) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 788
+---------------------------------------------------
+Timestamp: 14/11/2023 16:52:13
+Severity: Error
+Exception Type: System.Data.SqlClient.SqlException
+Message: Incorrect syntax near 'OFFSET'.
+Invalid usage of the option NEXT in the FETCH statement.
+Stack Trace:    at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader()
+   at System.Data.SqlClient.SqlCommand.InternalEndExecuteReader(IAsyncResult asyncResult, String endMethod)
+   at System.Data.SqlClient.SqlCommand.EndExecuteReaderInternal(IAsyncResult asyncResult)
+   at System.Data.SqlClient.SqlCommand.EndExecuteReader(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at AniX_DAL.AnimeDAL.GetFilteredAnimesAsync(AnimeFilterModel filter, Int32 pageNumber, Int32 pageSize) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 790
+---------------------------------------------------
+Timestamp: 14/11/2023 16:54:52
+Severity: Error
+Exception Type: System.Data.SqlClient.SqlException
+Message: Incorrect syntax near 'OFFSET'.
+Invalid usage of the option NEXT in the FETCH statement.
+Stack Trace:    at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader()
+   at System.Data.SqlClient.SqlCommand.InternalEndExecuteReader(IAsyncResult asyncResult, String endMethod)
+   at System.Data.SqlClient.SqlCommand.EndExecuteReaderInternal(IAsyncResult asyncResult)
+   at System.Data.SqlClient.SqlCommand.EndExecuteReader(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at AniX_DAL.AnimeDAL.GetFilteredAnimesAsync(AnimeFilterModel filter, Int32 pageNumber, Int32 pageSize) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 788
+---------------------------------------------------
+Timestamp: 14/11/2023 16:59:39
+Severity: Error
+Exception Type: System.Data.SqlClient.SqlException
+Message: Incorrect syntax near 'OFFSET'.
+Invalid usage of the option NEXT in the FETCH statement.
+Stack Trace:    at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader()
+   at System.Data.SqlClient.SqlCommand.InternalEndExecuteReader(IAsyncResult asyncResult, String endMethod)
+   at System.Data.SqlClient.SqlCommand.EndExecuteReaderInternal(IAsyncResult asyncResult)
+   at System.Data.SqlClient.SqlCommand.EndExecuteReader(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at AniX_DAL.AnimeDAL.GetFilteredAnimesAsync(AnimeFilterModel filter, Int32 pageNumber, Int32 pageSize) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 788
+---------------------------------------------------
+Timestamp: 14/11/2023 17:06:53
+Severity: Error
+Exception Type: System.IndexOutOfRangeException
+Message: Genres
+Stack Trace:    at System.Data.ProviderBase.BasicFieldNameLookup.GetOrdinal(String fieldName)
+   at System.Data.SqlClient.SqlDataReader.GetOrdinal(String name)
+   at AniX_DAL.AnimeDAL.MapReaderToAnimeDetail(SqlDataReader reader) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 1685
+   at AniX_DAL.AnimeDAL.GetFilteredAnimesAsync(AnimeFilterModel filter, Int32 pageNumber, Int32 pageSize) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 792
+---------------------------------------------------
+Timestamp: 14/11/2023 17:09:02
+Severity: Error
+Exception Type: System.IndexOutOfRangeException
+Message: Genres
+Stack Trace:    at System.Data.ProviderBase.BasicFieldNameLookup.GetOrdinal(String fieldName)
+   at System.Data.SqlClient.SqlDataReader.GetOrdinal(String name)
+   at AniX_DAL.AnimeDAL.MapReaderToAnimeDetail(SqlDataReader reader) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 1685
+   at AniX_DAL.AnimeDAL.GetFilteredAnimesAsync(AnimeFilterModel filter, Int32 pageNumber, Int32 pageSize) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 792
+---------------------------------------------------
+Timestamp: 14/11/2023 18:49:42
+Severity: Error
+Exception Type: System.Data.SqlClient.SqlException
+Message: Incorrect syntax near '@GenreIds'.
+Stack Trace:    at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader()
+   at System.Data.SqlClient.SqlCommand.InternalEndExecuteReader(IAsyncResult asyncResult, String endMethod)
+   at System.Data.SqlClient.SqlCommand.EndExecuteReaderInternal(IAsyncResult asyncResult)
+   at System.Data.SqlClient.SqlCommand.EndExecuteReader(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at AniX_DAL.AnimeDAL.GetFilteredAnimesAsync(AnimeFilterModel filter, Int32 pageNumber, Int32 pageSize) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 777
+---------------------------------------------------
+Timestamp: 14/11/2023 18:53:23
+Severity: Error
+Exception Type: System.Data.SqlClient.SqlException
+Message: Incorrect syntax near '@GenreIds'.
+Stack Trace:    at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader()
+   at System.Data.SqlClient.SqlCommand.InternalEndExecuteReader(IAsyncResult asyncResult, String endMethod)
+   at System.Data.SqlClient.SqlCommand.EndExecuteReaderInternal(IAsyncResult asyncResult)
+   at System.Data.SqlClient.SqlCommand.EndExecuteReader(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at AniX_DAL.AnimeDAL.GetFilteredAnimesAsync(AnimeFilterModel filter, Int32 pageNumber, Int32 pageSize) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 777
+---------------------------------------------------
+Timestamp: 14/11/2023 19:35:09
+Severity: Error
+Exception Type: System.Data.SqlClient.SqlException
+Message: Incorrect syntax near '@GenreIds'.
+Stack Trace:    at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader()
+   at System.Data.SqlClient.SqlCommand.InternalEndExecuteReader(IAsyncResult asyncResult, String endMethod)
+   at System.Data.SqlClient.SqlCommand.EndExecuteReaderInternal(IAsyncResult asyncResult)
+   at System.Data.SqlClient.SqlCommand.EndExecuteReader(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at AniX_DAL.AnimeDAL.GetFilteredAnimesAsync(AnimeFilterModel filter, Int32 pageNumber, Int32 pageSize) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 777
+---------------------------------------------------
+Timestamp: 14/11/2023 19:35:49
+Severity: Error
+Exception Type: System.Data.SqlClient.SqlException
+Message: Incorrect syntax near '@GenreIds'.
+Stack Trace:    at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader()
+   at System.Data.SqlClient.SqlCommand.InternalEndExecuteReader(IAsyncResult asyncResult, String endMethod)
+   at System.Data.SqlClient.SqlCommand.EndExecuteReaderInternal(IAsyncResult asyncResult)
+   at System.Data.SqlClient.SqlCommand.EndExecuteReader(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at AniX_DAL.AnimeDAL.GetFilteredAnimesAsync(AnimeFilterModel filter, Int32 pageNumber, Int32 pageSize) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 777
+---------------------------------------------------
+Timestamp: 14/11/2023 19:41:00
+Severity: Error
+Exception Type: System.Data.SqlClient.SqlException
+Message: Incorrect syntax near '@GenreIds'.
+Stack Trace:    at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader()
+   at System.Data.SqlClient.SqlCommand.InternalEndExecuteReader(IAsyncResult asyncResult, String endMethod)
+   at System.Data.SqlClient.SqlCommand.EndExecuteReaderInternal(IAsyncResult asyncResult)
+   at System.Data.SqlClient.SqlCommand.EndExecuteReader(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at AniX_DAL.AnimeDAL.GetFilteredAnimesAsync(AnimeFilterModel filter, Int32 pageNumber, Int32 pageSize) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 777
+---------------------------------------------------
+Timestamp: 14/11/2023 19:47:10
+Severity: Error
+Exception Type: System.Data.SqlClient.SqlException
+Message: Invalid object name 'dbo.IntList'.
+Stack Trace:    at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader()
+   at System.Data.SqlClient.SqlCommand.InternalEndExecuteReader(IAsyncResult asyncResult, String endMethod)
+   at System.Data.SqlClient.SqlCommand.EndExecuteReaderInternal(IAsyncResult asyncResult)
+   at System.Data.SqlClient.SqlCommand.EndExecuteReader(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at AniX_DAL.AnimeDAL.GetFilteredAnimesAsync(AnimeFilterModel filter, Int32 pageNumber, Int32 pageSize) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 777
+---------------------------------------------------
+Timestamp: 14/11/2023 19:47:22
+Severity: Error
+Exception Type: System.Data.SqlClient.SqlException
+Message: Invalid object name 'dbo.IntList'.
+Stack Trace:    at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader()
+   at System.Data.SqlClient.SqlCommand.InternalEndExecuteReader(IAsyncResult asyncResult, String endMethod)
+   at System.Data.SqlClient.SqlCommand.EndExecuteReaderInternal(IAsyncResult asyncResult)
+   at System.Data.SqlClient.SqlCommand.EndExecuteReader(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at AniX_DAL.AnimeDAL.GetFilteredAnimesAsync(AnimeFilterModel filter, Int32 pageNumber, Int32 pageSize) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 777
+---------------------------------------------------
+Timestamp: 14/11/2023 19:48:44
+Severity: Error
+Exception Type: System.Data.SqlClient.SqlException
+Message: The multi-part identifier "AG.GenreId" could not be bound.
+Stack Trace:    at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader()
+   at System.Data.SqlClient.SqlCommand.InternalEndExecuteReader(IAsyncResult asyncResult, String endMethod)
+   at System.Data.SqlClient.SqlCommand.EndExecuteReaderInternal(IAsyncResult asyncResult)
+   at System.Data.SqlClient.SqlCommand.EndExecuteReader(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at AniX_DAL.AnimeDAL.GetFilteredAnimesAsync(AnimeFilterModel filter, Int32 pageNumber, Int32 pageSize) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 777
+---------------------------------------------------
+Timestamp: 14/11/2023 19:48:54
+Severity: Error
+Exception Type: System.Data.SqlClient.SqlException
+Message: Invalid object name 'dbo.IntList'.
+Stack Trace:    at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader()
+   at System.Data.SqlClient.SqlCommand.InternalEndExecuteReader(IAsyncResult asyncResult, String endMethod)
+   at System.Data.SqlClient.SqlCommand.EndExecuteReaderInternal(IAsyncResult asyncResult)
+   at System.Data.SqlClient.SqlCommand.EndExecuteReader(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at AniX_DAL.AnimeDAL.GetFilteredAnimesAsync(AnimeFilterModel filter, Int32 pageNumber, Int32 pageSize) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 777
+---------------------------------------------------
+Timestamp: 14/11/2023 19:50:05
+Severity: Error
+Exception Type: System.Data.SqlClient.SqlException
+Message: Incorrect syntax near '@GenreIds'.
+Stack Trace:    at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader()
+   at System.Data.SqlClient.SqlCommand.InternalEndExecuteReader(IAsyncResult asyncResult, String endMethod)
+   at System.Data.SqlClient.SqlCommand.EndExecuteReaderInternal(IAsyncResult asyncResult)
+   at System.Data.SqlClient.SqlCommand.EndExecuteReader(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at AniX_DAL.AnimeDAL.GetFilteredAnimesAsync(AnimeFilterModel filter, Int32 pageNumber, Int32 pageSize) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 777
+---------------------------------------------------
+Timestamp: 14/11/2023 20:39:03
+Severity: Error
+Exception Type: System.Data.SqlClient.SqlException
+Message: Incorrect syntax near the keyword 'WHERE'.
+Invalid usage of the option NEXT in the FETCH statement.
+Stack Trace:    at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader()
+   at System.Data.SqlClient.SqlCommand.InternalEndExecuteReader(IAsyncResult asyncResult, String endMethod)
+   at System.Data.SqlClient.SqlCommand.EndExecuteReaderInternal(IAsyncResult asyncResult)
+   at System.Data.SqlClient.SqlCommand.EndExecuteReader(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at AniX_DAL.AnimeDAL.GetFilteredAnimesAsync(AnimeFilterModel filter, Int32 pageNumber, Int32 pageSize) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 788
+---------------------------------------------------
+Timestamp: 14/11/2023 21:56:27
+Severity: Error
+Exception Type: System.Data.SqlClient.SqlException
+Message: Incorrect syntax near the keyword 'LEFT'.
+Invalid usage of the option NEXT in the FETCH statement.
+Stack Trace:    at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader()
+   at System.Data.SqlClient.SqlCommand.InternalEndExecuteReader(IAsyncResult asyncResult, String endMethod)
+   at System.Data.SqlClient.SqlCommand.EndExecuteReaderInternal(IAsyncResult asyncResult)
+   at System.Data.SqlClient.SqlCommand.EndExecuteReader(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at AniX_DAL.AnimeDAL.GetFilteredAnimesAsync(AnimeFilterModel filter, Int32 pageNumber, Int32 pageSize) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 788
+---------------------------------------------------
+Timestamp: 14/11/2023 21:57:27
+Severity: Error
+Exception Type: System.Data.SqlClient.SqlException
+Message: ORDER BY items must appear in the select list if SELECT DISTINCT is specified.
+Stack Trace:    at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader()
+   at System.Data.SqlClient.SqlCommand.InternalEndExecuteReader(IAsyncResult asyncResult, String endMethod)
+   at System.Data.SqlClient.SqlCommand.EndExecuteReaderInternal(IAsyncResult asyncResult)
+   at System.Data.SqlClient.SqlCommand.EndExecuteReader(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at AniX_DAL.AnimeDAL.GetFilteredAnimesAsync(AnimeFilterModel filter, Int32 pageNumber, Int32 pageSize) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 788
+---------------------------------------------------
+Timestamp: 14/11/2023 21:57:41
+Severity: Error
+Exception Type: System.Data.SqlClient.SqlException
+Message: ORDER BY items must appear in the select list if SELECT DISTINCT is specified.
+Stack Trace:    at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader()
+   at System.Data.SqlClient.SqlCommand.InternalEndExecuteReader(IAsyncResult asyncResult, String endMethod)
+   at System.Data.SqlClient.SqlCommand.EndExecuteReaderInternal(IAsyncResult asyncResult)
+   at System.Data.SqlClient.SqlCommand.EndExecuteReader(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at AniX_DAL.AnimeDAL.GetFilteredAnimesAsync(AnimeFilterModel filter, Int32 pageNumber, Int32 pageSize) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 788
+---------------------------------------------------
+Timestamp: 14/11/2023 21:58:10
+Severity: Error
+Exception Type: System.Data.SqlClient.SqlException
+Message: ORDER BY items must appear in the select list if SELECT DISTINCT is specified.
+Stack Trace:    at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader()
+   at System.Data.SqlClient.SqlCommand.InternalEndExecuteReader(IAsyncResult asyncResult, String endMethod)
+   at System.Data.SqlClient.SqlCommand.EndExecuteReaderInternal(IAsyncResult asyncResult)
+   at System.Data.SqlClient.SqlCommand.EndExecuteReader(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at AniX_DAL.AnimeDAL.GetFilteredAnimesAsync(AnimeFilterModel filter, Int32 pageNumber, Int32 pageSize) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 788
+---------------------------------------------------
+Timestamp: 14/11/2023 21:58:24
+Severity: Error
+Exception Type: System.Data.SqlClient.SqlException
+Message: ORDER BY items must appear in the select list if SELECT DISTINCT is specified.
+Stack Trace:    at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader()
+   at System.Data.SqlClient.SqlCommand.InternalEndExecuteReader(IAsyncResult asyncResult, String endMethod)
+   at System.Data.SqlClient.SqlCommand.EndExecuteReaderInternal(IAsyncResult asyncResult)
+   at System.Data.SqlClient.SqlCommand.EndExecuteReader(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at AniX_DAL.AnimeDAL.GetFilteredAnimesAsync(AnimeFilterModel filter, Int32 pageNumber, Int32 pageSize) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 788
+---------------------------------------------------
+Timestamp: 14/11/2023 21:59:27
+Severity: Error
+Exception Type: System.Data.SqlClient.SqlException
+Message: ORDER BY items must appear in the select list if SELECT DISTINCT is specified.
+Stack Trace:    at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader()
+   at System.Data.SqlClient.SqlCommand.InternalEndExecuteReader(IAsyncResult asyncResult, String endMethod)
+   at System.Data.SqlClient.SqlCommand.EndExecuteReaderInternal(IAsyncResult asyncResult)
+   at System.Data.SqlClient.SqlCommand.EndExecuteReader(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at AniX_DAL.AnimeDAL.GetFilteredAnimesAsync(AnimeFilterModel filter, Int32 pageNumber, Int32 pageSize) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 788
+---------------------------------------------------
+Timestamp: 14/11/2023 22:08:23
+Severity: Error
+Exception Type: System.Data.SqlClient.SqlException
+Message: ORDER BY items must appear in the select list if SELECT DISTINCT is specified.
+Stack Trace:    at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader()
+   at System.Data.SqlClient.SqlCommand.InternalEndExecuteReader(IAsyncResult asyncResult, String endMethod)
+   at System.Data.SqlClient.SqlCommand.EndExecuteReaderInternal(IAsyncResult asyncResult)
+   at System.Data.SqlClient.SqlCommand.EndExecuteReader(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at AniX_DAL.AnimeDAL.GetFilteredAnimesAsync(AnimeFilterModel filter, Int32 pageNumber, Int32 pageSize) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 788
+---------------------------------------------------
+Timestamp: 14/11/2023 22:19:51
+Severity: Error
+Exception Type: System.Data.SqlClient.SqlException
+Message: Incorrect syntax near the keyword 'LEFT'.
+Invalid usage of the option NEXT in the FETCH statement.
+Stack Trace:    at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader()
+   at System.Data.SqlClient.SqlCommand.InternalEndExecuteReader(IAsyncResult asyncResult, String endMethod)
+   at System.Data.SqlClient.SqlCommand.EndExecuteReaderInternal(IAsyncResult asyncResult)
+   at System.Data.SqlClient.SqlCommand.EndExecuteReader(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at AniX_DAL.AnimeDAL.GetFilteredAnimesAsync(AnimeFilterModel filter, Int32 pageNumber, Int32 pageSize) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 788
+---------------------------------------------------
+Timestamp: 14/11/2023 22:20:00
+Severity: Error
+Exception Type: System.Data.SqlClient.SqlException
+Message: Incorrect syntax near the keyword 'LEFT'.
+Invalid usage of the option NEXT in the FETCH statement.
+Stack Trace:    at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader()
+   at System.Data.SqlClient.SqlCommand.InternalEndExecuteReader(IAsyncResult asyncResult, String endMethod)
+   at System.Data.SqlClient.SqlCommand.EndExecuteReaderInternal(IAsyncResult asyncResult)
+   at System.Data.SqlClient.SqlCommand.EndExecuteReader(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at AniX_DAL.AnimeDAL.GetFilteredAnimesAsync(AnimeFilterModel filter, Int32 pageNumber, Int32 pageSize) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 788
+---------------------------------------------------
+Timestamp: 14/11/2023 22:24:21
+Severity: Error
+Exception Type: System.Data.SqlClient.SqlException
+Message: Incorrect syntax near the keyword 'ORDER'.
+Invalid usage of the option NEXT in the FETCH statement.
+Stack Trace:    at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader()
+   at System.Data.SqlClient.SqlCommand.InternalEndExecuteReader(IAsyncResult asyncResult, String endMethod)
+   at System.Data.SqlClient.SqlCommand.EndExecuteReaderInternal(IAsyncResult asyncResult)
+   at System.Data.SqlClient.SqlCommand.EndExecuteReader(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at AniX_DAL.AnimeDAL.GetFilteredAnimesAsync(AnimeFilterModel filter, Int32 pageNumber, Int32 pageSize) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 788
+---------------------------------------------------
+Timestamp: 14/11/2023 22:24:37
+Severity: Error
+Exception Type: System.Data.SqlClient.SqlException
+Message: Incorrect syntax near the keyword 'ORDER'.
+Invalid usage of the option NEXT in the FETCH statement.
+Stack Trace:    at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader()
+   at System.Data.SqlClient.SqlCommand.InternalEndExecuteReader(IAsyncResult asyncResult, String endMethod)
+   at System.Data.SqlClient.SqlCommand.EndExecuteReaderInternal(IAsyncResult asyncResult)
+   at System.Data.SqlClient.SqlCommand.EndExecuteReader(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at AniX_DAL.AnimeDAL.GetFilteredAnimesAsync(AnimeFilterModel filter, Int32 pageNumber, Int32 pageSize) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 788
+---------------------------------------------------
+Timestamp: 14/11/2023 22:26:57
+Severity: Error
+Exception Type: System.Data.SqlClient.SqlException
+Message: Incorrect syntax near the keyword 'ORDER'.
+Invalid usage of the option NEXT in the FETCH statement.
+Stack Trace:    at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader()
+   at System.Data.SqlClient.SqlCommand.InternalEndExecuteReader(IAsyncResult asyncResult, String endMethod)
+   at System.Data.SqlClient.SqlCommand.EndExecuteReaderInternal(IAsyncResult asyncResult)
+   at System.Data.SqlClient.SqlCommand.EndExecuteReader(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at AniX_DAL.AnimeDAL.GetFilteredAnimesAsync(AnimeFilterModel filter, Int32 pageNumber, Int32 pageSize) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 788
+---------------------------------------------------
+Timestamp: 14/11/2023 22:28:44
+Severity: Error
+Exception Type: System.Data.SqlClient.SqlException
+Message: Incorrect syntax near the keyword 'ORDER'.
+Invalid usage of the option NEXT in the FETCH statement.
+Stack Trace:    at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader()
+   at System.Data.SqlClient.SqlCommand.InternalEndExecuteReader(IAsyncResult asyncResult, String endMethod)
+   at System.Data.SqlClient.SqlCommand.EndExecuteReaderInternal(IAsyncResult asyncResult)
+   at System.Data.SqlClient.SqlCommand.EndExecuteReader(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at AniX_DAL.AnimeDAL.GetFilteredAnimesAsync(AnimeFilterModel filter, Int32 pageNumber, Int32 pageSize)
+---------------------------------------------------
+Timestamp: 14/11/2023 22:28:45
+Severity: Error
+Exception Type: System.Data.SqlClient.SqlException
+Message: Incorrect syntax near the keyword 'ORDER'.
+Invalid usage of the option NEXT in the FETCH statement.
+Stack Trace:    at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader()
+   at System.Data.SqlClient.SqlCommand.InternalEndExecuteReader(IAsyncResult asyncResult, String endMethod)
+   at System.Data.SqlClient.SqlCommand.EndExecuteReaderInternal(IAsyncResult asyncResult)
+   at System.Data.SqlClient.SqlCommand.EndExecuteReader(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at AniX_DAL.AnimeDAL.GetFilteredAnimesAsync(AnimeFilterModel filter, Int32 pageNumber, Int32 pageSize) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 788
+---------------------------------------------------
+Timestamp: 14/11/2023 22:29:24
+Severity: Error
+Exception Type: System.Data.SqlClient.SqlException
+Message: Incorrect syntax near the keyword 'LEFT'.
+Invalid usage of the option NEXT in the FETCH statement.
+Stack Trace:    at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader()
+   at System.Data.SqlClient.SqlCommand.InternalEndExecuteReader(IAsyncResult asyncResult, String endMethod)
+   at System.Data.SqlClient.SqlCommand.EndExecuteReaderInternal(IAsyncResult asyncResult)
+   at System.Data.SqlClient.SqlCommand.EndExecuteReader(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at AniX_DAL.AnimeDAL.GetFilteredAnimesAsync(AnimeFilterModel filter, Int32 pageNumber, Int32 pageSize) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 788
+---------------------------------------------------
+Timestamp: 15/11/2023 21:00:44
+Severity: Error
+Exception Type: System.Data.SqlClient.SqlException
+Message: The INSERT statement conflicted with the FOREIGN KEY constraint "FK__Review__AnimeId__571DF1D5". The conflict occurred in database "dbi499309_anixdb", table "dbo.Anime", column 'Id'.
+The statement has been terminated.
+Stack Trace:    at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader()
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQueryInternal(IAsyncResult asyncResult)
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQuery(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at AniX_DAL.ReviewDAL.CreateReviewAsync(Review review) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 46
+---------------------------------------------------
+Timestamp: 15/11/2023 21:00:55
+Severity: Error
+Exception Type: System.Data.SqlClient.SqlException
+Message: The INSERT statement conflicted with the FOREIGN KEY constraint "FK__Review__AnimeId__571DF1D5". The conflict occurred in database "dbi499309_anixdb", table "dbo.Anime", column 'Id'.
+The statement has been terminated.
+Stack Trace:    at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader()
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQueryInternal(IAsyncResult asyncResult)
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQuery(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at AniX_DAL.ReviewDAL.CreateReviewAsync(Review review) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 46
+---------------------------------------------------
+Timestamp: 15/11/2023 21:04:13
+Severity: Error
+Exception Type: System.Data.SqlClient.SqlException
+Message: The INSERT statement conflicted with the FOREIGN KEY constraint "FK__Review__AnimeId__571DF1D5". The conflict occurred in database "dbi499309_anixdb", table "dbo.Anime", column 'Id'.
+The statement has been terminated.
+Stack Trace:    at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader()
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQueryInternal(IAsyncResult asyncResult)
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQuery(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at AniX_DAL.ReviewDAL.CreateReviewAsync(Review review) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 46
+---------------------------------------------------
+Timestamp: 15/11/2023 21:04:34
+Severity: Error
+Exception Type: System.Data.SqlClient.SqlException
+Message: The INSERT statement conflicted with the FOREIGN KEY constraint "FK__Review__AnimeId__571DF1D5". The conflict occurred in database "dbi499309_anixdb", table "dbo.Anime", column 'Id'.
+The statement has been terminated.
+Stack Trace:    at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader()
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQueryInternal(IAsyncResult asyncResult)
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQuery(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at AniX_DAL.ReviewDAL.CreateReviewAsync(Review review) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 46
+---------------------------------------------------
+Timestamp: 15/11/2023 23:38:54
+Severity: Error
+Exception Type: System.NullReferenceException
+Message: Object reference not set to an instance of an object.
+Stack Trace:    at AniX_DAL.AnimeDAL.GetAnimeDetailAsync(Int32 animeId, Nullable`1 currentUserId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 552
+---------------------------------------------------
+Timestamp: 16/11/2023 17:42:01
+Severity: Error
+Exception Type: System.InvalidCastException
+Message: Unable to cast object of type 'System.Double' to type 'System.Int32'.
+Stack Trace:    at System.Data.SqlClient.SqlBuffer.get_Int32()
+   at AniX_DAL.ReviewDAL.GetReviewByIdAsync(Int32 reviewId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 147
+---------------------------------------------------
+Timestamp: 16/11/2023 17:42:16
+Severity: Error
+Exception Type: System.InvalidCastException
+Message: Unable to cast object of type 'System.Double' to type 'System.Int32'.
+Stack Trace:    at System.Data.SqlClient.SqlBuffer.get_Int32()
+   at AniX_DAL.ReviewDAL.GetReviewByIdAsync(Int32 reviewId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 147
+---------------------------------------------------
+Timestamp: 16/11/2023 17:44:36
+Severity: Error
+Exception Type: System.InvalidCastException
+Message: Unable to cast object of type 'System.Double' to type 'System.Int32'.
+Stack Trace:    at System.Data.SqlClient.SqlBuffer.get_Int32()
+   at AniX_DAL.ReviewDAL.GetReviewByIdAsync(Int32 reviewId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 147
+---------------------------------------------------
+Timestamp: 16/11/2023 17:47:42
+Severity: Error
+Exception Type: System.InvalidCastException
+Message: Unable to cast object of type 'System.Double' to type 'System.Int32'.
+Stack Trace:    at System.Data.SqlClient.SqlBuffer.get_Int32()
+   at AniX_DAL.ReviewDAL.GetReviewByIdAsync(Int32 reviewId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 147
+---------------------------------------------------
+Timestamp: 16/11/2023 17:48:52
+Severity: Error
+Exception Type: System.InvalidCastException
+Message: Unable to cast object of type 'System.Double' to type 'System.Int32'.
+Stack Trace:    at System.Data.SqlClient.SqlBuffer.get_Int32()
+   at AniX_DAL.ReviewDAL.GetReviewByIdAsync(Int32 reviewId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 147
+---------------------------------------------------
+Timestamp: 16/11/2023 17:51:34
+Severity: Error
+Exception Type: System.InvalidCastException
+Message: Unable to cast object of type 'System.Double' to type 'System.Int32'.
+Stack Trace:    at System.Data.SqlClient.SqlBuffer.get_Int32()
+   at AniX_DAL.ReviewDAL.GetReviewByIdAsync(Int32 reviewId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 147
+---------------------------------------------------
+Timestamp: 16/11/2023 17:52:12
+Severity: Error
+Exception Type: System.InvalidCastException
+Message: Unable to cast object of type 'System.Double' to type 'System.Int32'.
+Stack Trace:    at System.Data.SqlClient.SqlBuffer.get_Int32()
+   at AniX_DAL.ReviewDAL.GetReviewByIdAsync(Int32 reviewId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 147
+---------------------------------------------------
+Timestamp: 16/11/2023 17:53:04
+Severity: Error
+Exception Type: System.InvalidCastException
+Message: Unable to cast object of type 'System.Double' to type 'System.Int32'.
+Stack Trace:    at System.Data.SqlClient.SqlBuffer.get_Int32()
+   at AniX_DAL.ReviewDAL.GetReviewByIdAsync(Int32 reviewId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 147
+---------------------------------------------------
+Timestamp: 16/11/2023 17:56:59
+Severity: Error
+Exception Type: System.InvalidCastException
+Message: Unable to cast object of type 'System.Double' to type 'System.Int32'.
+Stack Trace:    at System.Data.SqlClient.SqlBuffer.get_Int32()
+   at AniX_DAL.ReviewDAL.GetReviewByIdAsync(Int32 reviewId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 147
+---------------------------------------------------
+Timestamp: 16/11/2023 17:59:47
+Severity: Error
+Exception Type: System.InvalidCastException
+Message: Unable to cast object of type 'System.Double' to type 'System.Int32'.
+Stack Trace:    at System.Data.SqlClient.SqlBuffer.get_Int32()
+   at AniX_DAL.ReviewDAL.GetReviewByIdAsync(Int32 reviewId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 147
+---------------------------------------------------
+Timestamp: 16/11/2023 18:04:27
+Severity: Error
+Exception Type: System.InvalidCastException
+Message: Unable to cast object of type 'System.Double' to type 'System.Int32'.
+Stack Trace:    at System.Data.SqlClient.SqlBuffer.get_Int32()
+   at AniX_DAL.ReviewDAL.GetReviewByIdAsync(Int32 reviewId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 147
+---------------------------------------------------
+Timestamp: 16/11/2023 18:09:31
+Severity: Error
+Exception Type: System.InvalidCastException
+Message: Unable to cast object of type 'System.Double' to type 'System.Int32'.
+Stack Trace:    at System.Data.SqlClient.SqlBuffer.get_Int32()
+   at AniX_DAL.ReviewDAL.GetReviewByIdAsync(Int32 reviewId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 147
+---------------------------------------------------
+Timestamp: 16/11/2023 18:09:39
+Severity: Error
+Exception Type: System.InvalidCastException
+Message: Unable to cast object of type 'System.Double' to type 'System.Int32'.
+Stack Trace:    at System.Data.SqlClient.SqlBuffer.get_Int32()
+   at AniX_DAL.ReviewDAL.GetReviewByIdAsync(Int32 reviewId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 147
+---------------------------------------------------
+Timestamp: 16/11/2023 18:11:13
+Severity: Error
+Exception Type: System.InvalidCastException
+Message: Unable to cast object of type 'System.Double' to type 'System.Int32'.
+Stack Trace:    at System.Data.SqlClient.SqlBuffer.get_Int32()
+   at AniX_DAL.ReviewDAL.GetReviewByIdAsync(Int32 reviewId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 147
+---------------------------------------------------
+Timestamp: 16/11/2023 18:12:22
+Severity: Error
+Exception Type: System.InvalidCastException
+Message: Unable to cast object of type 'System.Double' to type 'System.Int32'.
+Stack Trace:    at System.Data.SqlClient.SqlBuffer.get_Int32()
+   at AniX_DAL.ReviewDAL.GetReviewByIdAsync(Int32 reviewId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 147
+---------------------------------------------------
+Timestamp: 16/11/2023 18:18:44
+Severity: Error
+Exception Type: System.InvalidCastException
+Message: Unable to cast object of type 'System.Double' to type 'System.Int32'.
+Stack Trace:    at System.Data.SqlClient.SqlBuffer.get_Int32()
+   at AniX_DAL.ReviewDAL.GetReviewByIdAsync(Int32 reviewId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 147
+---------------------------------------------------
+Timestamp: 16/11/2023 18:25:48
+Severity: Error
+Exception Type: System.InvalidCastException
+Message: Unable to cast object of type 'System.Double' to type 'System.Int32'.
+Stack Trace:    at System.Data.SqlClient.SqlBuffer.get_Int32()
+   at AniX_DAL.ReviewDAL.GetReviewByIdAsync(Int32 reviewId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 147
+---------------------------------------------------
+Timestamp: 16/11/2023 18:29:34
+Severity: Error
+Exception Type: System.InvalidCastException
+Message: Unable to cast object of type 'System.Double' to type 'System.Int32'.
+Stack Trace:    at System.Data.SqlClient.SqlBuffer.get_Int32()
+   at AniX_DAL.ReviewDAL.GetReviewByIdAsync(Int32 reviewId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 147
+---------------------------------------------------
+Timestamp: 17/11/2023 00:31:46
+Severity: Error
+Exception Type: System.Data.SqlClient.SqlException
+Message: Violation of PRIMARY KEY constraint 'PK__User_Ani__AD70ED5EFC82000E'. Cannot insert duplicate key in object 'dbo.User_Anime'. The duplicate key value is (5, 1).
+The statement has been terminated.
+Stack Trace:    at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader()
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQueryInternal(IAsyncResult asyncResult)
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQuery(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at AniX_DAL.UserAnimeActionDAL.AddToPlaylistAsync(Int32 userId, Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\UserAnimeActionDAL.cs:line 94
+---------------------------------------------------
+Timestamp: 17/11/2023 00:32:14
+Severity: Error
+Exception Type: System.Data.SqlClient.SqlException
+Message: Violation of PRIMARY KEY constraint 'PK__User_Ani__AD70ED5EFC82000E'. Cannot insert duplicate key in object 'dbo.User_Anime'. The duplicate key value is (5, 1).
+The statement has been terminated.
+Stack Trace:    at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader()
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQueryInternal(IAsyncResult asyncResult)
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQuery(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at AniX_DAL.UserAnimeActionDAL.AddToWatchlistAsync(Int32 userId, Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\UserAnimeActionDAL.cs:line 36
+---------------------------------------------------
+Timestamp: 17/11/2023 00:32:22
+Severity: Error
+Exception Type: System.Data.SqlClient.SqlException
+Message: Violation of PRIMARY KEY constraint 'PK__User_Ani__AD70ED5EFC82000E'. Cannot insert duplicate key in object 'dbo.User_Anime'. The duplicate key value is (5, 1).
+The statement has been terminated.
+Stack Trace:    at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader()
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQueryInternal(IAsyncResult asyncResult)
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQuery(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at AniX_DAL.UserAnimeActionDAL.AddToWatchlistAsync(Int32 userId, Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\UserAnimeActionDAL.cs:line 36
+---------------------------------------------------
+Timestamp: 17/11/2023 00:32:34
+Severity: Error
+Exception Type: System.Data.SqlClient.SqlException
+Message: Violation of PRIMARY KEY constraint 'PK__User_Ani__AD70ED5EFC82000E'. Cannot insert duplicate key in object 'dbo.User_Anime'. The duplicate key value is (5, 1).
+The statement has been terminated.
+Stack Trace:    at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader()
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQueryInternal(IAsyncResult asyncResult)
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQuery(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at AniX_DAL.UserAnimeActionDAL.AddToPlaylistAsync(Int32 userId, Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\UserAnimeActionDAL.cs:line 94
+---------------------------------------------------
+Timestamp: 17/11/2023 00:34:18
+Severity: Error
+Exception Type: System.Data.SqlClient.SqlException
+Message: Violation of PRIMARY KEY constraint 'PK__User_Ani__AD70ED5EFC82000E'. Cannot insert duplicate key in object 'dbo.User_Anime'. The duplicate key value is (5, 1).
+The statement has been terminated.
+Stack Trace:    at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader()
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQueryInternal(IAsyncResult asyncResult)
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQuery(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at AniX_DAL.UserAnimeActionDAL.AddToPlaylistAsync(Int32 userId, Int32 animeId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\UserAnimeActionDAL.cs:line 94
+---------------------------------------------------
+Timestamp: 17/11/2023 05:14:59
+Severity: Error
+Exception Type: System.Data.SqlClient.SqlException
+Message: Invalid column name 'AddedDate'.
+Stack Trace:    at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader()
+   at System.Data.SqlClient.SqlCommand.InternalEndExecuteReader(IAsyncResult asyncResult, String endMethod)
+   at System.Data.SqlClient.SqlCommand.EndExecuteReaderInternal(IAsyncResult asyncResult)
+   at System.Data.SqlClient.SqlCommand.EndExecuteReader(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at AniX_DAL.UserAnimeActionDAL.GetUserWatchlistAsync(Int32 userId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\UserAnimeActionDAL.cs:line 139
+---------------------------------------------------

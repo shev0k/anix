@@ -280,7 +280,6 @@ namespace AniX_APP
             }
         }
 
-
         private void NavigateToDashboard()
         {
             Dashboard windowOpen = new Dashboard(

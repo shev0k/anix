@@ -122,7 +122,6 @@ namespace AniX_Controllers
             }
         }
 
-
         public async Task<bool> DoesUsernameExistAsync(string username)
         {
             return await _userManagement.DoesUsernameExistAsync(username);

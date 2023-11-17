@@ -10,10 +10,8 @@ namespace AniX_Shared.Interfaces
         Task<OperationResult> CreateAsync(User user, Stream profileImageStream = null, string contentType = null);
         Task<bool> UpdateAsync(User user, bool updateProfileImage);
         Task<OperationResult> DeleteAsync(int id);
-        Task<User> GetUserFromUsernameAsync(string username);
         Task<User> GetUserFromIdAsync(int id);
         Task<User> AuthenticateUserAsync(string username, string rawPassword);
-        Task<List<User>> GetUsersInBatchAsync(int startIndex, int batchSize);
         Task<List<User>> FetchFilteredAndSearchedUsersAsync(string filter, string searchTerm);
         Task<bool> DoesUsernameExistAsync(string username);
         Task<bool> DoesEmailExistAsync(string email);

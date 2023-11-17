@@ -78,6 +78,8 @@ namespace AniX_WEB.Pages
                 ProfileImagePath = user.ProfileImagePath
             };
 
+            TempData.Clear();
+
             return Page();
         }
 

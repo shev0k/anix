@@ -46,7 +46,20 @@ builder.Services.AddTransient<IAnimeManagement, AnimeDAL>(sp => new AnimeDAL(
     sp.GetRequiredService<IErrorLoggingService>()
 ));
 
+builder.Services.AddTransient<IReviewManagement, ReviewDAL>(sp => new ReviewDAL(
+    sp.GetRequiredService<IConfiguration>(),
+    sp.GetRequiredService<IExceptionHandlingService>(),
+    sp.GetRequiredService<IErrorLoggingService>()
+));
+
+builder.Services.AddTransient<IUserAnimeActionManagement, UserAnimeActionDAL>(sp => new UserAnimeActionDAL(
+    sp.GetRequiredService<IConfiguration>(),
+    sp.GetRequiredService<IExceptionHandlingService>(),
+    sp.GetRequiredService<IErrorLoggingService>()
+));
+
 builder.Services.AddTransient<IAuthenticationService, AuthenticationService>();
+builder.Services.AddTransient<IUserAnimeActionManagement, UserAnimeActionDAL>();
 
 // Register IHttpContextAccessor and ISessionService
 builder.Services.AddHttpContextAccessor();
@@ -78,6 +91,8 @@ app.UseSession();
 
 // Custom authentication middleware
 app.UseMiddleware<CustomAuthenticationMiddleware>();
+
+app.UseStatusCodePagesWithReExecute("/404", "?statusCode={0}");
 
 app.UseAuthentication();
 app.UseAuthorization();

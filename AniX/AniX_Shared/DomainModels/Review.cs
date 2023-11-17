@@ -15,6 +15,9 @@ namespace AniX_Shared.DomainModels
         public int AnimeId { get; set; }
         public Anime Anime { get; set; }
         public string Text { get; set; }
-        public float Rating { get; set; }
+        public double? Rating { get; set; }
+        public bool IsApproved { get; set; }
+        public string UserName { get; set; }
+        public string AnimeName { get; set; }
     }
 }

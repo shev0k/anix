@@ -70,7 +70,6 @@ namespace AniX_WEB.Pages
 
             _sessionService.SetSessionAndCookie(user.Id.ToString(), user.Username, Guid.NewGuid().ToString(), user.ProfileImagePath);
 
-            // No need to check the session immediately after setting it
             var identity = new ClaimsIdentity(new[]
             {
                 new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
@@ -81,6 +80,7 @@ namespace AniX_WEB.Pages
 
             Console.WriteLine("Session UserId: " + _sessionService.GetUserId());
             Console.WriteLine("IsAuthenticated: " + User.Identity.IsAuthenticated);
+            TempData.Clear();
 
             return RedirectToPage("/Index");
         }

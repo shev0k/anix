@@ -21,14 +21,20 @@ namespace AniX_FormsLogic
         public AnimeController AnimeController { get; set; }
         public AnimeDAL AnimeDal { get; set; }
 
+        public ReviewController ReviewController { get; set; }
+        public ReviewDAL ReviewDal { get; set; }
+
         public ApplicationModel(
             UserController userController, UserDAL userDal,
-            AnimeController animeController, AnimeDAL animeDal)
+            AnimeController animeController, AnimeDAL animeDal,
+            ReviewController reviewController, ReviewDAL reviewDal) 
         {
             UserController = userController;
             UserDal = userDal;
             AnimeController = animeController;
             AnimeDal = animeDal;
+            ReviewController = reviewController;
+            ReviewDal = reviewDal;
         }
     }
 }

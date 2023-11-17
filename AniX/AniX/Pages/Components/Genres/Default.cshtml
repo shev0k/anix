@@ -1,0 +1,14 @@
+﻿@*
+*@
+@{
+}
+@model List<AniX_Shared.DomainModels.Genre>
+
+<ul class="dropdown-menu genre-dropdown" aria-labelledby="genres">
+    @foreach (var genre in Model)
+    {
+        <li>
+            <a href="@Url.Page("/filter", new { genreIds = new int[] { genre.Id } })">@genre.Name</a>
+        </li>
+    }
+</ul>

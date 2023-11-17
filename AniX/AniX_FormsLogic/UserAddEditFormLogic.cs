@@ -65,7 +65,6 @@ namespace AniX_FormsLogic
             return operationResult;
         }
 
-
         public async Task<(bool IsValid, string Message)> ValidateFormAsync(string username, string email, string password, bool isEditMode)
         {
             if (string.IsNullOrEmpty(username))

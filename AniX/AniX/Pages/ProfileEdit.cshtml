@@ -68,24 +68,22 @@
                             </button>
                         </div>
                     </div>
-                    <!-- End form here -->
                 </form>
             </div>
             <div class="col-lg-3 offset-lg-0 col-sm-8 offset-sm-2 col-12">
                 <!-- Profile links -->
                 <div style="margin-top: 38px;" class="profile-link bg-color-black">
                     <h5>Playlists</h5>
-                    <a href="./playlist.html">Watch Later</a>
-                    <a href="./playlist.html">Current Watch List</a>
+                    <a href="/playlist">Watch Later</a>
+                    <a href="/playlist#playlist">Your Playlist</a>
                 </div>
             </div>
         </div>
     </div>
 </section>
-<!-- Profile Area End -->
 @section Scripts {
     <script>
-        // Server message initialization
+
         var serverMessage = "";
         var messageType = "info";
 
@@ -98,39 +96,42 @@
         }
     </script>
     <script>
-        // Function to trigger file upload input
         function triggerUpload() {
             document.getElementById('file-input').click();
         }
 
-        // Event listener for form submission
         document.querySelector('form').addEventListener('submit', function (event) {
-            // Optional: Check if the file input has a file selected
             var fileInput = document.getElementById('file-input');
             if (fileInput.files.length === 0) {
-                // If no file is selected, prevent form from submitting
                 alert('Please select a profile image to upload.');
-                event.preventDefault(); // Prevent form from submitting without a file
+                event.preventDefault(); 
             } else {
-                // If a file is selected, continue with the form submission
-                // The form will automatically include the file in the POST request
             }
         });
 
-        // Event listener for file input change
         document.getElementById('file-input').addEventListener('change', function (event) {
             if (event.target.files && event.target.files[0]) {
                 var reader = new FileReader();
 
                 reader.onload = function (e) {
-                    // Set the src of the img tag to the read file to preview the image
                     document.querySelector('.img-box img').setAttribute('src', e.target.result);
                 };
 
-                // Read the image file as a data URL.
                 reader.readAsDataURL(event.target.files[0]);
             }
         });
     </script>
+    
+    <script>
+    $(document).ready(function() {
+        $('.modal').on('hidden.bs.modal', function() {
+            if (!$('.modal.show').length) {
+                $('body').removeClass('modal-open');
+                $('.modal-backdrop').remove();
+                $('body').css('overflow', 'auto');
+            }
+        });
+    });
+</script>
 }
 }

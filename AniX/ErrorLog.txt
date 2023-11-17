@@ -4757,3 +4757,637 @@ Timestamp: 13/11/2023 16:46:59
 Severity: Info
 Custom Message: Timestamp: 13/11/2023 16:46:59, Username: admin, Success: True, Additional Info: 
 ---------------------------------------------------
+Timestamp: 15/11/2023 16:42:32
+Severity: Info
+Custom Message: Timestamp: 15/11/2023 16:42:32, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 15/11/2023 18:15:53
+Severity: Info
+Custom Message: Timestamp: 15/11/2023 18:15:53, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 15/11/2023 18:15:54
+Severity: Error
+Exception Type: System.InvalidCastException
+Message: Unable to cast object of type 'System.Double' to type 'System.Single'.
+Stack Trace:    at System.Data.SqlClient.SqlBuffer.get_Single()
+   at AniX_DAL.ReviewDAL.MapReaderToReview(SqlDataReader reader) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 254
+   at AniX_DAL.ReviewDAL.FetchFilteredReviewsAsync(String approvalStatus, String searchTerm) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 235
+---------------------------------------------------
+Timestamp: 15/11/2023 18:15:54
+Severity: Error
+Exception Type: System.InvalidCastException
+Message: Unable to cast object of type 'System.Double' to type 'System.Single'.
+Stack Trace:    at System.Data.SqlClient.SqlBuffer.get_Single()
+   at AniX_DAL.ReviewDAL.MapReaderToReview(SqlDataReader reader) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 254
+   at AniX_DAL.ReviewDAL.FetchFilteredReviewsAsync(String approvalStatus, String searchTerm) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 235
+---------------------------------------------------
+Timestamp: 15/11/2023 18:15:57
+Severity: Error
+Exception Type: System.InvalidCastException
+Message: Unable to cast object of type 'System.Double' to type 'System.Single'.
+Stack Trace:    at System.Data.SqlClient.SqlBuffer.get_Single()
+   at AniX_DAL.ReviewDAL.MapReaderToReview(SqlDataReader reader) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 254
+   at AniX_DAL.ReviewDAL.FetchFilteredReviewsAsync(String approvalStatus, String searchTerm) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 235
+---------------------------------------------------
+Timestamp: 15/11/2023 18:15:57
+Severity: Error
+Exception Type: System.InvalidCastException
+Message: Unable to cast object of type 'System.Double' to type 'System.Single'.
+Stack Trace:    at System.Data.SqlClient.SqlBuffer.get_Single()
+   at AniX_DAL.ReviewDAL.MapReaderToReview(SqlDataReader reader) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 254
+   at AniX_DAL.ReviewDAL.FetchFilteredReviewsAsync(String approvalStatus, String searchTerm) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 235
+---------------------------------------------------
+Timestamp: 15/11/2023 18:16:44
+Severity: Info
+Custom Message: Timestamp: 15/11/2023 18:16:44, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 15/11/2023 18:16:46
+Severity: Error
+Exception Type: System.InvalidCastException
+Message: Unable to cast object of type 'System.Double' to type 'System.Single'.
+Stack Trace:    at System.Data.SqlClient.SqlBuffer.get_Single()
+   at System.Data.SqlClient.SqlDataReader.GetFloat(Int32 i)
+   at AniX_DAL.ReviewDAL.MapReaderToReview(SqlDataReader reader) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 254
+   at AniX_DAL.ReviewDAL.FetchFilteredReviewsAsync(String approvalStatus, String searchTerm) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 235
+---------------------------------------------------
+Timestamp: 15/11/2023 18:16:46
+Severity: Error
+Exception Type: System.InvalidCastException
+Message: Unable to cast object of type 'System.Double' to type 'System.Single'.
+Stack Trace:    at System.Data.SqlClient.SqlBuffer.get_Single()
+   at System.Data.SqlClient.SqlDataReader.GetFloat(Int32 i)
+   at AniX_DAL.ReviewDAL.MapReaderToReview(SqlDataReader reader) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 254
+   at AniX_DAL.ReviewDAL.FetchFilteredReviewsAsync(String approvalStatus, String searchTerm) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 235
+---------------------------------------------------
+Timestamp: 15/11/2023 18:16:47
+Severity: Error
+Exception Type: System.InvalidCastException
+Message: Unable to cast object of type 'System.Double' to type 'System.Single'.
+Stack Trace:    at System.Data.SqlClient.SqlBuffer.get_Single()
+   at System.Data.SqlClient.SqlDataReader.GetFloat(Int32 i)
+   at AniX_DAL.ReviewDAL.MapReaderToReview(SqlDataReader reader) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 254
+   at AniX_DAL.ReviewDAL.FetchFilteredReviewsAsync(String approvalStatus, String searchTerm) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 235
+---------------------------------------------------
+Timestamp: 15/11/2023 18:16:48
+Severity: Error
+Exception Type: System.InvalidCastException
+Message: Unable to cast object of type 'System.Double' to type 'System.Single'.
+Stack Trace:    at System.Data.SqlClient.SqlBuffer.get_Single()
+   at System.Data.SqlClient.SqlDataReader.GetFloat(Int32 i)
+   at AniX_DAL.ReviewDAL.MapReaderToReview(SqlDataReader reader) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 254
+   at AniX_DAL.ReviewDAL.FetchFilteredReviewsAsync(String approvalStatus, String searchTerm) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 235
+---------------------------------------------------
+Timestamp: 15/11/2023 18:16:49
+Severity: Error
+Exception Type: System.InvalidCastException
+Message: Unable to cast object of type 'System.Double' to type 'System.Single'.
+Stack Trace:    at System.Data.SqlClient.SqlBuffer.get_Single()
+   at System.Data.SqlClient.SqlDataReader.GetFloat(Int32 i)
+   at AniX_DAL.ReviewDAL.MapReaderToReview(SqlDataReader reader) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 254
+   at AniX_DAL.ReviewDAL.FetchFilteredReviewsAsync(String approvalStatus, String searchTerm) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 235
+---------------------------------------------------
+Timestamp: 15/11/2023 18:18:44
+Severity: Info
+Custom Message: Timestamp: 15/11/2023 18:18:44, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 15/11/2023 18:19:04
+Severity: Error
+Exception Type: System.InvalidCastException
+Message: Unable to cast object of type 'System.Double' to type 'System.Single'.
+Stack Trace:    at System.Data.SqlClient.SqlBuffer.get_Single()
+   at AniX_DAL.ReviewDAL.MapReaderToReview(SqlDataReader reader) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 254
+   at AniX_DAL.ReviewDAL.FetchFilteredReviewsAsync(String approvalStatus, String searchTerm) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 235
+---------------------------------------------------
+Timestamp: 15/11/2023 18:19:33
+Severity: Error
+Exception Type: System.InvalidCastException
+Message: Unable to cast object of type 'System.Double' to type 'System.Single'.
+Stack Trace:    at System.Data.SqlClient.SqlBuffer.get_Single()
+   at AniX_DAL.ReviewDAL.MapReaderToReview(SqlDataReader reader) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 254
+   at AniX_DAL.ReviewDAL.FetchFilteredReviewsAsync(String approvalStatus, String searchTerm) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 235
+---------------------------------------------------
+Timestamp: 15/11/2023 18:23:04
+Severity: Info
+Custom Message: Timestamp: 15/11/2023 18:23:04, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 15/11/2023 18:23:05
+Severity: Error
+Exception Type: System.InvalidCastException
+Message: Unable to cast object of type 'System.Double' to type 'System.Single'.
+Stack Trace:    at System.Data.SqlClient.SqlBuffer.get_Single()
+   at System.Data.SqlClient.SqlDataReader.GetFloat(Int32 i)
+   at AniX_DAL.ReviewDAL.MapReaderToReview(SqlDataReader reader) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 254
+   at AniX_DAL.ReviewDAL.FetchFilteredReviewsAsync(String approvalStatus, String searchTerm) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 235
+---------------------------------------------------
+Timestamp: 15/11/2023 18:23:05
+Severity: Error
+Exception Type: System.InvalidCastException
+Message: Unable to cast object of type 'System.Double' to type 'System.Single'.
+Stack Trace:    at System.Data.SqlClient.SqlBuffer.get_Single()
+   at System.Data.SqlClient.SqlDataReader.GetFloat(Int32 i)
+   at AniX_DAL.ReviewDAL.MapReaderToReview(SqlDataReader reader) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 254
+   at AniX_DAL.ReviewDAL.FetchFilteredReviewsAsync(String approvalStatus, String searchTerm) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 235
+---------------------------------------------------
+Timestamp: 15/11/2023 18:29:34
+Severity: Info
+Custom Message: Timestamp: 15/11/2023 18:29:34, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 15/11/2023 18:29:35
+Severity: Error
+Exception Type: System.InvalidCastException
+Message: Unable to cast object of type 'System.Double' to type 'System.Single'.
+Stack Trace:    at System.Data.SqlClient.SqlBuffer.get_Single()
+   at System.Data.SqlClient.SqlDataReader.GetFloat(Int32 i)
+   at AniX_DAL.ReviewDAL.MapReaderToReview(SqlDataReader reader) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 254
+   at AniX_DAL.ReviewDAL.FetchFilteredReviewsAsync(String approvalStatus, String searchTerm) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 235
+---------------------------------------------------
+Timestamp: 15/11/2023 18:29:35
+Severity: Error
+Exception Type: System.InvalidCastException
+Message: Unable to cast object of type 'System.Double' to type 'System.Single'.
+Stack Trace:    at System.Data.SqlClient.SqlBuffer.get_Single()
+   at System.Data.SqlClient.SqlDataReader.GetFloat(Int32 i)
+   at AniX_DAL.ReviewDAL.MapReaderToReview(SqlDataReader reader) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 254
+   at AniX_DAL.ReviewDAL.FetchFilteredReviewsAsync(String approvalStatus, String searchTerm) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 235
+---------------------------------------------------
+Timestamp: 15/11/2023 18:29:35
+Severity: Error
+Exception Type: System.InvalidCastException
+Message: Unable to cast object of type 'System.Double' to type 'System.Single'.
+Stack Trace:    at System.Data.SqlClient.SqlBuffer.get_Single()
+   at System.Data.SqlClient.SqlDataReader.GetFloat(Int32 i)
+   at AniX_DAL.ReviewDAL.MapReaderToReview(SqlDataReader reader) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 254
+   at AniX_DAL.ReviewDAL.FetchFilteredReviewsAsync(String approvalStatus, String searchTerm) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 235
+---------------------------------------------------
+Timestamp: 15/11/2023 18:29:35
+Severity: Error
+Exception Type: System.InvalidCastException
+Message: Unable to cast object of type 'System.Double' to type 'System.Single'.
+Stack Trace:    at System.Data.SqlClient.SqlBuffer.get_Single()
+   at System.Data.SqlClient.SqlDataReader.GetFloat(Int32 i)
+   at AniX_DAL.ReviewDAL.MapReaderToReview(SqlDataReader reader) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 254
+   at AniX_DAL.ReviewDAL.FetchFilteredReviewsAsync(String approvalStatus, String searchTerm) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 235
+---------------------------------------------------
+Timestamp: 15/11/2023 18:36:23
+Severity: Info
+Custom Message: Timestamp: 15/11/2023 18:36:23, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 15/11/2023 18:36:25
+Severity: Error
+Exception Type: System.InvalidCastException
+Message: Unable to cast object of type 'System.Double' to type 'System.Single'.
+Stack Trace:    at System.Data.SqlClient.SqlBuffer.get_Single()
+   at System.Data.SqlClient.SqlDataReader.GetFloat(Int32 i)
+   at AniX_DAL.ReviewDAL.MapReaderToReview(SqlDataReader reader) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 253
+   at AniX_DAL.ReviewDAL.FetchFilteredReviewsAsync(String approvalStatus, String searchTerm) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 234
+---------------------------------------------------
+Timestamp: 15/11/2023 18:36:25
+Severity: Error
+Exception Type: System.InvalidCastException
+Message: Unable to cast object of type 'System.Double' to type 'System.Single'.
+Stack Trace:    at System.Data.SqlClient.SqlBuffer.get_Single()
+   at System.Data.SqlClient.SqlDataReader.GetFloat(Int32 i)
+   at AniX_DAL.ReviewDAL.MapReaderToReview(SqlDataReader reader) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 253
+   at AniX_DAL.ReviewDAL.FetchFilteredReviewsAsync(String approvalStatus, String searchTerm) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 234
+---------------------------------------------------
+Timestamp: 15/11/2023 18:36:26
+Severity: Error
+Exception Type: System.InvalidCastException
+Message: Unable to cast object of type 'System.Double' to type 'System.Single'.
+Stack Trace:    at System.Data.SqlClient.SqlBuffer.get_Single()
+   at System.Data.SqlClient.SqlDataReader.GetFloat(Int32 i)
+   at AniX_DAL.ReviewDAL.MapReaderToReview(SqlDataReader reader) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 253
+   at AniX_DAL.ReviewDAL.FetchFilteredReviewsAsync(String approvalStatus, String searchTerm) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 234
+---------------------------------------------------
+Timestamp: 15/11/2023 18:36:26
+Severity: Error
+Exception Type: System.InvalidCastException
+Message: Unable to cast object of type 'System.Double' to type 'System.Single'.
+Stack Trace:    at System.Data.SqlClient.SqlBuffer.get_Single()
+   at System.Data.SqlClient.SqlDataReader.GetFloat(Int32 i)
+   at AniX_DAL.ReviewDAL.MapReaderToReview(SqlDataReader reader) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 253
+   at AniX_DAL.ReviewDAL.FetchFilteredReviewsAsync(String approvalStatus, String searchTerm) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 234
+---------------------------------------------------
+Timestamp: 15/11/2023 18:36:26
+Severity: Error
+Exception Type: System.InvalidCastException
+Message: Unable to cast object of type 'System.Double' to type 'System.Single'.
+Stack Trace:    at System.Data.SqlClient.SqlBuffer.get_Single()
+   at System.Data.SqlClient.SqlDataReader.GetFloat(Int32 i)
+   at AniX_DAL.ReviewDAL.MapReaderToReview(SqlDataReader reader) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 253
+   at AniX_DAL.ReviewDAL.FetchFilteredReviewsAsync(String approvalStatus, String searchTerm) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 234
+---------------------------------------------------
+Timestamp: 15/11/2023 18:36:26
+Severity: Error
+Exception Type: System.InvalidCastException
+Message: Unable to cast object of type 'System.Double' to type 'System.Single'.
+Stack Trace:    at System.Data.SqlClient.SqlBuffer.get_Single()
+   at System.Data.SqlClient.SqlDataReader.GetFloat(Int32 i)
+   at AniX_DAL.ReviewDAL.MapReaderToReview(SqlDataReader reader) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 253
+   at AniX_DAL.ReviewDAL.FetchFilteredReviewsAsync(String approvalStatus, String searchTerm) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 234
+---------------------------------------------------
+Timestamp: 15/11/2023 18:36:26
+Severity: Error
+Exception Type: System.InvalidCastException
+Message: Unable to cast object of type 'System.Double' to type 'System.Single'.
+Stack Trace:    at System.Data.SqlClient.SqlBuffer.get_Single()
+   at System.Data.SqlClient.SqlDataReader.GetFloat(Int32 i)
+   at AniX_DAL.ReviewDAL.MapReaderToReview(SqlDataReader reader) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 253
+   at AniX_DAL.ReviewDAL.FetchFilteredReviewsAsync(String approvalStatus, String searchTerm) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 234
+---------------------------------------------------
+Timestamp: 15/11/2023 18:36:26
+Severity: Error
+Exception Type: System.InvalidCastException
+Message: Unable to cast object of type 'System.Double' to type 'System.Single'.
+Stack Trace:    at System.Data.SqlClient.SqlBuffer.get_Single()
+   at System.Data.SqlClient.SqlDataReader.GetFloat(Int32 i)
+   at AniX_DAL.ReviewDAL.MapReaderToReview(SqlDataReader reader) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 253
+   at AniX_DAL.ReviewDAL.FetchFilteredReviewsAsync(String approvalStatus, String searchTerm) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 234
+---------------------------------------------------
+Timestamp: 15/11/2023 18:36:27
+Severity: Error
+Exception Type: System.InvalidCastException
+Message: Unable to cast object of type 'System.Double' to type 'System.Single'.
+Stack Trace:    at System.Data.SqlClient.SqlBuffer.get_Single()
+   at System.Data.SqlClient.SqlDataReader.GetFloat(Int32 i)
+   at AniX_DAL.ReviewDAL.MapReaderToReview(SqlDataReader reader) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 253
+   at AniX_DAL.ReviewDAL.FetchFilteredReviewsAsync(String approvalStatus, String searchTerm) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 234
+---------------------------------------------------
+Timestamp: 15/11/2023 18:36:27
+Severity: Error
+Exception Type: System.InvalidCastException
+Message: Unable to cast object of type 'System.Double' to type 'System.Single'.
+Stack Trace:    at System.Data.SqlClient.SqlBuffer.get_Single()
+   at System.Data.SqlClient.SqlDataReader.GetFloat(Int32 i)
+   at AniX_DAL.ReviewDAL.MapReaderToReview(SqlDataReader reader) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 253
+   at AniX_DAL.ReviewDAL.FetchFilteredReviewsAsync(String approvalStatus, String searchTerm) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 234
+---------------------------------------------------
+Timestamp: 15/11/2023 18:36:29
+Severity: Error
+Exception Type: System.InvalidCastException
+Message: Unable to cast object of type 'System.Double' to type 'System.Single'.
+Stack Trace:    at System.Data.SqlClient.SqlBuffer.get_Single()
+   at System.Data.SqlClient.SqlDataReader.GetFloat(Int32 i)
+   at AniX_DAL.ReviewDAL.MapReaderToReview(SqlDataReader reader) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 253
+   at AniX_DAL.ReviewDAL.FetchFilteredReviewsAsync(String approvalStatus, String searchTerm) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 234
+---------------------------------------------------
+Timestamp: 15/11/2023 18:36:29
+Severity: Error
+Exception Type: System.InvalidCastException
+Message: Unable to cast object of type 'System.Double' to type 'System.Single'.
+Stack Trace:    at System.Data.SqlClient.SqlBuffer.get_Single()
+   at System.Data.SqlClient.SqlDataReader.GetFloat(Int32 i)
+   at AniX_DAL.ReviewDAL.MapReaderToReview(SqlDataReader reader) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 253
+   at AniX_DAL.ReviewDAL.FetchFilteredReviewsAsync(String approvalStatus, String searchTerm) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 234
+---------------------------------------------------
+Timestamp: 15/11/2023 18:36:31
+Severity: Error
+Exception Type: System.InvalidCastException
+Message: Unable to cast object of type 'System.Double' to type 'System.Single'.
+Stack Trace:    at System.Data.SqlClient.SqlBuffer.get_Single()
+   at System.Data.SqlClient.SqlDataReader.GetFloat(Int32 i)
+   at AniX_DAL.ReviewDAL.MapReaderToReview(SqlDataReader reader) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 253
+   at AniX_DAL.ReviewDAL.FetchFilteredReviewsAsync(String approvalStatus, String searchTerm) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 234
+---------------------------------------------------
+Timestamp: 15/11/2023 18:37:10
+Severity: Info
+Custom Message: Timestamp: 15/11/2023 18:37:10, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 15/11/2023 18:37:19
+Severity: Error
+Exception Type: System.InvalidCastException
+Message: Unable to cast object of type 'System.Double' to type 'System.Single'.
+Stack Trace:    at System.Data.SqlClient.SqlBuffer.get_Single()
+   at AniX_DAL.ReviewDAL.MapReaderToReview(SqlDataReader reader) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 253
+   at AniX_DAL.ReviewDAL.FetchFilteredReviewsAsync(String approvalStatus, String searchTerm) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 234
+---------------------------------------------------
+Timestamp: 15/11/2023 18:37:54
+Severity: Info
+Custom Message: Timestamp: 15/11/2023 18:37:54, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 15/11/2023 18:38:19
+Severity: Info
+Custom Message: Timestamp: 15/11/2023 18:38:19, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 15/11/2023 18:38:29
+Severity: Error
+Exception Type: System.InvalidCastException
+Message: Unable to cast object of type 'System.Double' to type 'System.Single'.
+Stack Trace:    at System.Data.SqlClient.SqlBuffer.get_Single()
+   at AniX_DAL.ReviewDAL.MapReaderToReview(SqlDataReader reader) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 253
+   at AniX_DAL.ReviewDAL.FetchFilteredReviewsAsync(String approvalStatus, String searchTerm) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 234
+---------------------------------------------------
+Timestamp: 15/11/2023 18:39:10
+Severity: Error
+Exception Type: System.InvalidCastException
+Message: Unable to cast object of type 'System.Double' to type 'System.Single'.
+Stack Trace:    at System.Data.SqlClient.SqlBuffer.get_Single()
+   at AniX_DAL.ReviewDAL.MapReaderToReview(SqlDataReader reader) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 253
+   at AniX_DAL.ReviewDAL.FetchFilteredReviewsAsync(String approvalStatus, String searchTerm) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 234
+---------------------------------------------------
+Timestamp: 15/11/2023 18:55:07
+Severity: Info
+Custom Message: Timestamp: 15/11/2023 18:55:07, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 15/11/2023 18:55:08
+Severity: Error
+Exception Type: System.InvalidCastException
+Message: Unable to cast object of type 'System.Double' to type 'System.Single'.
+Stack Trace:    at System.Data.SqlClient.SqlBuffer.get_Single()
+   at System.Data.SqlClient.SqlDataReader.GetFloat(Int32 i)
+   at AniX_DAL.ReviewDAL.MapReaderToReview(SqlDataReader reader) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 242
+   at AniX_DAL.ReviewDAL.FetchFilteredReviewsAsync(String filter) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 218
+---------------------------------------------------
+Timestamp: 15/11/2023 18:55:08
+Severity: Error
+Exception Type: System.InvalidCastException
+Message: Unable to cast object of type 'System.Double' to type 'System.Single'.
+Stack Trace:    at System.Data.SqlClient.SqlBuffer.get_Single()
+   at System.Data.SqlClient.SqlDataReader.GetFloat(Int32 i)
+   at AniX_DAL.ReviewDAL.MapReaderToReview(SqlDataReader reader) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 242
+   at AniX_DAL.ReviewDAL.FetchFilteredReviewsAsync(String filter) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 218
+   at AniX_DAL.ReviewDAL.FetchFilteredReviewsAsync(String filter) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 230
+   at AniX_DAL.ReviewDAL.FetchFilteredReviewsAsync(String filter) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 235
+   at AniX_Controllers.ReviewController.ExecuteWithExceptionHandlingAsync[T](Func`1 action) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\ReviewController.cs:line 59
+---------------------------------------------------
+Timestamp: 15/11/2023 18:55:08
+Severity: Critical
+Exception Type: System.InvalidCastException
+Message: Unable to cast object of type 'System.Double' to type 'System.Single'.
+Stack Trace:    at System.Data.SqlClient.SqlBuffer.get_Single()
+   at System.Data.SqlClient.SqlDataReader.GetFloat(Int32 i)
+   at AniX_DAL.ReviewDAL.MapReaderToReview(SqlDataReader reader) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 242
+   at AniX_DAL.ReviewDAL.FetchFilteredReviewsAsync(String filter) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 218
+   at AniX_DAL.ReviewDAL.FetchFilteredReviewsAsync(String filter) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 230
+   at AniX_DAL.ReviewDAL.FetchFilteredReviewsAsync(String filter) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 235
+   at AniX_Controllers.ReviewController.ExecuteWithExceptionHandlingAsync[T](Func`1 action) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\ReviewController.cs:line 59
+   at AniX_Controllers.ReviewController.ExecuteWithExceptionHandlingAsync[T](Func`1 action) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\ReviewController.cs:line 68
+   at AniX_Controllers.ReviewController.FetchFilteredReviewsAsync(String filter) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\ReviewController.cs:line 52
+   at AniX_FormsLogic.ReviewsFormLogic.RefreshReviewsAsync() in C:\Users\Administrator\source\repos\anix\AniX\AniX_FormsLogic\ReviewsFormLogic.cs:line 19
+   at AniX_APP.Forms_Dashboard.Reviews.RefreshReviewsAsync() in C:\Users\Administrator\source\repos\anix\AniX\AniX_APP\Forms_Dashboard\Reviews.cs:line 240
+---------------------------------------------------
+Timestamp: 15/11/2023 18:55:08
+Severity: Error
+Exception Type: System.InvalidCastException
+Message: Unable to cast object of type 'System.Double' to type 'System.Single'.
+Stack Trace:    at System.Data.SqlClient.SqlBuffer.get_Single()
+   at System.Data.SqlClient.SqlDataReader.GetFloat(Int32 i)
+   at AniX_DAL.ReviewDAL.MapReaderToReview(SqlDataReader reader) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 242
+   at AniX_DAL.ReviewDAL.FetchFilteredReviewsAsync(String filter) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 218
+---------------------------------------------------
+Timestamp: 15/11/2023 18:55:08
+Severity: Error
+Exception Type: System.InvalidCastException
+Message: Unable to cast object of type 'System.Double' to type 'System.Single'.
+Stack Trace:    at System.Data.SqlClient.SqlBuffer.get_Single()
+   at System.Data.SqlClient.SqlDataReader.GetFloat(Int32 i)
+   at AniX_DAL.ReviewDAL.MapReaderToReview(SqlDataReader reader) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 242
+   at AniX_DAL.ReviewDAL.FetchFilteredReviewsAsync(String filter) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 218
+   at AniX_DAL.ReviewDAL.FetchFilteredReviewsAsync(String filter) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 230
+   at AniX_DAL.ReviewDAL.FetchFilteredReviewsAsync(String filter) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 235
+   at AniX_Controllers.ReviewController.ExecuteWithExceptionHandlingAsync[T](Func`1 action) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\ReviewController.cs:line 59
+---------------------------------------------------
+Timestamp: 15/11/2023 18:55:18
+Severity: Info
+Custom Message: Timestamp: 15/11/2023 18:55:18, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 15/11/2023 18:55:26
+Severity: Error
+Exception Type: System.InvalidCastException
+Message: Unable to cast object of type 'System.Double' to type 'System.Single'.
+Stack Trace:    at System.Data.SqlClient.SqlBuffer.get_Single()
+   at AniX_DAL.ReviewDAL.MapReaderToReview(SqlDataReader reader) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 242
+   at AniX_DAL.ReviewDAL.FetchFilteredReviewsAsync(String filter) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 218
+---------------------------------------------------
+Timestamp: 15/11/2023 18:55:27
+Severity: Error
+Exception Type: System.InvalidCastException
+Message: Unable to cast object of type 'System.Double' to type 'System.Single'.
+Stack Trace:    at System.Data.SqlClient.SqlBuffer.get_Single()
+   at AniX_DAL.ReviewDAL.MapReaderToReview(SqlDataReader reader) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 242
+   at AniX_DAL.ReviewDAL.FetchFilteredReviewsAsync(String filter) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 218
+   at AniX_DAL.ReviewDAL.FetchFilteredReviewsAsync(String filter) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 230
+   at AniX_DAL.ReviewDAL.FetchFilteredReviewsAsync(String filter) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 235
+   at AniX_Controllers.ReviewController.ExecuteWithExceptionHandlingAsync[T](Func`1 action) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\ReviewController.cs:line 59
+---------------------------------------------------
+Timestamp: 15/11/2023 18:55:27
+Severity: Critical
+Exception Type: System.InvalidCastException
+Message: Unable to cast object of type 'System.Double' to type 'System.Single'.
+Stack Trace:    at System.Data.SqlClient.SqlBuffer.get_Single()
+   at AniX_DAL.ReviewDAL.MapReaderToReview(SqlDataReader reader) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 242
+   at AniX_DAL.ReviewDAL.FetchFilteredReviewsAsync(String filter) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 218
+   at AniX_DAL.ReviewDAL.FetchFilteredReviewsAsync(String filter) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 230
+   at AniX_DAL.ReviewDAL.FetchFilteredReviewsAsync(String filter) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\ReviewDAL.cs:line 235
+   at AniX_Controllers.ReviewController.ExecuteWithExceptionHandlingAsync[T](Func`1 action) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\ReviewController.cs:line 59
+   at AniX_Controllers.ReviewController.ExecuteWithExceptionHandlingAsync[T](Func`1 action) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\ReviewController.cs:line 68
+   at AniX_Controllers.ReviewController.FetchFilteredReviewsAsync(String filter) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\ReviewController.cs:line 52
+   at AniX_FormsLogic.ReviewsFormLogic.RefreshReviewsAsync() in C:\Users\Administrator\source\repos\anix\AniX\AniX_FormsLogic\ReviewsFormLogic.cs:line 19
+   at AniX_APP.Forms_Dashboard.Reviews.RefreshReviewsAsync() in C:\Users\Administrator\source\repos\anix\AniX\AniX_APP\Forms_Dashboard\Reviews.cs:line 240
+---------------------------------------------------
+Timestamp: 15/11/2023 18:57:03
+Severity: Info
+Custom Message: Timestamp: 15/11/2023 18:57:03, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 15/11/2023 18:58:25
+Severity: Info
+Custom Message: Timestamp: 15/11/2023 18:58:25, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 15/11/2023 18:58:36
+Severity: Info
+Custom Message: Timestamp: 15/11/2023 18:58:36, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 15/11/2023 19:00:46
+Severity: Info
+Custom Message: Timestamp: 15/11/2023 19:00:46, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 15/11/2023 19:02:48
+Severity: Info
+Custom Message: Timestamp: 15/11/2023 19:02:48, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 15/11/2023 19:05:22
+Severity: Info
+Custom Message: Timestamp: 15/11/2023 19:05:22, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 15/11/2023 19:07:53
+Severity: Info
+Custom Message: Timestamp: 15/11/2023 19:07:53, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 15/11/2023 20:05:10
+Severity: Info
+Custom Message: Timestamp: 15/11/2023 20:05:10, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 15/11/2023 20:10:46
+Severity: Info
+Custom Message: Timestamp: 15/11/2023 20:10:46, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 15/11/2023 20:11:21
+Severity: Info
+Custom Message: Timestamp: 15/11/2023 20:11:21, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 15/11/2023 20:12:18
+Severity: Info
+Custom Message: Timestamp: 15/11/2023 20:12:18, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 15/11/2023 20:12:53
+Severity: Info
+Custom Message: Timestamp: 15/11/2023 20:12:53, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 15/11/2023 20:14:21
+Severity: Info
+Custom Message: Timestamp: 15/11/2023 20:14:21, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 15/11/2023 20:18:08
+Severity: Info
+Custom Message: Timestamp: 15/11/2023 20:18:08, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 15/11/2023 20:21:23
+Severity: Info
+Custom Message: Timestamp: 15/11/2023 20:21:23, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 15/11/2023 20:22:16
+Severity: Info
+Custom Message: Timestamp: 15/11/2023 20:22:16, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 15/11/2023 21:33:44
+Severity: Info
+Custom Message: Timestamp: 15/11/2023 21:33:44, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 15/11/2023 21:34:14
+Severity: Info
+Custom Message: Timestamp: 15/11/2023 21:34:14, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 15/11/2023 23:50:07
+Severity: Info
+Custom Message: Timestamp: 15/11/2023 23:50:07, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 16/11/2023 00:15:26
+Severity: Info
+Custom Message: Timestamp: 16/11/2023 00:15:26, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 16/11/2023 00:35:46
+Severity: Info
+Custom Message: Timestamp: 16/11/2023 00:35:46, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 16/11/2023 11:00:37
+Severity: Info
+Custom Message: Timestamp: 16/11/2023 11:00:37, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 16/11/2023 11:15:12
+Severity: Info
+Custom Message: Timestamp: 16/11/2023 11:15:12, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 16/11/2023 12:33:51
+Severity: Info
+Custom Message: Timestamp: 16/11/2023 12:33:51, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 16/11/2023 13:00:26
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: The connection was not closed. The connection's current state is open.
+Stack Trace:    at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.OpenAsync(CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at AniX_DAL.UserDAL.AuthenticateUserAsync(String username, String rawPassword) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 37
+---------------------------------------------------
+Timestamp: 16/11/2023 13:00:26
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: The connection was not closed. The connection's current state is open.
+Stack Trace:    at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.OpenAsync(CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at AniX_DAL.UserDAL.AuthenticateUserAsync(String username, String rawPassword) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 37
+   at AniX_DAL.UserDAL.AuthenticateUserAsync(String username, String rawPassword) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 57
+   at AniX_DAL.UserDAL.AuthenticateUserAsync(String username, String rawPassword) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 62
+   at AniX_BusinessLogic.AuthenticationService.AuthenticateUserAsync(String username, String password) in C:\Users\Administrator\source\repos\anix\AniX\AniX_BusinessLogic\AuthenticationService.cs:line 35
+---------------------------------------------------
+Timestamp: 16/11/2023 13:00:26
+Severity: Info
+Custom Message: Timestamp: 16/11/2023 13:00:26, Username: shevok, Success: False, Additional Info: 
+---------------------------------------------------
+Timestamp: 16/11/2023 13:00:26
+Severity: Error
+Exception Type: AniX_Controllers.UserController+AuthenticationException
+Message: Failed to authenticate.
+Stack Trace:    at AniX_Controllers.UserController.LoginAsync(String username, String password) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 55
+---------------------------------------------------
+Timestamp: 16/11/2023 13:00:26
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: Invalid attempt to call ReadAsync when reader is closed.
+Stack Trace:    at System.Data.Common.ADP.ExceptionWithStackTrace(Exception e)
+--- End of stack trace from previous location ---
+   at AniX_DAL.UserDAL.AuthenticateUserAsync(String username, String rawPassword) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 41
+---------------------------------------------------
+Timestamp: 16/11/2023 13:00:26
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: Invalid attempt to call ReadAsync when reader is closed.
+Stack Trace:    at System.Data.Common.ADP.ExceptionWithStackTrace(Exception e)
+--- End of stack trace from previous location ---
+   at AniX_DAL.UserDAL.AuthenticateUserAsync(String username, String rawPassword) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 41
+   at AniX_DAL.UserDAL.AuthenticateUserAsync(String username, String rawPassword) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 57
+   at AniX_DAL.UserDAL.AuthenticateUserAsync(String username, String rawPassword) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 62
+   at AniX_BusinessLogic.AuthenticationService.AuthenticateUserAsync(String username, String password) in C:\Users\Administrator\source\repos\anix\AniX\AniX_BusinessLogic\AuthenticationService.cs:line 35
+---------------------------------------------------
+Timestamp: 16/11/2023 13:00:26
+Severity: Info
+Custom Message: Timestamp: 16/11/2023 13:00:26, Username: shevok, Success: False, Additional Info: 
+---------------------------------------------------
+Timestamp: 16/11/2023 13:00:26
+Severity: Error
+Exception Type: AniX_Controllers.UserController+AuthenticationException
+Message: Failed to authenticate.
+Stack Trace:    at AniX_Controllers.UserController.LoginAsync(String username, String password) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 55
+---------------------------------------------------
+Timestamp: 16/11/2023 13:00:33
+Severity: Info
+Custom Message: Timestamp: 16/11/2023 13:00:33, Username: shevok, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 16/11/2023 13:04:17
+Severity: Info
+Custom Message: Timestamp: 16/11/2023 13:04:17, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 16/11/2023 16:10:03
+Severity: Info
+Custom Message: Timestamp: 16/11/2023 16:10:03, Username: test, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 16/11/2023 16:10:04
+Severity: Error
+Exception Type: AniX_Controllers.UserController+AuthorizationException
+Message: You are not authorized to access this application.
+Stack Trace:    at AniX_Controllers.UserController.LoginAsync(String username, String password) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 65
+---------------------------------------------------
+Timestamp: 16/11/2023 16:10:07
+Severity: Info
+Custom Message: Timestamp: 16/11/2023 16:10:07, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 16/11/2023 16:18:09
+Severity: Info
+Custom Message: Timestamp: 16/11/2023 16:18:09, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 16/11/2023 16:43:56
+Severity: Info
+Custom Message: Timestamp: 16/11/2023 16:43:56, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 16/11/2023 18:43:02
+Severity: Info
+Custom Message: Timestamp: 16/11/2023 18:43:02, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 17/11/2023 05:39:53
+Severity: Info
+Custom Message: Timestamp: 17/11/2023 05:39:53, Username: test, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 17/11/2023 05:39:53
+Severity: Error
+Exception Type: AniX_Controllers.UserController+AuthorizationException
+Message: You are not authorized to access this application.
+Stack Trace:    at AniX_Controllers.UserController.LoginAsync(String username, String password) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 65
+---------------------------------------------------
+Timestamp: 17/11/2023 05:39:58
+Severity: Info
+Custom Message: Timestamp: 17/11/2023 05:39:58, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------

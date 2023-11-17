@@ -46,13 +46,21 @@ namespace AniX_APP
                     configuration,
                     sp.GetRequiredService<IExceptionHandlingService>(),
                     sp.GetRequiredService<IErrorLoggingService>()))
+                .AddTransient<ReviewDAL>(sp => new ReviewDAL(
+                    configuration,
+                    sp.GetRequiredService<IExceptionHandlingService>(),
+                    sp.GetRequiredService<IErrorLoggingService>()))
                 .AddTransient<IAnimeManagement, AnimeDAL>()
+                .AddTransient<IReviewManagement, ReviewDAL>()
                 .AddTransient<AnimeController>()
+                .AddTransient<ReviewController>()
                 .AddSingleton<ApplicationModel>(sp => new ApplicationModel(
                     sp.GetRequiredService<UserController>(),
                     sp.GetRequiredService<UserDAL>(),
                     sp.GetRequiredService<AnimeController>(),
-                    sp.GetRequiredService<AnimeDAL>()))
+                    sp.GetRequiredService<AnimeDAL>(),
+                    sp.GetRequiredService<ReviewController>(),
+                    sp.GetRequiredService<ReviewDAL>()))
                 .AddTransient<AnimeAddEditFormLogic>(sp =>
                 {
                     var appModel = sp.GetRequiredService<ApplicationModel>();

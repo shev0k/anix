@@ -57,12 +57,12 @@
                         <div class="col-lg-5 col-12">
                             <h2 class="title">@TruncateTitle(anime.Name)</h2>
                             <p class="text">Season @anime.Season</p>
-                            <a href="@Url.Page("/AnimeDetail", new { id = anime.Id })" class="text-box active">@anime.Rating</a>
-                            <a href="@Url.Page("/AnimeDetail", new { id = anime.Id })" class="text-box">★ @TruncateRating(anime.AverageRating)</a>
-                            <a href="@Url.Page("/AnimeDetail", new { id = anime.Id })" class="text-box">@anime.Type</a>
+                            <a href="@Url.Page("/watch", new { id = anime.Id })" class="text-box active">@anime.Rating</a>
+                            <a href="@Url.Page("/watch", new { id = anime.Id })" class="text-box">★ @TruncateRating(anime.AverageRating)</a>
+                            <a href="@Url.Page("/watch", new { id = anime.Id })" class="text-box">@anime.Type</a>
                             <p class="light-text">@anime.ReleaseDate?.ToString("MMMM dd, yyyy")</p>
                             <p>@TruncateDescription(anime.Description)</p>
-                            <a class="banner-btn" href="@Url.Page("/AnimeDetail", new { id = anime.Id })">PLAY NOW</a>
+                            <a class="banner-btn" href="@Url.Page("/watch", new { id = anime.Id })">PLAY NOW</a>
                         </div>
                         <div class="col-lg-7 col-12">
                             <img src="@anime.CoverImage" alt="@anime.Name" class="anime-cover">
@@ -86,42 +86,17 @@
             {
                 <div class="col-xl-3 col-lg-4 col-sm-6 col-12">
                     <div class="anime-blog">
-                        <a href="@Url.Page("/AnimeDetail", new { id = anime.Id })" class="img-block">
+                        <a href="@Url.Page("/watch", new { id = anime.Id })" class="img-block">
                             <img src="@anime.Thumbnail" alt="@anime.Name" class="anime-image">
                         </a>
-                        <a href="@Url.Page("/AnimeDetail", new { id = anime.Id })" class="action-overlay"><i class="fal fa-play-circle"></i> Play Now</a>
+                        <a href="@Url.Page("/watch", new { id = anime.Id })" class="action-overlay"><i class="fal fa-play-circle"></i> Play Now</a>
                         <div class="detail">
                             <div class="tags">
-                                <a href="@Url.Page("/AnimeDetail", new { id = anime.Id })" class="text-box">★ @TruncateRating(anime.AverageRating)</a>
-                                <a href="@Url.Page("/AnimeDetail", new { id = anime.Id })" class="text-box active">@anime.Type</a>
-                            </div>
-                            <div class="dropdown">
-                                <button type="button" class="dropdown-toggle" data-bs-toggle="dropdown">
-                                    <svg width="32" height="22" viewBox="0 0 32 22" fill="none"
-                                         xmlns="http://www.w3.org/2000/svg">
-                                        <rect x="0.145264" y="0.00012207" width="21.4395" height="2.68125" rx="1.34062"
-                                              fill="#999999" />
-                                        <rect x="0.145264" y="7.41272" width="21.4395" height="2.68125" rx="1.34062"
-                                              fill="#999999" />
-                                        <rect x="0.145264" y="14.8258" width="16.4914" height="2.68125" rx="1.34062"
-                                              fill="#999999" />
-                                        <path d="M19.8784 16.0712C19.8784 15.4163 20.4093 14.8854 21.0642 14.8854H30.2463C30.9011 14.8854 31.432 15.4163 31.432 16.0712C31.432 16.7261 30.9011 17.257 30.2463 17.257H21.0642C20.4093 17.257 19.8784 16.7261 19.8784 16.0712Z"
-                                              fill="#999999" />
-                                        <path d="M25.6552 22.0001C25.0171 22.0001 24.4999 21.4828 24.4999 20.8447V11.2977C24.4999 10.6596 25.0171 10.1423 25.6552 10.1423C26.2933 10.1423 26.8106 10.6596 26.8106 11.2977V20.8447C26.8106 21.4828 26.2933 22.0001 25.6552 22.0001Z"
-                                              fill="#999999" />
-                                    </svg>
-                                </button>
-                                <ul class="dropdown-menu bg-color-black pt-3 pb-3 ps-3 pe-3">
-                                    <li>
-                                        <a href="" class="none"><i class="fa fa-check"></i> Watch Later </a>
-                                    </li>
-                                    <li>
-                                        <a href=""><i class="fas fa-plus"></i> Add to Playlist </a>
-                                    </li>
-                                </ul>
+                                <a href="@Url.Page("/watch", new { id = anime.Id })" class="text-box">★ @TruncateRating(anime.AverageRating)</a>
+                                <a href="@Url.Page("/watch", new { id = anime.Id })" class="text-box active">@anime.Type</a>
                             </div>
                         </div>
-                        <a href="@Url.Page("/AnimeDetail", new { id = anime.Id })">
+                        <a href="@Url.Page("/watch", new { id = anime.Id })">
                             <p>@anime.Name</p>
                         </a>
                     </div>
@@ -168,42 +143,17 @@
             {
                 <div class="col-xl-3 col-lg-4 col-sm-6 col-12">
                     <div class="anime-blog">
-                        <a href="@Url.Page("/AnimeDetail", new { id = anime.Id })" class="img-block">
+                        <a href="@Url.Page("/watch", new { id = anime.Id })" class="img-block">
                             <img src="@anime.Thumbnail" alt="@anime.Name" class="anime-image">
                         </a>
-                        <a href="@Url.Page("/AnimeDetail", new { id = anime.Id })" class="action-overlay"><i class="fal fa-play-circle"></i> Play Now</a>
+                        <a href="@Url.Page("/watch", new { id = anime.Id })" class="action-overlay"><i class="fal fa-play-circle"></i> Play Now</a>
                         <div class="detail">
                             <div class="tags">
-                                <a href="@Url.Page("/AnimeDetail", new { id = anime.Id })" class="text-box">★ @TruncateRating(anime.AverageRating)</a>
-                                <a href="@Url.Page("/AnimeDetail", new { id = anime.Id })" class="text-box active">@anime.Type</a>
-                            </div>
-                            <div class="dropdown">
-                                <button type="button" class="dropdown-toggle" data-bs-toggle="dropdown">
-                                    <svg width="32" height="22" viewBox="0 0 32 22" fill="none"
-                                         xmlns="http://www.w3.org/2000/svg">
-                                        <rect x="0.145264" y="0.00012207" width="21.4395" height="2.68125" rx="1.34062"
-                                              fill="#999999" />
-                                        <rect x="0.145264" y="7.41272" width="21.4395" height="2.68125" rx="1.34062"
-                                              fill="#999999" />
-                                        <rect x="0.145264" y="14.8258" width="16.4914" height="2.68125" rx="1.34062"
-                                              fill="#999999" />
-                                        <path d="M19.8784 16.0712C19.8784 15.4163 20.4093 14.8854 21.0642 14.8854H30.2463C30.9011 14.8854 31.432 15.4163 31.432 16.0712C31.432 16.7261 30.9011 17.257 30.2463 17.257H21.0642C20.4093 17.257 19.8784 16.7261 19.8784 16.0712Z"
-                                              fill="#999999" />
-                                        <path d="M25.6552 22.0001C25.0171 22.0001 24.4999 21.4828 24.4999 20.8447V11.2977C24.4999 10.6596 25.0171 10.1423 25.6552 10.1423C26.2933 10.1423 26.8106 10.6596 26.8106 11.2977V20.8447C26.8106 21.4828 26.2933 22.0001 25.6552 22.0001Z"
-                                              fill="#999999" />
-                                    </svg>
-                                </button>
-                                <ul class="dropdown-menu bg-color-black pt-3 pb-3 ps-3 pe-3">
-                                    <li>
-                                        <a href="" class="none"><i class="fa fa-check"></i> Watch Later </a>
-                                    </li>
-                                    <li>
-                                        <a href=""><i class="fas fa-plus"></i> Add to Playlist </a>
-                                    </li>
-                                </ul>
+                                <a href="@Url.Page("/watch", new { id = anime.Id })" class="text-box">★ @TruncateRating(anime.AverageRating)</a>
+                                <a href="@Url.Page("/watch", new { id = anime.Id })" class="text-box active">@anime.Type</a>
                             </div>
                         </div>
-                        <a href="@Url.Page("/AnimeDetail", new { id = anime.Id })">
+                        <a href="@Url.Page("/watch", new { id = anime.Id })">
                             <p>@anime.Name</p>
                         </a>
                     </div>
@@ -226,7 +176,7 @@
         string rankClass = GetRankClass(i + 1); 
 
         <div class="anime-box bg-color-black">
-            <a href="@Url.Page("/AnimeDetail", new { id = anime.Id })">
+            <a href="@Url.Page("/watch", new { id = anime.Id })">
                 <div class="row m-0">
                     <div class="p-0 col-2">
                         <span class="@rankClass">@((i + 1).ToString())</span>
@@ -254,7 +204,7 @@
     @foreach (var anime in Model.NewlyReleasedAnimes)
     {
         <div class="anime-box bg-color-black">
-            <a href="@Url.Page("/AnimeDetail", new { id = anime.Id })">
+            <a href="@Url.Page("/watch", new { id = anime.Id })">
                 <div class="row m-0">
                     <div class="col-2 p-0">
                         <img src="@anime.Thumbnail" class="anime-blog-image" alt="@anime.Name">
@@ -279,7 +229,7 @@
     <h3>Top Rated</h3>
     @foreach (var anime in Model.TopRatedAnime){
         <div class="anime-box bg-color-black">
-            <a href="@Url.Page("/AnimeDetail", new { id = anime.Id })">
+            <a href="@Url.Page("/watch", new { id = anime.Id })">
                 <div class="row m-0">
                     <div class="col-2 p-0">
                         <img src="@anime.Thumbnail" class="anime-blog-image" alt="@anime.Name">

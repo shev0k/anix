@@ -1,0 +1,596 @@
+﻿@page
+@using AniX_Shared.Interfaces
+@using AniX_Shared.DomainModels
+@model AniX_WEB.Pages.AnimeDetailModel
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = Model.AnimeDetails.Anime.Name;
+}
+
+@{
+    var isAuthenticated = User.Identity.IsAuthenticated;
+}
+@inject ISessionService SessionService
+
+
+@functions {
+    public static string TruncateDescription(string description, int maxLength = 150)
+    {
+        if (string.IsNullOrEmpty(description)) return description;
+        return description.Length <= maxLength ? description : description.Substring(0, maxLength) + "...";
+    }
+    public static string TruncateTitle(string title, int maxLength = 25)
+    {
+        if (string.IsNullOrEmpty(title)) return title;
+        return title.Length <= maxLength ? title : title.Substring(0, maxLength) + "...";
+    }
+
+    public static string TruncateRating(double? rating, int maxLength = 4)
+    {
+        if (rating == null) return "TBA";
+        string formattedRating = rating.Value.ToString("F2", System.Globalization.CultureInfo.InvariantCulture);
+        return formattedRating.Length <= maxLength ? formattedRating : formattedRating.Substring(0, maxLength);
+    }
+
+    private string GetRankClass(int rank)
+    {
+        return rank switch
+        {
+            1 => "light-text text-center color-yellow",
+            2 => "light-text text-center color-purple",
+            3 => "light-text text-center color-grey",
+            _ => "light-text text-center"
+        };
+    }
+}
+
+<!--=====================================-->
+<!--=      Breadcrumb Area Start        =-->
+<!--=====================================-->
+<section class="breadcrumb sec-mar">
+    <div class="container">
+        <div class="breadcrumb-content">
+            <ul>
+                <li><a href="index">Home</a></li>
+                <li><a href="filter">List</a></li>
+                <li><a class="active">Trailer</a></li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+
+    <input type="hidden" asp-for="@Model.AnimeDetails.Anime.Id" />
+    <!--=====================================-->
+    <!--=         video Area Start          =-->
+    <!--=====================================-->
+    <section class="video sec-mar">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="img-box">
+                        <img class="detail-image" src="@Model.AnimeDetails.Anime.CoverImage" alt="">
+                        <div class="overlay">
+                            <a href="#" class="play-btn"><i class="fas fa-play"></i></a>
+                        </div>
+                    </div>
+                    <div class="video-box">
+                        <div class="video-container">
+                            <iframe src="@Model.AnimeDetails.Anime.TrailerLink" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+                <div class="video-content bg-color-black">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-4 col-sm-12">
+                            <p>You're watching <b>@Model.AnimeDetails.Anime.Name</b>. <br> What do you think about this anime?</p>
+                        </div>
+
+                        <div class="col-lg-6 col-md-8 col-sm-12">
+                            <div class="rating-container">
+                                @{
+                                    var starValues = new Dictionary<string, Tuple<int, string>>
+                                    {
+                                        { "st5", new Tuple<int, string>(5, "Excellent") },
+                                        { "st4", new Tuple<int, string>(4, "Good") },
+                                        { "st3", new Tuple<int, string>(3, "OK") },
+                                        { "st2", new Tuple<int, string>(2, "Bad") },
+                                        { "st1", new Tuple<int, string>(1, "Terrible") }
+                                    };
+                                }
+                                <div class="rating-container__items">
+                                    @foreach (var star in starValues)
+                                    {
+                                        <input type="radio" asp-for="StarRating" id="@star.Key" value="@star.Value.Item1" name="stars">
+                                        <label for="@star.Key">
+                                            <div class="rating-star-stroke">
+                                                <div class="rating-star-fill"></div>
+                                            </div>
+                                            <div class="rating-label-description" data-content="@star.Value.Item2"></div>
+                                        </label>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 offset-lg-0">
+                            <div class="align-middle actions">
+                                <a href="javascript:void(0)" class="anime-btn btn-dark border-change mb-2" onclick="updateRating()">RATE NOW</a>
+                                <p class="text">RATING: @TruncateRating(@Model.AnimeDetails.AverageRating) <b>/10</b></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-9 col-12">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-4 col-sm-6 col-12">
+                                <div class="trailer-box">
+                                    <img src="@Model.AnimeDetails.Anime.CoverImage" alt="" class="image">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-8 col-sm-6 col-12">
+                                <div class="trailer-content">
+                                    <h2>@Model.AnimeDetails.Anime.Name</h2>
+                                    <p class="light-text">Season @Model.AnimeDetails.Anime.Season</p>
+                                    <div class="dropdown">
+                                        <button type="button" class="dropdown-toggle" data-bs-toggle="dropdown">
+                                            <svg width="32" height="22" viewBox="0 0 32 22" fill="none"
+                                                 xmlns="http://www.w3.org/2000/svg">
+                                                <rect x="0.145264" y="0.00012207" width="21.4395" height="2.68125"
+                                                      rx="1.34062" fill="#999999"/>
+                                                <rect x="0.145264" y="7.41272" width="21.4395" height="2.68125"
+                                                      rx="1.34062" fill="#999999"/>
+                                                <rect x="0.145264" y="14.8258" width="16.4914" height="2.68125"
+                                                      rx="1.34062" fill="#999999"/>
+                                                <path d="M19.8784 16.0712C19.8784 15.4163 20.4093 14.8854 21.0642 14.8854H30.2463C30.9011 14.8854 31.432 15.4163 31.432 16.0712C31.432 16.7261 30.9011 17.257 30.2463 17.257H21.0642C20.4093 17.257 19.8784 16.7261 19.8784 16.0712Z"
+                                                      fill="#999999"/>
+                                                <path d="M25.6552 22.0001C25.0171 22.0001 24.4999 21.4828 24.4999 20.8447V11.2977C24.4999 10.6596 25.0171 10.1423 25.6552 10.1423C26.2933 10.1423 26.8106 10.6596 26.8106 11.2977V20.8447C26.8106 21.4828 26.2933 22.0001 25.6552 22.0001Z"
+                                                      fill="#999999"/>
+                                            </svg>
+                                        </button>
+                                        <ul class="dropdown-menu bg-color-black pt-3 pb-3 ps-3 pe-3">
+                                        @if (Model.IsInWatchlist(@Model.AnimeDetails.Anime.Id))
+                                            {
+                                                <li>
+                                                <a href="javascript:void(0)" onclick="removeFromWatchlist(@Model.AnimeDetails.Anime.Id)" class="none"><i class="fas fa-times"></i> Remove from Watchlist </a>
+                                                </li>
+                                            }
+                                            else
+                                            {
+                                                <li>
+                                                <a href="javascript:void(0)" onclick="addToWatchlist(@Model.AnimeDetails.Anime.Id)" class="none"><i class="fa fa-check"></i> Add to Watchlist </a>
+                                                </li>
+                                            }
+                                        @if (Model.IsInPlaylist(@Model.AnimeDetails.Anime.Id))
+                                            {
+                                                <li>
+                                                <a href="javascript:void(0)" onclick="removeFromPlaylist(@Model.AnimeDetails.Anime.Id)"><i class="fas fa-minus"></i> Remove from Playlist </a>
+                                                </li>
+                                            }
+                                            else
+                                            {
+                                                <li>
+                                                <a href="javascript:void(0)" onclick="addToPlaylist(@Model.AnimeDetails.Anime.Id)"><i class="fas fa-plus"></i> Add to Playlist </a>
+                                                </li>
+                                            }
+                                        </ul>
+                                    </div>
+                                    <h3>Plot Summary</h3>
+                                    <p>@Model.AnimeDetails.Anime.Description</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 col-sm-6 col-12">
+                                <div class="rating-content">
+                                    <h4>RATE THE SHOW</h4>
+                                    <p>YOUR RATING: 
+                                        <b>@(User.Identity.IsAuthenticated && Model.AnimeDetails.CurrentUserRating.HasValue ? (Model.AnimeDetails.CurrentUserRating.Value > 0 ? Model.AnimeDetails.CurrentUserRating.Value.ToString("0") : "Not rated") : "Not rated")</b>
+                                    </p>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 col-12">
+                        <div class="trailer-content">
+                            <h3>DETAILS</h3>
+                            <p><span>Type:</span> <b>@Model.AnimeDetails.Anime.Type</b></p>
+                            <p><span>Country:</span> <b>@Model.AnimeDetails.Anime.Country</b></p>
+                            <p><span>Genre:</span> <b>@string.Join(", ", Model.AnimeDetails.Genres.Select(g => g.Name))</b></p>
+                            <p><span>Date aired:</span> <b>@Model.AnimeDetails.Anime.ReleaseDate?.ToString("MMM dd, yyyy")</b></p>
+                            <p><span>Status:</span> <b>@Model.AnimeDetails.Anime.Status</b></p>
+                            <p><span>Scores:</span> <b>@TruncateRating(@Model.AnimeDetails.AverageRating) by @Model.AnimeDetails.NumberOfReviews reviews</b></p>
+                            <p><span>Premiered:</span> <b>@Model.AnimeDetails.Anime.Premiered</b></p>
+                            <p><span>Episodes:</span> <b>@Model.AnimeDetails.Anime.Episodes</b></p>
+                            <p><span>Studio:</span> <b>@Model.AnimeDetails.Anime.Studio</b></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--=====================================-->
+    <!--=         Comment Area Start        =-->
+    <!--=====================================-->
+    <section class="comment sec-mar">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-12 col-sm-12">
+                    <div class="comment-block">
+                        <!-- Review Header -->
+                        <div id="postReview" class="heading style-1 m-0">
+                            <h2>REVIEWS</h2>
+                        </div>
+                        <p>
+                            We hope you have a good time browsing the review section! <br>
+                            Please read our <a href="./TermsOfUse">Review Policy</a> before leaving a review.
+                        </p>
+                    </div>
+
+                    <!-- Review Posting Area -->
+                    <div class="row">
+                        <div class="col-lg-1 col-2">
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <img src="@SessionService.GetProfileImagePath()" alt="User Picture" class="user-profile-image" style="width: 51px; height: 51px; object-fit: cover; border-radius: 10px;">
+                            }
+                            else
+                            {
+                                <img src="./assets/media/bean-eater.gif" alt="xoxoxo" style="width: 51px; height: 51px; object-fit: cover; border-radius: 10px; margin-top: -12px">
+                            }
+                        </div>
+                        <div class="col-lg-11 col-10">
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <form method="post" asp-page-handler="PostReview" asp-route-id="@Model.AnimeDetails.Anime.Id">
+                                    <div class="input-group form-group footer-email-box">
+                                        <input asp-for="ReviewText" class="form-control" type="text" placeholder="Join the discussion">
+                                        <input type="hidden" name="StarRating" id="starRatingField" value="" />
+                                        <button class="input-group-text post-btn" type="submit">Post</button>
+                                    </div>
+                                </form>
+                            }
+                            else
+                            {
+                                <p>To leave a review, please <a href="/Login">log in</a> first.</p>
+                            }
+                        </div>
+                    <hr style="margin-left: 13px; margin-top: 14px;width: 97%; height: 2px; color: var(--color-dark-grey); opacity: 1;">
+                    </div>
+
+                    <div class="site-comment">
+                        @if (Model.AnimeDetails.Reviews != null)
+                        {
+                            var currentUserReviews = User.Identity.IsAuthenticated ? 
+                                Model.AnimeDetails.Reviews.Where(r => r.UserId == int.Parse(SessionService.GetUserId())).ToList() : 
+                                new List<Review>();
+
+                            var otherUserReviews = Model.AnimeDetails.Reviews.Except(currentUserReviews).ToList();
+
+                            @if (User.Identity.IsAuthenticated && Model.AnimeDetails.PendingReviews != null)
+                            {
+                                foreach (var pendingReview in Model.AnimeDetails.PendingReviews)
+                                {
+                                    <div class="pending-review-notification">
+                                        <p>Your review titled "<strong>@pendingReview.Text</strong>" is still pending moderation.</p>
+                                    </div>
+                                }
+                                <br/>
+                            }
+
+                            @foreach (var review in currentUserReviews)
+                            {
+                                <div class="row review-row" data-review-id="@review.Id">
+                                    <div class="col-lg-1 col-2">
+                                        <img style="width: 51px; height: 51px; object-fit: cover; border-radius: 10px;" src="@review.User.ProfileImagePath" alt="@review.User.Username"/>
+                                    </div>
+                                    <div class="col-lg-10 col-9">
+                                        <h5>@review.User.Username</h5>
+                                        <p>@review.Text</p>
+                                    </div>
+                                    @if (User.Identity.IsAuthenticated && review.UserId == int.Parse(SessionService.GetUserId()))
+                                    {
+                                        <div class="col-lg-1 col-1 text-right">
+                                            <form method="post" asp-page-handler="DeleteReview">
+                                                <input type="hidden" name="reviewId" value="@review.Id" />
+                                                <button type="submit" class="review-delete-btn"></button>
+                                            </form>
+                                        </div>
+                                    }
+                                </div>
+                            }
+
+                            @foreach (var review in otherUserReviews)
+                            {
+                                <div class="row review-row" data-review-id="@review.Id">
+                                    <div class="col-lg-1 col-2">
+                                        <img style="width: 51px; height: 51px; object-fit: cover; border-radius: 10px;" src="@review.User.ProfileImagePath" alt="@review.User.Username"/>
+                                    </div>
+                                    <div class="col-lg-10 col-9">
+                                        <h5>@review.User.Username</h5>
+                                        <p>@review.Text</p>
+                                    </div>
+                                    @if (User.Identity.IsAuthenticated && review.UserId == int.Parse(SessionService.GetUserId()))
+                                    {
+                                        <div class="col-lg-1 col-1 text-right">
+                                            <form method="post" asp-page-handler="DeleteReview">
+                                                <input type="hidden" name="reviewId" value="@review.Id" />
+                                                <button type="submit" class="review-delete-btn"></button>
+                                            </form>
+                                        </div>
+                                    }
+                                </div>
+
+                            }
+                        }
+                        else
+                        {
+                            <p>No reviews available for this anime.</p>
+                        }
+                    </div>
+
+                </div>
+                @{
+                    int counter = 0;
+                    int maxDisplay = 6;
+                }
+                <div class="col-lg-4 col-md-6 col-sm-8 offset-lg-0 offset-md-3 offset-sm-2 mt-lg-0 mt-3">
+                    <h3 class="small-title">SIMILAR</h3>
+                    @foreach (var anime in Model.RecommendedAnimes)
+                    {
+                        if (counter >= maxDisplay) break;
+
+                        <div class="anime-box bg-color-black">
+                            <a href="@Url.Page("/watch", new { id = anime.Id })">
+                                <div class="row m-0">
+                                    <div class="col-2 p-0">
+                                        <img src="@anime.Thumbnail" class="anime-blog-image" alt="@anime.Name">
+                                    </div>
+                                    <div class="col-8 p-0">
+                                        <div class="anime-blog">
+                                            <p>@anime.Name</p>
+                                            <p class="text-box">★ @TruncateRating(anime.AverageRating)</p>
+                                            <p class="text-box">@anime.Rating</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-2 p-0 show-type">
+                                        <span class="show-type">@anime.Type</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+
+                        counter++;
+                    }
+                </div>
+            </div>
+        </div>
+    </section>
+
+@section Scripts
+    {
+    <script>
+        var serverMessage = "@Html.Raw(TempData["Message"] ?? "")";
+        var messageType = "@(TempData["MessageType"] ?? "info")";
+
+        document.addEventListener("DOMContentLoaded", function () {
+            if (serverMessage.length > 0) {
+                var modalId = messageType === "success" ? 'successModal' : 'errorModal';
+                var messageElementId = messageType === "success" ? 'success-message' : 'error-message';
+                document.getElementById(messageElementId).innerText = serverMessage;
+                var myModal = new bootstrap.Modal(document.getElementById(modalId));
+                myModal.show();
+            }
+
+            $('.modal').on('hidden.bs.modal', function () {
+                if ($('.modal.show').length === 0) {
+                    $('body').removeClass('modal-open');
+                    $('.modal-backdrop').remove();
+                    document.body.style.overflow = '';
+                }
+            });
+
+            var postBtn = document.querySelector(".post-btn");
+            if (postBtn) {
+                postBtn.addEventListener("click", function (event) {
+                    if (!document.querySelector('input[name="stars"]:checked')) {
+                        document.getElementById('error-message').innerText = "Please select a star rating before submitting your review.";
+                        var errorModal = new bootstrap.Modal(document.getElementById('errorModal'));
+                        errorModal.show();
+                        event.preventDefault();
+                    }
+                });
+            }
+
+            document.querySelectorAll('input[name="stars"]').forEach(function (star) {
+                star.addEventListener('change', function () {
+                    document.getElementById('starRatingField').value = this.value;
+                });
+            });
+
+            document.querySelectorAll('.rate-now, .post-btn').forEach(btn => {
+                btn.addEventListener('click', function (event) {
+                    if (!@isAuthenticated) {
+                        event.preventDefault();
+                        var loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
+                        loginModal.show();
+                    }
+                });
+            });
+        });
+    </script>
+    <script>
+    $(document).ready(function() {
+        $('.modal').on('hidden.bs.modal', function() {
+            if (!$('.modal.show').length) {
+                $('body').removeClass('modal-open');
+                $('.modal-backdrop').remove();
+                $('body').css('overflow', 'auto');
+            }
+        });
+    });
+</script>
+
+<script>
+        $(document).ready(function () {
+            var postRatingMessage = localStorage.getItem("postRatingMessage");
+            if (postRatingMessage) {
+                document.getElementById('success-message').innerText = postRatingMessage;
+                var successModal = new bootstrap.Modal(document.getElementById('successModal'));
+                successModal.show();
+
+                localStorage.removeItem("postRatingMessage");
+            }
+
+        });
+
+        function updateRating() {
+            var selectedRatingElement = document.querySelector('input[name="stars"]:checked');
+            if (!selectedRatingElement) {
+                document.getElementById('error-message').innerText = "Please select a rating.";
+                var errorModal = new bootstrap.Modal(document.getElementById('errorModal'));
+                errorModal.show();
+                return;
+            }
+
+        var selectedRating = selectedRatingElement.value;
+        var animeId = @Model.AnimeDetails.Anime.Id;
+
+            $.ajax({
+                url: '/watch?handler=UpdateRating',
+                type: 'POST',
+                data: { 'animeId': animeId, 'newRating': selectedRating },
+                headers: { "RequestVerificationToken": $('input[name="__RequestVerificationToken"]').val() },
+                success: function (result) {
+                    if (result && result.success) {
+                        localStorage.setItem("postRatingMessage", result.message);
+                        window.location.reload();
+                    } else {
+                        document.getElementById('error-message').innerText = result.message || "An unknown error occurred.";
+                        var errorModal = new bootstrap.Modal(document.getElementById('errorModal'));
+                        errorModal.show();
+                    }
+                },
+                error: function (error) {
+                    document.getElementById('error-message').innerText = "Please log in first.";
+                    var errorModal = new bootstrap.Modal(document.getElementById('errorModal'));
+                    errorModal.show();
+                }
+            });
+    }
+</script>
+
+    <script>
+        function storeActionMessageInLocalStorage(result, action) {
+            var actionMessage = result.success ?
+                action + ' successfully.' :
+                result.message || "An error occurred.";
+
+            localStorage.setItem("postActionMessage", actionMessage);
+            localStorage.setItem("postActionType", result.success ? "success" : "error");
+
+            window.location.reload();
+        }
+
+        function handleAjaxError(action) {
+            var errorModal = new bootstrap.Modal(document.getElementById('errorModal'));
+            document.getElementById('error-message').innerText =
+                "Please log in first.";
+            errorModal.show();
+        }
+
+        $(document).ready(function () {
+            var postActionMessage = localStorage.getItem("postActionMessage");
+            var postActionType = localStorage.getItem("postActionType");
+
+            if (postActionMessage && postActionType) {
+                var messageElementId = postActionType === 'success' ? 'success-message' : 'error-message';
+                var modalId = postActionType === 'success' ? 'successModal' : 'errorModal';
+
+                document.getElementById(messageElementId).innerText = postActionMessage;
+                var modal = new bootstrap.Modal(document.getElementById(modalId));
+                modal.show();
+
+                localStorage.removeItem("postActionMessage");
+                localStorage.removeItem("postActionType");
+            }
+        });
+
+
+        function addToWatchlist(animeId) {
+            $.ajax({
+                url: '/watch?handler=AddToWatchlist',
+                type: 'POST',
+                data: { 'animeId': animeId },
+                headers: { "RequestVerificationToken": $('input[name="__RequestVerificationToken"]').val() },
+                success: function (result) {
+                    if (result.message === "Please log in to add to watchlist.") {
+                        $('#error-message').text(result.message);
+                        var errorModal = new bootstrap.Modal($('#errorModal'));
+                        errorModal.show();
+                    } else {
+                        storeActionMessageInLocalStorage(result, 'Added to watchlist');
+                    }
+                },
+                error: function () {
+                    handleAjaxError('add to watchlist');
+                }
+            });
+        }
+
+        function removeFromWatchlist(animeId) {
+            $.ajax({
+                url: '/watch?handler=RemoveFromWatchlist',
+                type: 'POST',
+                data: { 'animeId': animeId },
+                headers: { "RequestVerificationToken": $('input[name="__RequestVerificationToken"]').val() },
+                success: function (result) {
+                    storeActionMessageInLocalStorage(result, 'Removed from watchlist');
+                },
+                error: function () {
+                    handleAjaxError('remove from watchlist');
+                }
+            });
+        }
+
+        function addToPlaylist(animeId) {
+            $.ajax({
+                url: '/watch?handler=AddToPlaylist',
+                type: 'POST',
+                data: { 'animeId': animeId },
+                headers: { "RequestVerificationToken": $('input[name="__RequestVerificationToken"]').val() },
+                success: function (result) {
+                    if (result.message === "Please log in to add to playlist.") {
+                        $('#error-message').text(result.message);
+                        var errorModal = new bootstrap.Modal($('#errorModal'));
+                        errorModal.show();
+                    } else {
+                        storeActionMessageInLocalStorage(result, 'Added to playlist');
+                    }
+                },
+                error: function () {
+                    handleAjaxError('add to playlist');
+                }
+            });
+        }
+
+        function removeFromPlaylist(animeId) {
+            $.ajax({
+                url: '/watch?handler=RemoveFromPlaylist',
+                type: 'POST',
+                data: { 'animeId': animeId },
+                headers: { "RequestVerificationToken": $('input[name="__RequestVerificationToken"]').val() },
+                success: function (result) {
+                    storeActionMessageInLocalStorage(result, 'Removed from playlist');
+                },
+                error: function () {
+                    handleAjaxError('remove from playlist');
+                }
+            });
+        }
+    </script>
+
+
+}

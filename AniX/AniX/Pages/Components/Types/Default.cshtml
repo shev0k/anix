@@ -1,0 +1,16 @@
+﻿@*
+
+*@
+@{
+}
+
+@model List<string>
+
+<ul class="dropdown-menu" aria-labelledby="types">
+    @foreach (var type in Model)
+    {
+        <li>
+            <a href="@Url.Page("/filter", new { types = new string[] { type } })">@type</a>
+        </li>
+    }
+</ul>
