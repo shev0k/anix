@@ -22,11 +22,6 @@ namespace AniX_Controllers
             _errorLoggingService = errorLoggingService;
         }
 
-        public async Task<OperationResult> CreateReviewAsync(Review review)
-        {
-            return await ExecuteWithExceptionHandlingAsync(() => _reviewManagement.CreateReviewAsync(review));
-        }
-
         public async Task<OperationResult> ApproveReviewAsync(int reviewId)
         {
             return await ExecuteWithExceptionHandlingAsync(() => _reviewManagement.ApproveReviewAsync(reviewId));
@@ -35,16 +30,6 @@ namespace AniX_Controllers
         public async Task<OperationResult> DeleteReviewAsync(int reviewId)
         {
             return await ExecuteWithExceptionHandlingAsync(() => _reviewManagement.DeleteReviewAsync(reviewId));
-        }
-
-        public async Task<List<Review>> GetPendingReviewsAsync()
-        {
-            return await ExecuteWithExceptionHandlingAsync(() => _reviewManagement.GetPendingReviewsAsync());
-        }
-
-        public async Task<List<Review>> GetApprovedReviewsByAnimeIdAsync(int animeId)
-        {
-            return await ExecuteWithExceptionHandlingAsync(() => _reviewManagement.GetApprovedReviewsByAnimeIdAsync(animeId));
         }
 
         public async Task<List<Review>> FetchFilteredReviewsAsync(string filter)

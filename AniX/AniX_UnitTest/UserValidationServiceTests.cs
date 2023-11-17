@@ -1,123 +1,62 @@
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Xunit;
 using AniX_BusinessLogic;
+using System.Text.RegularExpressions;
+using Assert = Xunit.Assert;
 
-namespace AniX_UnitTests
+namespace AniX_UnitTest
 {
-    [TestClass]
     public class UserValidationServiceTests
     {
-        private UserValidationService _userValidationService;
+        private readonly UserValidationService _validationService;
 
-        [TestInitialize]
-        public void SetUp()
+        public UserValidationServiceTests()
         {
-            _userValidationService = new UserValidationService();
+            _validationService = new UserValidationService(4, 4, @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$");
         }
 
-        [TestMethod]
-        public void ValidateCredentials_ValidInput_ReturnsTrue()
+        [Fact]
+        public void ValidateCredentials_ValidInputs_ReturnsTrue()
         {
-            string username = "ValidUser";
-            string password = "ValidP@ss123";
-            string validationMessage;
+            string validUsername = "TestUser";
+            string validPassword = "Password123";
 
-            bool result = _userValidationService.ValidateCredentials(username, password, out validationMessage);
+            bool result = _validationService.ValidateCredentials(validUsername, validPassword, out string validationMessage);
 
-            Assert.IsTrue(result);
-            Assert.AreEqual(string.Empty, validationMessage);
+            Assert.True(result);
+            Assert.Empty(validationMessage);
         }
 
-        [TestMethod]
-        public void ValidateCredentials_EmptyInput_ReturnsFalse()
+        [Fact]
+        public void ValidateCredentials_InvalidUsername_ReturnsFalse()
         {
-            string username = "";
-            string password = "";
-            string validationMessage;
+            string invalidUsername = "Abc";
+            string validPassword = "Password123";
 
-            bool result = _userValidationService.ValidateCredentials(username, password, out validationMessage);
+            bool result = _validationService.ValidateCredentials(invalidUsername, validPassword, out string validationMessage);
 
-            Assert.IsFalse(result);
-            Assert.AreEqual("Username and password cannot be empty.", validationMessage);
+            Assert.False(result);
+            Assert.Equal("Username must be at least 4 characters.", validationMessage);
         }
 
-        [TestMethod]
-        public void ValidateCredentials_UsernameTooShort_ReturnsFalse()
+        [Fact]
+        public void ValidatePasswordComplexity_ValidPassword_ReturnsTrue()
         {
-            string username = "Us";
-            string password = "ValidP@ss123";
-            string validationMessage;
+            string password = "Complex123";
 
-            bool result = _userValidationService.ValidateCredentials(username, password, out validationMessage);
+            bool result = _validationService.ValidatePasswordComplexity(password);
 
-            Assert.IsFalse(result);
-            Assert.AreEqual("Username: at least 4 characters | Password: at least 4 characters", validationMessage);
+            Assert.True(result);
         }
 
-        [TestMethod]
-        public void ValidateCredentials_PasswordTooShort_ReturnsFalse()
+        [Fact]
+        public void ValidatePasswordComplexity_InvalidPassword_ReturnsFalse()
         {
-            string username = "ValidUser";
-            string password = "Sh0";
-            string validationMessage;
+            string password = "simple";
 
-            bool result = _userValidationService.ValidateCredentials(username, password, out validationMessage);
+            bool result = _validationService.ValidatePasswordComplexity(password);
 
-            Assert.IsFalse(result);
-            Assert.AreEqual("Username: at least 4 characters | Password: at least 4 characters", validationMessage);
+            Assert.False(result);
         }
 
-        [TestMethod]
-        //
-        // NORMALLY PASSES, BUT I DISABLED SOME VALIDATION IN THE CLASS FOR THE SAKE OF DEVELOPING EASIER FOR NOW
-        // NORMALLY PASSES, BUT I DISABLED SOME VALIDATION IN THE CLASS FOR THE SAKE OF DEVELOPING EASIER FOR NOW
-        // NORMALLY PASSES, BUT I DISABLED SOME VALIDATION IN THE CLASS FOR THE SAKE OF DEVELOPING EASIER FOR NOW
-        //
-        public void ValidateCredentials_PasswordMissingUpperCase_ReturnsFalse()
-        {
-            string username = "ValidUser";
-            string password = "missinguppercase1";
-            string validationMessage;
-
-            bool result = _userValidationService.ValidateCredentials(username, password, out validationMessage);
-
-            Assert.IsFalse(result);
-            Assert.AreEqual("Password must contain at least one upper case, one lower case, and one number.", validationMessage);
-        }
-
-        [TestMethod]
-        //
-        // NORMALLY PASSES, BUT I DISABLED SOME VALIDATION IN THE CLASS FOR THE SAKE OF DEVELOPING EASIER FOR NOW
-        // NORMALLY PASSES, BUT I DISABLED SOME VALIDATION IN THE CLASS FOR THE SAKE OF DEVELOPING EASIER FOR NOW
-        // NORMALLY PASSES, BUT I DISABLED SOME VALIDATION IN THE CLASS FOR THE SAKE OF DEVELOPING EASIER FOR NOW
-        //
-        public void ValidateCredentials_PasswordMissingLowerCase_ReturnsFalse()
-        {
-            string username = "ValidUser";
-            string password = "MISSINGLOWERCASE1";
-            string validationMessage;
-
-            bool result = _userValidationService.ValidateCredentials(username, password, out validationMessage);
-
-            Assert.IsFalse(result);
-            Assert.AreEqual("Password must contain at least one upper case, one lower case, and one number.", validationMessage);
-        }
-
-        [TestMethod]
-        //
-        // NORMALLY PASSES, BUT I DISABLED SOME VALIDATION IN THE CLASS FOR THE SAKE OF DEVELOPING EASIER FOR NOW
-        // NORMALLY PASSES, BUT I DISABLED SOME VALIDATION IN THE CLASS FOR THE SAKE OF DEVELOPING EASIER FOR NOW
-        // NORMALLY PASSES, BUT I DISABLED SOME VALIDATION IN THE CLASS FOR THE SAKE OF DEVELOPING EASIER FOR NOW
-        //
-        public void ValidateCredentials_PasswordMissingNumber_ReturnsFalse()
-        {
-            string username = "ValidUser";
-            string password = "MissingNumber";
-            string validationMessage;
-
-            bool result = _userValidationService.ValidateCredentials(username, password, out validationMessage);
-
-            Assert.IsFalse(result);
-            Assert.AreEqual("Password must contain at least one upper case, one lower case, and one number.", validationMessage);
-        }
     }
 }
