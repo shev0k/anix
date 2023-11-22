@@ -168,37 +168,38 @@
 <section class="top sec-mar">
 <div class="container">
 <div class="row">
-<div class="col-xl-4 col-lg-6 col-md-6 col-sm-8 offset-xl-0 offset-lg-0 offset-md-0 offset-sm-2 col-12">
-    <h3>Top Watched</h3>
-    @for (int i = 0; i < Model.TopWatchedAnimes.Count && i < 6; i++)
-    {
-        var anime = Model.TopWatchedAnimes[i];
-        string rankClass = GetRankClass(i + 1); 
+    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-8 offset-xl-0 offset-lg-0 offset-md-0 offset-sm-2 col-12">
+        <h3>Top Watched</h3>
+        @for (int i = 0; i < Model.TopWatchedAnimes.Count && i < 6; i++)
+        {
+            var anime = Model.TopWatchedAnimes[i];
+            string rankClass = GetRankClass(i + 1);
 
-        <div class="anime-box bg-color-black">
-            <a href="@Url.Page("/watch", new { id = anime.Id })">
-                <div class="row m-0">
-                    <div class="p-0 col-2">
-                        <span class="@rankClass">@((i + 1).ToString())</span>
-                    </div>
-                    <div class="p-0 col-2">
-                        <img src="@anime.Thumbnail" class="anime-blog-image" alt="@anime.Name">
-                    </div>
-                    <div class="p-0 col-7">
-                        <div class="anime-blog">
-                            <p>@anime.Name</p>
-                            <p class="text-box">★ @TruncateRating(anime.AverageRating)</p>
-                            <p class="text-box">@anime.Rating</p>
+            <div class="anime-box bg-color-black">
+                <a href="@Url.Page("/watch", new { id = anime.Id })">
+                    <div class="row m-0">
+                        <div class="p-0 col-2">
+                            <span class="@rankClass">@((i + 1).ToString())</span>
+                        </div>
+                        <div class="p-0 col-2">
+                            <img src="@anime.Thumbnail" class="anime-blog-image" alt="@anime.Name">
+                        </div>
+                        <div class="p-0 col-6">
+                            <div class="anime-blog">
+                                <p>@anime.Name</p>
+                                <p class="text-box">★ @TruncateRating(anime.AverageRating)</p>
+                                <p class="text-box">@anime.Rating</p>
+                            </div>
+                        </div>
+                        <div class="p-0 col-2 show-type">
+                            <span class="show-type">@anime.Type</span>
                         </div>
                     </div>
-                    <div class="p-0 col-1 show-type">
-                        <span class="show-type">@anime.Type</span>
-                    </div>
-                </div>
-            </a>
-        </div>
-    }
-</div>
+                </a>
+            </div>
+        }
+    </div>
+
 <div class="col-xl-4 col-lg-6 col-md-6 col-sm-8 offset-xl-0 offset-lg-0 offset-md-0 offset-sm-2 col-12">
     <h3>Recently Released</h3>
     @foreach (var anime in Model.NewlyReleasedAnimes)
