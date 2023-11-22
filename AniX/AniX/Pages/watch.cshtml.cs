@@ -51,6 +51,15 @@ namespace AniX_WEB.Pages
                 return RedirectToPage("/404");
             }
 
+
+            var animeView = new AnimeViews
+            {
+                AnimeId = id,
+                UserId = currentUserId,
+                ViewDate = DateTime.UtcNow 
+            };
+            await _animeManagement.RecordAnimeViewAsync(animeView);
+
             RecommendedAnimes = await _animeManagement.GetRecommendedAnimesAsync(null, id);
 
             if (User.Identity.IsAuthenticated)

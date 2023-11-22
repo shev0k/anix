@@ -365,6 +365,35 @@ namespace AniX_DAL
             return count > 0;
         }
 
+        public async Task<User> GetUserByEmailAsync(string email)
+        {
+            User user = null;
+            try
+            {
+                await connection.OpenAsync();
+                string query = "SELECT * FROM [User] WHERE Email = @email";
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@email", email);
+                SqlDataReader reader = await command.ExecuteReaderAsync();
+
+                if (await reader.ReadAsync())
+                {
+                    user = MapReaderToUser(reader);
+                }
+            }
+            catch (Exception ex)
+            {
+                await _errorLoggingService.LogErrorAsync(ex, LogSeverity.Critical);
+                throw;
+            }
+            finally
+            {
+                await connection.CloseAsync();
+            }
+
+            return user;
+        }
+
         private SqlCommand PrepareAuthenticateUserCommand(string username)
         {
             string query = "SELECT * FROM [User] WHERE Username = @username";

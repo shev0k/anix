@@ -5391,3 +5391,149 @@ Timestamp: 17/11/2023 05:39:58
 Severity: Info
 Custom Message: Timestamp: 17/11/2023 05:39:58, Username: admin, Success: True, Additional Info: 
 ---------------------------------------------------
+Timestamp: 21/11/2023 19:48:31
+Severity: Info
+Custom Message: Timestamp: 21/11/2023 19:48:31, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 21/11/2023 20:58:35
+Severity: Info
+Custom Message: Timestamp: 21/11/2023 20:58:35, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 21/11/2023 21:21:34
+Severity: Info
+Custom Message: Timestamp: 21/11/2023 21:21:34, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 21/11/2023 21:59:04
+Severity: Info
+Custom Message: Timestamp: 21/11/2023 21:59:04, Username: test, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 21/11/2023 21:59:04
+Severity: Error
+Exception Type: AniX_Controllers.UserController+AuthorizationException
+Message: You are not authorized to access this application.
+Stack Trace:    at AniX_Controllers.UserController.LoginAsync(String username, String password) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 65
+---------------------------------------------------
+Timestamp: 21/11/2023 21:59:09
+Severity: Info
+Custom Message: Timestamp: 21/11/2023 21:59:09, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 21/11/2023 22:14:59
+Severity: Info
+Custom Message: Timestamp: 21/11/2023 22:14:59, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 22/11/2023 11:36:21
+Severity: Info
+Custom Message: Timestamp: 22/11/2023 11:36:21, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 22/11/2023 11:38:57
+Severity: Info
+Custom Message: Timestamp: 22/11/2023 11:38:57, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 22/11/2023 11:41:47
+Severity: Info
+Custom Message: Timestamp: 22/11/2023 11:41:47, Username: test, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 22/11/2023 11:41:47
+Severity: Error
+Exception Type: AniX_Controllers.UserController+AuthorizationException
+Message: You are not authorized to access this application.
+Stack Trace:    at AniX_Controllers.UserController.LoginAsync(String username, String password) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 65
+---------------------------------------------------
+Timestamp: 22/11/2023 11:41:56
+Severity: Info
+Custom Message: Timestamp: 22/11/2023 11:41:56, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 22/11/2023 11:44:12
+Severity: Info
+Custom Message: Timestamp: 22/11/2023 11:44:12, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 22/11/2023 11:47:03
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: The connection was not closed. The connection's current state is connecting.
+Stack Trace:    at System.Data.ProviderBase.DbConnectionClosedConnecting.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.OpenAsync(CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at AniX_DAL.UserDAL.AuthenticateUserAsync(String username, String rawPassword) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 37
+---------------------------------------------------
+Timestamp: 22/11/2023 11:47:03
+Severity: Error
+Exception Type: System.InvalidOperationException
+Message: The connection was not closed. The connection's current state is connecting.
+Stack Trace:    at System.Data.ProviderBase.DbConnectionClosedConnecting.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.OpenAsync(CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at AniX_DAL.UserDAL.AuthenticateUserAsync(String username, String rawPassword) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 37
+   at AniX_DAL.UserDAL.AuthenticateUserAsync(String username, String rawPassword) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 57
+   at AniX_DAL.UserDAL.AuthenticateUserAsync(String username, String rawPassword) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 62
+   at AniX_BusinessLogic.AuthenticationService.AuthenticateUserAsync(String username, String password) in C:\Users\Administrator\source\repos\anix\AniX\AniX_BusinessLogic\AuthenticationService.cs:line 35
+---------------------------------------------------
+Timestamp: 22/11/2023 11:47:03
+Severity: Info
+Custom Message: Timestamp: 22/11/2023 11:47:03, Username: admin, Success: False, Additional Info: 
+---------------------------------------------------
+Timestamp: 22/11/2023 11:47:03
+Severity: Error
+Exception Type: AniX_Controllers.UserController+AuthenticationException
+Message: Failed to authenticate.
+Stack Trace:    at AniX_Controllers.UserController.LoginAsync(String username, String password) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 55
+---------------------------------------------------
+Timestamp: 22/11/2023 11:47:03
+Severity: Error
+Exception Type: System.Threading.Tasks.TaskCanceledException
+Message: A task was canceled.
+Stack Trace:    at AniX_DAL.UserDAL.AuthenticateUserAsync(String username, String rawPassword) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 37
+---------------------------------------------------
+Timestamp: 22/11/2023 11:47:03
+Severity: Error
+Exception Type: System.Threading.Tasks.TaskCanceledException
+Message: A task was canceled.
+Stack Trace:    at AniX_DAL.UserDAL.AuthenticateUserAsync(String username, String rawPassword) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 37
+   at AniX_DAL.UserDAL.AuthenticateUserAsync(String username, String rawPassword) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 57
+   at AniX_DAL.UserDAL.AuthenticateUserAsync(String username, String rawPassword) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\UserDAL.cs:line 62
+   at AniX_BusinessLogic.AuthenticationService.AuthenticateUserAsync(String username, String password) in C:\Users\Administrator\source\repos\anix\AniX\AniX_BusinessLogic\AuthenticationService.cs:line 35
+---------------------------------------------------
+Timestamp: 22/11/2023 11:47:03
+Severity: Info
+Custom Message: Timestamp: 22/11/2023 11:47:03, Username: admin, Success: False, Additional Info: 
+---------------------------------------------------
+Timestamp: 22/11/2023 11:47:03
+Severity: Error
+Exception Type: AniX_Controllers.UserController+AuthenticationException
+Message: Failed to authenticate.
+Stack Trace:    at AniX_Controllers.UserController.LoginAsync(String username, String password) in C:\Users\Administrator\source\repos\anix\AniX\AniX_Controllers\UserController.cs:line 55
+---------------------------------------------------
+Timestamp: 22/11/2023 11:47:07
+Severity: Info
+Custom Message: Timestamp: 22/11/2023 11:47:07, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 22/11/2023 11:49:08
+Severity: Info
+Custom Message: Timestamp: 22/11/2023 11:49:08, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 22/11/2023 11:51:36
+Severity: Info
+Custom Message: Timestamp: 22/11/2023 11:51:36, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 22/11/2023 11:54:41
+Severity: Info
+Custom Message: Timestamp: 22/11/2023 11:54:41, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 22/11/2023 12:06:23
+Severity: Info
+Custom Message: Timestamp: 22/11/2023 12:06:23, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 22/11/2023 12:11:44
+Severity: Info
+Custom Message: Timestamp: 22/11/2023 12:11:44, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 22/11/2023 12:11:59
+Severity: Info
+Custom Message: Timestamp: 22/11/2023 12:11:59, Username: ADMIN, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 22/11/2023 12:13:38
+Severity: Info
+Custom Message: Timestamp: 22/11/2023 12:13:38, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------

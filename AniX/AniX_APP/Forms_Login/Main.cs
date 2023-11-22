@@ -293,6 +293,5 @@ namespace AniX_APP
             windowOpen.ShowDialog();
             this.Close();
         }
-
     }
 }

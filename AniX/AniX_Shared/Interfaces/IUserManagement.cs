@@ -15,5 +15,6 @@ namespace AniX_Shared.Interfaces
         Task<List<User>> FetchFilteredAndSearchedUsersAsync(string filter, string searchTerm);
         Task<bool> DoesUsernameExistAsync(string username);
         Task<bool> DoesEmailExistAsync(string email);
+        Task<User> GetUserByEmailAsync(string email);
     }
 }

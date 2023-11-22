@@ -1248,3 +1248,241 @@ Stack Trace:    at System.Data.SqlClient.SqlConnection.OnError(SqlException exce
 --- End of stack trace from previous location ---
    at AniX_DAL.UserAnimeActionDAL.GetUserWatchlistAsync(Int32 userId) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\UserAnimeActionDAL.cs:line 139
 ---------------------------------------------------
+Timestamp: 21/11/2023 19:14:22
+Severity: Error
+Exception Type: System.Data.SqlClient.SqlException
+Message: The parameterized query '(@AnimeId int,@UserId nvarchar(4000),@ViewDate datetime)
+      ' expects the parameter '@UserId', which was not supplied.
+Stack Trace:    at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader()
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQueryInternal(IAsyncResult asyncResult)
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQuery(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at AniX_DAL.AnimeDAL.RecordAnimeViewAsync(AnimeViews animeView) in C:\Users\Administrator\Source\Repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 1315
+---------------------------------------------------
+Timestamp: 21/11/2023 19:14:29
+Severity: Error
+Exception Type: System.Data.SqlClient.SqlException
+Message: The parameterized query '(@AnimeId int,@UserId nvarchar(4000),@ViewDate datetime)
+      ' expects the parameter '@UserId', which was not supplied.
+Stack Trace:    at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader()
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQueryInternal(IAsyncResult asyncResult)
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQuery(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at AniX_DAL.AnimeDAL.RecordAnimeViewAsync(AnimeViews animeView) in C:\Users\Administrator\Source\Repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 1315
+---------------------------------------------------
+Timestamp: 21/11/2023 19:24:35
+Severity: Error
+Exception Type: System.Data.SqlClient.SqlException
+Message: The parameterized query '(@AnimeId int,@UserId nvarchar(4000),@ViewDate datetime)
+      ' expects the parameter '@UserId', which was not supplied.
+Stack Trace:    at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader()
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQueryInternal(IAsyncResult asyncResult)
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQuery(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at AniX_DAL.AnimeDAL.RecordAnimeViewAsync(AnimeViews animeView) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 1315
+---------------------------------------------------
+Timestamp: 21/11/2023 19:24:51
+Severity: Error
+Exception Type: System.Data.SqlClient.SqlException
+Message: The parameterized query '(@AnimeId int,@UserId nvarchar(4000),@ViewDate datetime)
+      ' expects the parameter '@UserId', which was not supplied.
+Stack Trace:    at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader()
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQueryInternal(IAsyncResult asyncResult)
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQuery(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at AniX_DAL.AnimeDAL.RecordAnimeViewAsync(AnimeViews animeView) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 1315
+---------------------------------------------------
+Timestamp: 21/11/2023 19:26:37
+Severity: Error
+Exception Type: System.Data.SqlClient.SqlException
+Message: A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)
+Stack Trace:    at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.WaitForPendingOpen()
+--- End of stack trace from previous location ---
+   at AniX_DAL.AnimeDAL.GetRandomAnimesAsync(Int32 count) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 716
+---------------------------------------------------
+Timestamp: 21/11/2023 19:26:52
+Severity: Error
+Exception Type: System.Data.SqlClient.SqlException
+Message: The parameterized query '(@AnimeId int,@UserId nvarchar(4000),@ViewDate datetime)
+      ' expects the parameter '@UserId', which was not supplied.
+Stack Trace:    at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader()
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQueryInternal(IAsyncResult asyncResult)
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQuery(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at AniX_DAL.AnimeDAL.RecordAnimeViewAsync(AnimeViews animeView) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 1315
+---------------------------------------------------
+Timestamp: 21/11/2023 19:42:40
+Severity: Error
+Exception Type: Azure.RequestFailedException
+Message: Server failed to authenticate the request. Make sure the value of Authorization header is formed correctly including the signature.
+RequestId:9c6d43a2-a01e-0007-18aa-1c2abc000000
+Time:2023-11-21T18:42:37.6656284Z
+Status: 403 (Server failed to authenticate the request. Make sure the value of Authorization header is formed correctly including the signature.)
+ErrorCode: AuthenticationFailed
+
+Additional Information:
+AuthenticationErrorDetail: Request date header too old: 'Tue, 21 Nov 2023 17:42:40 GMT'
+
+Content:
+﻿<?xml version="1.0" encoding="utf-8"?><Error><Code>AuthenticationFailed</Code><Message>Server failed to authenticate the request. Make sure the value of Authorization header is formed correctly including the signature.
+RequestId:9c6d43a2-a01e-0007-18aa-1c2abc000000
+Time:2023-11-21T18:42:37.6656284Z</Message><AuthenticationErrorDetail>Request date header too old: 'Tue, 21 Nov 2023 17:42:40 GMT'</AuthenticationErrorDetail></Error>
+
+Headers:
+Server: Microsoft-HTTPAPI/2.0
+x-ms-request-id: 9c6d43a2-a01e-0007-18aa-1c2abc000000
+x-ms-error-code: AuthenticationFailed
+Date: Tue, 21 Nov 2023 18:42:37 GMT
+Content-Length: 435
+Content-Type: application/xml
+
+Stack Trace:    at Azure.Storage.Blobs.BlockBlobRestClient.UploadAsync(Int64 contentLength, Stream body, Nullable`1 timeout, Byte[] transactionalContentMD5, String blobContentType, String blobContentEncoding, String blobContentLanguage, Byte[] blobContentMD5, String blobCacheControl, IDictionary`2 metadata, String leaseId, String blobContentDisposition, String encryptionKey, String encryptionKeySha256, Nullable`1 encryptionAlgorithm, String encryptionScope, Nullable`1 tier, Nullable`1 ifModifiedSince, Nullable`1 ifUnmodifiedSince, String ifMatch, String ifNoneMatch, String ifTags, String blobTagsString, Nullable`1 immutabilityPolicyExpiry, Nullable`1 immutabilityPolicyMode, Nullable`1 legalHold, Byte[] transactionalContentCrc64, CancellationToken cancellationToken)
+   at Azure.Storage.Blobs.Specialized.BlockBlobClient.UploadInternal(Stream content, BlobHttpHeaders blobHttpHeaders, IDictionary`2 metadata, IDictionary`2 tags, BlobRequestConditions conditions, Nullable`1 accessTier, BlobImmutabilityPolicy immutabilityPolicy, Nullable`1 legalHold, IProgress`1 progressHandler, UploadTransferValidationOptions transferValidationOverride, String operationName, Boolean async, CancellationToken cancellationToken)
+   at Azure.Storage.Blobs.Specialized.BlockBlobClient.<>c__DisplayClass65_0.<<GetPartitionedUploaderBehaviors>b__0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Azure.Storage.PartitionedUploader`2.UploadInternal(Stream content, Nullable`1 expectedContentLength, TServiceSpecificData args, IProgress`1 progressHandler, Boolean async, CancellationToken cancellationToken)
+   at Azure.Storage.Blobs.BlobClient.StagedUploadInternal(Stream content, BlobUploadOptions options, Boolean async, CancellationToken cancellationToken)
+   at AniX_BusinessLogic.AzureBlobService.UploadImageAsync(Stream imageStream, String userId, String contentType) in C:\Users\Administrator\source\repos\anix\AniX\AniX_BusinessLogic\AzureBlobService.cs:line 52
+---------------------------------------------------
+Timestamp: 21/11/2023 19:45:23
+Severity: Error
+Exception Type: System.Data.SqlClient.SqlException
+Message: A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)
+Stack Trace:    at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.WaitForPendingOpen()
+--- End of stack trace from previous location ---
+   at AniX_DAL.AnimeDAL.GetRandomAnimesAsync(Int32 count) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 716
+---------------------------------------------------
+Timestamp: 21/11/2023 20:01:40
+Severity: Error
+Exception Type: System.Data.SqlClient.SqlException
+Message: The parameterized query '(@AnimeId int,@UserId nvarchar(4000),@ViewDate datetime)
+      ' expects the parameter '@UserId', which was not supplied.
+Stack Trace:    at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader()
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQueryInternal(IAsyncResult asyncResult)
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQuery(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at AniX_DAL.AnimeDAL.RecordAnimeViewAsync(AnimeViews animeView) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 1315
+---------------------------------------------------
+Timestamp: 21/11/2023 20:43:32
+Severity: Error
+Exception Type: System.Data.SqlClient.SqlException
+Message: The parameterized query '(@AnimeId int,@UserId nvarchar(4000),@ViewDate datetime)
+      ' expects the parameter '@UserId', which was not supplied.
+Stack Trace:    at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader()
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQueryInternal(IAsyncResult asyncResult)
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQuery(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at AniX_DAL.AnimeDAL.RecordAnimeViewAsync(AnimeViews animeView) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 1315
+---------------------------------------------------
+Timestamp: 21/11/2023 20:43:55
+Severity: Error
+Exception Type: System.Data.SqlClient.SqlException
+Message: The parameterized query '(@AnimeId int,@UserId nvarchar(4000),@ViewDate datetime)
+      ' expects the parameter '@UserId', which was not supplied.
+Stack Trace:    at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader()
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQueryInternal(IAsyncResult asyncResult)
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQuery(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at AniX_DAL.AnimeDAL.RecordAnimeViewAsync(AnimeViews animeView) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 1315
+---------------------------------------------------
+Timestamp: 21/11/2023 20:44:25
+Severity: Error
+Exception Type: System.Data.SqlClient.SqlException
+Message: The parameterized query '(@AnimeId int,@UserId nvarchar(4000),@ViewDate datetime)
+      ' expects the parameter '@UserId', which was not supplied.
+Stack Trace:    at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader()
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQueryInternal(IAsyncResult asyncResult)
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQuery(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at AniX_DAL.AnimeDAL.RecordAnimeViewAsync(AnimeViews animeView) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 1315
+---------------------------------------------------
+Timestamp: 21/11/2023 20:46:05
+Severity: Error
+Exception Type: System.Data.SqlClient.SqlException
+Message: The parameterized query '(@AnimeId int,@UserId nvarchar(4000),@ViewDate datetime)
+      ' expects the parameter '@UserId', which was not supplied.
+Stack Trace:    at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader()
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQueryInternal(IAsyncResult asyncResult)
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQuery(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at AniX_DAL.AnimeDAL.RecordAnimeViewAsync(AnimeViews animeView) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 1315
+---------------------------------------------------
+Timestamp: 21/11/2023 20:46:15
+Severity: Error
+Exception Type: System.Data.SqlClient.SqlException
+Message: The parameterized query '(@AnimeId int,@UserId nvarchar(4000),@ViewDate datetime)
+      ' expects the parameter '@UserId', which was not supplied.
+Stack Trace:    at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader()
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQueryInternal(IAsyncResult asyncResult)
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQuery(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at AniX_DAL.AnimeDAL.RecordAnimeViewAsync(AnimeViews animeView) in C:\Users\Administrator\source\repos\anix\AniX\AniX_DAL\AnimeDAL.cs:line 1315
+---------------------------------------------------

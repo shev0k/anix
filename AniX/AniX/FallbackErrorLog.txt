@@ -1,0 +1,12 @@
+Timestamp: 21/11/2023 19:26:37
+Severity: Critical
+Exception Type: System.Exception
+Message: Failed to log message
+Stack Trace: 
+---------------------------------------------------
+Timestamp: 21/11/2023 19:45:23
+Severity: Critical
+Exception Type: System.Exception
+Message: Failed to log message
+Stack Trace: 
+---------------------------------------------------

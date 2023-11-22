@@ -6,4 +6,5 @@ public interface IErrorLoggingService
     Task LogCustomMessageAsync(string customMessage, LogSeverity severity = LogSeverity.Info);
     Task FallbackLoggingAsync(Exception e, LogSeverity severity);
     Task AuditLogAsync(string action, string details, LogSeverity severity = LogSeverity.Info);
+    string GetLogFilePath();
 }

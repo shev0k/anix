@@ -41,7 +41,6 @@
             lbWelcome = new Label();
             tbxPassword = new housing.CustomElements.RoundTextBox();
             tbxUsername = new housing.CustomElements.RoundTextBox();
-            btnForget = new CustomElements.RoundButton();
             btnLogin = new CustomElements.RoundButton();
             panelSideMenu.SuspendLayout();
             panelInformation.SuspendLayout();
@@ -181,7 +180,6 @@
             panelBackground.Controls.Add(lbWelcome);
             panelBackground.Controls.Add(tbxPassword);
             panelBackground.Controls.Add(tbxUsername);
-            panelBackground.Controls.Add(btnForget);
             panelBackground.Controls.Add(btnLogin);
             panelBackground.FillColor = Color.FromArgb(11, 7, 17);
             panelBackground.IsBorder = false;
@@ -262,27 +260,6 @@
             tbxUsername.UnderlinedStyle = false;
             tbxUsername.Leave += tbxUsername_Leave;
             // 
-            // btnForget
-            // 
-            btnForget.BackColor = Color.FromArgb(11, 7, 17);
-            btnForget.BackgroundColor = Color.FromArgb(11, 7, 17);
-            btnForget.BorderColor = Color.FromArgb(231, 34, 83);
-            btnForget.BorderRadius = 14;
-            btnForget.BorderSize = 2;
-            btnForget.ClickedColor = Color.FromArgb(231, 34, 83);
-            btnForget.FlatAppearance.BorderSize = 0;
-            btnForget.FlatStyle = FlatStyle.Flat;
-            btnForget.Font = new Font("Cascadia Code", 12.75F, FontStyle.Regular, GraphicsUnit.Point);
-            btnForget.ForeColor = Color.FromArgb(231, 34, 83);
-            btnForget.Location = new Point(512, 435);
-            btnForget.Name = "btnForget";
-            btnForget.Size = new Size(150, 40);
-            btnForget.TabIndex = 4;
-            btnForget.TabStop = false;
-            btnForget.Text = "FORGET";
-            btnForget.TextColor = Color.FromArgb(231, 34, 83);
-            btnForget.UseVisualStyleBackColor = false;
-            // 
             // btnLogin
             // 
             btnLogin.BackColor = Color.FromArgb(231, 34, 83);
@@ -295,9 +272,9 @@
             btnLogin.FlatStyle = FlatStyle.Flat;
             btnLogin.Font = new Font("Cascadia Code", 12.75F, FontStyle.Regular, GraphicsUnit.Point);
             btnLogin.ForeColor = Color.FromArgb(11, 7, 17);
-            btnLogin.Location = new Point(350, 435);
+            btnLogin.Location = new Point(349, 435);
             btnLogin.Name = "btnLogin";
-            btnLogin.Size = new Size(150, 40);
+            btnLogin.Size = new Size(312, 40);
             btnLogin.TabIndex = 3;
             btnLogin.TabStop = false;
             btnLogin.Text = "ENTER";
@@ -344,7 +321,6 @@
         private Label lbWelcome;
         private housing.CustomElements.RoundTextBox tbxPassword;
         private housing.CustomElements.RoundTextBox tbxUsername;
-        private CustomElements.RoundButton btnForget;
         private CustomElements.RoundButton btnLogin;
     }
 }

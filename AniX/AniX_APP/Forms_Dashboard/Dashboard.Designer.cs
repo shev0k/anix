@@ -32,11 +32,10 @@ namespace AniX_APP.Forms_Dashboard
         private void InitializeComponent()
         {
             panelSideMenu = new Panel();
-            btnSettings = new Button();
             btnErrorLogs = new Button();
-            btnAuditLogs = new Button();
             btnLogOut = new Button();
             panelInformation = new Panel();
+            btnReviews = new Button();
             btnAnime = new Button();
             btnUsers = new Button();
             btnManagement = new Button();
@@ -45,7 +44,6 @@ namespace AniX_APP.Forms_Dashboard
             panelChildForm = new Panel();
             panelBackground = new CustomElements.RoundPanel();
             pictureBox1 = new PictureBox();
-            btnReviews = new Button();
             panelSideMenu.SuspendLayout();
             panelInformation.SuspendLayout();
             panelLogo.SuspendLayout();
@@ -58,9 +56,7 @@ namespace AniX_APP.Forms_Dashboard
             // panelSideMenu
             // 
             panelSideMenu.BackColor = Color.FromArgb(11, 7, 17);
-            panelSideMenu.Controls.Add(btnSettings);
             panelSideMenu.Controls.Add(btnErrorLogs);
-            panelSideMenu.Controls.Add(btnAuditLogs);
             panelSideMenu.Controls.Add(btnLogOut);
             panelSideMenu.Controls.Add(panelInformation);
             panelSideMenu.Controls.Add(btnManagement);
@@ -72,27 +68,6 @@ namespace AniX_APP.Forms_Dashboard
             panelSideMenu.Size = new Size(225, 573);
             panelSideMenu.TabIndex = 1;
             // 
-            // btnSettings
-            // 
-            btnSettings.Dock = DockStyle.Top;
-            btnSettings.FlatAppearance.BorderSize = 0;
-            btnSettings.FlatAppearance.MouseDownBackColor = Color.FromArgb(23, 21, 32);
-            btnSettings.FlatAppearance.MouseOverBackColor = Color.FromArgb(24, 22, 34);
-            btnSettings.FlatStyle = FlatStyle.Flat;
-            btnSettings.ForeColor = Color.Silver;
-            btnSettings.Image = Properties.Resources.settings;
-            btnSettings.ImageAlign = ContentAlignment.MiddleLeft;
-            btnSettings.Location = new Point(0, 363);
-            btnSettings.Name = "btnSettings";
-            btnSettings.Padding = new Padding(5, 0, 0, 0);
-            btnSettings.Size = new Size(225, 45);
-            btnSettings.TabIndex = 18;
-            btnSettings.Text = "  Settings";
-            btnSettings.TextAlign = ContentAlignment.MiddleLeft;
-            btnSettings.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btnSettings.UseVisualStyleBackColor = true;
-            btnSettings.Click += btnSettings_Click;
-            // 
             // btnErrorLogs
             // 
             btnErrorLogs.Dock = DockStyle.Top;
@@ -103,7 +78,7 @@ namespace AniX_APP.Forms_Dashboard
             btnErrorLogs.ForeColor = Color.Silver;
             btnErrorLogs.Image = Properties.Resources.error;
             btnErrorLogs.ImageAlign = ContentAlignment.MiddleLeft;
-            btnErrorLogs.Location = new Point(0, 318);
+            btnErrorLogs.Location = new Point(0, 273);
             btnErrorLogs.Name = "btnErrorLogs";
             btnErrorLogs.Padding = new Padding(5, 0, 0, 0);
             btnErrorLogs.Size = new Size(225, 45);
@@ -113,27 +88,6 @@ namespace AniX_APP.Forms_Dashboard
             btnErrorLogs.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnErrorLogs.UseVisualStyleBackColor = true;
             btnErrorLogs.Click += btnErrorLogs_Click;
-            // 
-            // btnAuditLogs
-            // 
-            btnAuditLogs.Dock = DockStyle.Top;
-            btnAuditLogs.FlatAppearance.BorderSize = 0;
-            btnAuditLogs.FlatAppearance.MouseDownBackColor = Color.FromArgb(23, 21, 32);
-            btnAuditLogs.FlatAppearance.MouseOverBackColor = Color.FromArgb(24, 22, 34);
-            btnAuditLogs.FlatStyle = FlatStyle.Flat;
-            btnAuditLogs.ForeColor = Color.Silver;
-            btnAuditLogs.Image = Properties.Resources.audit;
-            btnAuditLogs.ImageAlign = ContentAlignment.MiddleLeft;
-            btnAuditLogs.Location = new Point(0, 273);
-            btnAuditLogs.Name = "btnAuditLogs";
-            btnAuditLogs.Padding = new Padding(5, 0, 0, 0);
-            btnAuditLogs.Size = new Size(225, 45);
-            btnAuditLogs.TabIndex = 16;
-            btnAuditLogs.Text = "  Audit Logs";
-            btnAuditLogs.TextAlign = ContentAlignment.MiddleLeft;
-            btnAuditLogs.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btnAuditLogs.UseVisualStyleBackColor = true;
-            btnAuditLogs.Click += btnAuditLogs_Click;
             // 
             // btnLogOut
             // 
@@ -167,6 +121,25 @@ namespace AniX_APP.Forms_Dashboard
             panelInformation.Name = "panelInformation";
             panelInformation.Size = new Size(225, 136);
             panelInformation.TabIndex = 14;
+            // 
+            // btnReviews
+            // 
+            btnReviews.Dock = DockStyle.Top;
+            btnReviews.FlatAppearance.BorderSize = 0;
+            btnReviews.FlatAppearance.MouseDownBackColor = Color.FromArgb(42, 38, 46);
+            btnReviews.FlatAppearance.MouseOverBackColor = Color.FromArgb(42, 38, 46);
+            btnReviews.FlatStyle = FlatStyle.Flat;
+            btnReviews.ForeColor = Color.Silver;
+            btnReviews.Location = new Point(0, 90);
+            btnReviews.Name = "btnReviews";
+            btnReviews.Padding = new Padding(35, 0, 0, 0);
+            btnReviews.Size = new Size(225, 45);
+            btnReviews.TabIndex = 6;
+            btnReviews.Text = "Reviews";
+            btnReviews.TextAlign = ContentAlignment.MiddleLeft;
+            btnReviews.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnReviews.UseVisualStyleBackColor = true;
+            btnReviews.Click += btnReviews_Click;
             // 
             // btnAnime
             // 
@@ -283,25 +256,6 @@ namespace AniX_APP.Forms_Dashboard
             pictureBox1.TabIndex = 2;
             pictureBox1.TabStop = false;
             // 
-            // btnReviews
-            // 
-            btnReviews.Dock = DockStyle.Top;
-            btnReviews.FlatAppearance.BorderSize = 0;
-            btnReviews.FlatAppearance.MouseDownBackColor = Color.FromArgb(42, 38, 46);
-            btnReviews.FlatAppearance.MouseOverBackColor = Color.FromArgb(42, 38, 46);
-            btnReviews.FlatStyle = FlatStyle.Flat;
-            btnReviews.ForeColor = Color.Silver;
-            btnReviews.Location = new Point(0, 90);
-            btnReviews.Name = "btnReviews";
-            btnReviews.Padding = new Padding(35, 0, 0, 0);
-            btnReviews.Size = new Size(225, 45);
-            btnReviews.TabIndex = 6;
-            btnReviews.Text = "Reviews";
-            btnReviews.TextAlign = ContentAlignment.MiddleLeft;
-            btnReviews.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btnReviews.UseVisualStyleBackColor = true;
-            btnReviews.Click += btnReviews_Click;
-            // 
             // Dashboard
             // 
             AutoScaleDimensions = new SizeF(8F, 17F);
@@ -334,9 +288,7 @@ namespace AniX_APP.Forms_Dashboard
         private Panel panelChildForm;
         private CustomElements.RoundPanel panelBackground;
         private PictureBox pictureBox1;
-        private Button btnSettings;
         private Button btnErrorLogs;
-        private Button btnAuditLogs;
         private Panel panelInformation;
         private Button btnAnime;
         private Button btnUsers;

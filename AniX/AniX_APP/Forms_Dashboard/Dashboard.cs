@@ -37,18 +37,14 @@ namespace AniX_APP.Forms_Dashboard
             SetButtonStyle(btnUsers);
             SetButtonStyle(btnAnime);
             SetButtonStyle(btnReviews);
-            SetButtonStyle(btnAuditLogs);
             SetButtonStyle(btnErrorLogs);
-            SetButtonStyle(btnSettings);
             SetButtonStyle(btnLogOut);
         }
 
         private void SetButtonImages()
         {
             SetImageButtonStyle(btnManagement, btnManagement.Image, AniX_APP.Properties.Resources.management_invert);
-            SetImageButtonStyle(btnAuditLogs, btnAuditLogs.Image, AniX_APP.Properties.Resources.audit_invert);
             SetImageButtonStyle(btnErrorLogs, btnErrorLogs.Image, AniX_APP.Properties.Resources.error_invert);
-            SetImageButtonStyle(btnSettings, btnSettings.Image, AniX_APP.Properties.Resources.settings_invert);
             SetImageButtonStyle(btnLogOut, btnLogOut.Image, AniX_APP.Properties.Resources.exit_invert);
         }
 
@@ -157,15 +153,7 @@ namespace AniX_APP.Forms_Dashboard
             {
                 return Color.FromArgb(11, 7, 17);
             }
-            else if (button == btnAuditLogs)
-            {
-                return Color.FromArgb(11, 7, 17);
-            }
             else if (button == btnErrorLogs)
-            {
-                return Color.FromArgb(11, 7, 17);
-            }
-            else if (button == btnSettings)
             {
                 return Color.FromArgb(11, 7, 17);
             }
@@ -276,21 +264,9 @@ namespace AniX_APP.Forms_Dashboard
             SetActiveButton((Button)sender);
         }
 
-        private void btnAuditLogs_Click(object sender, EventArgs e)
-        {
-            openChildForm(new AuditLogs(_dashboardModel.LoggedInUser));
-            SetActiveButton((Button)sender);
-        }
-
         private void btnErrorLogs_Click(object sender, EventArgs e)
         {
-            openChildForm(new ErrorLogs(_dashboardModel.LoggedInUser));
-            SetActiveButton((Button)sender);
-        }
-
-        private void btnSettings_Click(object sender, EventArgs e)
-        {
-            openChildForm(new Settings(_dashboardModel.LoggedInUser));
+            openChildForm(new ErrorLogs(_dashboardModel.LoggedInUser, _errorLoggingService));
             SetActiveButton((Button)sender);
         }
 

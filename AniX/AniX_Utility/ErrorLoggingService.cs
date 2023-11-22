@@ -22,17 +22,16 @@ namespace AniX_Utility
 
         public async Task LogErrorAsync(Exception e, LogSeverity severity = LogSeverity.Error)
         {
-            await LogMessageAsync(
-                $"Exception Type: {e.GetType().FullName}\n" +
-                $"Message: {e.Message}\n" +
-                $"Stack Trace: {e.StackTrace}",
-                severity
-            );
+            string formattedMessage = $"Exception Type: {e.GetType().FullName}\n" +
+                                      $"Message: {e.Message}\n" +
+                                      $"Stack Trace: {e.StackTrace}";
+            await LogMessageAsync(formattedMessage, severity);
         }
 
         public async Task LogCustomMessageAsync(string customMessage, LogSeverity severity = LogSeverity.Info)
         {
-            await LogMessageAsync($"Custom Message: {customMessage}", severity);
+            string formattedMessage = $"Custom Message: {customMessage}";
+            await LogMessageAsync(formattedMessage, severity);
         }
 
         private async Task LogMessageAsync(string message, LogSeverity severity)
@@ -76,6 +75,11 @@ namespace AniX_Utility
             catch
             {
             }
+        }
+
+        public string GetLogFilePath()
+        {
+            return Path.Combine(GetSolutionDirectory(), "ErrorLog.txt");
         }
 
         public async Task AuditLogAsync(string action, string details, LogSeverity severity = LogSeverity.Info)

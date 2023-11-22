@@ -1,0 +1,40 @@
+﻿@page
+@model AniX_WEB.Pages.ResetModel
+@{
+    Layout = "_LoginLayout";
+}
+
+<div class="login">
+    <video autoplay loop muted class="bg-video">
+        <source src="assets/media/login/login.mp4" type="video/mp4">
+    </video>
+    <section class="login signup text-center">
+        <div class="container">
+            <div class="login-block">
+                <div class="login-content">
+                    <h3>Change Password</h3><br />
+                    <form method="post">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div><br />
+                        <div class="form-group">
+                            <input asp-for="Input.Email" class="form-control" placeholder="Email address">
+                            <span asp-validation-for="Input.Email" class="text-danger"></span>
+                        </div>
+                        <div class="form-group password-type-field mb-0">
+                            <input asp-for="Input.NewPassword" class="form-control" type="password" id="password-field" placeholder="Enter new password">
+                            <span class="text-end toggle-password" toggle="#password-field"> <i class="fal fa-eye field-icon toggle-password"></i></span>
+                            <span asp-validation-for="Input.NewPassword" class="text-danger"></span>
+                        </div><br />
+                        <div class="form-group password-type-field mb-0">
+                            <input asp-for="Input.ConfirmPassword" class="form-control" type="password" id="confirm-password" placeholder="Confirm new password">
+                            <span class="text-end toggle-password" toggle="#confirm-password"> <i class="fal fa-eye field-icon toggle-password"></i></span>
+                            <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                        </div><br />
+                        <button type="submit" class="anime-btn btn-dark border-change">
+                            SET PASSWORD
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
