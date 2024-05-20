@@ -9,8 +9,8 @@
         height: 600px;
         object-fit: cover;
     }
-}
-</style>
+
+    }</style>
 
 @functions {
     public static string TruncateDescription(string description, int maxLength = 150)
@@ -39,7 +39,7 @@
             2 => "light-text text-center color-purple",
             3 => "light-text text-center color-grey",
             _ => "light-text text-center"
-            };
+        };
     }
 }
 
@@ -108,7 +108,7 @@
 <!--=====================================-->
 <!--=        Coming out Area Start     =-->
 <!--=====================================-->
-@if (Model.UpcomingAnime != null)
+@if (Model.UpcomingAnime != null && Model.UpcomingAnime.ReleaseDate.HasValue && Model.UpcomingAnime.ReleaseDate.Value > DateTime.Now)
 {
     <section class="coming-out style-1 sec-mar sec-pad" style="background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('@Model.UpcomingAnime.CoverImage'); background-size: cover;">
         <div class="container">
@@ -166,124 +166,130 @@
 <!--=           top Area Start          =-->
 <!--=====================================-->
 <section class="top sec-mar">
-<div class="container">
-<div class="row">
-    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-8 offset-xl-0 offset-lg-0 offset-md-0 offset-sm-2 col-12">
-        <h3>Top Watched</h3>
-        @for (int i = 0; i < Model.TopWatchedAnimes.Count && i < 6; i++)
-        {
-            var anime = Model.TopWatchedAnimes[i];
-            string rankClass = GetRankClass(i + 1);
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-4 col-lg-6 col-md-6 col-sm-8 offset-xl-0 offset-lg-0 offset-md-0 offset-sm-2 col-12">
+                <h3>Top Watched</h3>
+                @for (int i = 0; i < Model.TopWatchedAnimes.Count && i < 6; i++)
+                {
+                    var anime = Model.TopWatchedAnimes[i];
+                    string rankClass = GetRankClass(i + 1);
 
-            <div class="anime-box bg-color-black">
-                <a href="@Url.Page("/watch", new { id = anime.Id })">
-                    <div class="row m-0">
-                        <div class="p-0 col-2">
-                            <span class="@rankClass">@((i + 1).ToString())</span>
-                        </div>
-                        <div class="p-0 col-2">
-                            <img src="@anime.Thumbnail" class="anime-blog-image" alt="@anime.Name">
-                        </div>
-                        <div class="p-0 col-6">
-                            <div class="anime-blog">
-                                <p>@anime.Name</p>
-                                <p class="text-box">★ @TruncateRating(anime.AverageRating)</p>
-                                <p class="text-box">@anime.Rating</p>
+                    <div class="anime-box bg-color-black">
+                        <a href="@Url.Page("/watch", new { id = anime.Id })">
+                            <div class="row m-0">
+                                <div class="p-0 col-2">
+                                    <span class="@rankClass">@((i + 1).ToString())</span>
+                                </div>
+                                <div class="p-0 col-2">
+                                    <img src="@anime.Thumbnail" class="anime-blog-image" alt="@anime.Name">
+                                </div>
+                                <div class="p-0 col-6">
+                                    <div class="anime-blog">
+                                        <p>@anime.Name</p>
+                                        <p class="text-box">★ @TruncateRating(anime.AverageRating)</p>
+                                        <p class="text-box">@anime.Rating</p>
+                                    </div>
+                                </div>
+                                <div class="p-0 col-2 show-type">
+                                    <span class="show-type">@anime.Type</span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="p-0 col-2 show-type">
-                            <span class="show-type">@anime.Type</span>
-                        </div>
+                        </a>
                     </div>
-                </a>
+                }
             </div>
-        }
+
+            <div class="col-xl-4 col-lg-6 col-md-6 col-sm-8 offset-xl-0 offset-lg-0 offset-md-0 offset-sm-2 col-12">
+                <h3>Recently Released</h3>
+                @foreach (var anime in Model.NewlyReleasedAnimes)
+                {
+                    <div class="anime-box bg-color-black">
+                        <a href="@Url.Page("/watch", new { id = anime.Id })">
+                            <div class="row m-0">
+                                <div class="col-2 p-0">
+                                    <img src="@anime.Thumbnail" class="anime-blog-image" alt="@anime.Name">
+                                </div>
+                                <div class="col-8 p-0">
+                                    <div class="anime-blog">
+                                        <p>@anime.Name</p>
+                                        <p class="text-box">★ @TruncateRating(anime.AverageRating)</p>
+                                        <p class="text-box">@anime.Rating</p>
+                                    </div>
+                                </div>
+                                <div class="col-2 p-0 show-type">
+                                    <span class="show-type">@anime.Type</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                }
+            </div>
+
+            <div class="col-xl-4 col-lg-6 col-md-6 col-sm-8 offset-xl-0 offset-lg-3 offset-md-3 offset-sm-2 col-12">
+                <h3>Top Rated</h3>
+                @foreach (var anime in Model.TopRatedAnime)
+                {
+                    <div class="anime-box bg-color-black">
+                        <a href="@Url.Page("/watch", new { id = anime.Id })">
+                            <div class="row m-0">
+                                <div class="col-2 p-0">
+                                    <img src="@anime.Thumbnail" class="anime-blog-image" alt="@anime.Name">
+                                </div>
+                                <div class="col-8 p-0">
+                                    <div class="anime-blog">
+                                        <p>@anime.Name</p>
+                                        <p class="text-box">★ @TruncateRating(anime.AverageRating)</p>
+                                        <p class="text-box">@anime.Rating</p>
+                                    </div>
+                                </div>
+                                <div class="col-2 p-0 show-type">
+                                    <span class="show-type">@anime.Type</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                }
+            </div>
+        </div>
     </div>
-
-<div class="col-xl-4 col-lg-6 col-md-6 col-sm-8 offset-xl-0 offset-lg-0 offset-md-0 offset-sm-2 col-12">
-    <h3>Recently Released</h3>
-    @foreach (var anime in Model.NewlyReleasedAnimes)
-    {
-        <div class="anime-box bg-color-black">
-            <a href="@Url.Page("/watch", new { id = anime.Id })">
-                <div class="row m-0">
-                    <div class="col-2 p-0">
-                        <img src="@anime.Thumbnail" class="anime-blog-image" alt="@anime.Name">
-                    </div>
-                    <div class="col-8 p-0">
-                        <div class="anime-blog">
-                            <p>@anime.Name</p>
-                            <p class="text-box">★ @TruncateRating(anime.AverageRating)</p>
-                            <p class="text-box">@anime.Rating</p>
-                        </div>
-                    </div>
-                    <div class="col-2 p-0 show-type">
-                        <span class="show-type">@anime.Type</span>
-                    </div>
-                </div>
-            </a>
-        </div>
-    }
-</div>
-
-<div class="col-xl-4 col-lg-6 col-md-6 col-sm-8 offset-xl-0 offset-lg-3 offset-md-3 offset-sm-2 col-12">
-    <h3>Top Rated</h3>
-    @foreach (var anime in Model.TopRatedAnime){
-        <div class="anime-box bg-color-black">
-            <a href="@Url.Page("/watch", new { id = anime.Id })">
-                <div class="row m-0">
-                    <div class="col-2 p-0">
-                        <img src="@anime.Thumbnail" class="anime-blog-image" alt="@anime.Name">
-                    </div>
-                    <div class="col-8 p-0">
-                        <div class="anime-blog">
-                            <p>@anime.Name</p>
-                            <p class="text-box">★ @TruncateRating(anime.AverageRating)</p>
-                            <p class="text-box">@anime.Rating</p>
-                        </div>
-                    </div>
-                    <div class="col-2 p-0 show-type">
-                        <span class="show-type">@anime.Type</span>
-                    </div>
-                </div>
-            </a>
-        </div>
-    }
-</div>
-</div>
-</div>
 </section>
 
 @section Scripts {
-<script>
-    function updateCountdown() {
-        var releaseDate = new Date('@Model.UpcomingAnime.ReleaseDate').getTime();
-        var now = new Date().getTime();
-        var distance = releaseDate - now;
+    <script>
+        $(document).ready(function () {
+            // Check if the release date is available and valid
+            var releaseDateString = '@(Model.UpcomingAnime?.ReleaseDate?.ToString("yyyy-MM-dd"))';
+            if (releaseDateString && new Date(releaseDateString) > new Date()) {
+                var releaseDate = new Date(releaseDateString + "T00:00:00Z").getTime();
 
-        // Time calculations
-        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                function updateCountdown() {
+                    var now = new Date().getTime();
+                    var distance = releaseDate - now;
 
-        // Display the result
-        document.querySelector('.coming-out .timer').innerHTML =
-            '<li>' + days + '<small>d</small></li>' +
-            '<li>' + hours + '<small>h</small></li>' +
-            '<li>' + minutes + '<small>m</small></li>' +
-            '<li>' + seconds + '<small>s</small></li>';
+                    // Time calculations
+                    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-        // If the countdown is over
-        if (distance < 0) {
-            clearInterval(x);
-            document.querySelector('.coming-out .timer').innerHTML = 'Released';
-        }
-    }
+                    // Display the result
+                    if (distance >= 0) {
+                        document.querySelector('#countdown').innerHTML =
+                            '<li>' + days + '<small>d</small></li>' +
+                            '<li>' + hours + '<small>h</small></li>' +
+                            '<li>' + minutes + '<small>m</small></li>' +
+                            '<li>' + seconds + '<small>s</small></li>';
+                    } else {
+                        clearInterval(x);
+                        document.querySelector('#countdown').innerHTML = 'Released';
+                    }
+                }
 
-    // Update the countdown every second
-    var x = setInterval(updateCountdown, 1000);
-</script>
+                // Update the countdown every second
+                var x = setInterval(updateCountdown, 1000);
+                updateCountdown(); // Call immediately to avoid delay
+            }
+        });
+    </script>
 }
-
-

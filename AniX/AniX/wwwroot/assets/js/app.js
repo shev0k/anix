@@ -1,8 +1,3 @@
-// Template Name: AnimeLoop
-// Template URL: https://techpedia.co.uk/AnimeLoop/
-// Description: AnimeLoop HTML5 Template
-// Author: TPD-Themes
-// Version: 1.0.0
 (function (window, document, $, undefined) {
   "use strict";
   var animeInit = {
@@ -11,22 +6,21 @@
       animeInit.methods();
     },
     s: function (e) {
-      (this._window = $(window)),
-        (this._document = $(document)),
-        (this._body = $("body")),
-        (this._html = $("html"));
+      this._window = $(window);
+      this._document = $(document);
+      this._body = $("body");
+      this._html = $("html");
     },
     methods: function (e) {
       animeInit.w();
       animeInit.hidepreloader();
       animeInit.animeBackToTop();
       animeInit.passwordHide();
-      animeInit.intializeSlick();
-      animeInit.countdownInit(".countdown", "2023/12/01");
+      animeInit.initializeSlick();
       animeInit.salActivation();
       animeInit.policies();
       animeInit.weeklyScheduleNav();
-      animeInit.videplay();
+      animeInit.videoplay();
       animeInit.continueEmail();
       animeInit.trailerModel();
     },
@@ -47,12 +41,7 @@
       });
       btn.on("click", function (e) {
         e.preventDefault();
-        $("html, body").animate(
-          {
-            scrollTop: 0,
-          },
-          "300"
-        );
+        $("html, body").animate({ scrollTop: 0 }, "300");
       });
     },
     policies: function () {
@@ -69,12 +58,11 @@
           $('div.s-' + count + ' p').show('slow');
           $('div.s-' + count + ' .plus').hide();
           $('div.s-' + count + ' .minus').show();
-
         });
       }
     },
     passwordHide: function () {
-      $(".toggle-password").click(function() {
+      $(".toggle-password").click(function () {
         $(this).toggleClass("fa-eye fa-eye-slash");
         var input = $($(this).attr("toggle"));
         if (input.attr("type") == "password") {
@@ -87,25 +75,26 @@
     countdownInit: function (countdownSelector, countdownTime) {
       var eventCounter = $(countdownSelector);
       if (eventCounter.length) {
-        eventCounter.countdown(countdownTime, function (e) {
-          $(this).html(
-            e.strftime(
-              " <li>%D<small>d</small></li>\
-                            <li>%H<small>h</small></li>\
-                            <li>%M<small>m</small></li>\
-                            <li>%S<small>s</small></li>"
-            )
-          );
-        });
+        if (typeof eventCounter.countdown === 'function') {
+          eventCounter.countdown(countdownTime, function (e) {
+            $(this).html(
+                e.strftime(
+                    "<li>%D<small>d</small></li>\
+                     <li>%H<small>h</small></li>\
+                     <li>%M<small>m</small></li>\
+                     <li>%S<small>s</small></li>"
+                )
+            );
+          });
+        } else {
+          console.error('Countdown function is not available.');
+        }
       }
     },
     salActivation: function () {
-      sal({
-        threshold: 0.1,
-        once: true,
-      });
+      sal({ threshold: 0.1, once: true });
     },
-    intializeSlick: function (e) {
+    initializeSlick: function (e) {
       if ($(".banner-slider").length) {
         $(".banner-slider").slick({
           infinite: true,
@@ -118,10 +107,8 @@
           responsive: [
             {
               breakpoint: 992,
-              settings: {
-                arrows: false,
-              },
-            },
+              settings: { arrows: false }
+            }
           ]
         });
       }
@@ -136,30 +123,21 @@
           responsive: [
             {
               breakpoint: 991,
-              settings: {
-                arrows: true,
-                slidesToShow: 5,
-              },
+              settings: { arrows: true, slidesToShow: 5 }
             },
             {
               breakpoint: 768,
-              settings: {
-                arrows: true,
-                slidesToShow: 4,
-              },
+              settings: { arrows: true, slidesToShow: 4 }
             },
             {
               breakpoint: 480,
-              settings: {
-                arrows: true,
-                slidesToShow: 3,
-              },
-            },
-          ],
+              settings: { arrows: true, slidesToShow: 3 }
+            }
+          ]
         });
       }
     },
-    videplay: function () {
+    videoplay: function () {
       $(".video .play-btn").on("click", function () {
         $(".video .img-box").hide("slow");
         $(".video .video-box").show("slow");
@@ -175,15 +153,15 @@
       }
     },
     continueEmail: function () {
-      $('#continue-email').on('click',function(){
-        $('.hide-link').hide()
-        $('.login-sec').show()
-      })
+      $('#continue-email').on('click', function () {
+        $('.hide-link').hide();
+        $('.login-sec').show();
+      });
     },
-    trailerModel:function(){
+    trailerModel: function () {
       $('#videoModal').on('hidden.bs.modal', function () {
         $("#videoModal iframe").attr("src", $("#videoModal iframe").attr("src"));
-    });
+      });
     }
   };
   animeInit.i();

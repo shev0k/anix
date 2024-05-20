@@ -270,6 +270,7 @@ namespace AniX_DAL
                     }
                 }
 
+                // Delete from Anime_Genre
                 string deleteGenresQuery = "DELETE FROM [Anime_Genre] WHERE AnimeId = @AnimeId";
                 using (SqlCommand deleteGenresCommand = new SqlCommand(deleteGenresQuery, connection, transaction))
                 {
@@ -277,6 +278,31 @@ namespace AniX_DAL
                     await deleteGenresCommand.ExecuteNonQueryAsync();
                 }
 
+                // Delete from Review
+                string deleteReviewsQuery = "DELETE FROM [Review] WHERE AnimeId = @AnimeId";
+                using (SqlCommand deleteReviewsCommand = new SqlCommand(deleteReviewsQuery, connection, transaction))
+                {
+                    deleteReviewsCommand.Parameters.AddWithValue("@AnimeId", animeId);
+                    await deleteReviewsCommand.ExecuteNonQueryAsync();
+                }
+
+                // Delete from AnimeViews
+                string deleteAnimeViewsQuery = "DELETE FROM [AnimeViews] WHERE AnimeId = @AnimeId";
+                using (SqlCommand deleteAnimeViewsCommand = new SqlCommand(deleteAnimeViewsQuery, connection, transaction))
+                {
+                    deleteAnimeViewsCommand.Parameters.AddWithValue("@AnimeId", animeId);
+                    await deleteAnimeViewsCommand.ExecuteNonQueryAsync();
+                }
+
+                // Delete from User_Anime
+                string deleteUserAnimeQuery = "DELETE FROM [User_Anime] WHERE AnimeId = @AnimeId";
+                using (SqlCommand deleteUserAnimeCommand = new SqlCommand(deleteUserAnimeQuery, connection, transaction))
+                {
+                    deleteUserAnimeCommand.Parameters.AddWithValue("@AnimeId", animeId);
+                    await deleteUserAnimeCommand.ExecuteNonQueryAsync();
+                }
+
+                // Delete from Anime
                 string deleteAnimeQuery = "DELETE FROM [Anime] WHERE Id = @Id";
                 using (SqlCommand deleteAnimeCommand = new SqlCommand(deleteAnimeQuery, connection, transaction))
                 {
@@ -293,10 +319,18 @@ namespace AniX_DAL
                     {
                         await _blobService.DeleteImageAsync(thumbnailUrl);
                     }
-                }
 
-                transaction.Commit();
-                return true;
+                    if (rowsAffected > 0)
+                    {
+                        transaction.Commit();
+                        return true;
+                    }
+                    else
+                    {
+                        transaction.Rollback();
+                        return false;
+                    }
+                }
             }
             catch (SqlException ex) when (ex.Number == 547)
             {
@@ -315,6 +349,7 @@ namespace AniX_DAL
                 await connection.CloseAsync();
             }
         }
+
 
         public async Task<List<string>> GetSearchSuggestionsAsync(string searchType, string searchTerm)
         {

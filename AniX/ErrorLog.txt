@@ -5541,3 +5541,95 @@ Timestamp: 22/11/2023 13:37:01
 Severity: Info
 Custom Message: Timestamp: 22/11/2023 13:37:01, Username: admin, Success: True, Additional Info: 
 ---------------------------------------------------
+Timestamp: 20/05/2024 15:51:27
+Severity: Info
+Custom Message: Timestamp: 20/05/2024 15:51:27, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 20/05/2024 15:51:32
+Severity: Warning
+Exception Type: System.Data.SqlClient.SqlException
+Message: The DELETE statement conflicted with the REFERENCE constraint "FK__Review__UserId__5629CD9C". The conflict occurred in database "dbi499309_anixdb", table "dbo.Review", column 'UserId'.
+The statement has been terminated.
+Stack Trace:    at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader()
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQueryInternal(IAsyncResult asyncResult)
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQuery(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at AniX_DAL.UserDAL.DeleteAsync(Int32 id) in C:\Users\shevoK\Desktop\anix-main\AniX\AniX_DAL\UserDAL.cs:line 224
+---------------------------------------------------
+Timestamp: 20/05/2024 15:52:00
+Severity: Warning
+Exception Type: System.Data.SqlClient.SqlException
+Message: The DELETE statement conflicted with the REFERENCE constraint "FK__AnimeView__UserI__628FA481". The conflict occurred in database "dbi499309_anixdb", table "dbo.AnimeViews", column 'UserId'.
+The statement has been terminated.
+Stack Trace:    at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader()
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQueryInternal(IAsyncResult asyncResult)
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQuery(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at AniX_DAL.UserDAL.DeleteAsync(Int32 id) in C:\Users\shevoK\Desktop\anix-main\AniX\AniX_DAL\UserDAL.cs:line 224
+---------------------------------------------------
+Timestamp: 20/05/2024 16:02:53
+Severity: Info
+Custom Message: Timestamp: 20/05/2024 16:02:53, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 20/05/2024 16:23:09
+Severity: Info
+Custom Message: Timestamp: 20/05/2024 16:23:09, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 20/05/2024 16:53:44
+Severity: Info
+Custom Message: Timestamp: 20/05/2024 16:53:44, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 20/05/2024 17:01:47
+Severity: Warning
+Exception Type: System.Data.SqlClient.SqlException
+Message: The DELETE statement conflicted with the REFERENCE constraint "FK__AnimeView__UserI__628FA481". The conflict occurred in database "dbi499309_anixdb", table "dbo.AnimeViews", column 'UserId'.
+The statement has been terminated.
+Stack Trace:    at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader()
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQueryInternal(IAsyncResult asyncResult)
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQuery(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at AniX_DAL.UserDAL.DeleteAsync(Int32 id) in C:\Users\shevoK\Desktop\anix-main\AniX\AniX_DAL\UserDAL.cs:line 224
+---------------------------------------------------
+Timestamp: 20/05/2024 17:02:42
+Severity: Warning
+Exception Type: System.Data.SqlClient.SqlException
+Message: The DELETE statement conflicted with the REFERENCE constraint "FK__AnimeView__UserI__628FA481". The conflict occurred in database "dbi499309_anixdb", table "dbo.AnimeViews", column 'UserId'.
+The statement has been terminated.
+Stack Trace:    at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader()
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQueryInternal(IAsyncResult asyncResult)
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQuery(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at AniX_DAL.UserDAL.DeleteAsync(Int32 id) in C:\Users\shevoK\Desktop\anix-main\AniX\AniX_DAL\UserDAL.cs:line 224
+---------------------------------------------------
+Timestamp: 20/05/2024 17:06:31
+Severity: Info
+Custom Message: Timestamp: 20/05/2024 17:06:31, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------
+Timestamp: 20/05/2024 17:24:57
+Severity: Info
+Custom Message: Timestamp: 20/05/2024 17:24:57, Username: admin, Success: True, Additional Info: 
+---------------------------------------------------

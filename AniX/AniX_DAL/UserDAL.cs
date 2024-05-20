@@ -217,26 +217,68 @@ namespace AniX_DAL
             try
             {
                 await connection.OpenAsync();
-                string query = "DELETE FROM [User] WHERE Id = @id";
-                SqlCommand command = new SqlCommand(query, connection);
-                command.Parameters.AddWithValue("@id", id);
 
-                int rowsAffected = await command.ExecuteNonQueryAsync();
+                // Start a transaction
+                using (SqlTransaction transaction = connection.BeginTransaction())
+                {
+                    try
+                    {
+                        // Delete related entities first
+                        string deleteReviewsQuery = "DELETE FROM [Review] WHERE UserId = @id";
+                        string deleteUserAnimeQuery = "DELETE FROM [User_Anime] WHERE UserId = @id";
+                        string deleteAnimeViewsQuery = "DELETE FROM [AnimeViews] WHERE UserId = @id";
 
-                result.Success = rowsAffected > 0;
-                result.Message = result.Success ? "User deleted successfully." : "User not found or could not be deleted.";
-            }
-            catch (SqlException ex) when (ex.Number == 547)
-            {
-                result.Success = false;
-                result.Message = "User cannot be deleted because it is referenced by other entities.";
-                await _errorLoggingService.LogErrorAsync(ex, LogSeverity.Warning);
-            }
-            catch (Exception ex)
-            {
-                result.Success = false;
-                result.Message = "An error occurred while deleting the user.";
-                await _errorLoggingService.LogErrorAsync(ex, LogSeverity.Critical);
+                        using (SqlCommand deleteReviewsCommand = new SqlCommand(deleteReviewsQuery, connection, transaction))
+                        {
+                            deleteReviewsCommand.Parameters.AddWithValue("@id", id);
+                            await deleteReviewsCommand.ExecuteNonQueryAsync();
+                        }
+
+                        using (SqlCommand deleteUserAnimeCommand = new SqlCommand(deleteUserAnimeQuery, connection, transaction))
+                        {
+                            deleteUserAnimeCommand.Parameters.AddWithValue("@id", id);
+                            await deleteUserAnimeCommand.ExecuteNonQueryAsync();
+                        }
+
+                        using (SqlCommand deleteAnimeViewsCommand = new SqlCommand(deleteAnimeViewsQuery, connection, transaction))
+                        {
+                            deleteAnimeViewsCommand.Parameters.AddWithValue("@id", id);
+                            await deleteAnimeViewsCommand.ExecuteNonQueryAsync();
+                        }
+
+                        // Delete the user
+                        string deleteUserQuery = "DELETE FROM [User] WHERE Id = @id";
+                        using (SqlCommand deleteUserCommand = new SqlCommand(deleteUserQuery, connection, transaction))
+                        {
+                            deleteUserCommand.Parameters.AddWithValue("@id", id);
+                            int rowsAffected = await deleteUserCommand.ExecuteNonQueryAsync();
+
+                            result.Success = rowsAffected > 0;
+                            result.Message = result.Success ? "User deleted successfully." : "User not found or could not be deleted.";
+                        }
+
+                        // Commit the transaction
+                        transaction.Commit();
+                    }
+                    catch (Exception ex)
+                    {
+                        // Rollback the transaction if an error occurs
+                        transaction.Rollback();
+
+                        if (ex is SqlException sqlEx && sqlEx.Number == 547)
+                        {
+                            result.Success = false;
+                            result.Message = "User cannot be deleted because it is referenced by other entities.";
+                            await _errorLoggingService.LogErrorAsync(sqlEx, LogSeverity.Warning);
+                        }
+                        else
+                        {
+                            result.Success = false;
+                            result.Message = "An error occurred while deleting the user.";
+                            await _errorLoggingService.LogErrorAsync(ex, LogSeverity.Critical);
+                        }
+                    }
+                }
             }
             finally
             {
@@ -244,6 +286,7 @@ namespace AniX_DAL
             }
             return result;
         }
+
 
         public async Task<User> GetUserFromIdAsync(int id)
         {
